@@ -1,9 +1,11 @@
-/*:root {
+:root {
     --primary-color: #0056b3;
     --secondary-color: #e9ecef;
     --error-color: #dc3545;
+    --bs-border-width: 1px; /* Ensure this is defined */
 }
 
+/*
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -12,7 +14,8 @@ body {
 }
 */
 .form {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.06), 0 6px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.02), 0 6px 20px rgba(0,0,0,0.03);
+    
 
     
     padding: 30px;
