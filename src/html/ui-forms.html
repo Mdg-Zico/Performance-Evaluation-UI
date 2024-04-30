@@ -7,6 +7,7 @@
   <title>Modernize Free</title>
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
+  <link rel="stylesheet" href="../assets/css/employee.css">
 </head>
 
 <body>
@@ -192,70 +193,261 @@
       </header>
       <!--  Header End -->
       <div class="container-fluid">
-        <div class="container-fluid">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title fw-semibold mb-4">Forms</h5>
-              <div class="card">
-                <div class="card-body">
-                  <form>
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1">
-                    </div>
-                    <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-                </div>
-              </div>
-              <h5 class="card-title fw-semibold mb-4">Disabled forms</h5>
-              <div class="card mb-0">
-                <div class="card-body">
-                  <form>
-                    <fieldset disabled>
-                      <legend>Disabled fieldset example</legend>
-                      <div class="mb-3">
-                        <label for="disabledTextInput" class="form-label">Disabled input</label>
-                        <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
-                      </div>
-                      <div class="mb-3">
-                        <label for="disabledSelect" class="form-label">Disabled select menu</label>
-                        <select id="disabledSelect" class="form-select">
-                          <option>Disabled select</option>
-                        </select>
-                      </div>
-                      <div class="mb-3">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" disabled>
-                          <label class="form-check-label" for="disabledFieldsetCheck">
-                            Can't check this
-                          </label>
+        <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+<div class="card-body px-4 py-3">
+<div class="row align-items-center">
+  <div class="col-9">
+    <h4 class="fw-semibold mb-8">Form Repeater</h4>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a class="text-muted text-decoration-none" href="../main/index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item" aria-current="page">Form Repeater</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="col-3">
+    <div class="text-center mb-n5">
+      <img src="../assets/images/breadcrumb/ChatBc.png" alt="" class="img-fluid mb-n4">
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title mb-3">Full Form Repeater</h4>
+                <div class="repeater-default">
+                  <div data-repeater-list="">
+                    <div data-repeater-item="">
+                      <form>
+                        <div class="row">
+                          <div class="mb-3 col-md-3">
+                            <label class="form-label" for="name">Name</label>
+                            <input type="text" class="form-control" placeholder="Name" pwa2-uuid="EDITOR/input-DD7-832-6F16F-9BD" pwa-fake-editor="">
+                          </div>
+                          <div class="mb-3 col-md-3">
+                            <label class="form-label" for="email">Email</label>
+                            <input type="email" class="form-control" placeholder="Email">
+                          </div>
+                          <div class="mb-3 col-md-3">
+                            <label class="form-label" for="pwd">Password</label>
+                            <input type="password" class="form-control" id="pwd" placeholder="Password">
+                          </div>
+                          <div class="mb-3 col-md-3">
+                            <label class="form-label" for="msg">Message</label>
+                            <pwa-container-wrapper style="display: flex !important; height: 0px !important;"><pwa-container data-uid="pwa_D8A10-5C528-B6A3F-E2403-91" class="pwa-container " style="overflow: hidden; position: absolute; box-sizing: border-box; pointer-events: none; margin: 0px; padding: 8px 16px; width: 224.75px; height: 39px; z-index: 1;"><pwa style="position: absolute; top: 99999px; left: 999999px; width: 1px; height: 1px;"></pwa></pwa-container><pwa-container style="overflow: hidden; position: absolute; box-sizing: border-box; pointer-events: none; margin: 0px; padding: 8px 16px; width: 224.75px; height: 39px; z-index: 1;"></pwa-container></pwa-container-wrapper><pwa-sync style="opacity: 0 !important; position: absolute; box-sizing: border-box; pointer-events: none; white-space: pre-wrap !important; border-width: 1px !important; border-style: solid !important; border-color: rgb(223, 229, 239) !important; border-radius: 7px !important; width: 224.75px; background: none 0% 0% / auto repeat scroll padding-box padding-box rgba(0, 0, 0, 0) !important; padding: 8px 16px; height: 39px; z-index: 1; overflow: hidden; margin: 0px;"></pwa-sync><textarea class="form-control" rows="1" placeholder="Message" pwa2-uuid="EDITOR-218-FE7-89FDE-D38" pwa-fake-editor="" spellcheck="false" style="position: relative !important; z-index: auto !important;"></textarea><pwa-editor-bar-cnt><pwa-editor-bar pwa2-uuid="EDITOR-218-FE7-89FDE-D38" class="invisible bar-minimized" style="right: -218.75px !important; bottom: 12px !important;"><pwa-editor-bar-status class="checked" data-pwa-errors-count="0"><div class="emoji-editor-bar" ng-version="14.3.0"><!----></div></pwa-editor-bar-status><pwa-editor-bar-status class="pending"></pwa-editor-bar-status><pwa-editor-bar-status class="loggedout visible"></pwa-editor-bar-status><pwa-editor-bar-status class="network-offline"></pwa-editor-bar-status><pwa-editor-bar-status class="extension-offline"></pwa-editor-bar-status><pwa-editor-bar-status class="site-disabled"></pwa-editor-bar-status><pwa-editor-bar-panel><pwa-editor-bar-panel-btn class="regular switch-off visible" title="Disable ProWritingAid"><span class="pwa-icon any-color switch-off-icon" js-class="filled direction-right direction-left direction-up direction-bottom error-color main-color second-color any-color"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"></svg></span></pwa-editor-bar-panel-btn>
+                          </div>
+                          <div class="mb-3 col-md-12">
+                            <button class="btn rounded-pill px-4 btn-primary" type="submit">
+                              <i class="ti ti-send fs-5"></i>
+                              Submit
+                            </button>
+                            <button data-repeater-delete="" class="btn rounded-pill px-4 bg-danger-subtle text-danger ms-6" type="button">
+                              <i class="ti ti-trash fs-5"></i>
+                              Delete Form
+                            </button>
+                          </div>
                         </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="mt-3 pt-3 border-top">
+                    <button data-repeater-create="" class="btn btn-success rounded-pill px-4">
+                      <div class="d-flex align-items-center">
+                        Add
+                        <i class="ti ti-circle-plus ms-1 fs-5"></i>
                       </div>
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </fieldset>
-                  </form>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        
+       <!-- Your existing code... -->
+
+
+
+
+       <h2 class="employee-head">Employee Information</h2>
+       <form class="form" >
+           <div class="first-div">
+   
+           
+               <div class="input-group">
+                   <label for="first-name">First Name <span class="required">*</span></label>
+                   <input type="text" id="first-name" placeholder="First Name" required>
+               </div>
+               <div class=" input-group">
+                   <label for="middle-name">Middle Name <span class="required">*</span></label>
+                   <input  type="text" id="middle-name" placeholder="Middle Name" required>
+               </div>
+               <div class=" input-group">
+                   <label for="last-name">Last Name <span class="required">*</span></label>
+                   <input type="text" id="last-name" placeholder="Last Name" required>
+               </div>
+           
+   
+           </div>
+   
+           <div class="second-div">
+               <div class="input-group">
+                   <label for="staff-id">Staff ID <span class="required">*</span></label>
+                   <input type="text" id="staff-id" placeholder="staff id" required>
+               </div>
+               <div class="input-group" >
+                   <label for="job-level">Job Level <span class="required">*</span></label>
+                   <select id="job-level" required>
+                       <option value="">-- job-level --</option>
+                       <option value="entry">Entry Level</option>
+                       <option value="mid">Mid Level</option>
+                       <option value="senior">Senior Level</option>
+                       <option value="executive">Executive</option>
+                   </select>
+               </div>
+           </div>
+   
+   
+   
+           <div class="second-div">
+               <div class="input-group">
+                   <label for="staff-id">Unit <span class="required">*</span></label>
+                   <select id="job-level" required>
+                       <option class="default" value="">-- unit --</option>
+                       <option value="entry">Entry Level</option>
+                       <option value="mid">Mid Level</option>
+                       <option value="senior">Senior Level</option>
+                       <option value="executive">Executive</option>
+                   </select>
+               </div>
+               <div class="input-group" >
+                   <label for="job-level">Directorate <span class="required">*</span></label>
+                   <select id="job-level" required>
+                       <option class="default" value="">-- Directorate --</option>
+                       <option value="entry">Entry Level</option>
+                       <option value="mid">Mid Level</option>
+                       <option value="senior">Senior Level</option>
+                       <option value="executive">Executive</option>
+                   </select>
+               </div>
+           </div>
+   
+   
+           <div class="second-div">
+               <div class="input-group">
+                   <label for="staff-id">Designation <span class="required">*</span></label>
+                   <input type="text" id="staff-id" placeholder="Designation" required>
+               </div>
+               <div class="input-group" >
+                   <label for="job-level">Supervisor Name <span class="required">*</span></label>
+                   <input type="text" id="staff-id" placeholder="Supervisor Name" required>
+               </div>
+           </div>
+   
+   
+           <div class="second-div">
+               <div class="input-group">
+                   <label for="staff-id">Region <span class="required">*</span></label>
+                   <select id="job-level" required>
+                       <option class="default" value="">--Select Region--</option>
+                       <option value="entry">Entry Level</option>
+                       <option value="mid">Mid Level</option>
+                       <option value="senior">Senior Level</option>
+                       <option value="executive">Executive</option>
+                   </select>
+               </div>
+               <div class="input-group" >
+                   <label for="job-level">Area Office <span class="required">*</span></label>
+                   <select id="job-level" required>
+                       <option class="default" value="">-- Select Area Office --</option>
+                       <option value="entry">Entry Level</option>
+                       <option value="mid">Mid Level</option>
+                       <option value="senior">Senior Level</option>
+                       <option value="executive">Executive</option>
+                   </select>
+               </div>
+           </div>
+          
+       </form>
+           
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Template for the form repeater item
+    const formRepeaterItemTemplate = `
+      <div data-repeater-item="">
+        <form>
+          <div class="row">
+            <div class="mb-3 col-md-3">
+              <label class="form-label" for="name">Name</label>
+              <input type="text" class="form-control" placeholder="Name">
+            </div>
+            <div class="mb-3 col-md-3">
+              <label class="form-label" for="email">Email</label>
+              <input type="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="mb-3 col-md-3">
+              <label class="form-label" for="pwd">Password</label>
+              <input type="password" class="form-control" id="pwd" placeholder="Password">
+            </div>
+            <div class="mb-3 col-md-3">
+              <label class="form-label" for="msg">Message</label>
+              <textarea class="form-control" rows="1" placeholder="Message" spellcheck="false"></textarea>
+            </div>
+            <div class="mb-3 col-md-12">
+              <button class="btn rounded-pill px-4 btn-primary" type="submit">
+                <i class="ti ti-send fs-5"></i>
+                Submit
+              </button>
+              <button data-repeater-delete="" class="btn rounded-pill px-4 bg-danger-subtle text-danger ms-6" type="button">
+                <i class="ti ti-trash fs-5"></i>
+                Delete Form
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-    </div>
-  </div>
-  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/js/sidebarmenu.js"></script>
-  <script src="../assets/js/app.min.js"></script>
-  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+    `;
+
+    // Function to add a new form repeater item
+    function addNewFormRepeaterItem() {
+      // Clone the form repeater item template
+      const repeaterContainer = document.querySelector('[data-repeater-list]');
+      const clonedItem = document.createElement('div');
+      clonedItem.innerHTML = formRepeaterItemTemplate;
+
+      // Append the cloned item to the repeater container
+      repeaterContainer.appendChild(clonedItem);
+    }
+
+    // Function to handle the delete action using event delegation
+    function handleRepeaterActions(event) {
+      if (event.target.matches('[data-repeater-delete]')) {
+        const currentItem = event.target.closest('[data-repeater-item]');
+        if (currentItem) {
+          currentItem.remove();
+        }
+      }
+    }
+
+    // Attach click event to the initial "Add" button
+    document.querySelector('[data-repeater-create]').addEventListener('click', addNewFormRepeaterItem);
+
+    // Attach click event to the container for event delegation
+    document.querySelector('[data-repeater-list]').addEventListener('click', handleRepeaterActions);
+  });
+</script>
+
+<!-- Your existing code... -->
+
+
+
 </body>
 
 </html>
