@@ -299,10 +299,17 @@
                 <label for="staff-id">Designation <span class="required">*</span></label>
                 <input type="text" id="staff-id" placeholder="Designation" required>
             </div>
-            <div class="input-group" >
-                <label for="job-level">Supervisor Name <span class="required">*</span></label>
-                <input type="text" id="staff-id" placeholder="Supervisor Name" required>
-            </div>
+            <div class="input-group">
+              <label for="supervisor-name">Line Manager <span class="required">*</span></label>
+              <input type="text" id="supervisor-name" name="supervisor-name" placeholder="Type or select" list="supervisors" required>
+              <datalist id="supervisors">
+                  <option value="Supervisor One">
+                  <option value="Supervisor Two">
+                  <option value="Supervisor Three">
+                  <option value="Supervisor Four">
+              </datalist>
+          </div>
+          
         </div>
 
 
@@ -328,6 +335,21 @@
                 </select>
             </div>
         </div>
+
+
+        <div class="second-div">
+          <div class="input-group">
+            <label for="supervisor-name">Reviewer<span class="required">*</span></label>
+            <input type="text" id="reviewer-name" name="supervisor-name" placeholder="Type or select" list="supervisors" required>
+            <datalist id="supervisors">
+                <option value="Supervisor One">
+                <option value="Supervisor Two">
+                <option value="Supervisor Three">
+                <option value="Supervisor Four">
+            </datalist>
+        </div>
+        
+      </div>
     </form>
     <button type="button" class="btn btn-primary btn-lg  btn rounded-pill px-4 btn-primary" id="submit-btn">
         <i class="ti ti-send fs-5"></i>Submit</button>

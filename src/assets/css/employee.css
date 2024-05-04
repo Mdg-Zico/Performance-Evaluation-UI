@@ -53,16 +53,13 @@ body {
     padding: 8px;
     margin-top: 5px;
     margin-bottom: 20px;
-    
     border-radius: 4px;
     box-sizing: border-box;
     color: #5A6A85;
-
     border: var(--bs-border-width) solid #DFE5EF;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-
-    
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
 
 .input-group label {
     margin-bottom: 5px;
