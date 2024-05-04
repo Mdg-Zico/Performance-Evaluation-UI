@@ -81,7 +81,7 @@ body {
     }
 }
 
-/*input:focus, select:focus {
+input:focus, select:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.25);
 }
@@ -99,7 +99,7 @@ input[type="submit"], button {
 input[type="submit"]:hover, button:hover {
     background-color: darken(var(--primary-color), 10%);
 }
-*/
+
 
 .default{
     color: grey;
