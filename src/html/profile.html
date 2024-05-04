@@ -8,6 +8,10 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
   <link rel="stylesheet" href="../assets/css/employee.css">
+ 
+
+
+
 </head>
 
 <body>
@@ -179,31 +183,36 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                    <a href="profile.html" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-user fs-6"></i>
-                      <p class="mb-0 fs-3">My Profile</p>
+                      <span class="mb-0 fs-3">My Profile</span>
                     </a>
                     <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-mail fs-6"></i>
-                      <p class="mb-0 fs-3">My Account</p>
+                      <span class="mb-0 fs-3">My Account</span>
                     </a>
                     <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-list-check fs-6"></i>
-                      <p class="mb-0 fs-3">My Task</p>
+                      <span class="mb-0 fs-3">My Task</span>
                     </a>
                     <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                   </div>
                 </div>
+                
               </li>
             </ul>
           </div>
         </nav>
         </header>
+  
         <div class="container-fluid">
+          
             <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+
     <div class="card-body px-4 py-3">
     <div class="row align-items-center">
       <div class="col-9">
+  
         <h4 class="fw-semibold mb-8">Employee Information</h4>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
@@ -320,32 +329,20 @@
             </div>
         </div>
     </form>
-    <button class="btn rounded-pill px-4 btn-primary" type="submit" id="submit-btn">
-        <i class="ti ti-send fs-5"></i>
-        Submit
-      </button>
+    <button type="button" class="btn btn-primary btn-lg  btn rounded-pill px-4 btn-primary" id="submit-btn">
+        <i class="ti ti-send fs-5"></i>Submit</button>
+        <!-- Spinner (hidden by default) -->
+      <div id="spinner" style="display: none;">Loading...</div>
 
-    <script>
-        document.getElementById('submit-btn').addEventListener('click', function() {
-            var inputs = document.querySelectorAll('.form input, .form select');
-            inputs.forEach(function(input) {
-                input.disabled = true;
-            });
-        });
-        
-        document.getElementById('update-btn').addEventListener('click', function() {
-            var inputs = document.querySelectorAll('.form input, .form select');
-            inputs.forEach(function(input) {
-                input.disabled = false;
-            });
-        });
-        </script>
+    <script src="profile.js"></script>
+    
 
         
     
     
     </div>
   </div>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/js/sidebarmenu.js"></script>
