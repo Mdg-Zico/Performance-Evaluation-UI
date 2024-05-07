@@ -13,9 +13,10 @@ $(function () {
   })
 
   function appendtoNav() {
-    navLength = Object.keys($('.repeater').repeaterVal()).length;
+    console.log($('.repeater').repeaterVal()['group-a'])
+    const navLength = Object.keys($('.repeater').repeaterVal()['group-a']).length;
     console.log(navLength);
-    navbar = $('.nav-tabs');
-    navbar.append('<li>Goal</li>')
+    const navbar = $('.nav-tabs');
+    navbar.append('<li class="nav-item goal_1" style="cursor: pointer;"><span class="nav-link">Goal '+navLength+'</span></li>')
   }
 });
