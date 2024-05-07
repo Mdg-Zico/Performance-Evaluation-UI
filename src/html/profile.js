@@ -1,67 +1,63 @@
 $(document).ready(function() {
-    loadFormData();
-    disableFormFields(true);
+    // Run initial setups
+    setupForm();
 
     $('#submit-btn').on('click', function(event) {
-        event.preventDefault();
+        event.preventDefault(); // Prevent the default form submission action
         handleSubmit();
-    });
-    $('#update-btn').on('click', function() {
-        disableFormFields(false);
     });
 });
 
-function loadFormData() {
-    $('.form input, .form select').each(function() {
-        var savedValue = localStorage.getItem(this.id);
-        if (savedValue) {
-            $(this).val(savedValue);
-        }
-    });
+function setupForm() {
+    // Check for the presence of the session form to determine field behavior
+    if ($('#session1').length) {
+        // This form requires 'Staff ID' to be enabled
+        disableFields(false); // Call with false to not disable staff ID
+    } else {
+        // Disable the first four fields as this is the default form
+        disableFirstFourFields();
+    }
 }
 
-function disableFormFields(disable) {
-    $('.form input, .form select').each(function() {
-        $(this).prop('disabled', disable);
-    });
+function disableFirstFourFields() {
+    // Disable only the specific fields that are to be populated by the backend
+    $('#first-name').prop('disabled', true);
+    $('#middle-name').prop('disabled', true);
+    $('#last-name').prop('disabled', true);
+    $('#staff-id').prop('disabled', true);
+}
+
+function disableFields(disableStaffId) {
+    $('#first-name, #middle-name, #last-name').prop('disabled', true);
+    if (disableStaffId) {
+        $('#staff-id').prop('disabled', true);
+    }
 }
 
 function handleSubmit() {
-    var $spinner = $('#spinner');
     if (!validateFields()) {
-        alert('Please fill all required fields.');
+        alert('Please fill all required fields.'); // Alert if not all required fields are filled
         return;
     }
-
-    $spinner.css('display', 'block'); // Show spinner
-    $('#submit-btn').prop('disabled', true); // Disable submit button
-
-    setTimeout(function() {
-        $spinner.css('display', 'none'); // Hide spinner
-        showSubmissionAlert($('.container-fluid'));
-        saveFormData();
-        disableFormFields(true);
-        $('#submit-btn').prop('disabled', false); // Re-enable submit button
-    }, 2000); // Simulate a delay for the "submission" process
+    // Here you could include any AJAX or form submission logic as needed
+    showSubmissionAlert($('.container-fluid')); // Show a success message
 }
 
 function validateFields() {
     var isValid = true;
     $('.form input[required], .form select[required]').each(function() {
-        $(this).css('borderColor', $(this).val().trim() ? '' : 'red'); // Highlighting error fields
-        if (!$(this).val().trim()) isValid = false;
+        if (!$(this).val().trim()) {
+            $(this).css('borderColor', 'red'); // Highlighting error fields
+            isValid = false;
+        } else {
+            $(this).css('borderColor', ''); // Reset border color if field is filled
+        }
     });
     return isValid;
 }
 
-function saveFormData() {
-    $('.form input, .form select').each(function() {
-        localStorage.setItem(this.id, $(this).val());
-    });
-}
-
 function showSubmissionAlert($container) {
-    $('.alert').remove(); // Remove existing alerts
+    $('.alert').remove(); // Remove any existing alerts first
 
     var $alertDiv = $('<div class="alert alert-success alert-dismissible fade show" role="alert">' +
         'Your profile has been submitted successfully!' +
@@ -69,12 +65,12 @@ function showSubmissionAlert($container) {
         '<span aria-hidden="true">&times;</span>' +
         '</button></div>');
 
-    $container.prepend($alertDiv); // Insert alert at the top of the container
-    setupAlertCloseButton($alertDiv);
+    $container.prepend($alertDiv); // Add the alert at the top of the container
+    setupAlertCloseButton($alertDiv); // Setup the close functionality
 }
 
 function setupAlertCloseButton($alertDiv) {
     $alertDiv.find('.close').on('click', function() {
-        $alertDiv.remove();
+        $alertDiv.alert('close'); // Properly close the alert when the close button is clicked
     });
 }
