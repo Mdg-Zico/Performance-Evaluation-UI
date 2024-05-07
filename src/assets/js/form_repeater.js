@@ -35,14 +35,15 @@ $(document).ready(
   $('.nav-tabs').on('click', '.nav-item', function () {
     const classList = $(this).attr("class").split(" ");
     const goalNumber = classList[classList.length - 1];
-    console.log("You have clicked on navtab "+goalNumber);
-    const navTabs = $('nav-tabs').children();
-    console.log(navTabs);
-    navTabs.map(item => {
-      if (!item.hasClass(goalNumber) && item.hasClass('active_link')) {
-        item.removeClass('active_link');
-      }
-    });
+    // console.log("You have clicked on navtab "+goalNumber);
+    // const navTabs = $('nav-tabs').children();
+    $('.nav-item.active_link').removeClass('active_link');
+    // navTabs.map(item => {
+    //   if (!item.hasClass(goalNumber) && item.hasClass('active_link')) {
+    //     // console.log(item);
+    //     item.removeClass('active_link');
+    //   }
+    // });
     formsList.map(item => {
       if (!item.hasClass('d-none') && !item.hasClass(goalNumber)) {
         console.log(item);
