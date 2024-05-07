@@ -1,89 +1,77 @@
-document.addEventListener('DOMContentLoaded', function() {
+$(document).ready(function() {
     loadFormData();
     disableFormFields(true);
 
-    document.getElementById('submit-btn').addEventListener('click', handleSubmit);
-    document.getElementById('update-btn').addEventListener('click', function() {
+    $('#submit-btn').on('click', handleSubmit);
+    $('#update-btn').on('click', function() {
         disableFormFields(false);
     });
 });
 
 function loadFormData() {
-    const inputs = document.querySelectorAll('.form input, .form select');
-    inputs.forEach(input => {
-        const savedValue = localStorage.getItem(input.id);
+    $('.form input, .form select').each(function() {
+        var savedValue = localStorage.getItem(this.id);
         if (savedValue) {
-            input.value = savedValue;
+            $(this).val(savedValue);
         }
     });
 }
 
 function disableFormFields(disable) {
-    const fields = document.querySelectorAll('.form input, .form select');
-    fields.forEach(field => {
-        field.disabled = disable;
+    $('.form input, .form select').each(function() {
+        $(this).prop('disabled', disable);
     });
 }
 
 function handleSubmit() {
-    const formContainer = document.querySelector('.container-fluid');
-    const spinner = document.getElementById('spinner');
+    var $spinner = $('#spinner');
     if (!validateFields()) {
         alert('Please fill all required fields.');
         return;
     }
 
-    spinner.style.display = 'block'; // Show spinner
-    document.getElementById('submit-btn').disabled = true; // Disable submit button
+    $spinner.css('display', 'block'); // Show spinner
+    $('#submit-btn').prop('disabled', true); // Disable submit button
 
-    setTimeout(() => {
-        spinner.style.display = 'none'; // Hide spinner
-        showSubmissionAlert(formContainer);
+    setTimeout(function() {
+        $spinner.css('display', 'none'); // Hide spinner
+        showSubmissionAlert($('.container-fluid'));
         saveFormData();
         disableFormFields(true);
-        document.getElementById('submit-btn').disabled = false; // Re-enable submit button
+        $('#submit-btn').prop('disabled', false); // Re-enable submit button
     }, 2000); // Simulate a delay for the "submission" process
 }
 
 function validateFields() {
-    const requiredFields = document.querySelectorAll('.form input[required], .form select[required]');
-    let isValid = true;
-    requiredFields.forEach(field => {
-        field.style.borderColor = field.value.trim() ? '' : 'red'; // Highlighting error fields
-        if (!field.value.trim()) isValid = false;
+    var isValid = true;
+    $('.form input[required], .form select[required]').each(function() {
+        $(this).css('borderColor', $(this).val().trim() ? '' : 'red'); // Highlighting error fields
+        if (!$(this).val().trim()) isValid = false;
     });
     return isValid;
 }
 
 function saveFormData() {
-    const inputs = document.querySelectorAll('.form input, .form select');
-    inputs.forEach(input => {
-        localStorage.setItem(input.id, input.value);
+    $('.form input, .form select').each(function() {
+        localStorage.setItem(this.id, $(this).val());
     });
 }
 
-function showSubmissionAlert(container) {
-    const existingAlert = document.querySelector('.alert');
-    if (existingAlert) {
-        existingAlert.remove(); // Remove existing alert if any
-    }
+function showSubmissionAlert($container) {
+    $('.alert').remove(); // Remove existing alerts
 
-    // Create new alert
-    const alertDiv = document.createElement('div');
-    alertDiv.className = 'alert alert-success alert-dismissible fade show';
-    alertDiv.setAttribute('role', 'alert');
-    alertDiv.innerHTML = `Your profile has been submitted successfully!
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>`;
+    var $alertDiv = $('<div class="alert alert-success alert-dismissible fade show" role="alert">' +
+        'Your profile has been submitted successfully!' +
+        '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+        '<span aria-hidden="true">&times;</span>' +
+        '</button></div>');
 
-    container.insertBefore(alertDiv, container.firstChild); // Insert alert at the top of the container
-    setupAlertCloseButton(alertDiv);
+    $container.prepend($alertDiv); // Insert alert at the top of the container
+    setupAlertCloseButton($alertDiv);
 }
 
-function setupAlertCloseButton(alertDiv) {
-    const closeButton = alertDiv.querySelector('.close');
-    closeButton.addEventListener('click', function() {
-        alertDiv.remove();
+function setupAlertCloseButton($alertDiv) {
+    $alertDiv.find('.close').on('click', function() {
+        $alertDiv.remove();
     });
 }

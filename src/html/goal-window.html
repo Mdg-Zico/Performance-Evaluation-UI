@@ -259,50 +259,46 @@
     </div>
 
     <form class="form">
-        <div class="first-div">
-            <div class="input-group">
-                <label for="session">Session<span class="required">*</span></label>
-                <select id="session" required>
-                    <option value="">-- Choose Session --</option>
-                    <option value="entry">Goal Setting</option>
-                    <option value="mid">Mid Year Appraisal</option>
-                    <option value="senior">End of Year Appraisal</option>
-                </select>
-            </div>
-        </div>
-
-        
-        <div class="input-group">
-            <label for="staff-id">Staff ID <span class="required">*</span></label>
-            <input type="text" id="staff-id" placeholder="staff id" required>
-        </div>
-
-        <div class="first-div">
-            <div class="input-group">
-                <label for="session">Reason<span class="required">*</span></label>
-                <select id="session" required>
-                    <option value="">-- reason --</option>
-                    <option value="entry">New Role</option>
-                    
-                </select>
-            </div>
-        </div>
-            
-           
-      
-    
-        <div class="second-div">
-            <div class="input-group">
-                <label for="start-date">Start Date <span class="required">*</span></label>
-                <input type="datetime-local" id="start-date" required>
-            </div>
-    
-            <div class="input-group">
-                <label for="end-date">End Date <span class="required">*</span></label>
-                <input type="datetime-local" id="end-date" required>
-            </div>
-        </div>
-    </form>
+      <div class="first-div">
+          <div class="form-group">
+              <label for="session1">Session<span class="required">*</span></label>
+              <select id="session1" class="form-control select-dropdown" required>
+                  <option value="">-- Choose Session --</option>
+                  <option value="entry">Goal Setting</option>
+                  <option value="mid">Mid Year Appraisal</option>
+                  <option value="senior">End of Year Appraisal</option>
+              </select>
+          </div>
+      </div>
+  
+      <div class="form-group">
+          <label for="staff-id">Staff ID <span class="required">*</span></label>
+          <input type="text" id="staff-id" class="form-control" placeholder="staff id" required>
+      </div>
+  
+      <div class="first-div">
+          <div class="form-group">
+              <label for="session2">Reason<span class="required">*</span></label>
+              <select id="session2" class="form-control select-dropdown" required>
+                  <option value="">-- reason --</option>
+                  <option value="entry">New Role</option>
+              </select>
+          </div>
+      </div>
+          
+      <div class="second-div">
+          <div class="form-group">
+              <label for="start-date">Start Date <span class="required">*</span></label>
+              <input type="datetime-local" id="start-date" class="form-control" required>
+          </div>
+  
+          <div class="form-group">
+              <label for="end-date">End Date <span class="required">*</span></label>
+              <input type="datetime-local" id="end-date" class="form-control" required>
+          </div>
+      </div>
+  </form>
+  
     <button type="button" class="btn btn-primary btn-lg  btn rounded-pill px-4 btn-primary" id="submit-btn">
       <i class="ti ti-send fs-5"></i>Submit</button>
 
