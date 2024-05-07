@@ -2,7 +2,10 @@ $(document).ready(function() {
     loadFormData();
     disableFormFields(true);
 
-    $('#submit-btn').on('click', handleSubmit);
+    $('#submit-btn').on('click', function(event) {
+        event.preventDefault();
+        handleSubmit();
+    });
     $('#update-btn').on('click', function() {
         disableFormFields(false);
     });

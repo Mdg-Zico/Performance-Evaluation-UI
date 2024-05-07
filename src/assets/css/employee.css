@@ -104,11 +104,31 @@
 }
 
 /* Alert close button styling */
+.alert {
+    position: relative; /* Ensure we can position the close button absolutely within */
+    padding-right: 50px; /* Provide enough padding to not overlap text with the close button */
+}
+
 .alert .close {
-    font-size: 1.5em;
-    padding: 0 10px;
-    opacity: 0.7;
-    transition: opacity 0.3s ease-in-out;
+    position: absolute; /* Position absolutely within the alert */
+    right: 0; /* At the extreme right */
+    top: 0; /* Align to the top */
+    padding: 0.75rem 1.25rem; /* Same as alert padding for vertical alignment */
+    color: inherit; /* Inherits the alert's text color */
+    text-shadow: none; /* Remove any text shadow */
+    opacity: 1; /* Make sure it's fully visible */
+}
+
+.alert-success {
+    color: #155724; /* Bootstrap success color, change as per your theme */
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-dismissible .close {
+    outline: none;
+    border: none;
+    background: none; /* Remove default background */
 }
 
 .alert .close:hover {
