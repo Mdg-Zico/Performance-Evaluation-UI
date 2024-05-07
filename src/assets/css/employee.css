@@ -5,23 +5,15 @@
     --bs-border-width: 1px; /* Ensure this is defined */
 }
 
-/*
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0 10px;
-   
-}
-*/
+/* General styles for the form */
 .form {
     box-shadow: 0 4px 8px rgba(0,0,0,0.02), 0 6px 20px rgba(0,0,0,0.03);
-    
-
-    
-    padding: 30px;
+    padding: 40px;
+    padding-top: 10px;
     background: #fff;
     border-radius: 8px;
     margin-bottom: 30px;
+    margin-top: 0;
 }
 
 .first-div, .second-div {
@@ -30,126 +22,80 @@ body {
     gap: 40px;
 }
 
-.input-group {
-    flex: 1 1 200px;
-    display: flex;
-    flex-direction: column;
-    min-width: 200px;
-    width: 100%;
-
-
-    
-    display: block;
-    width: 100%;
-    padding: 8px 16px;
-    font-size: 0.875rem;
-    font-weight: 400;
-    line-height: 1.5;
-    
-}
-
-.input-group input, .input-group select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
+/* Standard full width for three field rows */
+.form-group {
+    flex: 1 1 calc(33.333% - 27px); /* Adjusted for 40px gap */
     margin-bottom: 20px;
-    border-radius: 4px;
-    box-sizing: border-box;
-    color: #5A6A85;
-    border: var(--bs-border-width) solid #DFE5EF;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-
-.input-group label {
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: #2A3547;
- 
+/* Adjusted width for two field rows */
+.form-group.half-width {
+    flex: 1 1 calc(50% - 20px); /* Adjusted for 40px gap */
 }
+
+.form-control.select-dropdown {
+    appearance: none; /* Removes default system appearance */
+    -webkit-appearance: none; /* Specifically for Chrome, Safari */
+    -moz-appearance: none; /* Specifically for Firefox */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg width="14" height="14" xmlns="http://www.w3.org/2000/svg"%3E%3Cg%3E%3Cpath d="M4 5l3 3 3-3" stroke="%230056b3" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/g%3E%3C/svg%3E');
+    background-position: right 10px center; /* Position the image to the right and center it vertically */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-size: 12px 12px; /* Size of the dropdown arrow */
+    cursor: pointer; /* Changes the cursor to indicate it's clickable */
+}
+
+.form-control {
+    width: 100%; /* Make form controls expand to the full width of their parent .form-group */
+    padding: 10px;
+    height: 40px; /* Uniform height for all input fields */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+    margin-bottom: 15px; /* Margin below each form control */
+}
+
 
 .required {
     color: var(--error-color);
 }
 
-@media (max-width: 768px) {
-    .first-div, .second-div {
-        flex-direction: column;
-    }
-    .input-group {
-        flex-basis: auto;
-    }
-}
-
-input:focus, select:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.25);
-}
-
-input[type="submit"], button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-input[type="submit"]:hover, button:hover {
-    background-color: darken(var(--primary-color), 10%);
-}
-
-
-.default{
+.default {
     color: grey;
 }
 
-.employee-head{
-    --bs-link-color: #5D87FF;
-}
-.required{
-    color: red;
-}
-
+/* Spinner styling */
 #spinner {
-    display: none;  /* Hidden by default */
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 120px;  /* Fixed width for spinner */
-    height: 120px; /* Fixed height for spinner */
+    width: 120px;
+    height: 120px;
     display: flex;
-    justify-content: center;  /* Center content horizontally */
-    align-items: center;      /* Center content vertically */
-    color: #0056b3;           /* Color for the text */
-    font-size: 1em;           /* Font size for the text */
-    font-weight: bold;        /* Font weight for the text */
-    text-align: center;       /* Ensure text is centered */
-    z-index: 1000;            /* Keeps spinner above other content */
+    justify-content: center;
+    align-items: center;
+    color: #0056b3;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1000;
 }
 
 .spinner-circle {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 16px solid #f3f3f3; /* Light gray for inactive part of spinner */
-    border-top: 16px solid blue; /* Blue for active part of spinner */
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid blue;
     animation: spin 2s linear infinite;
 }
 
 .spinner-text {
     position: absolute;
-    width: 100%;  /* Take full width of the parent to center text properly */
-    z-index: 10;  /* Ensures text is visible over the spinner circle */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%; /* Make sure the container fits the spinner height for perfect centering */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    color: #0056b3;
 }
 
 @keyframes spin {
@@ -157,16 +103,35 @@ input[type="submit"]:hover, button:hover {
     100% { transform: rotate(360deg); }
 }
 
-
+/* Alert close button styling */
+.alert {
+    position: relative; /* Ensure we can position the close button absolutely within */
+    padding-right: 50px; /* Provide enough padding to not overlap text with the close button */
+}
 
 .alert .close {
-    font-size: 1.5em; /* Makes the 'X' larger */
-    padding: 0 10px; /* Adds padding around the 'X' */
-    opacity: 0.7; /* Slightly transparent until hovered */
-    transition: opacity 0.3s ease-in-out; /* Smooth transition for hover effect */
+    position: absolute; /* Position absolutely within the alert */
+    right: 0; /* At the extreme right */
+    top: 0; /* Align to the top */
+    padding: 0.75rem 1.25rem; /* Same as alert padding for vertical alignment */
+    color: inherit; /* Inherits the alert's text color */
+    text-shadow: none; /* Remove any text shadow */
+    opacity: 1; /* Make sure it's fully visible */
+}
+
+.alert-success {
+    color: #155724; /* Bootstrap success color, change as per your theme */
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-dismissible .close {
+    outline: none;
+    border: none;
+    background: none; /* Remove default background */
 }
 
 .alert .close:hover {
-    opacity: 1; /* Fully opaque on hover */
-    cursor: pointer; /* Change cursor to indicate it's clickable */
+    opacity: 1;
+    cursor: pointer;
 }

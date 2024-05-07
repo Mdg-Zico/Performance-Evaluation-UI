@@ -8,7 +8,9 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
   <link rel="stylesheet" href="../assets/css/employee.css">
- 
+  <!-- Ensure jQuery is loaded. Place this in the <head> or just before closing the <body> tag -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 
 
@@ -162,7 +164,7 @@
               </a>
             </li>
            
-  
+
           </ul>
           <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
             <div class="d-flex">
@@ -239,7 +241,7 @@
     <div class="row align-items-center">
       <div class="col-9">
   
-        <h4 class="fw-semibold mb-8">Create New Session</h4>
+        <h4 class="fw-semibold mb-8">New Sessions</h4>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -257,37 +259,56 @@
     </div>
     </div>
     </div>
-
     <form class="form">
-        <div class="first-div">
-            <div class="input-group">
-                <label for="session">New Session<span class="required">*</span></label>
-                <select id="session" required>
-                    <option value="">-- Choose Session --</option>
-                    <option value="entry">Goal Setting</option>
-                    <option value="mid">Mid Year Appraisal</option>
-                    <option value="senior">End of Year Appraisal</option>
-                </select>
-            </div>
-        </div>
+      <div class="first-div">
+          <div class="form-group">
+              <label for="session">New Session<span class="required">*</span></label>
+              <select id="session" class="form-control select-dropdown" required>
+                  <option value="">-- Choose Session --</option>
+                  <option value="entry">Goal Setting</option>
+                  <option value="mid">Mid Year Appraisal</option>
+                  <option value="senior">End of Year Appraisal</option>
+              </select>
+          </div>
+      </div>
+  
+      <div class="second-div">
+          <div class="form-group">
+              <label for="start-date">Start Date <span class="required">*</span></label>
+              <input type="datetime-local" id="start-date" class="form-control" required>
+          </div>
+  
+          <div class="form-group">
+              <label for="end-date">End Date <span class="required">*</span></label>
+              <input type="datetime-local" id="end-date" class="form-control" required>
+          </div>
+      </div>
+      <button type="button" class="btn btn-primary btn-lg  btn rounded-pill px-4 btn-primary" id="submit-btn">
+        <i class="ti ti-send fs-5"></i>Submit</button>
+  </form>
+  
     
-        <div class="second-div">
-            <div class="input-group">
-                <label for="start-date">Start Date <span class="required">*</span></label>
-                <input type="datetime-local" id="start-date" required>
-            </div>
+      
+       <!-- Spinner (hidden by default) -->
+       <div id="spinner" style="display: none;">
+        <div class="spinner-circle"></div>  <!-- Spinning circle -->
+        <div class="spinner-text">Loading...</div>  <!-- Static text -->
+    </div>
+
+    <script src="profile.js"></script>
     
-            <div class="input-group">
-                <label for="end-date">End Date <span class="required">*</span></label>
-                <input type="datetime-local" id="end-date" required>
-            </div>
-        </div>
-    </form>
-    <button type="button" class="btn btn-primary btn-lg  btn rounded-pill px-4 btn-primary" id="submit-btn">
-      <i class="ti ti-send fs-5"></i>Submit</button>
 
-
-
-
+        
+    
+    
+    </div>
+  </div>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/sidebarmenu.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
 </body>
+
 </html>
