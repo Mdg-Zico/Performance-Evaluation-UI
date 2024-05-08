@@ -1,26 +1,33 @@
 $(document).ready(
   function () {
-  let formsList = [];
+  let formsList = [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
   "use strict";
   $('.repeater').repeater({
-    initEmpty: true,
+    initEmpty: false,
     show: function () {
       $(this).slideDown();
-      $(this).addClass('d-none goal_'+$('.repeater').repeaterVal()['group-a'].length);
       formsList.push($(this));
+      $(this).removeClass('goal_1');
+      $(this).addClass('d-none goal_'+formsList.length);
       console.log("This is formsList\n"+formsList);
       appendtoNav();
     },
     hide: function (deleteElement) {
+      const classList = $(this).attr("class");
+      const goalNumber = classList[classList.length - 1];
+      const formIndex = goalNumber.split("_")[0] - 1;
+      $('li.goal_'+formIndex).addClass('active_link');
+      console.log(formsList[formIndex - 1]);
+      formsList[formIndex - 1].removeClass('d-none');
       popFromNav($(this));
-      $(this).slideUp(deleteElement);
+      $(this).fadeOut(deleteElement);
     },
     isFirstItemUndeletable: true
   })
 
   function appendtoNav() {
     // console.log($('.repeater').repeaterVal()['group-a'])
-    const navLength = Object.keys($('.repeater').repeaterVal()['group-a']).length;
+    const navLength = formsList.length;
     // console.log(navLength);
     const navbar = $('.nav-tabs');
     navbar.append('<li class="nav-item goal_'+navLength+'" style="cursor: pointer;"><span class="nav-link">Goal '+navLength+'</span></li>')
@@ -35,15 +42,11 @@ $(document).ready(
   $('.nav-tabs').on('click', '.nav-item', function () {
     const classList = $(this).attr("class").split(" ");
     const goalNumber = classList[classList.length - 1];
-    // console.log("You have clicked on navtab "+goalNumber);
+    console.log("You have clicked on navtab "+goalNumber);
+    // console.log(classList);
     // const navTabs = $('nav-tabs').children();
     $('.nav-item.active_link').removeClass('active_link');
-    // navTabs.map(item => {
-    //   if (!item.hasClass(goalNumber) && item.hasClass('active_link')) {
-    //     // console.log(item);
-    //     item.removeClass('active_link');
-    //   }
-    // });
+
     formsList.map(item => {
       if (!item.hasClass('d-none') && !item.hasClass(goalNumber)) {
         console.log(item);
