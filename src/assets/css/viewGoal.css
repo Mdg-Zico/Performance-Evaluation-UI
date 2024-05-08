@@ -11,7 +11,7 @@
 
 .card-img-top {
     width: 100%; /* make image responsive */
-    height: auto; /* maintain aspect ratio */
+    height: 20%; /* maintain aspect ratio */
 }
 
 .card-body {
