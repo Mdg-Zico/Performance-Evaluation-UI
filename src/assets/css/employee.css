@@ -13,7 +13,7 @@
     background: #fff;
     border-radius: 8px;
     margin-bottom: 30px;
-    margin-top: 0;
+    margin-top: -10px;
 }
 
 .first-div, .second-div {
@@ -42,6 +42,7 @@
     background-repeat: no-repeat; /* Prevents the image from repeating */
     background-size: 12px 12px; /* Size of the dropdown arrow */
     cursor: pointer; /* Changes the cursor to indicate it's clickable */
+    margin-top: 0px;
 }
 
 .form-control {

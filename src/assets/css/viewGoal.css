@@ -1,0 +1,48 @@
+/* Ensuring each column takes exactly 20% of the container width */
+.col-custom {
+    flex: 0 0 20%; /* do not grow or shrink, start at 20% width */
+    max-width: 20%; /* maximum width of 20% */
+    padding: 0 15px; /* spacing between cards */
+}
+
+.card {
+    margin-bottom: 20px; /* space below each card */
+}
+
+.card-img-top {
+    width: 100%; /* make image responsive */
+    height: auto; /* maintain aspect ratio */
+}
+
+.card-body {
+    padding: 15px; /* padding inside the card */
+}
+
+/* Optional: Add responsiveness to stack cards on smaller screens */
+@media (max-width: 768px) {
+  .col-custom {
+    flex: 0 0 50%; /* stack two per row on small devices */
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  .col-custom {
+    flex: 0 0 100%; /* stack one per row on extra small devices */
+    max-width: 100%;
+  }
+}
+.content-wrapper {
+    display: flex; /* Enables flexbox layout model */
+    align-items: center; /* Aligns items vertically in the center */
+    gap: 20px; /* Optional: Adds space between the image and the heading */
+    margin-bottom: 30px;
+}
+
+.side-image {
+    width: 100px; /* Adjust size as needed */
+    height: auto; /* Maintains aspect ratio */
+    object-fit: cover; /* Ensures the image covers the area without being stretched */
+    border-radius: 50%;
+}
+
