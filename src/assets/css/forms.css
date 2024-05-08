@@ -1,0 +1,6 @@
+.active_link {
+    border-bottom: 5px solid #7283DB;
+    border-end-end-radius: 10%;
+    border-end-start-radius: 10%;
+    font-weight: 700;
+}
