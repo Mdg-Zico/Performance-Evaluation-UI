@@ -42,7 +42,13 @@
 .side-image {
     width: 100px; /* Adjust size as needed */
     height: auto; /* Maintains aspect ratio */
+    
     object-fit: cover; /* Ensures the image covers the area without being stretched */
     border-radius: 50%;
+ 
+}
+.card-title{
+    margin-top: 20px;
+    font-size: 25px;
 }
 
