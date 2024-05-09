@@ -16,7 +16,7 @@ function setupForm() {
 }
 
 function disableFirstFourFields() {
-    $('#first-name, #middle-name, #last-name, #staff-id').prop('disabled', true);
+    $('#first-name, #middle-name, #last-name, #staff-id, #department').prop('disabled', true);
 }
 
 function disableFields(disableStaffId) {
