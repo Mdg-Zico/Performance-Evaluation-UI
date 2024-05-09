@@ -10,10 +10,11 @@
 }
 
 .card-img-top {
-    width: 100%; /* make image responsive */
-    height: 70px; /* maintain aspect ratio */
-    object-fit: scale-down;
-    margin-top: 10px;
+
+    height: 15px; /* maintain aspect ratio */
+    margin-left: -75px;
+    margin-top: 3px;
+
     
 }
 
@@ -52,8 +53,16 @@
 }
 .card-title{
     margin-top: 25px;
-    font-size: 20px;
+    font-size: 17px;
     color: black;
     margin-left: -15px;
 }
 
+.card-text{
+  font-size: 15px;
+}
+.small-button {
+  padding: 0.25rem 0.5rem;  /* Smaller padding */
+  font-size: 0.75rem;       /* Smaller text */
+  margin-left: 25px;
+}
