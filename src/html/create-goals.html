@@ -8,6 +8,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
   <link rel="stylesheet" href="../assets/css/employee.css">
+  <link rel="stylesheet" href="../assets/css/forms.css">
 </head>
 
 <body>
@@ -65,6 +66,7 @@
                 <span class="hide-menu">View Goals</span>
               </a>
             </li>
+
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu"> Appraisal</span>
@@ -105,8 +107,7 @@
                 <span class="hide-menu">Goal Setting Window</span>
               </a>
             </li>
-           
-
+            
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">UI COMPONENTS</span>
@@ -142,8 +143,8 @@
                 </span>
                 <span class="hide-menu">Forms</span>
               </a>
-              
             </li>
+            
             <li class="sidebar-item">
               <a class="sidebar-link" href="./profile.html" aria-expanded="false">
                 <span>
@@ -298,88 +299,210 @@
       <div class="card">
         <div class="card-body">
           <div class="repeater-default">
-            <form>
-              <div data-repeater-list="">
+            <form class="repeater">
+              <div data-repeater-list="group-a">
                 <div class="d-flex justify-content-between">
                   <ul class="nav nav-tabs w-75" id="form-navigation">
-                    <li class="nav-item goal_1" style="cursor: pointer;">
-                      <span class="nav-link active">Goal 1</span>
+                    <li class="nav-item goal_1 active_link" style="cursor: pointer;">
+                      <span class="nav-link">Goal 1</span>
+                    </li>
+                    <li class="nav-item goal_2" style="cursor: pointer;">
+                      <span class="nav-link">Goal 2</span>
+                    </li>
+                    <li class="nav-item goal_3" style="cursor: pointer;">
+                      <span class="nav-link">Goal 3</span>
                     </li>
                   </ul>
                   <div class="d-flex justify-content-around" style="width: 210px">
-                    <button data-repeater-create="" class="btn btn-success rounded-pill" style="height: 40px">
+                    <button data-repeater-create class="btn btn-success rounded-pill" type="button" style="height: 40px">
                       <div class="d-flex align-items-center justify-content-center">
                         Add
                         <i class="ti ti-circle-plus ms-1 fs-5"></i>
                       </div>
                     </button>
-                    <button class="btn rounded-pill btn-primary" type="submit" style="height: 40px">                    
-                      Submit
+                    <button class="btn rounded-pill btn-primary" type="button" style="height: 40px">                    
+                      Save
                       <i class="ti ti-send fs-5"></i>
                     </button>
                   </div>
                 </div>
-                <div class="goal_1">
-                  <div data-repeater-item="" class="mt-5">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col mb-3">
-                          <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-                          <select class="form-select" name="objective" id="focus" required>
-                            <option class="default" value="">Focus point </option>
-                            <option value="">Focus point</option>
-                            <option value="">Focus point</option>
-                            <option value="">Focus point</option>
-                            <option value="">Focus point</option>
-                            <option value="">Focus point</option>
-                          </select>
-                        </div>
-                        <div class="col mb-3">
-                          <label for="scorecards" class="form-label">Link to balance scorecards</label>
-                          <div class="form-control" id="scorecards" name="scorecards" value="">NULL</div>
-                        </div>
+                <div data-repeater-item class="mt-5 goal_1">
+                  <div class="container px-0 mx-0">
+                    <div class="grid column-gap-3 row px-0 mx-0 w-100">
+                      <div class="col mb-3 mx-0 px-0 w-100">
+                        <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
+                        <select class="form-select" name="objective" id="focus" required>
+                          <option class="default" value="">Focus point </option>
+                          <option value="">Focus point</option>
+                          <option value="">Focus point</option>
+                          <option value="">Focus point</option>
+                          <option value="">Focus point</option>
+                          <option value="">Focus point</option>
+                        </select>
+                      </div>
+                      <div class="col mb-3 mx-0 px-0 w-100">
+                        <label for="scorecards" class="form-label">Link to balance scorecards</label>
+                        <div class="form-control" id="scorecards" name="scorecards" value="">NULL</div>
                       </div>
                     </div>
-                    <div class="mb-3">
-                      <label for="goal" class="form-label">Goal</label>
-                      <textarea class="form-control" name="goal" value="" id="exampleInputGoal" aria-describedby="goalHelp" required></textarea>
-                      <div id="goalHelp" class="form-text">Short text describing your goal</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="task" class="form-label">Specific tasks to be accomplished</label>
-                      <textarea class="form-control" name="task" value="" id="task" aria-describedby="goaldescHelp" required></textarea>
-                      <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="target" class="form-label">Agreed Target</label>
-                      <textarea class="form-control" name="target" value="" id="target"></textarea>
-                      <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
-                    </div>
-                    <div class="mb-3">
-                      <label for="kpi" class="form-label">Achievement Criteria (KPIs)</label>
-                      <textarea class="form-control" name="kpi" value="" id="kpi" required></textarea>
-                      <div id="goaldescHelp" class="form-text">Highlight the key performance indexes of your goal</div>
-                    </div>
-                    <section class="container-fluid">
-                      <div class="row">
-                        <div class="col mb-3 w-25">
-                          <label for="weight" class="form-label">Weight</label>
-                          <input type="number" name="weight" value="0" min="0" class="form-control" id="weight" required/>
-                        </div>
-                        <div class="col mb-3 w-25">
-                          <label for="timeline" class="form-label">Timeline</label>
-                          <input type="datetime-local" class="form-control" id="timeline"/>
-                        </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="goal" class="form-label">Goal</label>
+                    <textarea class="form-control" name="goal" value="" id="exampleInputGoal" aria-describedby="goalHelp" required></textarea>
+                    <div id="goalHelp" class="form-text">Short text describing your goal</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="task" class="form-label">Specific tasks to be accomplished</label>
+                    <textarea class="form-control" name="task" value="" id="task" aria-describedby="goaldescHelp" required></textarea>
+                    <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="target" class="form-label">Agreed Target</label>
+                    <textarea class="form-control" name="target" value="" id="target"></textarea>
+                    <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
+                  </div>
+                  <div class="mb-3">
+                    <label for="kpi" class="form-label">Achievement Criteria (KPIs)</label>
+                    <textarea class="form-control" name="kpi" value="" id="kpi" required></textarea>
+                    <div id="goaldescHelp" class="form-text">Highlight the key performance indexes of your goal</div>
+                  </div>
+                  <section class="container-fluid">
+                    <div class="grid column-gap-3 row">
+                      <div class="col mb-3 w-25 px-0 mx-0">
+                        <label for="weight" class="form-label">Weight</label>
+                        <input type="number" name="weight" value="0" min="0" class="form-control" id="weight" required/>
                       </div>
-                    </div>          
+                      <div class="col mb-3 w-25 px-0 mx-0">
+                        <label for="timeline" class="form-label">Timeline</label>
+                        <input type="datetime-local" class="form-control" id="timeline"/>
+                      </div>
+                    </div>
                     <div class="d-flex align-items-center justify-content-around">
-                      <button data-repeater-delete="" class="btn btn-danger rounded-pill hstack gap-6" type="button">
+                      <button data-repeater-delete class="btn btn-danger rounded-pill hstack gap-6" type="button">
                         <i class="ti ti-trash fs-5"></i>
                         Delete
                       </button>
                     </div>
-                  </div>
+                  </section>
                 </div>
+                <div data-repeater-item class="mt-5 d-none goal_2">
+                  <div class="container px-0 mx-0">
+                    <div class="grid column-gap-3 row px-0 mx-0 w-100">
+                      <div class="col mb-3 mx-0 px-0 w-100">
+                        <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
+                        <select class="form-select" name="objective" id="focus" required>
+                          <option class="default" value="">Focus point </option>
+                          <option value="">Focus point</option>
+                          <option value="">Focus point</option>
+                          <option value="">Focus point</option>
+                          <option value="">Focus point</option>
+                          <option value="">Focus point</option>
+                        </select>
+                      </div>
+                      <div class="col mb-3 mx-0 px-0 w-100">
+                        <label for="scorecards" class="form-label">Link to balance scorecards</label>
+                        <div class="form-control" id="scorecards" name="scorecards" value="">NULL</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="goal" class="form-label">Goal</label>
+                    <textarea class="form-control" name="goal" value="" id="exampleInputGoal" aria-describedby="goalHelp" required></textarea>
+                    <div id="goalHelp" class="form-text">Short text describing your goal</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="task" class="form-label">Specific tasks to be accomplished</label>
+                    <textarea class="form-control" name="task" value="" id="task" aria-describedby="goaldescHelp" required></textarea>
+                    <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="target" class="form-label">Agreed Target</label>
+                    <textarea class="form-control" name="target" value="" id="target"></textarea>
+                    <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
+                  </div>
+                  <div class="mb-3">
+                    <label for="kpi" class="form-label">Achievement Criteria (KPIs)</label>
+                    <textarea class="form-control" name="kpi" value="" id="kpi" required></textarea>
+                    <div id="goaldescHelp" class="form-text">Highlight the key performance indexes of your goal</div>
+                  </div>
+                  <section class="container-fluid">
+                    <div class="grid column-gap-3 row">
+                      <div class="col mb-3 w-25 px-0 mx-0">
+                        <label for="weight" class="form-label">Weight</label>
+                        <input type="number" name="weight" value="0" min="0" class="form-control" id="weight" required/>
+                      </div>
+                      <div class="col mb-3 w-25 px-0 mx-0">
+                        <label for="timeline" class="form-label">Timeline</label>
+                        <input type="datetime-local" class="form-control" id="timeline"/>
+                      </div>
+                    </div>
+                    <!-- <div class="d-flex align-items-center justify-content-around">
+                      <button data-repeater-delete class="btn btn-danger rounded-pill hstack gap-6" type="button">
+                        <i class="ti ti-trash fs-5"></i>
+                        Delete
+                      </button>
+                    </div> -->
+                  </section>
+                </div>  
+                <div data-repeater-item class="mt-5 d-none goal_3">
+                  <div class="container px-0 mx-0">
+                    <div class="grid column-gap-3 row px-0 mx-0 w-100">
+                      <div class="col mb-3 mx-0 px-0 w-100">
+                        <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
+                        <select class="form-select" name="objective" id="focus" required>
+                          <option class="default" value="">Focus point </option>
+                          <option value="">Focus point</option>
+                          <option value="">Focus point</option>
+                          <option value="">Focus point</option>
+                          <option value="">Focus point</option>
+                          <option value="">Focus point</option>
+                        </select>
+                      </div>
+                      <div class="col mb-3 mx-0 px-0 w-100">
+                        <label for="scorecards" class="form-label">Link to balance scorecards</label>
+                        <div class="form-control" id="scorecards" name="scorecards" value="">NULL</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="goal" class="form-label">Goal</label>
+                    <textarea class="form-control" name="goal" value="" id="exampleInputGoal" aria-describedby="goalHelp" required></textarea>
+                    <div id="goalHelp" class="form-text">Short text describing your goal</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="task" class="form-label">Specific tasks to be accomplished</label>
+                    <textarea class="form-control" name="task" value="" id="task" aria-describedby="goaldescHelp" required></textarea>
+                    <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="target" class="form-label">Agreed Target</label>
+                    <textarea class="form-control" name="target" value="" id="target"></textarea>
+                    <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
+                  </div>
+                  <div class="mb-3">
+                    <label for="kpi" class="form-label">Achievement Criteria (KPIs)</label>
+                    <textarea class="form-control" name="kpi" value="" id="kpi" required></textarea>
+                    <div id="goaldescHelp" class="form-text">Highlight the key performance indexes of your goal</div>
+                  </div>
+                  <section class="container-fluid">
+                    <div class="grid column-gap-3 row">
+                      <div class="col mb-3 w-25 px-0 mx-0">
+                        <label for="weight" class="form-label">Weight</label>
+                        <input type="number" name="weight" value="0" min="0" class="form-control" id="weight" required/>
+                      </div>
+                      <div class="col mb-3 w-25 px-0 mx-0">
+                        <label for="timeline" class="form-label">Timeline</label>
+                        <input type="datetime-local" class="form-control" id="timeline"/>
+                      </div>
+                    </div>
+                    <!-- <div class="d-flex align-items-center justify-content-around">
+                      <button data-repeater-delete class="btn btn-danger rounded-pill hstack gap-6" type="button">
+                        <i class="ti ti-trash fs-5"></i>
+                        Delete
+                      </button>
+                    </div> -->
+                  </section>
+                </div>        
               </div>
             </form>
           </div>
@@ -392,9 +515,10 @@
 
 <!-- Your existing code... -->
 
-<script src="../assets/js/form_repeater.js"></script>
-  <script src="../../node_modules/jquery.repeater/jquery.repeater.js"></script>
+
+  <script src="../assets/libs/jquery/dist/jquery.js"></script>
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/jquery.repeater.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/js/sidebarmenu.js"></script>
   <script src="../assets/js/app.min.js"></script>
@@ -402,6 +526,7 @@
   <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
   <script src="../assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
   <script src="../assets/js/dashboard.js"></script>
+  <script src="../assets/js/form_repeater.js"></script>
 </body>
 
 </html>
