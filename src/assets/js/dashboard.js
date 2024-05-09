@@ -39,7 +39,7 @@ $(function () {
   // =====================================
   var chart = {
     series: [
-      { name: "Performance diary score", data: [355, 390, 300, 350, 390, 180, 355, 390, 50, 40, 30, 20] },
+      { name: "Performance diary score", data: [55, 90, 80, 60, 91, 20, 55, 46, 74, 43, 30, 20] },
       // { name: "Expense this month:", data: [280, 250, 325, 215, 250, 310, 280, 250, 50, 40, 30, 20] },
     ],
 
@@ -100,7 +100,7 @@ $(function () {
     yaxis: {
       show: true,
       min: 0,
-      max: 400,
+      max: 100,
       tickAmount: 4,
       labels: {
         style: {
