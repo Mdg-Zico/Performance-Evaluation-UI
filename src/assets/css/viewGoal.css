@@ -11,7 +11,10 @@
 
 .card-img-top {
     width: 100%; /* make image responsive */
-    height: 20%; /* maintain aspect ratio */
+    height: 70px; /* maintain aspect ratio */
+    object-fit: scale-down;
+    margin-top: 10px;
+    
 }
 
 .card-body {
@@ -32,23 +35,25 @@
     max-width: 100%;
   }
 }
-.content-wrapper {
+
+.head-content{
     display: flex; /* Enables flexbox layout model */
     align-items: center; /* Aligns items vertically in the center */
     gap: 20px; /* Optional: Adds space between the image and the heading */
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .side-image {
-    width: 100px; /* Adjust size as needed */
+    width: 30px; /* Adjust size as needed */
     height: auto; /* Maintains aspect ratio */
-    
+    margin-right: 0;
     object-fit: cover; /* Ensures the image covers the area without being stretched */
-    border-radius: 50%;
- 
+    
 }
 .card-title{
-    margin-top: 20px;
-    font-size: 25px;
+    margin-top: 25px;
+    font-size: 20px;
+    color: black;
+    margin-left: -15px;
 }
 
