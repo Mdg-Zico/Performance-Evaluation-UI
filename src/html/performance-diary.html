@@ -6,6 +6,7 @@
   <title>Performance Evaluation</title>
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/aedc-logo.png" />
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
+  <link rel="stylesheet" href="../assets/css/performance-diary-nav.css">
   <!-- Owl Carousel  -->
   <link
     rel="stylesheet"
@@ -325,6 +326,7 @@
             </div>
           </div>
           <!-- Breadcrumb end -->
+
           <!-- Employee Info Display start -->
           <div class="container">
             <div class="grid column-gap-3 text-muted row lh-1">
@@ -339,47 +341,73 @@
             </div>
           </div>
           <!-- Employee Info Display end -->
+
+          <!-- Month Navigation start -->
+          <div class="container mb-7">
+            <div class="d-flex align-items-center">
+              <ul class="nav nav-tabs navbar-pill px-3 py-3 d-flex justify-content-between bg-secondary-subtle w-100">
+                <li class="nav-item"><button type="button" class="nav-btn navitem-pill">Jan</button></li>
+                <li class="nav-item"><button type="button" class="nav-btn navitem-pill">Feb</button></li>
+                <li class="nav-item"><button type="button" class="nav-btn navitem-pill">Mar</button></li>
+                <li class="nav-item"><button type="button" class="nav-btn navitem-pill">Apr</button></li>
+                <li class="nav-item"><button type="button" class="nav-btn navitem-pill">May</button></li>
+                <li class="nav-item"><button type="button" class="nav-btn navitem-pill">Jun</button></li>
+                <li class="nav-item"><button type="button" class="nav-btn navitem-pill">Jul</button></li>
+                <li class="nav-item"><button type="button" class="nav-btn navitem-pill">Aug</button></li>
+                <li class="nav-item"><button type="button" class="nav-btn navitem-pill">Sep</button></li>
+                <li class="nav-item"><button type="button" class="nav-btn navitem-pill">Oct</button></li>
+                <li class="nav-item"><button type="button" class="nav-btn navitem-pill">Nov</button></li>
+                <li class="nav-item"><button type="button" class="nav-btn navitem-pill">Dec</button></li>
+              </ul>
+            </div>
+          </div>
+          <!-- Month Navigation end -->
+
           <!-- Performance Cards Display start -->
-          <div class="card border border-3 border-danger container-sm">
-            <div class="card-body">
-              <p class="goal text-danger fw-semibold">Clean up Performance/Appraisal app UI</p>
-              <div class="progress" role="progressbar" aria-label="Progress-bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="33">
-                <div class="progress-bar bg-danger" style="width: 25%"></div>
+          <div class="container">
+            <div class="card border border-3 border-danger container-sm">
+              <div class="card-body">
+                <p class="goal text-danger fw-semibold">Clean up Performance/Appraisal app UI</p>
+                <div class="progress" role="progressbar" aria-label="Progress-bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="33">
+                  <div class="progress-bar bg-danger" style="width: 25%"></div>
+                </div>
+                <ul class="list mt-4 fw-semibold">
+                  <li class="list-item">Make UI table-responsive</li>
+                  <li class="list-item">Replace dummy data with actual data</li>
+                </ul>
               </div>
-              <ul class="list mt-4 fw-semibold">
-                <li class="list-item">Make UI table-responsive</li>
-                <li class="list-item">Replace dummy data with actual data</li>
-              </ul>
+            </div>
+            <div class="card border border-3 border-success container-sm">
+              <div class="card-body">
+                <p class="goal text-success fw-semibold">Clean up Performance/Appraisal app UI</p>
+                <div class="progress" role="progressbar" aria-label="Progress-bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="33">
+                  <div class="progress-bar bg-success" style="width: 100%"></div>
+                </div>
+                <ul class="list mt-4 fw-semibold">
+                  <li class="list-item">Make UI table-responsive</li>
+                  <li class="list-item">Replace dummy data with actual data</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card border border-3 border-info container-sm">
+              <div class="card-body">
+                <p class="goal text-info fw-semibold">Clean up Performance/Appraisal app UI</p>
+                <div class="progress" role="progressbar" aria-label="Progress-bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="33">
+                  <div class="progress-bar bg-info" style="width: 50%"></div>
+                </div>
+                <ul class="list mt-4 fw-semibold">
+                  <li class="list-item">Make UI table-responsive</li>
+                  <li class="list-item">Replace dummy data with actual data</li>
+                </ul>
+              </div>
             </div>
           </div>
-          <div class="card border border-3 border-success container-sm">
-            <div class="card-body">
-              <p class="goal text-success fw-semibold">Clean up Performance/Appraisal app UI</p>
-              <div class="progress" role="progressbar" aria-label="Progress-bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="33">
-                <div class="progress-bar bg-success" style="width: 100%"></div>
-              </div>
-              <ul class="list mt-4 fw-semibold">
-                <li class="list-item">Make UI table-responsive</li>
-                <li class="list-item">Replace dummy data with actual data</li>
-              </ul>
-            </div>
-          </div>
-          <div class="card border border-3 border-info container-sm">
-            <div class="card-body">
-              <p class="goal text-info fw-semibold">Clean up Performance/Appraisal app UI</p>
-              <div class="progress" role="progressbar" aria-label="Progress-bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="33">
-                <div class="progress-bar bg-info" style="width: 50%"></div>
-              </div>
-              <ul class="list mt-4 fw-semibold">
-                <li class="list-item">Make UI table-responsive</li>
-                <li class="list-item">Replace dummy data with actual data</li>
-              </ul>
-            </div>
-          </div>
+          <!-- Performance Cards Display end -->
         </div>
       </div>
   </div>
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/js/performance-diary.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/js/sidebarmenu.js"></script>
   <script src="../assets/js/app.min.js"></script>
