@@ -1,0 +1,28 @@
+.nav2 {
+  box-shadow: rgba(145,158,171,0.2) 0px 0px 2px 0px, rgba(145,158,171,0.12) 0px 12px 24px -4px;
+}
+
+.navbar-pill {
+  border-radius: 0.5rem;
+}
+
+.nav-btn {
+  border-radius: 6rem;
+  padding: 0.5rem;
+  width: 60px;
+  border: none;
+  color: #5A6A85;
+  background-color: #DDEBFF;
+  transition: ease-in;
+  transition-duration: 100ms;
+}
+
+.nav-btn:hover {
+  background-color: #4f73d9;
+  color: white;
+}
+
+.active-navbtn {
+  background-color: #5D87FF;
+  color: white;
+}
