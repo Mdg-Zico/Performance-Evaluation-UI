@@ -13,11 +13,10 @@ $(document).ready(
       appendtoNav();
     },
     hide: function (deleteElement) {
-      const classList = $(this).attr("class");
+      const classList = $(this).attr("class").split(" ");
       const goalNumber = classList[classList.length - 1];
-      const formIndex = goalNumber.split("_")[0] - 1;
+      const formIndex = goalNumber.split("_")[1] - 1;
       $('li.goal_'+formIndex).addClass('active_link');
-      console.log(formsList[formIndex - 1]);
       formsList[formIndex - 1].removeClass('d-none');
       popFromNav($(this));
       $(this).fadeOut(deleteElement);
