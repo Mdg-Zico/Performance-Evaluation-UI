@@ -71,9 +71,28 @@
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu"> Appraisal</span>
+              <span class="hide-menu">Performance Diary</span>
             </li>
             <li class="sidebar-item">
+              <a class="sidebar-link" href="#" aria-expanded="false">
+                <span>
+                  <i class="ti ti-chart-bar"></i>
+                </span>
+                <span class="hide-menu">Add Perfomance Score</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./performance-diary.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-notebook"></i>
+                </span>
+                <span class="hide-menu">View My Diary</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu"> Appraisal</span>
+            </li>            <li class="sidebar-item">
               <a class="sidebar-link" href="#" aria-expanded="false">
                 <span>
                   <i class="ti ti-list-check fs-6"></i>
@@ -84,7 +103,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="#" aria-expanded="false">
                 <span>
-                  <i class="ti ti-percentage"></i>
+                  <i class="ti ti-target"></i>
                 </span>
                 <span class="hide-menu">View Appraisal</span>
               </a>
@@ -96,15 +115,36 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="./new-session.html" aria-expanded="false">
                 <span>
-                  <i class="ti ti-mood-happy"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-month" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
+                    <path d="M16 3v4" />
+                    <path d="M8 3v4" />
+                    <path d="M4 11h16" />
+                    <path d="M7 14h.013" />
+                    <path d="M10.01 14h.005" />
+                    <path d="M13.01 14h.005" />
+                    <path d="M16.015 14h.005" />
+                    <path d="M13.015 17h.005" />
+                    <path d="M7.01 17h.005" />
+                    <path d="M10.01 17h.005" />
+                  </svg>
                 </span>
                 <span class="hide-menu">Sessions</span>
               </a>
             </li>
             <li class="sidebar-item">
+              <a class="sidebar-link" href="./staff.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Staff</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
               <a class="sidebar-link" href="./goal-window.html" aria-expanded="false">
                 <span>
-                  <i class="ti ti-mood-happy"></i>
+                  <i class="ti ti-login"></i>
                 </span>
                 <span class="hide-menu">Goal Setting Window</span>
               </a>
@@ -152,7 +192,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="./profile.html" aria-expanded="false">
                 <span>
-                  <i class="ti ti-file-description"></i>
+                    <i class="ti ti-user fs-6"></i>
                 </span>
                 <span class="hide-menu">Profile</span>
               </a>
@@ -395,14 +435,6 @@
                 <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                   <div class="mb-3 mb-sm-0">
                     <h5 class="card-title fw-semibold">Monthly Perfomance Overview</h5>
-                  </div>
-                  <div>
-                    <select class="form-select">
-                      <option value="1">March 2023</option>
-                      <option value="2">April 2023</option>
-                      <option value="3">May 2023</option>
-                      <option value="4">June 2023</option>
-                    </select>
                   </div>
                 </div>
                 <div id="chart"></div>
