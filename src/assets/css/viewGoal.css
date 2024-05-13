@@ -14,6 +14,7 @@
     height: 15px; /* maintain aspect ratio */
     margin-left: -75px;
     margin-top: 3px;
+    color: blue;
 
     
 }
@@ -62,7 +63,7 @@
   font-size: 15px;
 }
 .small-button {
-  padding: 0.25rem 0.5rem;  /* Smaller padding */
-  font-size: 0.75rem;       /* Smaller text */
+  padding: 0.2rem 0.3rem;  /* Even smaller padding */
+  font-size: 0.7rem;       /* Even smaller text */
   margin-left: 25px;
 }
