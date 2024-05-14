@@ -14,6 +14,7 @@
     height: 15px; /* maintain aspect ratio */
     margin-left: -75px;
     margin-top: 3px;
+    color: blue;
 
     
 }
@@ -21,6 +22,14 @@
 .card-body {
     padding: 15px; /* padding inside the card */
 }
+/* Add hover effect */
+.card-hover:hover {
+  transform: scale(1.1); /* Increase size on hover */
+  transition: transform 0.3s ease; /* Smooth transition */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  box-shadow: ;
+}
+
 
 /* Optional: Add responsiveness to stack cards on smaller screens */
 @media (max-width: 768px) {
@@ -59,10 +68,13 @@
 }
 
 .card-text{
-  font-size: 15px;
+  font-size: 13px;
 }
 .small-button {
-  padding: 0.25rem 0.5rem;  /* Smaller padding */
-  font-size: 0.75rem;       /* Smaller text */
-  margin-left: 25px;
+ 
+  font-size: 0.7rem;       /* Even smaller text */
+  margin-left: 30px;
+  font-weight: bolder;
+
+  
 }
