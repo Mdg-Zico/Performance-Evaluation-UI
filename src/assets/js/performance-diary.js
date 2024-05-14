@@ -3,7 +3,10 @@ $(document).ready(
     const months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
     const date = new Date();
     currentMonth = months[date.getMonth()];
-    const navtab = $('.nav-btn').attr()
+    console.log(currentMonth);
+    const navtab = $('[name="'+currentMonth+'"]');
+    navtab.addClass('active-navbtn');
+    console.log(navtab);
     $('.nav2').on('click', '.nav-btn', function () {
       if ($(this).hasClass('active-navbtn')) {
         pass;
