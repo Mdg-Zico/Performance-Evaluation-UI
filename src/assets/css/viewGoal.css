@@ -14,12 +14,22 @@
     height: 15px; /* maintain aspect ratio */
     margin-left: -75px;
     margin-top: 3px;
+    color: blue;
 
     
 }
 
 .card-body {
     padding: 15px; /* padding inside the card */
+}
+/* Add hover effect */
+.card-hover:hover {
+  transform: scale(1.2); /* Increase size on hover */
+  transition: transform 0.3s ease; /* Smooth transition */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+.blue-svg {
+  fill: blue; /* Change fill color to blue */
 }
 
 /* Optional: Add responsiveness to stack cards on smaller screens */
@@ -62,7 +72,7 @@
   font-size: 15px;
 }
 .small-button {
-  padding: 0.25rem 0.5rem;  /* Smaller padding */
-  font-size: 0.75rem;       /* Smaller text */
+  padding: 0.2rem 0.3rem;  /* Even smaller padding */
+  font-size: 0.7rem;       /* Even smaller text */
   margin-left: 25px;
 }
