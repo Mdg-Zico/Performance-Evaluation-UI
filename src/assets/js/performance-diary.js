@@ -12,6 +12,7 @@ $(document).ready(
         pass;
       } else {
         $('.nav-btn.active-navbtn').removeClass('active-navbtn');
+        console.log("Clicked nav element"+$(this).attr('name'));
         $(this).addClass('active-navbtn');
       }
     })
