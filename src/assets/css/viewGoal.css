@@ -22,6 +22,15 @@
 .card-body {
     padding: 15px; /* padding inside the card */
 }
+/* Add hover effect */
+.card-hover:hover {
+  transform: scale(1.2); /* Increase size on hover */
+  transition: transform 0.3s ease; /* Smooth transition */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+.blue-svg {
+  fill: blue; /* Change fill color to blue */
+}
 
 /* Optional: Add responsiveness to stack cards on smaller screens */
 @media (max-width: 768px) {
