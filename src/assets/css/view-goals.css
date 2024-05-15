@@ -24,10 +24,10 @@
 }
 /* Add hover effect */
 .card-hover:hover {
-  transform: scale(1.1); /* Increase size on hover */
+  transform: scale(1.08); /* Increase size on hover */
   transition: transform 0.3s ease; /* Smooth transition */
   cursor: pointer; /* Change cursor to pointer on hover */
-  box-shadow: ;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); /* Increase the spread radius */
 }
 
 
@@ -68,13 +68,18 @@
 }
 
 .card-text{
-  font-size: 13px;
+  font-size: 0.7rem;
 }
 .small-button {
+  font-size: 0.6rem; /* Adjust the font size to make it smaller */
+  font-weight: 700;
+  align-items: center;
  
-  font-size: 0.7rem;       /* Even smaller text */
-  margin-left: 30px;
-  font-weight: bolder;
 
   
+
+  
+}
+.btn-outline-info{
+  margin-left: 30px;
 }
