@@ -28,7 +28,7 @@ function disableFields(disableStaffId) {
 
 function handleSubmit() {
     if (!validateFields()) {
-        alert('Please fill all required fields.');
+        alert('Please fill all required fields correctly.');
         return;
     }
 
@@ -53,6 +53,20 @@ function validateFields() {
             $(this).css('borderColor', ''); // Reset border color
         }
     });
+
+    // Date validation
+    var startDate = new Date($('#start-date').val());
+    var endDate = new Date($('#end-date').val());
+    if (startDate > endDate) {
+        $('#start-date, #end-date').css('borderColor', 'red');
+        alert('End Date cannot be earlier than Start Date.');
+        $('#start-date').val(''); // Clear start date input
+        $('#end-date').val(''); // Clear end date input
+        isValid = false;
+    } else {
+        $('#start-date, #end-date').css('borderColor', ''); // Reset border color
+    }
+
     return isValid;
 }
 
