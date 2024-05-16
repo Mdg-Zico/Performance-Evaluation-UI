@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../assets/css/employee.css">
   <!-- Ensure jQuery is loaded. Place this in the <head> or just before closing the <body> tag -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins and DataTables) -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- Bootstrap Bundle JS -->
@@ -293,7 +294,7 @@
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-              <button class="btn btn-primary" id="update-btn">Update</button>
+              <button class="btn btn-primary" id="submit-btn">Submit<i class="ti ti-send fs-5"></i></button>
               <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
@@ -374,8 +375,7 @@
         <input type="datetime-local" id="end-date" class="form-control" required>
     </div>
   </div>
-  <button type="button" class="btn btn-primary btn-lg btn rounded-pill px-4 btn-primary" id="submit-btn">
-    <i class="ti ti-send fs-5"></i>Submit</button>
+
 </form>
 
 
@@ -397,7 +397,7 @@
                       <th class="session">Session</th>
                       <th class="start_date">Start Date</th>
                       <th class="end_date">End Date</th>
-                      <th>Action</th>
+                      <th class="action">Action</th>
                     
                     </tr>
                     <!-- end row -->
@@ -414,7 +414,7 @@
                       </td>
                       <td>System Architect</td>
                       <td>Tokyo</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -431,7 +431,7 @@
                       </td>
                       <td>Accountant</td>
                       <td>Tokyo</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -446,7 +446,7 @@
                       </td>
                       <td>Junior Technical Author</td>
                       <td>San Francisco</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -461,7 +461,7 @@
                       </td>
                       <td>Senior Javascript Developer</td>
                       <td>Edinburgh</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -476,7 +476,7 @@
                       </td>
                       <td>Accountant</td>
                       <td>Tokyo</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                       
@@ -491,7 +491,7 @@
                       </td>
                       <td>Integration Specialist</td>
                       <td>New York</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                  
@@ -506,7 +506,7 @@
                       </td>
                       <td>Sales Assistant</td>
                       <td>San Francisco</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -521,7 +521,7 @@
                       </td>
                       <td>Integration Specialist</td>
                       <td>Tokyo</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -536,7 +536,7 @@
                       </td>
                       <td>Javascript Developer</td>
                       <td>San Francisco</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                     
@@ -551,7 +551,7 @@
                       </td>
                       <td>Software Engineer</td>
                       <td>Edinburgh</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                    
@@ -566,7 +566,7 @@
                       </td>
                       <td>Office Manager</td>
                       <td>London</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -581,7 +581,7 @@
                       </td>
                       <td>Support Lead</td>
                       <td>Edinburgh</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -596,7 +596,7 @@
                       </td>
                       <td>Regional Director</td>
                       <td>San Francisco</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                   
@@ -611,7 +611,7 @@
                       </td>
                       <td>Senior Marketing Designer</td>
                       <td>London</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                 
@@ -626,7 +626,7 @@
                       </td>
                       <td>Regional Director</td>
                       <td>London</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                    
@@ -641,7 +641,7 @@
                       </td>
                       <td>Marketing Designer</td>
                       <td>London</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -656,7 +656,7 @@
                       </td>
                       <td>Chief Financial Officer (CFO)</td>
                       <td>New York</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                   
@@ -671,7 +671,7 @@
                       </td>
                       <td>Systems Administrator</td>
                       <td>New York</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                    
@@ -686,7 +686,7 @@
                       </td>
                       <td>Software Engineer</td>
                       <td>London</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                  
@@ -701,7 +701,7 @@
                       </td>
                       <td>Personnel Lead</td>
                       <td>Edinburgh</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
             
@@ -716,7 +716,7 @@
                       </td>
                       <td>Development Lead</td>
                       <td>New York</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                   
@@ -731,7 +731,7 @@
                       </td>
                       <td>Chief Marketing Officer (CMO)</td>
                       <td>New York</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                     
@@ -746,7 +746,7 @@
                       </td>
                       <td>Pre-Sales Support</td>
                       <td>New York</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                     
@@ -761,7 +761,7 @@
                       </td>
                       <td>Sales Assistant</td>
                       <td>Sidney</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                     </tr>
@@ -775,7 +775,7 @@
                       </td>
                       <td>Chief Executive Officer (CEO)</td>
                       <td>London</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                     
@@ -790,7 +790,7 @@
                       </td>
                       <td>Developer</td>
                       <td>Edinburgh</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -805,7 +805,7 @@
                       </td>
                       <td>Regional Director</td>
                       <td>Singapore</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                       
@@ -820,7 +820,7 @@
                       </td>
                       <td>Software Engineer</td>
                       <td>San Francisco</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                     
@@ -835,7 +835,7 @@
                       </td>
                       <td>Chief Operating Officer (COO)</td>
                       <td>San Francisco</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -850,7 +850,7 @@
                       </td>
                       <td>Regional Marketing</td>
                       <td>Tokyo</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -865,7 +865,7 @@
                       </td>
                       <td>Integration Specialist</td>
                       <td>Sidney</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                       
@@ -880,7 +880,7 @@
                       </td>
                       <td>Developer</td>
                       <td>London</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                  
@@ -895,7 +895,7 @@
                       </td>
                       <td>Technical Author</td>
                       <td>London</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -910,7 +910,7 @@
                       </td>
                       <td>Team Leader</td>
                       <td>San Francisco</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                   
@@ -925,7 +925,7 @@
                       </td>
                       <td>Post-Sales support</td>
                       <td>Edinburgh</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                
@@ -940,7 +940,7 @@
                       </td>
                       <td>Marketing Designer</td>
                       <td>San Francisco</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                   
@@ -955,7 +955,7 @@
                       </td>
                       <td>Office Manager</td>
                       <td>San Francisco</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                 
@@ -970,7 +970,7 @@
                       </td>
                       <td>Secretary</td>
                       <td>San Francisco</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                    
@@ -985,7 +985,7 @@
                       </td>
                       <td>Financial Controller</td>
                       <td>San Francisco</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                  
@@ -1000,7 +1000,7 @@
                       </td>
                       <td>Office Manager</td>
                       <td>London</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                   
@@ -1015,7 +1015,7 @@
                       </td>
                       <td>Director</td>
                       <td>New York</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -1030,7 +1030,7 @@
                       </td>
                       <td>Support Engineer</td>
                       <td>Singapore</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                   
@@ -1045,7 +1045,7 @@
                       </td>
                       <td>Software Engineer</td>
                       <td>London</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                     
@@ -1060,7 +1060,7 @@
                       </td>
                       <td>Support Engineer</td>
                       <td>Tokyo</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                     
@@ -1075,7 +1075,7 @@
                       </td>
                       <td>Developer</td>
                       <td>New York</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                     
@@ -1090,7 +1090,7 @@
                       </td>
                       <td>Support Engineer</td>
                       <td>San Francisco</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                   
@@ -1105,7 +1105,7 @@
                       </td>
                       <td>Data Coordinator</td>
                       <td>Singapore</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                     
@@ -1120,7 +1120,7 @@
                       </td>
                       <td>Software Engineer</td>
                       <td>New York</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -1135,7 +1135,7 @@
                       </td>
                       <td>Software Engineer</td>
                       <td>San Francisco</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -1150,7 +1150,7 @@
                       </td>
                       <td>Junior Javascript Developer</td>
                       <td>Edinburgh</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                     
@@ -1165,7 +1165,7 @@
                       </td>
                       <td>Sales Assistant</td>
                       <td>New York</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                 
@@ -1180,7 +1180,7 @@
                       </td>
                       <td>Regional Director</td>
                       <td>London</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                     
@@ -1195,7 +1195,7 @@
                       </td>
                       <td>Systems Administrator</td>
                       <td>London</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                    
@@ -1210,7 +1210,7 @@
                       </td>
                       <td>Developer</td>
                       <td>San Francisco</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                  
@@ -1225,7 +1225,7 @@
                       </td>
                       <td>Regional Director</td>
                       <td>Edinburgh</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                     
@@ -1240,7 +1240,7 @@
                       </td>
                       <td>Javascript Developer</td>
                       <td>Singapore</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                      
@@ -1255,7 +1255,7 @@
                       </td>
                       <td>Customer Support</td>
                       <td>New York</td>
-                      <td><button class="badge text-info border-info p-1">
+                      <td><button class="btn btn-primary">
                         Action
                       </button></td>
                       

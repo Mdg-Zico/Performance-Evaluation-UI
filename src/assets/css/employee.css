@@ -139,3 +139,6 @@
 .start_date, .end_date, .session{
     width: 40px;
 }
+.action{
+    width: 150px;
+}
