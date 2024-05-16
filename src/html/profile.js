@@ -7,6 +7,7 @@ $(document).ready(function() {
     });
 });
 
+
 function setupForm() {
     if ($('#session1').length) {
         disableFields(false);
