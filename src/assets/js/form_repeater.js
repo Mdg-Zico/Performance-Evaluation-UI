@@ -70,9 +70,12 @@ $(document).ready(
     
   // });
 
-  $('[type="submit"]').on('click', function () {
+  $('#createGoalForm').on('submit', function () {
     event.preventDefault();
     data = $('.repeater').repeaterVal();
+    serialize = $(this).serialize();
+    // data_display = JSON.stringify(data);
     console.log(data);
+    console.log(serialize);
   });
 });
