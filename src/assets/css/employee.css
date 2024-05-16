@@ -14,8 +14,14 @@
     border-radius: 8px;
     margin-bottom: 30px;
     margin-top: -10px;
+   
 }
-
+.sess-form{
+    height: 100px;
+}
+.goal-form{
+    height: 200px;
+}
 .first-div, .second-div {
     display: flex;
     flex-wrap: wrap;
@@ -136,3 +142,24 @@
     opacity: 1;
     cursor: pointer;
 }
+.start_date, .end_date, .session{
+    width: 40px;
+}
+.action{
+    width: 150px;
+}
+.btn-delete {
+    background-color: red;
+    color: white;
+    border: none;
+    margin-left: 20px;
+  }
+  .btn-delete:hover {
+    background-color: #ff4444;
+    color: white;
+  }
+  .btn-update {
+    padding: 6px 12px; /* Adjust padding as needed */
+    font-size: 14px; /* Adjust font size as needed */
+    line-height: 1.5; /* Adjust line height as needed */
+  }

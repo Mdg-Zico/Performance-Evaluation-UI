@@ -8,8 +8,9 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
   <link rel="stylesheet" href="../assets/css/employee.css">
-  
-
+  <!-- Ensure jQuery is loaded. Place this in the <head> or just before closing the <body> tag -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins and DataTables) -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- Bootstrap Bundle JS -->
@@ -17,6 +18,10 @@
   <!-- DataTables -->
   <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
+
+
+
 </head>
 
 <body>
@@ -29,8 +34,9 @@
       <div>
         <div class="brand-logo d-flex flex-column mt-4">
           <div class="d-flex justify-content-between">
-            <a href="./index.html" class="text-nowrap logo-img"></a>
-            <img class="d-block" src="../assets/images/logos/aedc-logo.png" width="80" alt="" />
+            <a href="./index.html" class="text-nowrap logo-img">
+              <img class="d-block" src="../assets/images/logos/aedc-logo.png" width="80" alt="" />
+            </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
               <i class="ti ti-x fs-8"></i>
             </div>
@@ -51,6 +57,14 @@
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
                 <span class="hide-menu">Dashboard</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./profile.html" aria-expanded="false">
+                <span>
+                    <i class="ti ti-user fs-6"></i>
+                </span>
+                <span class="hide-menu">Profile</span>
               </a>
             </li>
             <li class="nav-small-cap">
@@ -116,7 +130,7 @@
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">CONTROL PANEL</span>
             </li>
-            <li class="sidebar-item">
+            <li class="sidebar-item selected">
               <a class="sidebar-link" href="./new-session.html" aria-expanded="false">
                 <span>
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-month" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -248,16 +262,18 @@
                 <span class="hide-menu">Sample Page</span>
               </a>
             </li>
-            
+           
+
           </ul>
           <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
             <div class="d-flex">
               <div class="unlimited-access-title me-3">
                 <h6 class="fw-semibold fs-4 mb-6 text-dark w-85">Upgrade to pro</h6>
-                <a href="https://adminmart.com/product/modernize-bootstrap-5-admin-template/" target="_blank" class="btn btn-primary fs-2 fw-semibold lh-sm">Buy Pro</a>
+                <button href="https://adminmart.com/product/modernize-bootstrap-5-admin-template/" target="_blank" class="btn btn-primary fs-2 fw-semibold lh-sm">Buy Pro</a>
               </div>
               <div class="unlimited-access-img">
-                              </div>
+                <img src="../assets/images/backgrounds/rocket.png" alt="" class="img-fluid">
+              </div>
             </div>
           </div>
         </nav>
@@ -286,7 +302,7 @@
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Download Free</a>
+              <button class="btn btn-primary" id="submit-btn">Submit  <i class="ti ti-send fs-5"></i></button>
               <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
@@ -309,19 +325,20 @@
                     <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                   </div>
                 </div>
+                
               </li>
             </ul>
           </div>
         </nav>
-      </header>
-      <!--  Header End -->
-      <div class="container-fluid">
+        </header>
+  
+        <div class="container-fluid">
           
-        <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+          <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
 
-<div class="card-body px-4 py-3">
-<div class="row align-items-center">
-  <div class="col-9">
+  <div class="card-body px-4 py-3">
+  <div class="row align-items-center">
+    <div class="col-9">
 
     <h4 class="fw-semibold mb-8">Set New Session</h4>
     <nav aria-label="breadcrumb">
@@ -341,8 +358,11 @@
 </div>
 </div>
 </div>
-<form class="form">
-  <div class="first-div">
+<form class="form sess-form">
+  
+
+  <div class="second-div">
+   
       <div class="form-group">
           <label for="session">Session<span class="required">*</span></label>
           <select id="session" class="form-control select-dropdown" required>
@@ -351,22 +371,19 @@
               <option value="mid">Mid Year Appraisal</option>
               <option value="senior">End of Year Appraisal</option>
           </select>
-      </div>
+   
+  </div>
+    <div class="form-group">
+        <label for="start-date">Start Date <span class="required">*</span></label>
+        <input type="datetime-local" id="start-date" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="end-date">End Date <span class="required">*</span></label>
+        <input type="datetime-local" id="end-date" class="form-control" required>
+    </div>
   </div>
 
-  <div class="second-div">
-      <div class="form-group">
-          <label for="start-date">Start Date <span class="required">*</span></label>
-          <input type="datetime-local" id="start-date" class="form-control" required>
-      </div>
-
-      <div class="form-group">
-          <label for="end-date">End Date <span class="required">*</span></label>
-          <input type="datetime-local" id="end-date" class="form-control" required>
-      </div>
-  </div>
-  <button type="button" class="btn btn-primary btn-lg  btn rounded-pill px-4 btn-primary" id="submit-btn">
-    <i class="ti ti-send fs-5"></i>Submit</button>
 </form>
 
 
@@ -385,30 +402,35 @@
                   <thead>
                     <!-- start row -->
                     <tr>
-                      <th>Staff Name</th>
-                      <th>Designation</th>
-                      <th>Region</th>
-                      <th>Age</th>
-                      <th>Job Level</th>
-                      <th>Staff ID</th>
+                      <th class="session">Session</th>
+                      <th class="start_date">Start Date</th>
+                      <th class="end_date">End Date</th>
+                      <th class="action">Action</th>
+                    
                     </tr>
                     <!-- end row -->
                   </thead>
                   <tbody>
+                   
                     <!-- start row -->
                     <tr>
                       <td>
                         <div class="d-flex align-items-center gap-6">
                          
-                          <h6 class="mb-0"> Tiger Nixon</h6>
+                          <h6 class="mb-0"> End of Year Appraisal</h6>
                         </div>
 
                       </td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>AEDC8-Function Officer 1</td>
-                      <td>20800</td>
+                      <td>20/4/2021</td>
+                      <td>22/5/2021</td>
+                      <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                      
+                     
+                     
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -416,28 +438,17 @@
                       <td>
                         <div class="d-flex align-items-center gap-6">
                           
-                          <h6 class="mb-0"> Garrett Winters</h6>
+                          <h6 class="mb-0"> Mid Year Appraisal</h6>
                         </div>
                       </td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td>63</td>
-                      <td>AEDC8-Function Officer 1</td>
-                      <td>70750</td>
-                    </tr>
-                    <!-- end row -->
-                    <!-- start row -->
-                    <tr>
-                      <td>
-                        <div class="d-flex align-items-center gap-6">
-                                                      <h6 class="mb-0"> Ashton Cox</h6>
-                        </div>
-                      </td>
-                      <td>Junior Technical Author</td>
-                      <td>San Francisco</td>
-                      <td>66</td>
-                      <td>2009/01/12</td>
-                      <td>600</td>
+                      <td>10/05/2022</td>
+                      <td>12/07/2022</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                     
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -449,9 +460,12 @@
                       </td>
                       <td>Senior Javascript Developer</td>
                       <td>Edinburgh</td>
-                      <td>22</td>
-                      <td>2012/03/29</td>
-                      <td>33060</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                     
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -463,9 +477,12 @@
                       </td>
                       <td>Accountant</td>
                       <td>Tokyo</td>
-                      <td>33</td>
-                      <td>2008/11/28</td>
-                      <td>62700</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                      
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -477,9 +494,12 @@
                       </td>
                       <td>Integration Specialist</td>
                       <td>New York</td>
-                      <td>61</td>
-                      <td>2012/12/02</td>
-                      <td>72000</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                 
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -491,9 +511,12 @@
                       </td>
                       <td>Sales Assistant</td>
                       <td>San Francisco</td>
-                      <td>59</td>
-                      <td>2012/08/06</td>
-                      <td>37500</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                     
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -505,9 +528,12 @@
                       </td>
                       <td>Integration Specialist</td>
                       <td>Tokyo</td>
-                      <td>55</td>
-                      <td>2010/10/14</td>
-                      <td>27900</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                     
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -519,9 +545,12 @@
                       </td>
                       <td>Javascript Developer</td>
                       <td>San Francisco</td>
-                      <td>39</td>
-                      <td>2009/09/15</td>
-                      <td>05500</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                    
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -533,9 +562,12 @@
                       </td>
                       <td>Software Engineer</td>
                       <td>Edinburgh</td>
-                      <td>23</td>
-                      <td>2008/12/13</td>
-                      <td>03600</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                   
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -547,9 +579,12 @@
                       </td>
                       <td>Office Manager</td>
                       <td>London</td>
-                      <td>30</td>
-                      <td>2008/12/19</td>
-                      <td>060</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                     
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -561,9 +596,12 @@
                       </td>
                       <td>Support Lead</td>
                       <td>Edinburgh</td>
-                      <td>22</td>
-                      <td>2013/03/03</td>
-                      <td>42000</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                     
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -575,9 +613,12 @@
                       </td>
                       <td>Regional Director</td>
                       <td>San Francisco</td>
-                      <td>36</td>
-                      <td>2008/10/16</td>
-                      <td>70600</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                  
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -589,9 +630,12 @@
                       </td>
                       <td>Senior Marketing Designer</td>
                       <td>London</td>
-                      <td>43</td>
-                      <td>2012/12/18</td>
-                      <td>13500</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -603,9 +647,12 @@
                       </td>
                       <td>Regional Director</td>
                       <td>London</td>
-                      <td>19</td>
-                      <td>2010/03/17</td>
-                      <td>85750</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                   
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -617,9 +664,12 @@
                       </td>
                       <td>Marketing Designer</td>
                       <td>London</td>
-                      <td>66</td>
-                      <td>2012/11/27</td>
-                      <td>98500</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                     
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -631,9 +681,12 @@
                       </td>
                       <td>Chief Financial Officer (CFO)</td>
                       <td>New York</td>
-                      <td>64</td>
-                      <td>2010/06/09</td>
-                      <td>25000</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                  
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -645,9 +698,12 @@
                       </td>
                       <td>Systems Administrator</td>
                       <td>New York</td>
-                      <td>59</td>
-                      <td>2009/04/10</td>
-                      <td>37500</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                   
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -659,9 +715,12 @@
                       </td>
                       <td>Software Engineer</td>
                       <td>London</td>
-                      <td>41</td>
-                      <td>2012/10/13</td>
-                      <td>32000</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                 
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -673,9 +732,12 @@
                       </td>
                       <td>Personnel Lead</td>
                       <td>Edinburgh</td>
-                      <td>35</td>
-                      <td>2012/09/26</td>
-                      <td>17500</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+            
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -687,9 +749,12 @@
                       </td>
                       <td>Development Lead</td>
                       <td>New York</td>
-                      <td>30</td>
-                      <td>AEDC8-Function Officer 1</td>
-                      <td>45000</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                  
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -701,9 +766,12 @@
                       </td>
                       <td>Chief Marketing Officer (CMO)</td>
                       <td>New York</td>
-                      <td>40</td>
-                      <td>2009/06/25</td>
-                      <td>75000</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                    
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -715,9 +783,12 @@
                       </td>
                       <td>Pre-Sales Support</td>
                       <td>New York</td>
-                      <td>21</td>
-                      <td>AEDC8-18</td>
-                      <td>06450</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                    
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -729,9 +800,11 @@
                       </td>
                       <td>Sales Assistant</td>
                       <td>Sidney</td>
-                      <td>23</td>
-                      <td>2010/09/20</td>
-                      <td>500</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -743,9 +816,12 @@
                       </td>
                       <td>Chief Executive Officer (CEO)</td>
                       <td>London</td>
-                      <td>47</td>
-                      <td>2009/10/09</td>
-                      <td>20000</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                    
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -757,9 +833,12 @@
                       </td>
                       <td>Developer</td>
                       <td>Edinburgh</td>
-                      <td>42</td>
-                      <td>2010/12/22</td>
-                      <td>275</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                     
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -771,9 +850,12 @@
                       </td>
                       <td>Regional Director</td>
                       <td>Singapore</td>
-                      <td>28</td>
-                      <td>2010/11/14</td>
-                      <td>57650</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                      
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -785,9 +867,12 @@
                       </td>
                       <td>Software Engineer</td>
                       <td>San Francisco</td>
-                      <td>28</td>
-                      <td>AEDC8-Function Officer 1</td>
-                      <td>06850</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                    
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -799,9 +884,12 @@
                       </td>
                       <td>Chief Operating Officer (COO)</td>
                       <td>San Francisco</td>
-                      <td>48</td>
-                      <td>2010/03/11</td>
-                      <td>50000</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                     
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -813,9 +901,12 @@
                       </td>
                       <td>Regional Marketing</td>
                       <td>Tokyo</td>
-                      <td>20</td>
-                      <td>AEDC8-Function Officer 1</td>
-                      <td>63000</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                     
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -827,9 +918,12 @@
                       </td>
                       <td>Integration Specialist</td>
                       <td>Sidney</td>
-                      <td>37</td>
-                      <td>AEDC8-Function Officer 1</td>
-                      <td>500</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                      
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -841,9 +935,12 @@
                       </td>
                       <td>Developer</td>
                       <td>London</td>
-                      <td>53</td>
-                      <td>2009/10/22</td>
-                      <td>14500</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                 
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -855,9 +952,12 @@
                       </td>
                       <td>Technical Author</td>
                       <td>London</td>
-                      <td>27</td>
-                      <td>AEDC8-Function Officer 1</td>
-                      <td>45000</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                     
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -869,9 +969,12 @@
                       </td>
                       <td>Team Leader</td>
                       <td>San Francisco</td>
-                      <td>22</td>
-                      <td>2008/10/26</td>
-                      <td>35500</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                  
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -883,9 +986,12 @@
                       </td>
                       <td>Post-Sales support</td>
                       <td>Edinburgh</td>
-                      <td>46</td>
-                      <td>AEDC8-Function Officer 1</td>
-                      <td>24050</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+               
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -897,9 +1003,12 @@
                       </td>
                       <td>Marketing Designer</td>
                       <td>San Francisco</td>
-                      <td>47</td>
-                      <td>2009/12/09</td>
-                      <td>575</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                  
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -911,9 +1020,12 @@
                       </td>
                       <td>Office Manager</td>
                       <td>San Francisco</td>
-                      <td>51</td>
-                      <td>2008/12/16</td>
-                      <td>64500</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -925,9 +1037,12 @@
                       </td>
                       <td>Secretary</td>
                       <td>San Francisco</td>
-                      <td>41</td>
-                      <td>2010/02/12</td>
-                      <td>09850</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                   
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -939,9 +1054,12 @@
                       </td>
                       <td>Financial Controller</td>
                       <td>San Francisco</td>
-                      <td>62</td>
-                      <td>2009/02/14</td>
-                      <td>52500</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                 
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -953,9 +1071,12 @@
                       </td>
                       <td>Office Manager</td>
                       <td>London</td>
-                      <td>37</td>
-                      <td>2008/12/11</td>
-                      <td>36200</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                  
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -967,9 +1088,12 @@
                       </td>
                       <td>Director</td>
                       <td>New York</td>
-                      <td>65</td>
-                      <td>2008/09/26</td>
-                      <td>45750</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                     
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -981,9 +1105,12 @@
                       </td>
                       <td>Support Engineer</td>
                       <td>Singapore</td>
-                      <td>64</td>
-                      <td>AEDC8-Function Officer 1</td>
-                      <td>34500</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                  
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -995,9 +1122,12 @@
                       </td>
                       <td>Software Engineer</td>
                       <td>London</td>
-                      <td>38</td>
-                      <td>AEDC8-Function Officer 1</td>
-                      <td>63500</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                    
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -1009,9 +1139,12 @@
                       </td>
                       <td>Support Engineer</td>
                       <td>Tokyo</td>
-                      <td>37</td>
-                      <td>2009/08/19</td>
-                      <td>39575</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                    
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -1023,9 +1156,12 @@
                       </td>
                       <td>Developer</td>
                       <td>New York</td>
-                      <td>61</td>
-                      <td>2013/08/11</td>
-                      <td>840</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                    
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -1037,9 +1173,12 @@
                       </td>
                       <td>Support Engineer</td>
                       <td>San Francisco</td>
-                      <td>47</td>
-                      <td>2009/07/07</td>
-                      <td>700</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                  
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -1051,9 +1190,12 @@
                       </td>
                       <td>Data Coordinator</td>
                       <td>Singapore</td>
-                      <td>64</td>
-                      <td>2012/04/09</td>
-                      <td>38575</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                    
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -1065,9 +1207,12 @@
                       </td>
                       <td>Software Engineer</td>
                       <td>New York</td>
-                      <td>63</td>
-                      <td>2010/01/04</td>
-                      <td>25250</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                     
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -1079,9 +1224,12 @@
                       </td>
                       <td>Software Engineer</td>
                       <td>San Francisco</td>
-                      <td>56</td>
-                      <td>2012/06/01</td>
-                      <td>15000</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                     
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -1093,9 +1241,12 @@
                       </td>
                       <td>Junior Javascript Developer</td>
                       <td>Edinburgh</td>
-                      <td>43</td>
-                      <td>2013/02/01</td>
-                      <td>550</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                    
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -1107,9 +1258,12 @@
                       </td>
                       <td>Sales Assistant</td>
                       <td>New York</td>
-                      <td>46</td>
-                      <td>AEDC8-18</td>
-                      <td>45600</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -1121,9 +1275,12 @@
                       </td>
                       <td>Regional Director</td>
                       <td>London</td>
-                      <td>47</td>
-                      <td>AEDC8-Function Officer 1</td>
-                      <td>56250</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                    
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -1135,9 +1292,12 @@
                       </td>
                       <td>Systems Administrator</td>
                       <td>London</td>
-                      <td>21</td>
-                      <td>2009/02/27</td>
-                      <td>03500</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                   
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -1149,9 +1309,12 @@
                       </td>
                       <td>Developer</td>
                       <td>San Francisco</td>
-                      <td>30</td>
-                      <td>2010/07/14</td>
-                      <td>600</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                 
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -1163,9 +1326,12 @@
                       </td>
                       <td>Regional Director</td>
                       <td>Edinburgh</td>
-                      <td>51</td>
-                      <td>2008/11/13</td>
-                      <td>83000</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                    
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -1177,9 +1343,12 @@
                       </td>
                       <td>Javascript Developer</td>
                       <td>Singapore</td>
-                      <td>29</td>
-                      <td>AEDC8-Function Officer 1</td>
-                      <td>83000</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                     
                     </tr>
                     <!-- end row -->
                     <!-- start row -->
@@ -1191,24 +1360,15 @@
                       </td>
                       <td>Customer Support</td>
                       <td>New York</td>
-                      <td>27</td>
-                      <td>AEDC8-Function Officer 1</td>
-                      <td>12000</td>
+                       <td><button class="btn btn-primary btn-update">
+                        Update
+                      </button><button class="btn btn-delete">
+                        Delete
+                      </button></td>
+                      
                     </tr>
                     <!-- end row -->
                   </tbody>
-                  <tfoot>
-                    <!-- start row -->
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                    <!-- end row -->
-                  </tfoot>
                 </table>
               </div>
             </div>
@@ -1236,6 +1396,9 @@
         $('#zero_config').DataTable(); // Initialize the DataTable
     });
 </script>
+
+<script src="../assets/js/app.min.js"></script>
+<script src="../assets/libs/simplebar/dist/simplebar.js"></script>
 </body>
 </html>
 
