@@ -136,3 +136,6 @@
     opacity: 1;
     cursor: pointer;
 }
+.start_date, .end_date, .session{
+    width: 40px;
+}
