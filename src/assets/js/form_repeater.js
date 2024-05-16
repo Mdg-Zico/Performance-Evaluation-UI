@@ -1,5 +1,6 @@
 $(document).ready(
   function () {
+  // Form Repeater
   let formsList = [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
   "use strict";
   $('.repeater').repeater({
@@ -58,4 +59,20 @@ $(document).ready(
     })
     $(this).addClass('active_link');
   })
+  // Form Repeater End
+
+  // Dynamic Change of scorecard value on dropdown selection
+  // $('select').on('change', function () {
+  //   console.log("Dropdown option changed");
+  //   const scorecard = $('#scorecards')
+  //   console.log(scorecard.attr('value'));
+  //   console.log($(this).attr('value'));
+    
+  // });
+
+  $('[type="submit"]').on('click', function () {
+    event.preventDefault();
+    data = $('.repeater').repeaterVal();
+    console.log(data);
+  });
 });
