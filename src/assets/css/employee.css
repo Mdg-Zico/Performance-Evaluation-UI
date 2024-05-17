@@ -149,13 +149,15 @@
     width: 150px;
 }
 .btn-delete {
-    background-color: red;
+    background-color: #ff4444;
+    
     color: white;
     border: none;
     margin-left: 20px;
   }
   .btn-delete:hover {
-    background-color: #ff4444;
+    background-color: rgba(250,137,107,1);
+   
     color: white;
   }
   .btn-update {
