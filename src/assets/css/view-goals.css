@@ -74,12 +74,15 @@
   font-size: 0.6rem; /* Adjust the font size to make it smaller */
   font-weight: 700;
   align-items: center;
-  background-color: #5D87FF;
-  color: #fff;
+
+
 
   
 
   
+}
+.small-button:hover{
+  background-color:#5D87FF;
 }
 .btn-outline-info{
   margin-left: 30px;
