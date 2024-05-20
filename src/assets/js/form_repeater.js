@@ -1,3 +1,5 @@
+const { post } = require("jquery");
+
 $(document).ready(
   function () {
   // Global variable declarations
@@ -92,7 +94,38 @@ $(document).ready(
       alert("Total Weight MUST be equal to 100");
       return;
     }
-    serialize = $(this).serialize();
+    serializedData = $(this).serialize();
+    $.ajax({
+      type: 'POST',
+      url: '#',
+      data: {
+        serializedData
+      },
+      success: function (data) {
+        $('#alert').append(
+          `<div class="alert alert-success alert-dismissible mt-4 show fade d-flex align-items-center justify-content-between" role="alert">
+            <h4>
+              Goal Form submitted successfully
+            </h4>
+            <button data-bs-dismiss="alert" class="bg-transparent border border-success border-3 text-success rounded-circle p-2">
+              <i class="ti ti-x fs-8 fw-bold m-0"></i>
+            </button>
+          </div>`
+        )
+      },
+      error: function (message) {
+        $('#alert').append(
+          `<div class="alert alert-danger alert-dismissible mt-4 show fade d-flex align-items-center justify-content-between" role="alert">
+            <h4>
+              Goal Form submission failed
+            </h4>
+            <button data-bs-dismiss="alert" class="bg-transparent border border-danger border-3 text-danger rounded-circle p-2">
+              <i class="ti ti-x fs-8 fw-bold m-0"></i>
+            </button>
+          </div>`
+        )
+      }
+    });
     console.log(data);
     console.log(serialize);
   });

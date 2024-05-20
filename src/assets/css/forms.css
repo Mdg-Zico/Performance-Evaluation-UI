@@ -4,3 +4,12 @@
     border-end-start-radius: 10%;
     font-weight: 700;
 }
+
+.red_text {
+    color: red;
+}
+
+.bg-primary2 {
+    background-color:   red;
+}
+

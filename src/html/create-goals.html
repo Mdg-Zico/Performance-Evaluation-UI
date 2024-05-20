@@ -333,9 +333,6 @@
                   </ol>
                 </nav>
               </div>
-              <div class="col-3" id="totalWeight">
-                <h5>Total Weight: 0/100</h5>
-              </div>
             </div>
           </div>
         </div>
@@ -556,14 +553,20 @@
                   </div>
                 </div>
               </div>
-              <button class="btn btn-primary rounded-pill" id="submit" type="submit" style="height: 40px">
-                <div class="d-flex align-items-center justify-content-center">
-                  Submit
-                  <i class="ti ti-send ms-1 fs-5"></i>
-                </div>
-              </button>      
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-primary rounded-pill" id="submit" type="submit" style="height: 40px">
+                  <div class="d-flex align-items-center justify-content-center">
+                    Submit
+                    <i class="ti ti-send ms-1 fs-5"></i>
+                  </div>
+                </button>
+                <div class="bg-primary2 rounded-2 col-3 d-flex align-items-center justify-content-center" id="totalWeight" >
+                  <h5 class="text-white fw-bolder m-0">Total Weight: 0/100</h5>  
+                </div>    
+              </div>
             </form>
           </div>
+          <div id="alert"></div>
         </div>
       </div>
     </div>
