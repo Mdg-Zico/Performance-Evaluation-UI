@@ -1,8 +1,11 @@
 $(document).ready(
   function () {
-  // Form Repeater
+  // Global variable declarations
+  let total = 0;
   let formsList = [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
   "use strict";
+
+  // Form Repeater Start
   $('.repeater').repeater({
     initEmpty: false,
     show: function () {
@@ -61,21 +64,29 @@ $(document).ready(
   })
   // Form Repeater End
 
-  // Dynamic Change of scorecard value on dropdown selection
-  // $('select').on('change', function () {
-  //   console.log("Dropdown option changed");
-  //   const scorecard = $('#scorecards')
-  //   console.log(scorecard.attr('value'));
-  //   console.log($(this).attr('value'));
-    
-  // });
-
+  // Code to handle Total Weight Start
+  $('form').on('change', '#weight', function () {
+    total -= total;
+    const goalWeight = $(this).val();
+    formsList.map(elem => {
+      console.log(goalWeight);
+      total += Number(goalWeight);
+    });
+    const totalWeightElement = $('#totalWeight h5')
+    totalWeightElement.text('Total Weight: ' + total + '/100');
+  });
+  // Code to handle Total Weight End
+  
+  // Code to handle submission logic Start
   $('#createGoalForm').on('submit', function () {
     event.preventDefault();
-    data = $('.repeater').repeaterVal();
+    if (total != 100) {
+      alert("Total Weight MUST be equal to 100");
+      return;
+    }
     serialize = $(this).serialize();
-    // data_display = JSON.stringify(data);
     console.log(data);
     console.log(serialize);
   });
+  // Code to handle submission logic End
 });
