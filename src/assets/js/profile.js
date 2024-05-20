@@ -8,22 +8,11 @@ $(document).ready(function() {
 });
 
 function setupForm() {
-    if ($('#session1').length) {
-        disableFields(false);
-    } else {
-        disableFirstFourFields();
-    }
+    disableFirstFourFields();
 }
 
 function disableFirstFourFields() {
-    $('#first-name, #middle-name, #last-name, #staff-id, #department').prop('disabled', true);
-}
-
-function disableFields(disableStaffId) {
-    $('#first-name, #middle-name, #last-name').prop('disabled', true);
-    if (disableStaffId) {
-        $('#staff-id').prop('disabled', true);
-    }
+    $('#first-name, #last-name, #staff-id, #department').prop('disabled', true);
 }
 
 function handleSubmit() {
@@ -32,34 +21,31 @@ function handleSubmit() {
         return;
     }
 
-    $('#spinner').show(); // Show spinner
+    // Show spinner
+    $('#spinner').show();
 
-    // Prepare form data as JSON object
-    var formData = {
-        session: $('#session').val(),
-        startDate: $('#start-date').val(),
-        endDate: $('#end-date').val(),
-        
+    // Serialize form data
+    var formData = $('.form').serialize();
 
-        
-        // Add more fields as needed
-    };
-
-    // Send an AJAX request with JSON data
+    // Send AJAX request
     $.ajax({
         type: 'POST',
-        url: 'your_server_script.php', // Specify your server-side script URL here
-        contentType: 'application/json',
-        data: JSON.stringify(formData), // Convert JSON object to string
+        url: 'your_form_processing_script.php', // Replace with your form processing script URL
+        data: formData,
         success: function(response) {
-            $('#spinner').hide(); // Hide spinner after operation completion
-            showSubmissionAlert($('.container-fluid')); // Show success message
-            $('html, body').scrollTop(0); // Scroll to the top of the page
+            // Hide spinner on successful response
+            $('#spinner').hide();
+            // Show success message
+            showSubmissionAlert($('.container-fluid'));
+            // Scroll to the top immediately
+            $('html, body').scrollTop(0);
         },
         error: function(xhr, status, error) {
-            $('#spinner').hide(); // Hide spinner on error
-            console.error(xhr.responseText); // Log error message
-            alert('An error occurred. Please try again later.');
+            // Hide spinner on error response
+            $('#spinner').hide();
+            // Show error message
+            alert('An error occurred while submitting the form. Please try again.');
+            console.error(xhr.responseText);
         }
     });
 }
@@ -80,7 +66,7 @@ function validateFields() {
     var endDateInput = $('#end-date');
     var startDateValue = startDateInput.val().trim();
     var endDateValue = endDateInput.val().trim();
-
+    
     if (!startDateValue || !endDateValue) {
         if (!startDateValue) {
             startDateInput.css('borderColor', 'red');
@@ -112,9 +98,9 @@ function showSubmissionAlert($container) {
     $('.alert').remove(); // Remove existing alerts
 
     var $alertDiv = $('<div class="alert alert-success alert-dismissible fade show" role="alert">' +
-        'Your profile has been submitted successfully!' +
+        'Form has been submitted successfully!' +
         '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-        '<span aria-hidden="true">&times;</span>' +
+        '<span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>' +
         '</button></div>');
 
     $container.prepend($alertDiv); // Prepend the alert at the top of the container
