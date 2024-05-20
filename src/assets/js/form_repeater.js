@@ -72,11 +72,13 @@ $(document).ready(
 
     formsList.map(elem => {
       elemWeight = elem.find("#weight");
-      if (total > 100) {
-        alert("Total weight cannot exceed 100");
-        return;
+      newWeight = Number(elemWeight.val());
+      if ((total + newWeight) <= 100) {
+        total += newWeight;
+      } else {
+        alert("Total weight must not exceed 100");
+        elemWeight.val(0);
       }
-      total += Number(elemWeight.val());
     });
     const totalWeightElement = $('#totalWeight h5')
     totalWeightElement.text('Total Weight: ' + total + '/100');
