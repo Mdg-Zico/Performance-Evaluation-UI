@@ -1,5 +1,3 @@
-const { post } = require("jquery");
-
 $(document).ready(
   function () {
   // Global variable declarations
