@@ -13,7 +13,7 @@ $(document).ready(
       formsList.push($(this));
       $(this).removeClass('goal_1');
       $(this).addClass('d-none goal_'+formsList.length);
-      console.log("This is formsList\n"+formsList);
+      // console.log("This is formsList\n"+formsList);
       appendtoNav();
     },
     hide: function (deleteElement) {
@@ -27,11 +27,11 @@ $(document).ready(
     },
     isFirstItemUndeletable: true
   })
+  // Form Repeater End
 
+  // Form Navigation Start
   function appendtoNav() {
-    // console.log($('.repeater').repeaterVal()['group-a'])
     const navLength = formsList.length;
-    // console.log(navLength);
     const navbar = $('.nav-tabs');
     navbar.append('<li class="nav-item goal_'+navLength+'" style="cursor: pointer;"><span class="nav-link">Goal '+navLength+'</span></li>')
   };
@@ -45,32 +45,38 @@ $(document).ready(
   $('.nav-tabs').on('click', '.nav-item', function () {
     const classList = $(this).attr("class").split(" ");
     const goalNumber = classList[classList.length - 1];
-    console.log("You have clicked on navtab "+goalNumber);
-    // console.log(classList);
-    // const navTabs = $('nav-tabs').children();
     $('.nav-item.active_link').removeClass('active_link');
 
     formsList.map(item => {
       if (!item.hasClass('d-none') && !item.hasClass(goalNumber)) {
-        console.log(item);
+        // console.log(item);
+        console.log("Printing from navigation", item.find('#weight').val());
         item.addClass('d-none');
       }
       if (item.hasClass(goalNumber) && item.hasClass('d-none')) {
-        console.log(item);
+        // console.log(item);
         item.removeClass('d-none');
       }
     })
     $(this).addClass('active_link');
   })
-  // Form Repeater End
+  // Form Navigation End
 
   // Code to handle Total Weight Start
-  $('form').on('change', '#weight', function () {
+  $('form').on('input', '#weight', function () {
     total -= total;
-    const goalWeight = $(this).val();
+    if ($(this).val() > 100) {
+      $(this).val(0);
+      alert("Maximum Weight cannot exceed 100");
+    };
+
     formsList.map(elem => {
-      console.log(goalWeight);
-      total += Number(goalWeight);
+      elemWeight = elem.find("#weight");
+      if (total > 100) {
+        alert("Total weight cannot exceed 100");
+        return;
+      }
+      total += Number(elemWeight.val());
     });
     const totalWeightElement = $('#totalWeight h5')
     totalWeightElement.text('Total Weight: ' + total + '/100');
