@@ -7,7 +7,6 @@ $(document).ready(function() {
     });
 });
 
-
 function setupForm() {
     if ($('#session1').length) {
         disableFields(false);
@@ -35,13 +34,34 @@ function handleSubmit() {
 
     $('#spinner').show(); // Show spinner
 
-    setTimeout(function() {
-        $('#spinner').hide(); // Hide spinner after operation completion
-        showSubmissionAlert($('.container-fluid')); // Show success message
+    // Prepare form data as JSON object
+    var formData = {
+        session: $('#session').val(),
+        startDate: $('#start-date').val(),
+        endDate: $('#end-date').val(),
+        
 
-        // Scroll to the very top of the page
-        $('html, body').scrollTop(0); // Scroll to the top immediately
-    }, 2000); // Simulate a 2-second processing delay
+        
+        // Add more fields as needed
+    };
+
+    // Send an AJAX request with JSON data
+    $.ajax({
+        type: 'POST',
+        url: 'your_server_script.php', // Specify your server-side script URL here
+        contentType: 'application/json',
+        data: JSON.stringify(formData), // Convert JSON object to string
+        success: function(response) {
+            $('#spinner').hide(); // Hide spinner after operation completion
+            showSubmissionAlert($('.container-fluid')); // Show success message
+            $('html, body').scrollTop(0); // Scroll to the top of the page
+        },
+        error: function(xhr, status, error) {
+            $('#spinner').hide(); // Hide spinner on error
+            console.error(xhr.responseText); // Log error message
+            alert('An error occurred. Please try again later.');
+        }
+    });
 }
 
 function validateFields() {
@@ -60,7 +80,7 @@ function validateFields() {
     var endDateInput = $('#end-date');
     var startDateValue = startDateInput.val().trim();
     var endDateValue = endDateInput.val().trim();
-    
+
     if (!startDateValue || !endDateValue) {
         if (!startDateValue) {
             startDateInput.css('borderColor', 'red');
