@@ -95,11 +95,13 @@ $(document).ready(
     serializedData = $(this).serialize();
     $.ajax({
       type: 'POST',
-      url: '#',
+      url: 'https://dummy.restapiexample.com/api/v1/create',
       data: {
         serializedData
       },
       success: function (data) {
+        console.log(serializedData);
+        console.log(data);
         $('#alert').append(
           `<div class="alert alert-success alert-dismissible mt-4 show fade d-flex align-items-center justify-content-between" role="alert">
             <h4>
@@ -124,8 +126,7 @@ $(document).ready(
         )
       }
     });
-    console.log(data);
-    console.log(serialize);
+    console.log(serializedData);
   });
   // Code to handle submission logic End
 });
