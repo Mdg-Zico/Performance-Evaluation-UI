@@ -6,7 +6,7 @@ $(document).ready(
   "use strict";
 
   // Form Repeater Start
-  $('.repeater').repeater({
+  $('#createGoalForm').repeater({
     initEmpty: false,
     show: function () {
       $(this).slideDown();
@@ -32,7 +32,7 @@ $(document).ready(
   // Form Navigation Start
   function appendtoNav() {
     const navLength = formsList.length;
-    const navbar = $('.nav-tabs');
+    const navbar = $('#goalFormNavigation');
     navbar.append('<li class="nav-item goal_'+navLength+'" style="cursor: pointer;"><span class="nav-link">Goal '+navLength+'</span></li>')
   };
 
@@ -42,7 +42,7 @@ $(document).ready(
     $('li.'+goalNumber).remove();
   };
 
-  $('.nav-tabs').on('click', '.nav-item', function () {
+  $('#goalFormNavigation').on('click', '.nav-item', function () {
     const classList = $(this).attr("class").split(" ");
     const goalNumber = classList[classList.length - 1];
     $('.nav-item.active_link').removeClass('active_link');
@@ -63,7 +63,7 @@ $(document).ready(
   // Form Navigation End
 
   // Code to handle Total Weight Start
-  $('form').on('input', '#weight', function () {
+  $('#createGoalForm').on('input', '#weight', function () {
     total -= total;
     if ($(this).val() > 100) {
       $(this).val(0);
@@ -93,28 +93,33 @@ $(document).ready(
       return;
     }
     serializedData = $(this).serialize();
+    console.log(serializedData);
+    submitGoals(serializedData);
+  });
+
+  function submitGoals(goals) {
     $.ajax({
       type: 'POST',
       url: 'https://dummy.restapiexample.com/api/v1/create',
       data: {
-        serializedData
+        goals
       },
       success: function (data) {
-        console.log(serializedData);
+        console.log(goals);
         console.log(data);
         $('#alert').append(
           `<div class="alert alert-success alert-dismissible mt-4 show fade d-flex align-items-center justify-content-between" role="alert">
             <h4>
               Goal Form submitted successfully
             </h4>
-            <button data-bs-dismiss="alert" class="bg-transparent border border-success border-3 text-success rounded-circle p-2">
+            <button data-bs-dismiss="alert" class="bg-transparent border  border-3 text-success rounded-circle p-2">
               <i class="ti ti-x fs-8 fw-bold m-0"></i>
             </button>
           </div>`
         )
       },
       error: function (message) {
-        $('#alert').append(
+        $('#goalSubmissionAlert').append(
           `<div class="alert alert-danger alert-dismissible mt-4 show fade d-flex align-items-center justify-content-between" role="alert">
             <h4>
               Goal Form submission failed
@@ -126,7 +131,6 @@ $(document).ready(
         )
       }
     });
-    console.log(serializedData);
-  });
+  }
   // Code to handle submission logic End
 });
