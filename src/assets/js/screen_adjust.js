@@ -4,7 +4,7 @@ function adjustFormLayout() {
     var formContainer = $('.form-container');
     var formGroups = $('.form-group');
 
-    if (screenWidth <= 400) {
+    if (screenWidth <= 600) {
         formContainer.css({
             display: 'flex',
             flexWrap: 'wrap'
