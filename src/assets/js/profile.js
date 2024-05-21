@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
     setupForm();
 
@@ -6,14 +7,6 @@ $(document).ready(function() {
         handleSubmit();
     });
 });
-
-function setupForm() {
-    disableFirstFourFields();
-}
-
-function disableFirstFourFields() {
-    $('#first-name, #last-name, #staff-id, #department').prop('disabled', true);
-}
 
 function handleSubmit() {
     if (!validateFields()) {
@@ -25,13 +18,14 @@ function handleSubmit() {
     $('#spinner').show();
 
     // Serialize form data
-    var formData = $('.form').serialize();
-
+   var serialisedData = $('.form').serialize();
+    //console.log(serialisedData);
     // Send AJAX request
     $.ajax({
         type: 'POST',
-        url: 'your_form_processing_script.php', // Replace with your form processing script URL
-        data: formData,
+        url: 'https://dummy.restapiexample.com/api/v1/create', // Replace with your form processing script URL
+        data: serialisedData,
+        
         success: function(response) {
             // Hide spinner on successful response
             $('#spinner').hide();
@@ -39,15 +33,25 @@ function handleSubmit() {
             showSubmissionAlert($('.container-fluid'));
             // Scroll to the top immediately
             $('html, body').scrollTop(0);
+            console.log("Serialialised Data: " + serialisedData);
+            console.log(response)
         },
-        error: function(xhr, status, error) {
+        error: function(status, error) {
             // Hide spinner on error response
             $('#spinner').hide();
             // Show error message
             alert('An error occurred while submitting the form. Please try again.');
-            console.error(xhr.responseText);
+            
         }
     });
+}
+
+function setupForm() {
+    disableFirstFourFields();
+}
+
+function disableFirstFourFields() {
+    $('#first-name, #last-name, #staff-id, #department').prop('disabled', true);
 }
 
 function validateFields() {
