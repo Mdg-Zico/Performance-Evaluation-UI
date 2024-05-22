@@ -14,8 +14,11 @@ $(document).ready(function() {
             endDate: $('#end-date').val()
             // Add more fields as needed
         };
-    
+
         sendSessionData(formData);
+        
+
+       
     });
 });
 
@@ -31,15 +34,22 @@ function sendSessionData(data) {
         data: JSON.stringify(data),
         success: function(response) {
             $('#spinner').hide(); // Hide spinner after operation completion
-            showSubmissionAlert($('.container-fluid')); // Show success message
+            successSubmissionAlert($('.container-fluid')); // Show success message
             $('html, body').scrollTop(0); // Scroll to the top of the page
            
             console.log(response)
+            appendRowToDataTable(data.session, data.startDate, data.endDate);
         },
         error: function(xhr, status, error) {
             $('#spinner').hide(); // Hide spinner on error
-            console.error(xhr.responseText); // Log error message
-            alert('An error occurred. Please try again later.');
+           // console.error(xhr.responseText); // Log error message
+            // alert the error if any error occured
+          //  console.log("RESPONSE HERE", response)
+           // alert(response["responseJSON"]["statusMsg"]);
+
+            failureSubmissionAlert($('.container-fluid'))
+            $('html, body').scrollTop(0); // Scroll to the top of the page
+           
         }
     });
 }
@@ -95,11 +105,24 @@ $('#start-date, #end-date').on('input', function() {
     validateFields();
 });
 
-function showSubmissionAlert($container) {
+function successSubmissionAlert($container, statusMsg) {
     $('.alert').remove(); // Remove existing alerts
 
     var $alertDiv = $('<div class="alert alert-success alert-dismissible fade show" role="alert">' +
         'Your profile has been submitted successfully!' +
+        '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+        '<span aria-hidden="true">&times;</span>' +
+        '</button></div>');
+
+    $container.prepend($alertDiv); // Prepend the alert at the top of the container
+    setupAlertCloseButton($alertDiv);
+}
+
+function failureSubmissionAlert($container) {
+    $('.alert').remove(); // Remove existing alerts
+
+    var $alertDiv = $('<div class="alert alert-danger alert-dismissible fade show" role="alert">' +
+        'Error on Submission' +
         '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
         '<span aria-hidden="true">&times;</span>' +
         '</button></div>');
@@ -113,3 +136,25 @@ function setupAlertCloseButton($alertDiv) {
         $alertDiv.remove(); // Close the alert when clicked
     });
 }
+
+function appendRowToDataTable(session, startDate, endDate) {
+    const table = $('#zero_config').DataTable(); // Assuming DataTable is initialized with ID 'zero_config'
+  
+    // Create a new table row element
+    const newRow = $('<tr>');
+  
+    // Add cells to the new row
+    newRow.append($('<td>').text(session));
+    newRow.append($('<td>').text(startDate));
+    newRow.append($('<td>').text(endDate));
+  
+    // Add action buttons (can be done similarly)
+    const actionCell = $('<td>');
+    actionCell.append($('<button>').addClass('btn btn-primary btn-update').text('Update'));
+    actionCell.append($('<button>').addClass('btn btn-delete').text('Delete'));
+    newRow.append(actionCell);
+  
+    // Append the new row to the DataTable body
+    table.row.add(newRow).draw(false);
+  }
+  

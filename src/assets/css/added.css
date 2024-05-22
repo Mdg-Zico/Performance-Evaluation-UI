@@ -16,6 +16,9 @@
     margin-top: -10px;
    
 }
+#create-session-form{
+    margin-bottom: 40px;
+}
 
 .first-div, .second-div {
     display: flex;
@@ -135,7 +138,11 @@
     background-color: #d4edda;
     border-color: #c3e6cb;
 }
-
+.alert-eror{
+    color: #573515; /* Bootstrap success color, change as per your theme */
+    background-color: #d4edda;
+    border-color: #c3e6cb;  
+}
 .alert-dismissible .close {
     outline: none;
     border: none;
