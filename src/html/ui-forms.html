@@ -75,7 +75,7 @@
               </a>
             </li>
 
-            <li class="nav-small-cap">
+                        <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">Performance Diary</span>
             </li>
@@ -319,38 +319,36 @@
       </header>
       <!--  Header End -->
       <div class="container-fluid">
-        <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-  <div class="card-body px-4 py-3">
-  <div class="row align-items-center">
-    <div class="col-9">
-      <h4 class="fw-semibold mb-8">Goal Setting</h4>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a class="text-muted text-decoration-none" href="../main/index.html">Home</a>
-          </li>
-          <li class="breadcrumb-item" aria-current="page">Goal Setting</li>
-        </ol>
-      </nav>
-    </div>
-    <div class="col-3">
-      <div class="text-center mb-n5">
-        <img src="../assets/images/breadcrumb/ChatBc.png" alt="" class="img-fluid mb-n4">
-      </div>
-    </div>
-  </div>
-  </div>
-  </div>
+        <div class="card bg-info-subtle shadow-none overflow-hidden mb-4">
+          <div class="card-body px-4 py-3">
+            <div class="row align-items-center">
+              <div class="col-9">
+                <h4 class="fw-semibold mb-8">Goal Setting</h4>
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a class="text-muted text-decoration-none" href="./index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item" aria-current="page">Goal Setting</li>
+                  </ol>
+                </nav>
+              </div>
+              <div class="rounded-2 col-sm" id="totalWeight" >
+                <h5 class="text-dark fw-bolder m-0">Total Weight: 0/100</h5>  
+              </div>
+            </div>
+          </div>
+        </div>
 
   <div class="row">
     <div class="col-12">
       <div class="card">
         <div class="card-body">
           <div class="repeater-default">
-            <form class="repeater">
-              <div data-repeater-list="group-a">
+            <form class="repeater" id="createGoalForm">
+              <div data-repeater-list="create">
                 <div class="d-flex justify-content-between">
-                  <ul class="nav nav-tabs w-75" id="form-navigation">
+                  <ul class="nav nav-tabs w-75" id="goalFormNavigation">
                     <li class="nav-item goal_1 active_link" style="cursor: pointer;">
                       <span class="nav-link">Goal 1</span>
                     </li>
@@ -361,68 +359,72 @@
                       <span class="nav-link">Goal 3</span>
                     </li>
                   </ul>
-                  <div class="d-flex justify-content-around" style="width: 210px">
+                  <div class="d-flex justify-content-around flex-wrap" style="width: 210px">
                     <button data-repeater-create class="btn btn-success rounded-pill" type="button" style="height: 40px">
                       <div class="d-flex align-items-center justify-content-center">
                         Add
                         <i class="ti ti-circle-plus ms-1 fs-5"></i>
                       </div>
                     </button>
-                    <button class="btn rounded-pill btn-primary" type="button" style="height: 40px">                    
+                    <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" style="height: 40px">                    
                       Save
-                      <i class="ti ti-send fs-5"></i>
+                      <i class="ti ti-download fs-5"></i>
                     </button>
                   </div>
                 </div>
                 <div data-repeater-item class="mt-5 goal_1">
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row px-0 mx-0 w-100">
-                      <div class="col mb-3 mx-0 px-0 w-100">
+                      <div class="col-sm mb-3 mx-0 px-0 w-100">
                         <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-                        <select class="form-select" name="objective" id="focus" required>
-                          <option class="default" value="">Focus point </option>
-                          <option value="">Focus point</option>
-                          <option value="">Focus point</option>
-                          <option value="">Focus point</option>
-                          <option value="">Focus point</option>
-                          <option value="">Focus point</option>
+                        <select class="form-select" name="objective" id="focusPoints" required>
+                          <option class="default" value="Focus point 1">Focus point 1</option>
+                          <option value="Focus point 2">Focus point 2</option>
+                          <option value="Focus point 3">Focus point 3</option>
+                          <option value="Focus point 4">Focus point 4</option>
+                          <option value="Focus point 5">Focus point 5</option>
+                          <option value="Focus point 6">Focus point 6</option>
                         </select>
                       </div>
-                      <div class="col mb-3 mx-0 px-0 w-100">
-                        <label for="scorecards" class="form-label">Link to balance scorecards</label>
+                      <div class="col-sm mb-3 mx-0 px-0 w-100">
+                        <label for="scorecards" class="form-label">Link to balance scorecard</label>
                         <div class="form-control" id="scorecards" name="scorecards" value="">NULL</div>
                       </div>
                     </div>
                   </div>
-                  <div class="mb-3">
-                    <label for="goal" class="form-label">Goal</label>
-                    <textarea class="form-control" name="goal" value="" id="exampleInputGoal" aria-describedby="goalHelp" required></textarea>
-                    <div id="goalHelp" class="form-text">Short text describing your goal</div>
+                  <div class="grid column-gap-3 row">
+                    <div class="col-sm w-100 mb-3">
+                      <label for="goal" class="form-label">Goal</label>
+                      <textarea class="form-control" name="goal" value="" id="exampleInputGoal" aria-describedby="goalHelp" required></textarea>
+                      <div id="goalHelp" class="form-text">Short text describing your goal</div>
+                    </div>
+                    <div class="col-sm w-100 mb-3">
+                      <label for="task" class="form-label">Specific tasks to be accomplished</label>
+                      <textarea class="form-control" name="task" value="" id="task" aria-describedby="goaldescHelp" required></textarea>
+                      <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
+                    </div>
                   </div>
-                  <div class="mb-3">
-                    <label for="task" class="form-label">Specific tasks to be accomplished</label>
-                    <textarea class="form-control" name="task" value="" id="task" aria-describedby="goaldescHelp" required></textarea>
-                    <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="target" class="form-label">Agreed Target</label>
-                    <textarea class="form-control" name="target" value="" id="target"></textarea>
-                    <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
-                  </div>
-                  <div class="mb-3">
-                    <label for="kpi" class="form-label">Achievement Criteria (KPIs)</label>
-                    <textarea class="form-control" name="kpi" value="" id="kpi" required></textarea>
-                    <div id="goaldescHelp" class="form-text">Highlight the key performance indexes of your goal</div>
+                  <div class="grid column-gap-3 row">
+                    <div class="col-sm w-100 mb-3">
+                      <label for="target" class="form-label">Agreed Target</label>
+                      <textarea class="form-control" name="target" value="" id="target" required></textarea>
+                      <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
+                    </div>
+                    <div class="col-sm w-100 mb-3">
+                      <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
+                      <textarea class="form-control" name="kpi" value="" id="kpi" required></textarea>
+                      <div id="goaldescHelp" class="form-text">Highlight the key performance indices of your goal</div>
+                    </div>
                   </div>
                   <section class="container-fluid">
                     <div class="grid column-gap-3 row">
-                      <div class="col mb-3 w-25 px-0 mx-0">
+                      <div class="col-sm mb-3 w-100 px-0 mx-0">
                         <label for="weight" class="form-label">Weight</label>
-                        <input type="number" name="weight" value="0" min="0" class="form-control" id="weight" required/>
+                        <input type="number" name="weight" min="0" max="100" class="form-control" id="weight" required/>
                       </div>
-                      <div class="col mb-3 w-25 px-0 mx-0">
+                      <div class="col mb-3 w-100 px-0 mx-0">
                         <label for="timeline" class="form-label">Timeline</label>
-                        <input type="datetime-local" class="form-control" id="timeline"/>
+                        <input type="datetime-local" class="form-control" id="timeline" required/>
                       </div>
                     </div>
                     <div class="d-flex align-items-center justify-content-around">
@@ -436,52 +438,56 @@
                 <div data-repeater-item class="mt-5 d-none goal_2">
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row px-0 mx-0 w-100">
-                      <div class="col mb-3 mx-0 px-0 w-100">
+                      <div class="col-sm mb-3 mx-0 px-0 w-100">
                         <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
                         <select class="form-select" name="objective" id="focus" required>
-                          <option class="default" value="">Focus point </option>
-                          <option value="">Focus point</option>
-                          <option value="">Focus point</option>
-                          <option value="">Focus point</option>
-                          <option value="">Focus point</option>
-                          <option value="">Focus point</option>
+                          <option class="default" value="Focus point 1">Focus point 1</option>
+                          <option value="">Focus point 2</option>
+                          <option value="">Focus point 3</option>
+                          <option value="">Focus point 4</option>
+                          <option value="">Focus point 5</option>
+                          <option value="">Focus point 6</option>
                         </select>
                       </div>
-                      <div class="col mb-3 mx-0 px-0 w-100">
-                        <label for="scorecards" class="form-label">Link to balance scorecards</label>
+                      <div class="col-sm mb-3 mx-0 px-0 w-100">
+                        <label for="scorecards" class="form-label">Link to balance scorecard</label>
                         <div class="form-control" id="scorecards" name="scorecards" value="">NULL</div>
                       </div>
                     </div>
                   </div>
-                  <div class="mb-3">
-                    <label for="goal" class="form-label">Goal</label>
-                    <textarea class="form-control" name="goal" value="" id="exampleInputGoal" aria-describedby="goalHelp" required></textarea>
-                    <div id="goalHelp" class="form-text">Short text describing your goal</div>
+                  <div class="grid column-gap-3 row">
+                    <div class="col-sm w-100 mb-3 py-0 mx-0">
+                      <label for="goal" class="form-label">Goal</label>
+                      <textarea class="form-control" name="goal" value="" id="exampleInputGoal" aria-describedby="goalHelp" required></textarea>
+                      <div id="goalHelp" class="form-text">Short text describing your goal</div>
+                    </div>
+                    <div class="col-sm w-100 mb-3 py-0 mx-0">
+                      <label for="task" class="form-label">Specific tasks to be accomplished</label>
+                      <textarea class="form-control" name="task" value="" id="task" aria-describedby="goaldescHelp" required></textarea>
+                      <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
+                    </div>
                   </div>
-                  <div class="mb-3">
-                    <label for="task" class="form-label">Specific tasks to be accomplished</label>
-                    <textarea class="form-control" name="task" value="" id="task" aria-describedby="goaldescHelp" required></textarea>
-                    <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="target" class="form-label">Agreed Target</label>
-                    <textarea class="form-control" name="target" value="" id="target"></textarea>
-                    <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
-                  </div>
-                  <div class="mb-3">
-                    <label for="kpi" class="form-label">Achievement Criteria (KPIs)</label>
-                    <textarea class="form-control" name="kpi" value="" id="kpi" required></textarea>
-                    <div id="goaldescHelp" class="form-text">Highlight the key performance indexes of your goal</div>
+                  <div class="grid column-gap-3 row">
+                    <div class="col-sm w-100 mb-3 py-0 mx-0">
+                      <label for="target" class="form-label">Agreed Target</label>
+                      <textarea class="form-control" name="target" value="" id="target" required></textarea>
+                      <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
+                    </div>
+                    <div class="col-sm w-100 mb-3 py-0 mx-0">
+                      <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
+                      <textarea class="form-control" name="kpi" value="" id="kpi" required></textarea>
+                      <div id="goaldescHelp" class="form-text">Highlight the key performance indices of your goal</div>
+                    </div>
                   </div>
                   <section class="container-fluid">
                     <div class="grid column-gap-3 row">
-                      <div class="col mb-3 w-25 px-0 mx-0">
+                      <div class="col-sm mb-3 w-100 px-0 mx-0">
                         <label for="weight" class="form-label">Weight</label>
-                        <input type="number" name="weight" value="0" min="0" class="form-control" id="weight" required/>
+                        <input type="number" name="weight" value="0" min="0" max="100" class="form-control" id="weight" required/>
                       </div>
-                      <div class="col mb-3 w-25 px-0 mx-0">
+                      <div class="col-sm mb-3 w-100 px-0 mx-0">
                         <label for="timeline" class="form-label">Timeline</label>
-                        <input type="datetime-local" class="form-control" id="timeline"/>
+                        <input type="datetime-local" class="form-control" id="timeline" required/>
                       </div>
                     </div>
                     <!-- <div class="d-flex align-items-center justify-content-around">
@@ -498,62 +504,72 @@
                       <div class="col mb-3 mx-0 px-0 w-100">
                         <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
                         <select class="form-select" name="objective" id="focus" required>
-                          <option class="default" value="">Focus point </option>
-                          <option value="">Focus point</option>
-                          <option value="">Focus point</option>
-                          <option value="">Focus point</option>
-                          <option value="">Focus point</option>
-                          <option value="">Focus point</option>
+                          <option class="default" value="Focus point 1">Focus point 1</option>
+                          <option value="">Focus point 2</option>
+                          <option value="">Focus point 3</option>
+                          <option value="">Focus point 4</option>
+                          <option value="">Focus point 5</option>
+                          <option value="">Focus point 6</option>
                         </select>
                       </div>
-                      <div class="col mb-3 mx-0 px-0 w-100">
-                        <label for="scorecards" class="form-label">Link to balance scorecards</label>
+                      <div class="col-sm mb-3 mx-0 px-0 w-100">
+                        <label for="scorecards" class="form-label">Link to balance scorecard</label>
                         <div class="form-control" id="scorecards" name="scorecards" value="">NULL</div>
                       </div>
                     </div>
                   </div>
-                  <div class="mb-3">
-                    <label for="goal" class="form-label">Goal</label>
-                    <textarea class="form-control" name="goal" value="" id="exampleInputGoal" aria-describedby="goalHelp" required></textarea>
-                    <div id="goalHelp" class="form-text">Short text describing your goal</div>
+                  <div class="grid column-gap-3 row">
+                    <div class="col-sm mb-3 py-0 mx-0">
+                      <label for="goal" class="form-label">Goal</label>
+                      <textarea class="form-control" name="goal" value="" id="exampleInputGoal" aria-describedby="goalHelp" required></textarea>
+                      <div id="goalHelp" class="form-text">Short text describing your goal</div>
+                    </div>
+                    <div class="col-sm mb-3 py-0 mx-0">
+                      <label for="task" class="form-label">Specific tasks to be accomplished</label>
+                      <textarea class="form-control" name="task" value="" id="task" aria-describedby="goaldescHelp" required></textarea>
+                      <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
+                    </div>
                   </div>
-                  <div class="mb-3">
-                    <label for="task" class="form-label">Specific tasks to be accomplished</label>
-                    <textarea class="form-control" name="task" value="" id="task" aria-describedby="goaldescHelp" required></textarea>
-                    <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
+                  <div class="grid column-gap-3 row">
+                    <div class="col-sm w-100 mb-3 py-0 mx-0">
+                      <label for="target" class="form-label">Agreed Target</label>
+                      <textarea class="form-control" name="target" value="" id="target" required></textarea>
+                      <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
+                    </div>
+                    <div class="col-sm w-100 mb-3 py-0 mx-0">
+                      <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
+                      <textarea class="form-control" name="kpi" value="" id="kpi" required></textarea>
+                      <div id="goaldescHelp" class="form-text">Highlight the key performance indices of your goal</div>
+                    </div>
                   </div>
-                  <div class="mb-3">
-                    <label for="target" class="form-label">Agreed Target</label>
-                    <textarea class="form-control" name="target" value="" id="target"></textarea>
-                    <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
-                  </div>
-                  <div class="mb-3">
-                    <label for="kpi" class="form-label">Achievement Criteria (KPIs)</label>
-                    <textarea class="form-control" name="kpi" value="" id="kpi" required></textarea>
-                    <div id="goaldescHelp" class="form-text">Highlight the key performance indexes of your goal</div>
-                  </div>
-                  <section class="container-fluid">
+                  <div class="container-fluid">
                     <div class="grid column-gap-3 row">
-                      <div class="col mb-3 w-25 px-0 mx-0">
+                      <div class="col-sm mb-3 w-25 px-0 mx-0">
                         <label for="weight" class="form-label">Weight</label>
-                        <input type="number" name="weight" value="0" min="0" class="form-control" id="weight" required/>
+                        <input type="number" name="weight" value="0" min="0" max="100" class="form-control" id="weight" required/>
                       </div>
-                      <div class="col mb-3 w-25 px-0 mx-0">
+                      <div class="col-sm mb-3 w-25 px-0 mx-0">
                         <label for="timeline" class="form-label">Timeline</label>
-                        <input type="datetime-local" class="form-control" id="timeline"/>
+                        <input type="datetime-local" class="form-control" id="timeline" required/>
                       </div>
                     </div>
-                    <!-- <div class="d-flex align-items-center justify-content-around">
-                      <button data-repeater-delete class="btn btn-danger rounded-pill hstack gap-6" type="button">
-                        <i class="ti ti-trash fs-5"></i>
-                        Delete
-                      </button>
-                    </div> -->
-                  </section>
-                </div>        
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-primary rounded-pill" id="submit" type="submit" style="height: 40px">
+                  <div class="d-flex align-items-center justify-content-center">
+                    Submit
+                    <i class="ti ti-send ms-1 fs-5"></i>
+                  </div>
+                </button>
+                <div class="bg-success rounded-2 p-3 col-3 d-flex align-items-center justify-content-center" id="totalWeight" >
+                  <h5 class="text-white fw-bolder m-0">Total Weight: 0/100</h5>  
+                </div>    
               </div>
             </form>
           </div>
+          <div id="goalSubmissionAlert"></div>
         </div>
       </div>
     </div>
