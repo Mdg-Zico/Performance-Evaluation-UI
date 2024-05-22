@@ -46,6 +46,8 @@ function sendSessionData(data) {
 
 function validateFields() {
     var isValid = true;
+
+    // Validate required fields
     $('.form input[required], .form select[required]').each(function() {
         if (!$(this).val().trim()) {
             $(this).css('borderColor', 'red');
@@ -61,31 +63,37 @@ function validateFields() {
     var startDateValue = startDateInput.val().trim();
     var endDateValue = endDateInput.val().trim();
 
-    if (!startDateValue || !endDateValue) {
-        if (!startDateValue) {
-            startDateInput.css('borderColor', 'red');
-        }
-        if (!endDateValue) {
-            endDateInput.css('borderColor', 'red');
-        }
-        isValid = false;
-    } else {
+    if (startDateValue && endDateValue) {
         var startDate = new Date(startDateValue);
         var endDate = new Date(endDateValue);
+
         if (startDate > endDate) {
             startDateInput.css('borderColor', 'red');
             endDateInput.css('borderColor', 'red');
             alert('End Date cannot be earlier than Start Date.');
-            startDateInput.val(''); // Clear start date input
-            endDateInput.val(''); // Clear end date input
             isValid = false;
         } else {
             startDateInput.css('borderColor', ''); // Reset border color
             endDateInput.css('borderColor', ''); // Reset border color
         }
+    } else {
+        if (!startDateValue) {
+            startDateInput.css('borderColor', 'red');
+            isValid = false;
+        }
+        if (!endDateValue) {
+            endDateInput.css('borderColor', 'red');
+            isValid = false;
+        }
     }
+
     return isValid;
 }
+
+// To ensure the border resets immediately when the input changes
+$('#start-date, #end-date').on('input', function() {
+    validateFields();
+});
 
 function showSubmissionAlert($container) {
     $('.alert').remove(); // Remove existing alerts
