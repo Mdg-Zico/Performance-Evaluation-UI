@@ -333,6 +333,9 @@
                   </ol>
                 </nav>
               </div>
+              <div class="rounded-2 col-3" id="totalWeight" >
+                <h5 class="text-dark fw-bolder m-0">Total Weight: 0/100</h5>  
+              </div>
             </div>
           </div>
         </div>
@@ -404,7 +407,7 @@
                   <div class="grid column-gap-3 row">
                     <div class="col-sm w-100 mb-3">
                       <label for="target" class="form-label">Agreed Target</label>
-                      <textarea class="form-control" name="target" value="" id="target"></textarea>
+                      <textarea class="form-control" name="target" value="" id="target" required></textarea>
                       <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
                     </div>
                     <div class="col-sm w-100 mb-3">
@@ -421,7 +424,7 @@
                       </div>
                       <div class="col mb-3 w-100 px-0 mx-0">
                         <label for="timeline" class="form-label">Timeline</label>
-                        <input type="datetime-local" class="form-control" id="timeline"/>
+                        <input type="datetime-local" class="form-control" id="timeline" required/>
                       </div>
                     </div>
                     <div class="d-flex align-items-center justify-content-around">
@@ -467,7 +470,7 @@
                   <div class="grid column-gap-3 row">
                     <div class="col-sm w-100 mb-3 py-0 mx-0">
                       <label for="target" class="form-label">Agreed Target</label>
-                      <textarea class="form-control" name="target" value="" id="target"></textarea>
+                      <textarea class="form-control" name="target" value="" id="target" required></textarea>
                       <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
                     </div>
                     <div class="col-sm w-100 mb-3 py-0 mx-0">
@@ -484,7 +487,7 @@
                       </div>
                       <div class="col-sm mb-3 w-100 px-0 mx-0">
                         <label for="timeline" class="form-label">Timeline</label>
-                        <input type="datetime-local" class="form-control" id="timeline"/>
+                        <input type="datetime-local" class="form-control" id="timeline" required/>
                       </div>
                     </div>
                     <!-- <div class="d-flex align-items-center justify-content-around">
@@ -530,7 +533,7 @@
                   <div class="grid column-gap-3 row">
                     <div class="col-sm w-100 mb-3 py-0 mx-0">
                       <label for="target" class="form-label">Agreed Target</label>
-                      <textarea class="form-control" name="target" value="" id="target"></textarea>
+                      <textarea class="form-control" name="target" value="" id="target" required></textarea>
                       <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
                     </div>
                     <div class="col-sm w-100 mb-3 py-0 mx-0">
@@ -547,7 +550,7 @@
                       </div>
                       <div class="col-sm mb-3 w-25 px-0 mx-0">
                         <label for="timeline" class="form-label">Timeline</label>
-                        <input type="datetime-local" class="form-control" id="timeline"/>
+                        <input type="datetime-local" class="form-control" id="timeline" required/>
                       </div>
                     </div>
                   </div>
@@ -560,7 +563,7 @@
                     <i class="ti ti-send ms-1 fs-5"></i>
                   </div>
                 </button>
-                <div class="bg-primary2 rounded-2 p-3 col-3 d-flex align-items-center justify-content-center" id="totalWeight" >
+                <div class="bg-success rounded-2 p-3 col-3 d-flex align-items-center justify-content-center" id="totalWeight" >
                   <h5 class="text-white fw-bolder m-0">Total Weight: 0/100</h5>  
                 </div>    
               </div>

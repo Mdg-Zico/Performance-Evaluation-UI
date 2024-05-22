@@ -45,20 +45,19 @@ $(document).ready(
   $('#goalFormNavigation').on('click', '.nav-item', function () {
     const classList = $(this).attr("class").split(" ");
     const goalNumber = classList[classList.length - 1];
-    $('.nav-item.active_link').removeClass('active_link');
 
-    formsList.map(item => {
-      if (!item.hasClass('d-none') && !item.hasClass(goalNumber)) {
-        // console.log(item);
-        console.log("Printing from navigation", item.find('#weight').val());
-        item.addClass('d-none');
-      }
-      if (item.hasClass(goalNumber) && item.hasClass('d-none')) {
-        // console.log(item);
-        item.removeClass('d-none');
-      }
-    })
-    $(this).addClass('active_link');
+    if (!classList.includes('active_link')) {
+      $('.nav-item.active_link').removeClass('active_link');
+      formsList.map(item => {
+        if (!item.hasClass('d-none') && !item.hasClass(goalNumber)) {
+          item.addClass('d-none');
+        }
+        if (item.hasClass(goalNumber) && item.hasClass('d-none')) {
+          item.removeClass('d-none');
+        }
+      })
+      $(this).addClass('active_link');
+    }
   })
   // Form Navigation End
 
