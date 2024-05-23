@@ -44,11 +44,6 @@ $(document).ready(function() {
             $.each(result.residents, function (key, value) {
                 $("#reviewer").append("<option>" + value + "</option>");             
             });
-        /*    
-            $.each(result.designation, function (key, value) {
-                $("#designation").append("<option>" + value.name + "</option>");             
-            });
-        */
         },
         error: function() {
             // Show error message
