@@ -5,6 +5,9 @@ $(document).ready(
   let formsList = [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
   "use strict";
 
+  // Logic to handle showing saved goals on form Start
+  // Logic to handle showing saved goals on form End
+
   // Form Repeater Start
   $('#createGoalForm').repeater({
     initEmpty: false,
