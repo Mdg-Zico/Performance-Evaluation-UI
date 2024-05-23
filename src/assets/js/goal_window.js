@@ -1,33 +1,40 @@
 
 $(document).ready(function () {
     $('#zero_config').DataTable(); // Initialize the DataTable
-    });
-$(document).ready(function() {
-    setupForm();
 
-    $('#submit-btn').on('click', function(event) {
+    $('#create-goal-form').on('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission action
-        handleSubmit();
-    });
+        if (!validateFields()) {
+            alert('Please fill all required fields correctly.');
+        }
+    
+        // Show spinner
+        $('#spinner').show();
+    
+        // Serialize form data
+        const formData = {
+            goalSession: $('#goal-session').val(),
+            goalStaffId: $('#goal-staff-id').val(),
+            startDate: $('#start-date').val(),
+            endDate: $('#end-date').val()
+            // Add more fields as needed
+        }
+       
+        sendGoalData(formData);
+
+
 });
 
-function handleSubmit() {
-    if (!validateFields()) {
-        alert('Please fill all required fields correctly.');
-        return;
-    }
+})
 
-    // Show spinner
-    $('#spinner').show();
-
-    // Serialize form data
-   var serialisedData = $('.form').serialize();
-    //console.log(serialisedData);
+function sendGoalData(data) {
+    console.log(data)
+    console.log("stringify" + JSON.stringify(data))
     // Send AJAX request
     $.ajax({
         type: 'POST',
         url: 'https://dummy.restapiexample.com/api/v1/create', // Replace with your form processing script URL
-        data: serialisedData,
+        data: JSON.stringify(data),
         
         success: function(response) {
             // Hide spinner on successful response
@@ -36,8 +43,8 @@ function handleSubmit() {
             showSubmissionAlert($('.container-fluid'));
             // Scroll to the top immediately
             $('html, body').scrollTop(0);
-            console.log("Serialialised Data: " + serialisedData);
-            console.log(response)
+          
+            console.log("Response: " + response)
         },
         error: function(status, error) {
             // Hide spinner on error response
@@ -49,16 +56,12 @@ function handleSubmit() {
     });
 }
 
-function setupForm() {
-    disableFirstFourFields();
-}
 
-function disableFirstFourFields() {
-    $('#first-name, #last-name, #staff-id, #department').prop('disabled', true);
-}
 
 function validateFields() {
     var isValid = true;
+
+    // Validate required fields
     $('.form input[required], .form select[required]').each(function() {
         if (!$(this).val().trim()) {
             $(this).css('borderColor', 'red');
@@ -73,33 +76,39 @@ function validateFields() {
     var endDateInput = $('#end-date');
     var startDateValue = startDateInput.val().trim();
     var endDateValue = endDateInput.val().trim();
-    
-    if (!startDateValue || !endDateValue) {
-        if (!startDateValue) {
-            startDateInput.css('borderColor', 'red');
-        }
-        if (!endDateValue) {
-            endDateInput.css('borderColor', 'red');
-        }
-        isValid = false;
-    } else {
+
+    if (startDateValue && endDateValue) {
         var startDate = new Date(startDateValue);
         var endDate = new Date(endDateValue);
+
         if (startDate > endDate) {
             startDateInput.css('borderColor', 'red');
             endDateInput.css('borderColor', 'red');
             alert('End Date cannot be earlier than Start Date.');
-            startDateInput.val(''); // Clear start date input
-            endDateInput.val(''); // Clear end date input
             isValid = false;
         } else {
             startDateInput.css('borderColor', ''); // Reset border color
             endDateInput.css('borderColor', ''); // Reset border color
         }
+    } else {
+        if (!startDateValue) {
+            startDateInput.css('borderColor', 'red');
+            isValid = false;
+        }
+        if (!endDateValue) {
+            endDateInput.css('borderColor', 'red');
+            isValid = false;
+        }
     }
 
     return isValid;
 }
+
+// To ensure the border resets immediately when the input changes
+$('#start-date, #end-date').on('input', function() {
+    validateFields();
+});
+
 
 function showSubmissionAlert($container) {
     $('.alert').remove(); // Remove existing alerts

@@ -36,9 +36,9 @@ function sendSessionData(data) {
             $('#spinner').hide(); // Hide spinner after operation completion
             successSubmissionAlert($('.container-fluid')); // Show success message
             $('html, body').scrollTop(0); // Scroll to the top of the page
-           
-            console.log(response)
             appendRowToDataTable(data.session, data.startDate, data.endDate);
+            console.log(response)
+            
         },
         error: function(xhr, status, error) {
             $('#spinner').hide(); // Hide spinner on error
@@ -109,7 +109,7 @@ function successSubmissionAlert($container, statusMsg) {
     $('.alert').remove(); // Remove existing alerts
 
     var $alertDiv = $('<div class="alert alert-success alert-dismissible fade show" role="alert">' +
-        'Your profile has been submitted successfully!' +
+        'Your Form has been submitted successfully!' +
         '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
         '<span aria-hidden="true">&times;</span>' +
         '</button></div>');
@@ -139,22 +139,20 @@ function setupAlertCloseButton($alertDiv) {
 
 function appendRowToDataTable(session, startDate, endDate) {
     const table = $('#zero_config').DataTable(); // Assuming DataTable is initialized with ID 'zero_config'
-  
-    // Create a new table row element
-    const newRow = $('<tr>');
-  
-    // Add cells to the new row
-    newRow.append($('<td>').text(session));
-    newRow.append($('<td>').text(startDate));
-    newRow.append($('<td>').text(endDate));
-  
-    // Add action buttons (can be done similarly)
-    const actionCell = $('<td>');
-    actionCell.append($('<button>').addClass('btn btn-primary btn-update').text('Update'));
-    actionCell.append($('<button>').addClass('btn btn-delete').text('Delete'));
-    newRow.append(actionCell);
-  
-    // Append the new row to the DataTable body
+   
+
+    // Create a new table row as an array of column data
+    const newRow = [
+        session,
+        startDate,
+        endDate,
+        '<button class="btn btn-primary btn-update">Update</button> <button class="btn btn-delete">Delete</button>',
+        ''
+    ];
+
+    // Add the new row to the DataTable and redraw
     table.row.add(newRow).draw(false);
-  }
-  
+
+    // Reorder the DataTable to ensure the new row is at the top
+    table.order([0, 'desc']).draw();
+}

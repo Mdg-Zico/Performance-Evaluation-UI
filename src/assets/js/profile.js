@@ -1,31 +1,50 @@
-
 $(document).ready(function() {
-    setupForm();
+    disableFirstFourFields();
 
-    $('#submit-btn').on('click', function(event) {
+    $('#create-profile-form').on('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission action
-        handleSubmit();
+    
+        if (!validateFields()) {
+            alert('Please fill all required fields correctly.');
+            return;
+        }
+
+        // Show spinner
+        $('#spinner').show();
+
+        // Serialize form data
+        var serialisedData = $('#create-profile-form').serialize();
+        
+
+
+        var formData = {
+            firstName: $('#first-name').val(),
+            lastName: $('#last-name').val(),
+            middleName: $('#middle-name').val(),
+            staffID: $('#staff-id').val(),
+            department: $('#department').val(),
+            unit: $('#unit').val(),
+            directorate: $('#directorate').val(),
+            region: $('#region').val(),
+            areaOffice: $('#area-office').val(),
+            designation: $('#designation').val(),
+            jobLevel: $('#job-level').val(),
+            lineManager: $('#line-manager').val(),
+            reviewer: $('#reviewer').val()
+            // Add more fields as needed
+        };
+
+        sendProfileData(formData);
     });
 });
 
-function handleSubmit() {
-    if (!validateFields()) {
-        alert('Please fill all required fields correctly.');
-        return;
-    }
-
-    // Show spinner
-    $('#spinner').show();
-
-    // Serialize form data
-   var serialisedData = $('.form').serialize();
-    //console.log(serialisedData);
-    // Send AJAX request
+function sendProfileData(data) {
+    console.log(data)
+    console.log("strngify",JSON.stringify(data))
     $.ajax({
         type: 'POST',
         url: 'https://dummy.restapiexample.com/api/v1/create', // Replace with your form processing script URL
-        data: serialisedData,
-        
+        data: JSON.stringify(data),
         success: function(response) {
             // Hide spinner on successful response
             $('#spinner').hide();
@@ -33,21 +52,15 @@ function handleSubmit() {
             showSubmissionAlert($('.container-fluid'));
             // Scroll to the top immediately
             $('html, body').scrollTop(0);
-            console.log("Serialialised Data: " + serialisedData);
-            console.log(response)
+            console.log(response);
         },
-        error: function(status, error) {
+        error: function(jqXHR, textStatus, errorThrown) {
             // Hide spinner on error response
             $('#spinner').hide();
             // Show error message
             alert('An error occurred while submitting the form. Please try again.');
-            
         }
     });
-}
-
-function setupForm() {
-    disableFirstFourFields();
 }
 
 function disableFirstFourFields() {
@@ -56,47 +69,21 @@ function disableFirstFourFields() {
 
 function validateFields() {
     var isValid = true;
-    $('.form input[required], .form select[required]').each(function() {
+
+    // Validate required fields
+    $('#create-profile-form input[required], #create-profile-form select[required]').each(function() {
         if (!$(this).val().trim()) {
             $(this).css('borderColor', 'red');
             isValid = false;
         } else {
-            $(this).css('borderColor', ''); // Reset border color
+            $(this).css('borderColor', ''); // Reset border color if field is filled
         }
     });
 
-    // Date validation
-    var startDateInput = $('#start-date');
-    var endDateInput = $('#end-date');
-    var startDateValue = startDateInput.val().trim();
-    var endDateValue = endDateInput.val().trim();
-    
-    if (!startDateValue || !endDateValue) {
-        if (!startDateValue) {
-            startDateInput.css('borderColor', 'red');
-        }
-        if (!endDateValue) {
-            endDateInput.css('borderColor', 'red');
-        }
-        isValid = false;
-    } else {
-        var startDate = new Date(startDateValue);
-        var endDate = new Date(endDateValue);
-        if (startDate > endDate) {
-            startDateInput.css('borderColor', 'red');
-            endDateInput.css('borderColor', 'red');
-            alert('End Date cannot be earlier than Start Date.');
-            startDateInput.val(''); // Clear start date input
-            endDateInput.val(''); // Clear end date input
-            isValid = false;
-        } else {
-            startDateInput.css('borderColor', ''); // Reset border color
-            endDateInput.css('borderColor', ''); // Reset border color
-        }
-    }
-
     return isValid;
 }
+
+
 
 function showSubmissionAlert($container) {
     $('.alert').remove(); // Remove existing alerts
