@@ -1,6 +1,62 @@
 $(document).ready(function() {
+    // populate form fields dropdowns
     disableFirstFourFields();
 
+    $("#first-name").html();
+    $("#last-name").html();
+    $("#middle-name").html();
+    $("#email").html();
+    $("#staff-id").html();
+    $("#department").html();
+    $("#unit").html();
+    $("#directorate").html();
+    $("#region").html();
+    $("#area-office").html();
+    $("#designation").html();
+    $("#job-level").html();
+    $("#line-manager").html();
+    $("#reviewer").html();
+
+    $.ajax({
+        url: 'https://swapi.dev/api/planets/1/',
+        type: "GET",
+        dataType: "json",
+        success: function (result) {
+        console.log(result);
+        $.each(result.films, function (key, value) {
+            $("#unit").append("<option>" + value + "</option>");
+            });
+            $.each(result.residents, function (key, value) {
+                $("#directorate").append("<option>" + value + "</option>");             
+            });
+            $.each(result.residents, function (key, value) {
+                $("#region").append("<option>" + value + "</option>");             
+            });
+            $.each(result.residents, function (key, value) {
+                $("#area-office").append("<option>" + value + "</option>");             
+            });
+            $.each(result.residents, function (key, value) {
+                $("#job-level").append("<option>" + value + "</option>");             
+            });
+            $.each(result.residents, function (key, value) {
+                $("#line-manager").append("<option>" + value + "</option>");
+            });
+            $.each(result.residents, function (key, value) {
+                $("#reviewer").append("<option>" + value + "</option>");             
+            });
+        /*    
+            $.each(result.designation, function (key, value) {
+                $("#designation").append("<option>" + value.name + "</option>");             
+            });
+        */
+        },
+        error: function() {
+            // Show error message
+            alert('An error occurred while submitting the form. Please try again.');
+        }
+    });
+
+    // handle form submission
     $('#create-profile-form').on('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission action
     
@@ -8,15 +64,8 @@ $(document).ready(function() {
             alert('Please fill all required fields correctly.');
             return;
         }
-
         // Show spinner
         $('#spinner').show();
-
-        
-   
-        
-
-
         var formData = {
             first_name: $('#first-name').val(),
             middle_name: $('#middle-name').val(),
@@ -32,16 +81,13 @@ $(document).ready(function() {
             job_level: $('#job-level').val(),
             line_manager: $('#line-manager').val(),
             reviewer: $('#reviewer').val()
-            // Add more fields as needed
         };
-
         sendProfileData(formData);
     });
 });
 
 function sendProfileData(data) {
     console.log(data)
-    console.log("strngify",JSON.stringify(data))
     $.ajax({
         type: 'POST',
         url: 'https://dummy.restapiexample.com/api/v1/create', // Replace with your form processing script URL
@@ -70,7 +116,6 @@ function disableFirstFourFields() {
 
 function validateFields() {
     var isValid = true;
-
     // Validate required fields
     $('#create-profile-form input[required], #create-profile-form select[required]').each(function() {
         if (!$(this).val().trim()) {
@@ -80,11 +125,8 @@ function validateFields() {
             $(this).css('borderColor', ''); // Reset border color if field is filled
         }
     });
-
     return isValid;
 }
-
-
 
 function showSubmissionAlert($container) {
     $('.alert').remove(); // Remove existing alerts
@@ -93,8 +135,8 @@ function showSubmissionAlert($container) {
         'Form has been submitted successfully!' +
         '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
         '<span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>' +
-        '</button></div>');
-
+        '</button></div>'
+    );
     $container.prepend($alertDiv); // Prepend the alert at the top of the container
     setupAlertCloseButton($alertDiv);
 }
@@ -123,76 +165,3 @@ function setupAlertCloseButton($alertDiv) {
 
 
 
-$("#first-name").html();
-$("#last-name").html();
-$("#middle-name").html();
-$("#email").html();
-$("#staff-id").html();
-$("#department").html();
-$("#unit").html();
-$("#directorate").html();
-$("#region").html();
-$("#area-office").html();
-$("#designation").html();
-$("#job-level").html();
-$("#line-manager").html();
-$("#reviewer").html();
-
-
-$.ajax({
-    url: 'https://swapi.dev/api/planets/1/',
-    type: "GET",
-    dataType: "json",
-    success: function (result) {
-    console.log(result);
-    $.each(result.films, function (key, value) {
-        $("#unit").append("<option>" + value + "</option>");
-        });
-        $.each(result.residents, function (key, value) {
-            $("#directorate").append("<option>" + value + "</option>");             
-        });
-        $.each(result.residents, function (key, value) {
-            $("#region").append("<option>" + value + "</option>");             
-        });
-        $.each(result.residents, function (key, value) {
-            $("#area-office").append("<option>" + value + "</option>");             
-        });
-        $.each(result.residents, function (key, value) {
-            $("#job-level").append("<option>" + value + "</option>");             
-        });
-        $.each(result.residents, function (key, value) {
-            $("#line-manager").append("<option>" + value + "</option>");
-        });
-        $.each(result.residents, function (key, value) {
-            $("#reviewer").append("<option>" + value + "</option>");             
-        });
-     /*   $.each(result.first_name, function (key, value) {
-        $("#first-name").append("<option>" + value.name + "</option>");
-        });
-        $.each(result.middle_name, function (key, value) {
-            $("#middle-name").append("<option>" + value.name + "</option>");
-        });                 
-        $.each(result.last_name, function (key, value) {
-            $("#last-name").append("<option>" + value.name + "</option>");             
-        });
-        $.each(result.email, function (key, value) {
-            $("#email").append("<option>" + value.name + "</option>");             
-        });
-        
-        $.each(result.department, function (key, value) {
-            $("#department").append("<option>" + value.name + "</option>");             
-        });
-       
-        
-        $.each(result.designation, function (key, value) {
-            $("#designation").append("<option>" + value.name + "</option>");             
-        });
-       
-        */
-    },
-    error: function() {
-
-        // Show error message
-        alert('An error occurred while submitting the form. Please try again.');
-    }
-});
