@@ -12,24 +12,25 @@ $(document).ready(function() {
         // Show spinner
         $('#spinner').show();
 
-        // Serialize form data
-        var serialisedData = $('#create-profile-form').serialize();
+        
+   
         
 
 
         var formData = {
-            firstName: $('#first-name').val(),
-            lastName: $('#last-name').val(),
-            middleName: $('#middle-name').val(),
-            staffID: $('#staff-id').val(),
+            first_name: $('#first-name').val(),
+            middle_name: $('#middle-name').val(),
+            last_name: $('#last-name').val(),
+            email: $('#email').val(),
+            staff_id: $('#staff-id').val(),
             department: $('#department').val(),
             unit: $('#unit').val(),
             directorate: $('#directorate').val(),
             region: $('#region').val(),
-            areaOffice: $('#area-office').val(),
+            area_office: $('#area-office').val(),
             designation: $('#designation').val(),
-            jobLevel: $('#job-level').val(),
-            lineManager: $('#line-manager').val(),
+            job_level: $('#job-level').val(),
+            line_manager: $('#line-manager').val(),
             reviewer: $('#reviewer').val()
             // Add more fields as needed
         };
@@ -64,7 +65,7 @@ function sendProfileData(data) {
 }
 
 function disableFirstFourFields() {
-    $('#first-name, #last-name, #staff-id, #department').prop('disabled', true);
+    $('#first-name, #last-name, #staff-id, #department, #email').prop('disabled', true);
 }
 
 function validateFields() {
@@ -103,3 +104,95 @@ function setupAlertCloseButton($alertDiv) {
         $alertDiv.remove(); // Close the alert when clicked
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$("#first-name").html();
+$("#last-name").html();
+$("#middle-name").html();
+$("#email").html();
+$("#staff-id").html();
+$("#department").html();
+$("#unit").html();
+$("#directorate").html();
+$("#region").html();
+$("#area-office").html();
+$("#designation").html();
+$("#job-level").html();
+$("#line-manager").html();
+$("#reviewer").html();
+
+
+$.ajax({
+    url: 'https://swapi.dev/api/planets/1/',
+    type: "GET",
+    dataType: "json",
+    success: function (result) {
+    console.log(result);
+    $.each(result.films, function (key, value) {
+        $("#unit").append("<option>" + value + "</option>");
+        });
+        $.each(result.residents, function (key, value) {
+            $("#directorate").append("<option>" + value + "</option>");             
+        });
+        $.each(result.residents, function (key, value) {
+            $("#region").append("<option>" + value + "</option>");             
+        });
+        $.each(result.residents, function (key, value) {
+            $("#area-office").append("<option>" + value + "</option>");             
+        });
+        $.each(result.residents, function (key, value) {
+            $("#job-level").append("<option>" + value + "</option>");             
+        });
+        $.each(result.residents, function (key, value) {
+            $("#line-manager").append("<option>" + value + "</option>");
+        });
+        $.each(result.residents, function (key, value) {
+            $("#reviewer").append("<option>" + value + "</option>");             
+        });
+     /*   $.each(result.first_name, function (key, value) {
+        $("#first-name").append("<option>" + value.name + "</option>");
+        });
+        $.each(result.middle_name, function (key, value) {
+            $("#middle-name").append("<option>" + value.name + "</option>");
+        });                 
+        $.each(result.last_name, function (key, value) {
+            $("#last-name").append("<option>" + value.name + "</option>");             
+        });
+        $.each(result.email, function (key, value) {
+            $("#email").append("<option>" + value.name + "</option>");             
+        });
+        
+        $.each(result.department, function (key, value) {
+            $("#department").append("<option>" + value.name + "</option>");             
+        });
+       
+        
+        $.each(result.designation, function (key, value) {
+            $("#designation").append("<option>" + value.name + "</option>");             
+        });
+       
+        */
+    },
+    error: function() {
+
+        // Show error message
+        alert('An error occurred while submitting the form. Please try again.');
+    }
+});
