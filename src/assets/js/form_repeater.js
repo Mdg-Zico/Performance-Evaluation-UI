@@ -4,22 +4,29 @@ $(document).ready(
   let total = 0;
   let formsList = [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
   "use strict";
+  
+  // Logic to handle showing saved goals on form Start
+  // ajax request
+
+  
+  // Logic to handle showing saved goals on form End
 
   // Form Repeater Start
-  $('#createGoalForm').repeater({
+  const myRepeater = $('#createGoalForm').repeater({
     initEmpty: false,
     show: function () {
       $(this).slideDown();
       formsList.push($(this));
       $(this).removeClass('goal_1');
       $(this).addClass('d-none goal_'+formsList.length);
-      // console.log("This is formsList\n"+formsList);
+      $('#submit').addClass('d-none');
       appendtoNav();
     },
     hide: function (deleteElement) {
-      const classList = $(this).attr("class").split(" ");
-      const goalNumber = classList[classList.length - 1];
-      const formIndex = goalNumber.split("_")[1] - 1;
+      // const classList = $(this).attr("class").split(" ");
+      // const goalNumber = classList[classList.length - 1];
+      // const formIndex = goalNumber.split("_")[1] - 1;
+      const formIndex = getGoalNumber($(this)) - 1;
       $('li.goal_'+formIndex).addClass('active_link');
       formsList[formIndex - 1].removeClass('d-none');
       popFromNav($(this));
@@ -37,14 +44,13 @@ $(document).ready(
   };
 
   function popFromNav(goal) {
-    const classList = goal.attr("class").split(" ");
-    const goalNumber = classList[classList.length - 1];
+    const goalNumber = getGoalNumberInClass(goal);
     $('li.'+goalNumber).remove();
   };
 
   $('#goalFormNavigation').on('click', '.nav-item', function () {
-    const classList = $(this).attr("class").split(" ");
-    const goalNumber = classList[classList.length - 1];
+    const [goalNumber, classList] = getGoalNumberInClass($(this));
+    console.log(classList);
 
     if (!classList.includes('active_link')) {
       $('.nav-item.active_link').removeClass('active_link');
@@ -57,6 +63,8 @@ $(document).ready(
         }
       })
       $(this).addClass('active_link');
+
+      if (formsList[formsList.length - 1].hasClass(goalNumber)) $('#submit').removeClass('d-none');
     }
   })
   // Form Navigation End
@@ -91,9 +99,17 @@ $(document).ready(
       alert("Total Weight MUST be equal to 100");
       return;
     }
-    serializedData = $(this).serialize();
-    console.log(serializedData);
-    submitGoals(serializedData);
+    const objectData = $(this).repeaterVal();
+    console.log(objectData.goalsList);
+    const data = objectData.goalsList;
+    for (let i = 0; i < data.length; i++) {
+      data[i]['balanced_scorecard'] = formsList[i].find('#scorecards').val();
+      data[i]['weight'] = formsList[i].find('#weight').val();
+      data[i]['timeline'] = formsList[i].find('#timeline').val();
+    }
+    const dataToSend = JSON.stringify(objectData);
+    console.log(dataToSend);
+    submitGoals(dataToSend)
   });
 
   function submitGoals(goals) {
@@ -106,27 +122,21 @@ $(document).ready(
       success: function (data) {
         console.log(goals);
         console.log(data);
-        $('#alert').append(
-          `<div class="alert alert-success alert-dismissible mt-4 show fade d-flex align-items-center justify-content-between" role="alert">
-            <h4>
-              Goal Form submitted successfully
-            </h4>
-            <button data-bs-dismiss="alert" class="bg-transparent border  border-3 text-success rounded-circle p-2">
-              <i class="ti ti-x fs-8 fw-bold m-0"></i>
-            </button>
-          </div>`
+        $('#goalSubmissionAlert').append(
+          `<div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+          Form has been submitted successfully!
+          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
+          </button></div>`
         )
       },
       error: function (message) {
         $('#goalSubmissionAlert').append(
-          `<div class="alert alert-danger alert-dismissible mt-4 show fade d-flex align-items-center justify-content-between" role="alert">
-            <h4>
-              Goal Form submission failed
-            </h4>
-            <button data-bs-dismiss="alert" class="bg-transparent border border-danger border-3 text-danger rounded-circle p-2">
-              <i class="ti ti-x fs-8 fw-bold m-0"></i>
-            </button>
-          </div>`
+          `<div class="alert alert-error alert-dismissible fade show mt-4" role="alert">
+          Form has did not submit successfully!
+          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
+          </button></div>`
         )
       }
     });
@@ -136,8 +146,17 @@ $(document).ready(
   // Code to handle save logic Start
   $('#save-goal-form').on('click', function () {
     const form = $('#createGoalForm');
-    const serializedData = form.serialize();
-    saveGoals(serializedData);
+    const objectData = form.repeaterVal();
+    console.log(objectData.goalsList);
+    const data = objectData.goalsList;
+    for (let i = 0; i < data.length; i++) {
+      data[i]['balanced_scorecard'] = formsList[i].find('#scorecards').val();
+      data[i]['weight'] = formsList[i].find('#weight').val();
+      data[i]['timeline'] = formsList[i].find('#timeline').val();
+    }
+    console.log(JSON.stringify(objectData));
+    console.log(data);
+    saveGoals(data);
   });
 
   function saveGoals (goals) {
@@ -150,29 +169,39 @@ $(document).ready(
       success: function (data) {
         console.log(goals);
         console.log(data);
-        $('#alert').append(
-          `<div class="alert alert-success alert-dismissible mt-4 show fade d-flex align-items-center justify-content-between" role="alert">
-            <h4>
-              Goals saved successfully
-            </h4>
-            <button data-bs-dismiss="alert" class="bg-transparent border  border-3 text-success rounded-circle p-2">
-              <i class="ti ti-x fs-8 fw-bold m-0"></i>
-            </button>
-          </div>`
+        $('#goalSaveAlert').append(
+          `<div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+          Form has been saved successfully!
+          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
+          </button></div>`
         )
       },
       error: function (message) {
-        $('#goalSubmissionAlert').append(
-          `<div class="alert alert-danger alert-dismissible mt-4 show fade d-flex align-items-center justify-content-between" role="alert">
-            <h4>
-              Failed to save goals
-            </h4>
-            <button data-bs-dismiss="alert" class="bg-transparent border border-danger border-3 text-danger rounded-circle p-2">
-              <i class="ti ti-x fs-8 fw-bold m-0"></i>
-            </button>
-          </div>`
+        $('#goalSaveAlert').append(
+          `<div class="alert alert-error alert-dismissible fade show mt-4" role="alert">
+          Form has did not save successfully!
+          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
+          </button></div>`
         )
       }
     });
+  }
+  // Code to handle save logic Start
+
+  // Function to get goal number from goal class
+  function getGoalNumber(goal) {
+    const classList = (goal.attr("class").split(" "));
+    const goalNumber = (classList[classList.length - 1].split("_"))[1];
+    return (Number(goalNumber));
+  }
+
+  // Function to get goal class identifier
+  function getGoalNumberInClass(goal) {
+    const classList = $(goal).attr("class").split(" ");
+    const goalNumber = classList[classList.length - 1];
+
+    return ([goalNumber, classList]);
   }
 });

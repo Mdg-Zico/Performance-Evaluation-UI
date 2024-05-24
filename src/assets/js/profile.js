@@ -142,21 +142,15 @@ function setupAlertCloseButton($alertDiv) {
     });
 }
 
+// Handle Search Dropdown Functionality
+$('#line-manager').on('input', function () {
+    if (($(this).val()).length >= 3)
+    {
+        $('.search-dropdown').removeClass('d-none');
+    }
+})
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+$('.search-dropdown li').on('click', function () {
+    $('#line-manager').val($(this).text());
+    $('.search-dropdown').addClass('d-none');
+})
