@@ -142,7 +142,6 @@ function setupAlertCloseButton($alertDiv) {
     });
 }
 
-<<<<<<< HEAD
 // Handle Search Dropdown Functionality
 $('#line-manager').on('input', function () {
     if (($(this).val()).length >= 3)
@@ -155,23 +154,3 @@ $('.search-dropdown li').on('click', function () {
     $('#line-manager').val($(this).text());
     $('.search-dropdown').addClass('d-none');
 })
-=======
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> db1c4d3698483ce88ab8a1fe811d3b04fb0f7cd7
