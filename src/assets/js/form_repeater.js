@@ -19,7 +19,7 @@ $(document).ready(
       formsList.push($(this));
       $(this).removeClass('goal_1');
       $(this).addClass('d-none goal_'+formsList.length);
-      $('#submit').addClass('d-none');
+      $('#submit').addClass('invisible');
       appendtoNav();
     },
     hide: function (deleteElement) {
@@ -64,7 +64,8 @@ $(document).ready(
       })
       $(this).addClass('active_link');
 
-      if (formsList[formsList.length - 1].hasClass(goalNumber)) $('#submit').removeClass('d-none');
+      if (formsList[formsList.length - 1].hasClass(goalNumber)) $('#submit').removeClass('invisible');
+      else $('#submit').addClass('invisible');
     }
   })
   // Form Navigation End
