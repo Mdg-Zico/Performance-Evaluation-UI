@@ -274,16 +274,24 @@
   font-size: 0.6rem; /* Adjust the font size to make it smaller */
   font-weight: 700;
   align-items: center;
-
-
-
-  
-
-  
 }
 .small-button:hover{
   background-color:#5D87FF;
 }
 .btn-outline-info{
   margin-left: 30px;
+}
+
+/* Style search dropdown */
+.search-dropdown {
+    height: 120px;
+    overflow-y: scroll;
+}
+
+.search-dropdown > li {
+    transition-duration: 500;
+    padding: 0.5rem;
+}
+.search-dropdown > li:hover {
+    background-color: #c3e6cb;
 }
