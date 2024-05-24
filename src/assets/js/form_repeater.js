@@ -155,18 +155,35 @@ $(document).ready(
       data[i]['weight'] = formsList[i].find('#weight').val();
       data[i]['timeline'] = formsList[i].find('#timeline').val();
     }
-    console.log(JSON.stringify(objectData));
-    console.log(data);
-    saveGoals(data);
+    const dataToSend = formatJSON(data);
+    console.log(dataToSend);
+    saveGoals(dataToSend);
   });
+
+  function formatJSON (dataToTransform) {
+    const defaultJSON = {"goal_description": [],
+    "specific_task": [],
+    "agreed_target": [],
+    "kpi": [],
+    "corporate_objective": [],
+    "balanced_scorecard": [],
+    "weight": [],
+    "timeline": []
+    }
+    for (let goal of dataToTransform) {
+      const goalKeys = Object.keys(goal);
+      for (let key of goalKeys) {
+        defaultJSON[key].push(goal[key]);
+      }
+    }
+    return defaultJSON;
+  }
 
   function saveGoals (goals) {
     $.ajax({
       type: 'POST',
       url: 'https://dummy.restapiexample.com/api/v1/create',
-      data: {
-        goals
-      },
+      data: goals,
       success: function (data) {
         console.log(goals);
         console.log(data);
