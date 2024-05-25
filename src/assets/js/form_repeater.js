@@ -125,7 +125,7 @@ $(document).ready(
         console.log(data);
         $('#goalSubmissionAlert').append(
           `<div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-          Form has been submitted successfully!
+          <b>Goal data saved successfully!</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
@@ -134,7 +134,7 @@ $(document).ready(
       error: function (message) {
         $('#goalSubmissionAlert').append(
           `<div class="alert alert-error alert-dismissible fade show mt-4" role="alert">
-          Form has did not submit successfully!
+          <b>ERROR: Goal data was not submitted. ${error.responseJSON.statusMsg}</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
@@ -201,19 +201,19 @@ $(document).ready(
       success: function (data) {
         console.log(goals);
         console.log(data);
-        // console.log(data);
         $('#goalSaveAlert').append(
           `<div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-          Form has been saved successfully!
+          <b>Goal data saved successfully! You are yet to submit your goals.</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
         )
       },
-      error: function (message) {
+      error: function (error) {
+        console.log(error)
         $('#goalSaveAlert').append(
-          `<div class="alert alert-error alert-dismissible fade show mt-4" role="alert">
-          Form has did not save successfully!
+          `<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+          <b>ERROR: Goal data was not saved. ${error.responseJSON.statusMsg}</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
