@@ -144,13 +144,40 @@ function setupAlertCloseButton($alertDiv) {
 
 // Handle Search Dropdown Functionality
 $('#line-manager').on('input', function () {
-    if (($(this).val()).length >= 3)
+    if (($(this).val()).length >= 3 && ($(this).val()).length <= 5)
     {
+        getDropDownData();
+    }
+})
+
+$('.search-dropdown').on('click', 'li', function () {
+    $('#line-manager').val($(this).text());
+    $('.search-dropdown').addClass('d-none');
+})
+
+$('#search-dropdown').on('mouseout', 'ul', function () {
+    $('.search-dropdown').addClass('d-none');
+})
+
+$('#search-dropdown').on('mouseenter', 'ul', function () {
+    if (($('#line-manager').val()).length >= 3) {
         $('.search-dropdown').removeClass('d-none');
     }
 })
 
-$('.search-dropdown li').on('click', function () {
-    $('#line-manager').val($(this).text());
-    $('.search-dropdown').addClass('d-none');
-})
+function getDropDownData() {
+    $.ajax({
+        type: 'GET',
+        url: 'https://swapi.dev/api/people',
+        success: function (data) {
+            console.log(data.results);
+            for (character of data.results) {
+                $('.search-dropdown').append('<li>'+character.name+'</li>')
+            }
+            $('.search-dropdown').removeClass('d-none');
+        },
+        error: function (message) {
+            console.log(message);
+        }
+    });
+}

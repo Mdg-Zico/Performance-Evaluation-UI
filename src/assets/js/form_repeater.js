@@ -156,7 +156,6 @@ $(document).ready(
       data[i]['timeline'] = formsList[i].find('#timeline').val();
     }
     const dataToSend = formatJSON(data);
-    console.log(dataToSend);
     saveGoals(dataToSend);
   });
 
@@ -184,9 +183,11 @@ $(document).ready(
       type: 'POST',
       url: 'https://dummy.restapiexample.com/api/v1/create',
       data: goals,
+      dataType: "json",
       success: function (data) {
         console.log(goals);
         console.log(data);
+        // console.log(data);
         $('#goalSaveAlert').append(
           `<div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
           Form has been saved successfully!
