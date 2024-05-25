@@ -173,11 +173,23 @@ $(document).ready(
         weight: goal.weight,
         timeline: goal.timeline
       }
-      defaultJSON[key] = goalTemplate;
+      if (checkForEmptyObject(goalTemplate))
+        defaultJSON[key] = goalTemplate;
       key++;
     }
     console.log(defaultJSON);
     return defaultJSON;
+  }
+
+  function checkForEmptyObject (goalObject) {
+    const objectKeys = Object.keys(goalObject);
+    const exceptions = ["weight", "balanced_scorecard", "corporate_objective"];
+    for (let key of objectKeys) {
+      if (!exceptions.includes(key)) {
+        if (goalObject[key]) return true;
+      }
+    }
+    return false;
   }
 
   function saveGoals (goals) {
