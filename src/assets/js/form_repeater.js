@@ -155,26 +155,28 @@ $(document).ready(
       data[i]['weight'] = formsList[i].find('#weight').val();
       data[i]['timeline'] = formsList[i].find('#timeline').val();
     }
-    const dataToSend = formatJSON(data);
+    const dataToSend = JSON.stringify(formatJSON(data));
     saveGoals(dataToSend);
   });
 
   function formatJSON (dataToTransform) {
-    const defaultJSON = {"goal_description": [],
-    "specific_task": [],
-    "agreed_target": [],
-    "kpi": [],
-    "corporate_objective": [],
-    "balanced_scorecard": [],
-    "weight": [],
-    "timeline": []
-    }
+    const defaultJSON = {}
+    let key = 0;
     for (let goal of dataToTransform) {
-      const goalKeys = Object.keys(goal);
-      for (let key of goalKeys) {
-        defaultJSON[key].push(goal[key]);
+      goalTemplate = {
+        goal_description: goal.goal_description,
+        specific_task: goal.specific_task,
+        agreed_target: goal.agreed_target,
+        kpi: goal.kpi,
+        corporate_objective: goal.corporate_objective,
+        balanced_scorecard: goal.balanced_scorecard,
+        weight: goal.weight,
+        timeline: goal.timeline
       }
+      defaultJSON[key] = goalTemplate;
+      key++;
     }
+    console.log(defaultJSON);
     return defaultJSON;
   }
 
