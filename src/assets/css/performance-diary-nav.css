@@ -26,3 +26,12 @@
   background-color: #5D87FF;
   color: white;
 }
+
+.btn-score {
+  border: none;
+  margin: 5px; /* Adding margin for spacing */
+  padding: 6px 12px; /* Ensure consistent padding */
+  font-size: 10px; /* Ensure consistent font size */
+  flex-grow: 1; /* Allow buttons to grow and fill the container */
+  text-align: center; /* Center-align the text */
+}

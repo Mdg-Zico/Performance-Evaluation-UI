@@ -10,6 +10,16 @@
   <link rel="stylesheet" href="../assets/css/added.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
+
+  <!-- Bootstrap CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.min.js"></script>
+
+
 </head>
 
 <body>
@@ -333,20 +343,109 @@
             <div class="card-body">
 
                 <div class="row">
-                    <div class="col-custom">
-                        <div class="card card-hover">
-                          <img src="../assets/images/target-Line.svg" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <p class="card-text">Goal:</p>
-                            <p class="card-text">KPI:</p>
-                            <p class="card-text">Weight:</p>
-                           <!-- Wrap the button in a div and apply centering classes to that div only -->
-                                <div class="d-flex justify-content-center">
-                                    <a href="#" class="btn btn-outline-info m-1 small-button">View Goal</a>
-                                </div>
+                    <!-- Button and Card Structure -->
+<div class="col-custom">
+  <div class="card card-hover">
+      <img src="../assets/images/target-Line.svg" class="card-img-top" alt="...">
+      <div class="card-body">
+          <p class="card-text">Goal:</p>
+          <p class="card-text">KPI:</p>
+          <p class="card-text">Weight:</p>
+          <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-outline-info m-1 small-button" data-bs-toggle="modal" data-bs-target="#goalModal">View Goal</a>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Repeat the above structure for other cards -->
+
+<!-- Modal Structure -->
+<div class="modal fade" id="goalModal" tabindex="-1" aria-labelledby="goalModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+      <div class="modal-content bg-grey">
+          <div class="modal-header">
+              <h5 class="modal-title" id="goalModalLabel">Goal Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <div class="goal_1">
+                  <div class="container-fluid px-0 mx-0">
+                      <div class="row gx-3 w-100">
+                          <div class="col-sm-6 mb-3">
+                              <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
+                              <select class="form-select" name="corporate_objective" id="focusPoints" required>
+                                  <option class="default" value="Focus point 1">Focus point 1</option>
+                                  <option value="Focus point 2">Focus point 2</option>
+                                  <option value="Focus point 3">Focus point 3</option>
+                                  <option value="Focus point 4">Focus point 4</option>
+                                  <option value="Focus point 5">Focus point 5</option>
+                                  <option value="Focus point 6">Focus point 6</option>
+                              </select>
                           </div>
-                        </div>
+                          <div class="col-sm-6 mb-3">
+                              <label for="scorecards" class="form-label">Link to balance scorecard</label>
+                              <select class="form-select" name="balanced_scorecard" id="scorecards" required>
+                                  <option class="default" value="Scorecard 1">Scorecard 1</option>
+                                  <option value="Scorecard 2">Scorecard 2</option>
+                                  <option value="Scorecard 3">Scorecard 3</option>
+                                  <option value="Scorecard 4">Scorecard 4</option>
+                                  <option value="Scorecard 5">Scorecard 5</option>
+                                  <option value="Scorecard 6">Scorecard 6</option>
+                              </select>
+                          </div>
                       </div>
+                  </div>
+                  <div class="row gx-3">
+                      <div class="col-sm-6 mb-3">
+                          <label for="goal" class="form-label">Goal</label>
+                          <textarea class="form-control" name="goal_description" id="exampleInputGoal" aria-describedby="goalHelp" required></textarea>
+                          <div id="goalHelp" class="form-text">Short text describing your goal</div>
+                      </div>
+                      <div class="col-sm-6 mb-3">
+                          <label for="task" class="form-label">Specific tasks to be accomplished</label>
+                          <textarea class="form-control" name="specific_task" id="task" aria-describedby="goaldescHelp" required></textarea>
+                          <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
+                      </div>
+                  </div>
+                  <div class="row gx-3">
+                      <div class="col-sm-6 mb-3">
+                          <label for="target" class="form-label">Agreed Target</label>
+                          <textarea class="form-control" name="agreed_target" id="target" required></textarea>
+                      </div>
+                      <div class="col-sm-6 mb-3">
+                          <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
+                          <textarea class="form-control" name="kpi" id="kpi" required></textarea>
+                          <div id="goaldescHelp" class="form-text">Highlight the key performance indices of your goal</div>
+                      </div>
+                  </div>
+                  <div class="container-fluid">
+                      <div class="row gx-3">
+                          <div class="col-sm-6 mb-3">
+                              <label for="weight" class="form-label">Weight</label>
+                              <input type="number" name="weight" value="0" min="0" max="100" class="form-control" id="weight" required/>
+                          </div>
+                          <div class="col-sm-6 mb-3">
+                              <label for="timeline" class="form-label">Timeline</label>
+                              <input type="datetime-local" name="timeline" class="form-control" id="timeline" required/>
+                          </div>
+                      </div>
+                      <div class="d-flex align-items-center justify-content-around">
+                          <button data-repeater-delete class="btn btn-danger rounded-pill hstack gap-6" type="button">
+                              <i class="ti ti-trash fs-5"></i>
+                              Delete
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+      </div>
+  </div>
+</div>
                       <!-- Card 2 -->
                       <div class="col-custom">
                         <div class="card card-hover">
