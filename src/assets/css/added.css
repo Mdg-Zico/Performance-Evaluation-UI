@@ -1,8 +1,7 @@
 :root {
-    --primary-color: #0056b3;
-    --secondary-color: #e9ecef;
+  
     --error-color: #dc3545;
-    --bs-border-width: 1px; /* Ensure this is defined */
+
 }
 
 /* General styles for the form */
@@ -260,7 +259,7 @@
     object-fit: cover; /* Ensures the image covers the area without being stretched */
     
 }
-.card-title{
+.card-head{
     margin-top: 25px;
     font-size: 17px;
     color: black;
