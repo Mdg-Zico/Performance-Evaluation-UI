@@ -11,12 +11,11 @@ $(document).ready(function() {
     $("#unit").html();
     $("#directorate").html();
     $("#region").html();
-    $("#area-office").html();
     $("#designation").html();
     $("#job-level").html();
     $("#line-manager").html();
     $("#reviewer").html();
-
+   
     $.ajax({
         url: 'https://swapi.dev/api/planets/1/',
         type: "GET",
@@ -51,6 +50,29 @@ $(document).ready(function() {
         }
     });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     // handle form submission
     $('#create-profile-form').on('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission action

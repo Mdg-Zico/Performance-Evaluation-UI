@@ -368,14 +368,15 @@
               <h5 class="modal-title" id="goalModalLabel">Goal Details</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+          <hr> <!-- Horizontal line for demarcation -->
           <div class="modal-body">
               <div class="goal_1">
                   <div class="container-fluid px-0 mx-0">
                       <div class="row gx-3 w-100">
                           <div class="col-sm-6 mb-3">
                               <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-                              <select class="form-select" name="corporate_objective" id="focusPoints" required>
-                                  <option class="default" value="Focus point 1">Focus point 1</option>
+                              <select class="form-select" name="corporate_objective" id="focusPoints" required disabled>
+                                  <option value="Focus point 1" selected>Focus point 1</option>
                                   <option value="Focus point 2">Focus point 2</option>
                                   <option value="Focus point 3">Focus point 3</option>
                                   <option value="Focus point 4">Focus point 4</option>
@@ -385,8 +386,8 @@
                           </div>
                           <div class="col-sm-6 mb-3">
                               <label for="scorecards" class="form-label">Link to balance scorecard</label>
-                              <select class="form-select" name="balanced_scorecard" id="scorecards" required>
-                                  <option class="default" value="Scorecard 1">Scorecard 1</option>
+                              <select class="form-select" name="balanced_scorecard" id="scorecards" required disabled>
+                                  <option value="Scorecard 1" selected>Scorecard 1</option>
                                   <option value="Scorecard 2">Scorecard 2</option>
                                   <option value="Scorecard 3">Scorecard 3</option>
                                   <option value="Scorecard 4">Scorecard 4</option>
@@ -399,53 +400,45 @@
                   <div class="row gx-3">
                       <div class="col-sm-6 mb-3">
                           <label for="goal" class="form-label">Goal</label>
-                          <textarea class="form-control" name="goal_description" id="exampleInputGoal" aria-describedby="goalHelp" required></textarea>
-                          <div id="goalHelp" class="form-text">Short text describing your goal</div>
+                          <textarea style="height: 100px;" class="form-control" name="goal_description" id="exampleInputGoal" aria-describedby="goalHelp" readonly required></textarea>
                       </div>
                       <div class="col-sm-6 mb-3">
                           <label for="task" class="form-label">Specific tasks to be accomplished</label>
-                          <textarea class="form-control" name="specific_task" id="task" aria-describedby="goaldescHelp" required></textarea>
-                          <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
+                          <textarea style="height: 100px;" class="form-control" name="specific_task" id="task" aria-describedby="goaldescHelp" readonly required></textarea>
                       </div>
                   </div>
                   <div class="row gx-3">
                       <div class="col-sm-6 mb-3">
                           <label for="target" class="form-label">Agreed Target</label>
-                          <textarea class="form-control" name="agreed_target" id="target" required></textarea>
+                          <textarea style="height: 80px;" class="form-control" name="agreed_target" id="target" readonly required></textarea>
                       </div>
                       <div class="col-sm-6 mb-3">
                           <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
-                          <textarea class="form-control" name="kpi" id="kpi" required></textarea>
-                          <div id="goaldescHelp" class="form-text">Highlight the key performance indices of your goal</div>
+                          <textarea style="height: 80px;" class="form-control" name="kpi" id="kpi" readonly required></textarea>
                       </div>
                   </div>
                   <div class="container-fluid">
                       <div class="row gx-3">
                           <div class="col-sm-6 mb-3">
                               <label for="weight" class="form-label">Weight</label>
-                              <input type="number" name="weight" value="0" min="0" max="100" class="form-control" id="weight" required/>
+                              <input type="number" name="weight" value="0" min="0" max="100" class="form-control" id="weight" readonly required>
                           </div>
                           <div class="col-sm-6 mb-3">
                               <label for="timeline" class="form-label">Timeline</label>
-                              <input type="datetime-local" name="timeline" class="form-control" id="timeline" required/>
+                              <input type="datetime-local" name="timeline" class="form-control" id="timeline" readonly required>
                           </div>
-                      </div>
-                      <div class="d-flex align-items-center justify-content-around">
-                          <button data-repeater-delete class="btn btn-danger rounded-pill hstack gap-6" type="button">
-                              <i class="ti ti-trash fs-5"></i>
-                              Delete
-                          </button>
-                      </div>
+                        </div>
                   </div>
               </div>
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" id="updateButton" class="btn btn-primary">Update</button>
           </div>
       </div>
   </div>
 </div>
+
+
                       <!-- Card 2 -->
                       <div class="col-custom">
                         <div class="card card-hover">
@@ -944,7 +937,7 @@
       </div>
     </div>
   </div>
-  <script src="view-goals.js"></script>
+  <script src="../assets/js/view-goals.js"></script>
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/js/sidebarmenu.js"></script>
