@@ -375,25 +375,11 @@
                       <div class="row gx-3 w-100">
                           <div class="col-sm-6 mb-3">
                               <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-                              <select class="form-select" name="corporate_objective" id="focusPoints" required disabled>
-                                  <option value="Focus point 1" selected>Focus point 1</option>
-                                  <option value="Focus point 2">Focus point 2</option>
-                                  <option value="Focus point 3">Focus point 3</option>
-                                  <option value="Focus point 4">Focus point 4</option>
-                                  <option value="Focus point 5">Focus point 5</option>
-                                  <option value="Focus point 6">Focus point 6</option>
-                              </select>
+                              <input type="number" name="corporate_objective" placeholder="Corporate Objective" min="0" max="100" class="form-control" id="corporate_objective" readonly>
                           </div>
                           <div class="col-sm-6 mb-3">
                               <label for="scorecards" class="form-label">Link to balance scorecard</label>
-                              <select class="form-select" name="balanced_scorecard" id="scorecards" required disabled>
-                                  <option value="Scorecard 1" selected>Scorecard 1</option>
-                                  <option value="Scorecard 2">Scorecard 2</option>
-                                  <option value="Scorecard 3">Scorecard 3</option>
-                                  <option value="Scorecard 4">Scorecard 4</option>
-                                  <option value="Scorecard 5">Scorecard 5</option>
-                                  <option value="Scorecard 6">Scorecard 6</option>
-                              </select>
+                              <input type="number" name="balanced_scorecard" placeholder="Balanced Scorecard" min="0" max="100" class="form-control" id="balanced_scorecard" readonly>
                           </div>
                       </div>
                   </div>
