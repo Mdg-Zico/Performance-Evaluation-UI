@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     $('#create-goal-form').on('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission action
-        if (!validateFields()) {
+        if (!validateGoalFields()) {
             alert('Please fill all required fields correctly.');
         }
     
@@ -40,25 +40,24 @@ function sendGoalData(data) {
             // Hide spinner on successful response
             $('#spinner').hide();
             // Show success message
-            showSubmissionAlert($('.container-fluid'));
+            showGoalSubmissionAlert($('.container-fluid'));
             // Scroll to the top immediately
             $('html, body').scrollTop(0);
           
             console.log("Response: " + response)
         },
-        error: function(status, error) {
-            // Hide spinner on error response
-            $('#spinner').hide();
-            // Show error message
-            alert('An error occurred while submitting the form. Please try again.');
-            
+        error: function(xhr, status, error) {
+            $('#spinner').hide(); // Hide spinner on error
+           showGoalSubmissionFailureAlert($('.container-fluid'))
+            $('html, body').scrollTop(0); // Scroll to the top of the page
+           
         }
     });
 }
 
 
 
-function validateFields() {
+function validateGoalFields() {
     var isValid = true;
 
     // Validate required fields
@@ -106,17 +105,29 @@ function validateFields() {
 
 // To ensure the border resets immediately when the input changes
 $('#start-date, #end-date').on('input', function() {
-    validateFields();
+    validateGoalFields();
 });
 
 
-function showSubmissionAlert($container) {
+function showGoalSubmissionAlert($container) {
     $('.alert').remove(); // Remove existing alerts
 
     var $alertDiv = $('<div class="alert alert-success alert-dismissible fade show" role="alert">' +
-        'Form has been submitted successfully!' +
+        ' Goal Form submitted successfully!' +
         '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
         '<span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>' +
+        '</button></div>');
+
+    $container.prepend($alertDiv); // Prepend the alert at the top of the container
+    setupAlertCloseButton($alertDiv);
+}
+function showGoalSubmissionFailureAlert($container) {
+    $('.alert').remove(); // Remove existing alerts
+
+    var $alertDiv = $('<div class="alert alert-danger alert-dismissible fade show" role="alert">' +
+        'Error on Submission' +
+        '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+        '<span aria-hidden="true">&times;</span>' +
         '</button></div>');
 
     $container.prepend($alertDiv); // Prepend the alert at the top of the container

@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('#zero_config').DataTable(); // Initialize the DataTable
     $('#create-session-form').on('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission action
-        if (!validateFields()) {
+        if (!validateSessionFields()) {
             alert('Please fill all required fields correctly.');
         }
     
@@ -34,7 +34,7 @@ function sendSessionData(data) {
         data: JSON.stringify(data),
         success: function(response) {
             $('#spinner').hide(); // Hide spinner after operation completion
-            successSubmissionAlert($('.container-fluid')); // Show success message
+            showSessionSubmissionAlert($('.container-fluid')); // Show success message
             $('html, body').scrollTop(0); // Scroll to the top of the page
             appendRowToDataTable(data.session, data.startDate, data.endDate);
             console.log(response)
@@ -47,14 +47,14 @@ function sendSessionData(data) {
           //  console.log("RESPONSE HERE", response)
            // alert(response["responseJSON"]["statusMsg"]);
 
-            failureSubmissionAlert($('.container-fluid'))
+           showSessionSubmissionFailureAlert($('.container-fluid'))
             $('html, body').scrollTop(0); // Scroll to the top of the page
            
         }
     });
 }
 
-function validateFields() {
+function validateSessionFields() {
     var isValid = true;
 
     // Validate required fields
@@ -102,10 +102,10 @@ function validateFields() {
 
 // To ensure the border resets immediately when the input changes
 $('#start-date, #end-date').on('input', function() {
-    validateFields();
+    validateSessionFields();
 });
 
-function successSubmissionAlert($container, statusMsg) {
+function showSessionSubmissionAlert($container, statusMsg) {
     $('.alert').remove(); // Remove existing alerts
 
     var $alertDiv = $('<div class="alert alert-success alert-dismissible fade show" role="alert">' +
@@ -118,7 +118,7 @@ function successSubmissionAlert($container, statusMsg) {
     setupAlertCloseButton($alertDiv);
 }
 
-function failureSubmissionAlert($container) {
+function showSessionSubmissionFailureAlert($container) {
     $('.alert').remove(); // Remove existing alerts
 
     var $alertDiv = $('<div class="alert alert-danger alert-dismissible fade show" role="alert">' +
