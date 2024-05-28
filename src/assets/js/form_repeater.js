@@ -6,60 +6,33 @@ $(document).ready(
   "use strict";
   
   // Logic to handle showing saved goals on form Start
-  // const dummyData = {0: {"goal_description":"fhudhjfkj",
-  //                    "specific_task":"fmsdifeief",
-  //                    "agreed_target":"wfwofjwnfkn",
-  //                    "kpi":"nvjfnriunine",
-  //                    "corporate_objective":"Focus point 1",
-  //                    "balanced_scorecard":"Scorecard 1",
-  //                    "weight":"043",
-  //                    "timeline":"2024-05-31T12:21"},
-  //                    1: {"goal_description":"fhudhjfkj",
-  //                    "specific_task":"fmsdifeief",
-  //                    "agreed_target":"wfwofjwnfkn",
-  //                    "kpi":"nvjfnriunine",
-  //                    "corporate_objective":"Focus point 1",
-  //                    "balanced_scorecard":"Scorecard 1",
-  //                    "weight":"043",
-  //                    "timeline":"2024-05-31T12:21"},
-  //                    2: {"goal_description":"fhudhjfkj",
-  //                    "specific_task":"fmsdifeief",
-  //                    "agreed_target":"wfwofjwnfkn",
-  //                    "kpi":"nvjfnriunine",
-  //                    "corporate_objective":"Focus point 1",
-  //                    "balanced_scorecard":"Scorecard 1",
-  //                    "weight":"043",
-  //                    "timeline":"2024-05-31T12:21"},
-  //                    3: {"goal_description":"different",
-  //                    "specific_task":"very different",
-  //                    "agreed_target":"wfwofjwnfkn",
-  //                    "kpi":"nvjfnriunine",
-  //                    "corporate_objective":"Focus point 1",
-  //                    "balanced_scorecard":"Scorecard 1",
-  //                    "weight":"043",
-  //                    "timeline":"2024-05-31T12:21"}};
+  // $.ajax({
+  //   url: '#',
+  //   success: function (data) {
+  //     console.log("Some goals were saved previously");
+  //     populateSavedGoalsOnLoad(data);
+  //   }
+  // })
   
-  // function populateSavedGoalsOnLoad (data) {
-  //   const numberOfSavedGoals = Object.keys(data).length
-  //   console.log(numberOfSavedGoals);
-  //   if (formsList.length < numberOfSavedGoals) {
-  //     for (let number = formsList.length + 1; number <= numberOfSavedGoals; number++) {
-  //       console.log('New goal created');
-  //       createGoal(number);
-  //     }
-  //   }
-  //   for (let counter = 0; counter < numberOfSavedGoals; counter++) {
-  //     const goalForm = formsList[counter];
-  //     const goalData = data[counter];
-  //     console.log(goalData);
-  //     console.log(typeof(goalData));
-  //     for (let key of Object.keys(goalData)) {
-  //       goalForm.find('[name="'+key+'"]').val(goalData[key]);
-  //     }
-  //   }
-  // }
-
-  // populateSavedGoalsOnLoad(dummyData);
+  function populateSavedGoalsOnLoad (data) {
+    const numberOfSavedGoals = Object.keys(data).length
+    console.log(numberOfSavedGoals);
+    if (formsList.length < numberOfSavedGoals) {
+      for (let number = formsList.length + 1; number <= numberOfSavedGoals; number++) {
+        console.log('New goal created');
+        createGoal(number);
+      }
+    }
+    for (let counter = 0; counter < numberOfSavedGoals; counter++) {
+      const goalForm = formsList[counter];
+      const goalData = data[counter];
+      console.log(goalData);
+      console.log(typeof(goalData));
+      for (let key of Object.keys(goalData)) {
+        goalForm.find('[name="'+key+'"]').val(goalData[key]);
+      }
+    }
+  }
 
   // Function to handle creation of extra goals in case they have been saved
   function createGoal (number) {
@@ -78,7 +51,7 @@ $(document).ready(
             </select>
           </div>
           <div class="col-sm mb-3 mx-0 px-0 w-100">
-            <label for="scorecards" class="form-label">Link to balance scorecard<br/><br/></label>
+            <label for="scorecards" class="form-label">Link to balance scorecard</label>
             <select class="form-select" name="balanced_scorecard" id="scorecards" required>
               <option class="default" value="Scorecard 1">Scorecard 1</option>
               <option value="Scorecard 2">Scorecard 2</option>
