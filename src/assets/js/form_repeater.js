@@ -13,6 +13,51 @@ $(document).ready(
   //     populateSavedGoalsOnLoad(data);
   //   }
   // })
+
+  const dummyData = {
+    "0":{
+         "goal_description":"hdyygdi",
+         "specific_task":"dreedw",
+         "agreed_target":"dknednie",
+         "kpi":"ejd ececeic",
+         "corporate_objective":"Focus point 2",
+         "balanced_scorecard":"Scorecard 4",
+         "weight":"043",
+         "timeline":"2024-06-01T08:32"
+        },
+    "1":{
+      "goal_description":"hdyygdi",
+      "specific_task":"dreedw",
+      "agreed_target":"dknednie",
+      "kpi":"ejd ececeic",
+      "corporate_objective":"Focus point 2",
+      "balanced_scorecard":"Scorecard 4",
+      "weight":"043",
+      "timeline":"2024-06-01T08:32"
+      },
+    "2":{
+    "goal_description":"hdyygdi",
+    "specific_task":"dreedw",
+    "agreed_target":"dknednie",
+    "kpi":"ejd ececeic",
+    "corporate_objective":"Focus point 2",
+    "balanced_scorecard":"Scorecard 4",
+    "weight":"043",
+    "timeline":"2024-06-01T08:32"
+    },
+    "3":{
+    "goal_description":"hdyygdi",
+    "specific_task":"dreedw",
+    "agreed_target":"dknednie",
+    "kpi":"ejd ececeic",
+    "corporate_objective":"Focus point 2",
+    "balanced_scorecard":"Scorecard 4",
+    "weight":"043",
+    "timeline":"2024-06-01T08:32"
+    }
+  }
+
+  populateSavedGoalsOnLoad(dummyData);
   
   function populateSavedGoalsOnLoad (data) {
     const numberOfSavedGoals = Object.keys(data).length
