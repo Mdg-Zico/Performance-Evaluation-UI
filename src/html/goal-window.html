@@ -385,6 +385,7 @@
                 <select id="reason" class="form-control select-dropdown" required>
                     <option value="">-- reason --</option>
                     <option value="entry">New Role</option>
+                    <option value="Other">OTHER</option>
                 </select>
             </div>
             <div class="form-group">
@@ -395,6 +396,10 @@
             <div class="form-group">
                 <label for="end-date">End Date <span class="required">*</span></label>
                 <input type="datetime-local" id="end-date" class="form-control" required>
+            </div>
+            <div class="form-group"> 
+              <label for="other-reason" id="other-reason-label" style="display: none;">Specify reason:</label>
+            <input type="text" id="otherReason" class="form-control" placeholder="Specify reason" style="display: none;">
             </div>
         </div>
       </div>

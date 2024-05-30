@@ -1,7 +1,13 @@
 
 $(document).ready(function () {
     $('#zero_config').DataTable(); // Initialize the DataTable
-
+    $("#reason").change(function() {
+        if ($(this).val() === "Other") {
+          $("#otherReason, #other-reason-label").show();
+        } else {
+          $("#otherReason, #other-reason-label").hide();
+        }
+      });
     $('#create-goal-form').on('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission action
         if (!validateGoalFields()) {
@@ -16,7 +22,9 @@ $(document).ready(function () {
             goalSession: $('#goal-session').val(),
             goalStaffId: $('#goal-staff-id').val(),
             startDate: $('#start-date').val(),
-            endDate: $('#end-date').val()
+            endDate: $('#end-date').val(),
+            otherReason: $('#otherReason').val()
+
             // Add more fields as needed
         }
        
