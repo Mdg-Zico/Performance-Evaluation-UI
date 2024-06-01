@@ -361,67 +361,68 @@
 <!-- Repeat the above structure for other cards -->
 
 <!-- Modal Structure -->
-<div class="modal fade"  id="goalModal" tabindex="-1" aria-labelledby="goalModalLabel" aria-hidden="true" >
-  <div class="modal-dialog modal-xl" >
-      <div class="modal-content bg-grey" >
-          <div class="modal-header" style="background-color: rgb(79, 115, 217)">
-              <h5 class="modal-title" id="goalModalLabel" style="color: white">Goal Details</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-              <div class="goal_1">
-                  <div class="container-fluid px-0 mx-0">
-                      <div class="row gx-3 w-100">
-                          <div class="col-sm-6 mb-3">
-                              <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-                              <input style="width: 102%" type="number" name="corporate_objective" placeholder="Corporate Objective" class="form-control" id="corporate_objective" readonly>
-                          </div>
-                          <div class="col-sm-6 mb-3">
-                              <label for="scorecards" class="form-label">Link to balance scorecard</label>
-                              <input style="width: 102%; margin-Left: 5px" type="number" name="balanced_scorecard" placeholder="Balanced Scorecard" class="form-control" id="balanced_scorecard" readonly>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="row gx-3">
-                      <div class="col-sm-6 mb-3">
-                          <label for="goal" class="form-label">Goal</label>
-                          <textarea style="height: 75px;" class="form-control" name="goal_description" id="exampleInputGoal" aria-describedby="goalHelp" readonly required></textarea>
-                      </div>
-                      <div class="col-sm-6 mb-3">
-                          <label for="task" class="form-label">Specific tasks to be accomplished</label>
-                          <textarea style="height: 75px;" class="form-control" name="specific_task" id="task" aria-describedby="goaldescHelp" readonly required></textarea>
-                      </div>
-                  </div>
-                  <div class="row gx-3">
-                      <div class="col-sm-6 mb-3">
-                          <label for="target" class="form-label">Agreed Target</label>
-                          <textarea  class="form-control" name="agreed_target" id="target" readonly required></textarea>
-                      </div>
-                      <div class="col-sm-6 mb-3">
-                          <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
-                          <textarea style="" class="form-control" name="kpi" id="kpi" readonly required></textarea>
-                      </div>
-                  </div>
-                  <div class="container-fluid">
-                      <div class="row gx-3">
-                          <div class="col-sm-6 mb-3">
-                              <label for="weight" class="form-label">Weight</label>
-                              <input style="margin-left: -10px; width: 102%;" type="number" name="weight" value="0"  class="form-control" id="weight" readonly required>
-                          </div>
-                          <div class="col-sm-6 mb-3">
-                              <label for="timeline" class="form-label">Timeline</label>
-                              <input style=" width: 102%;" type="datetime-local" name="timeline" class="form-control" id="timeline" readonly required>
-                          </div>
-                        </div>
-                  </div>
-              </div>
-          </div>
-          <div class="modal-footer">
-              <button type="button" id="updateButton" class="btn btn-primary">Update</button>
-          </div>
+<div class="modal fade" id="goalModal" tabindex="-1" aria-labelledby="goalModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content bg-grey">
+      <div class="modal-header" style="background-color:rgb(93 135 255);">
+        <h5 class="modal-title" id="goalModalLabel" style="color: white">Goal Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="modal-body">
+        <div class="goal_1">
+          <div class="container-fluid px-0 mx-0">
+            <div class="row gx-3 w-100">
+              <div class="col-sm-6 mb-3">
+                <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
+                <input style="width: 102%" type="number" name="corporate_objective" placeholder="Corporate Objective" class="form-control" id="corporate_objective" readonly>
+              </div>
+              <div class="col-sm-6 mb-3">
+                <label for="scorecards" class="form-label">Link to balance scorecard</label>
+                <input style="width: 102%; margin-Left: 5px" type="number" name="balanced_scorecard" placeholder="Balanced Scorecard" class="form-control" id="balanced_scorecard" readonly>
+              </div>
+            </div>
+          </div>
+          <div class="row gx-3">
+            <div class="col-sm-6 mb-3">
+              <label for="goal" class="form-label">Goal</label>
+              <textarea style="height: 75px;" class="form-control" name="goal_description" id="exampleInputGoal" aria-describedby="goalHelp" readonly required></textarea>
+            </div>
+            <div class="col-sm-6 mb-3">
+              <label for="task" class="form-label">Specific tasks to be accomplished</label>
+              <textarea style="height: 75px;" class="form-control" name="specific_task" id="task" aria-describedby="goaldescHelp" readonly required></textarea>
+            </div>
+          </div>
+          <div class="row gx-3">
+            <div class="col-sm-6 mb-3">
+              <label for="target" class="form-label">Agreed Target</label>
+              <textarea class="form-control" name="agreed_target" id="target" readonly required></textarea>
+            </div>
+            <div class="col-sm-6 mb-3">
+              <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
+              <textarea style="" class="form-control" name="kpi" id="kpi" readonly required></textarea>
+            </div>
+          </div>
+          <div class="container-fluid">
+            <div class="row gx-3">
+              <div class="col-sm-6 mb-3">
+                <label for="weight" class="form-label">Weight</label>
+                <input style="margin-left: -10px; width: 102%;" type="number" name="weight" value="0" class="form-control" id="weight" readonly required>
+              </div>
+              <div class="col-sm-6 mb-3">
+                <label for="timeline" class="form-label">Timeline</label>
+                <input style="width: 102%;" type="datetime-local" name="timeline" class="form-control" id="timeline" readonly required>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="updateButton" class="btn btn-primary">Update</button>
+      </div>
+    </div>
   </div>
 </div>
+
 
 
                       <!-- Card 2 -->

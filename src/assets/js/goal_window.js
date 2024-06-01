@@ -2,11 +2,12 @@
 $(document).ready(function () {
     $('#zero_config').DataTable(); // Initialize the DataTable
     $("#reason").change(function() {
-        if ($(this).val() === "Other") {
-          $("#otherReason, #other-reason-label").show();
-        } else {
-          $("#otherReason, #other-reason-label").hide();
-        }
+        
+            if ($(this).val() === "Other") {
+                $("#specify-role").show();
+            } else {
+                $("#specify-role").hide();
+            }
       });
     $('#create-goal-form').on('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission action
