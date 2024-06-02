@@ -9,8 +9,11 @@ $(document).ready(
   // $.ajax({
   //   url: '#',
   //   success: function (data) {
-  //     console.log("Some goals were saved previously");
-  //     populateSavedGoalsOnLoad(data);
+  //     console.log(data);
+  //     populateSavedGoalsOnLoad(JSON.parse(data));
+  //   },
+  //   error: function (error) {
+  //     console.log(error);
   //   }
   // })
 
@@ -22,7 +25,7 @@ $(document).ready(
          "kpi":"ejd ececeic",
          "corporate_objective":"Focus point 2",
          "balanced_scorecard":"Scorecard 4",
-         "weight":"043",
+         "weight":"3",
          "timeline":"2024-06-01T08:32"
         },
     "1":{
@@ -32,7 +35,7 @@ $(document).ready(
       "kpi":"ejd ececeic",
       "corporate_objective":"Focus point 2",
       "balanced_scorecard":"Scorecard 4",
-      "weight":"043",
+      "weight":"43",
       "timeline":"2024-06-01T08:32"
       },
     "2":{
@@ -40,9 +43,9 @@ $(document).ready(
     "specific_task":"dreedw",
     "agreed_target":"dknednie",
     "kpi":"ejd ececeic",
-    "corporate_objective":"Focus point 2",
+    "corporate_objective":"Focus point 3",
     "balanced_scorecard":"Scorecard 4",
-    "weight":"043",
+    "weight":"32",
     "timeline":"2024-06-01T08:32"
     },
     "3":{
@@ -50,9 +53,9 @@ $(document).ready(
     "specific_task":"dreedw",
     "agreed_target":"dknednie",
     "kpi":"ejd ececeic",
-    "corporate_objective":"Focus point 2",
+    "corporate_objective":"Focus point 4",
     "balanced_scorecard":"Scorecard 4",
-    "weight":"043",
+    "weight":"20",
     "timeline":"2024-06-01T08:32"
     }
   }
@@ -62,25 +65,30 @@ $(document).ready(
   function populateSavedGoalsOnLoad (data) {
     const numberOfSavedGoals = Object.keys(data).length
     console.log(numberOfSavedGoals);
-    if (formsList.length < numberOfSavedGoals) {
-      for (let number = formsList.length + 1; number <= numberOfSavedGoals; number++) {
-        console.log('New goal created');
-        createGoal(number);
-      }
-    }
+    // if (formsList.length < numberOfSavedGoals) {
+    //   for (let number = formsList.length + 1; number <= numberOfSavedGoals; number++) {
+    //     console.log('New goal created');
+    //     createGoal(number);
+    //   }
+    // }
     for (let counter = 0; counter < numberOfSavedGoals; counter++) {
-      const goalForm = formsList[counter];
       const goalData = data[counter];
-      console.log(goalData);
-      console.log(typeof(goalData));
-      for (let key of Object.keys(goalData)) {
-        goalForm.find('[name="'+key+'"]').val(goalData[key]);
+      if (counter < 3) {
+        const goalForm = formsList[counter];
+        console.log(goalData);
+        console.log(typeof(goalData));
+        for (let key of Object.keys(goalData)) {
+          goalForm.find('[name="'+key+'"]').val(goalData[key]);
+        }
+      } else {
+        createGoal(counter + 1, goalData);
       }
     }
+    handleTotalWeight();
   }
 
   // Function to handle creation of extra goals in case they have been saved
-  function createGoal (number) {
+  function createGoal (number, goal) {
     const goalTemplate = `<div data-repeater-item class="mt-5 d-none goal_`+number+`">
       <div class="container px-0 mx-0">
         <div class="grid column-gap-3 row px-0 mx-0 w-100">
@@ -111,24 +119,24 @@ $(document).ready(
       <div class="grid column-gap-3 row">
         <div class="col-sm w-100 mb-3">
           <label for="goal" class="form-label">Goal</label>
-          <textarea class="form-control" name="goal_description" value="" id="exampleInputGoal" aria-describedby="goalHelp" required></textarea>
+          <textarea class="form-control" name="goal_description" value="`+goal.goal_description+`" id="exampleInputGoal" aria-describedby="goalHelp" required></textarea>
           <div id="goalHelp" class="form-text">Short text describing your goal</div>
         </div>
         <div class="col-sm w-100 mb-3">
           <label for="task" class="form-label">Specific tasks to be accomplished</label>
-          <textarea class="form-control" name="specific_task" value="" id="task" aria-describedby="goaldescHelp" required></textarea>
+          <textarea class="form-control" name="specific_task" value="`+goal.specific_task+`" id="task" aria-describedby="goaldescHelp" required></textarea>
           <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
         </div>
       </div>
       <div class="grid column-gap-3 row">
         <div class="col-sm w-100 mb-3">
           <label for="target" class="form-label">Agreed Target</label>
-          <textarea class="form-control" name="agreed_target" value="" id="target" required></textarea>
+          <textarea class="form-control" name="agreed_target" value="`+goal.agreed_target+`" id="target" required></textarea>
           <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
         </div>
         <div class="col-sm w-100 mb-3">
           <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
-          <textarea class="form-control" name="kpi" value="" id="kpi" required></textarea>
+          <textarea class="form-control" name="kpi" value="`+goal.kpi+`" id="kpi" required></textarea>
           <div id="goaldescHelp" class="form-text">Highlight the key performance indices of your goal</div>
         </div>
       </div>
@@ -136,11 +144,11 @@ $(document).ready(
         <div class="grid column-gap-3 row">
           <div class="col-sm mb-3 w-100 px-0 mx-0">
             <label for="weight" class="form-label">Weight</label>
-            <input type="number" name="weight" value="0" min="0" max="100" class="form-control" id="weight" required/>
+            <input type="number" name="weight" value="`+goal.weight+`" min="0" max="100" class="form-control" id="weight" required/>
           </div>
           <div class="col mb-3 w-100 px-0 mx-0">
             <label for="timeline" class="form-label">Timeline</label>
-            <input type="datetime-local" name="timeline" value="" class="form-control" id="timeline" required/>
+            <input type="datetime-local" name="timeline" value="`+goal.timeline+`" class="form-control" id="timeline" required/>
           </div>
         </div>
         <div class="d-flex align-items-center justify-content-around">
@@ -219,13 +227,7 @@ $(document).ready(
   // Form Navigation End
 
   // Code to handle Total Weight Start
-  $('#createGoalForm').on('input', '#weight', function () {
-    total -= total;
-    if ($(this).val() > 100) {
-      $(this).val(0);
-      alert("Maximum Weight cannot exceed 100");
-    };
-
+  function handleTotalWeight () {
     formsList.map(elem => {
       elemWeight = elem.find("#weight");
       newWeight = Number(elemWeight.val());
@@ -238,6 +240,15 @@ $(document).ready(
     });
     const totalWeightElement = $('#totalWeight h5')
     totalWeightElement.text('Total Weight: ' + total + '/100');
+  }
+
+  $('#createGoalForm').on('input', '#weight', function () {
+    total -= total;
+    if ($(this).val() > 100) {
+      $(this).val(0);
+      alert("Maximum Weight cannot exceed 100");
+    };
+    handleTotalWeight();
   });
   // Code to handle Total Weight End
   
@@ -311,7 +322,7 @@ $(document).ready(
     const defaultJSON = {}
     let key = 0;
     for (let goal of dataToTransform) {
-      goalTemplate = {
+      const goalTemplate = {
         goal_description: goal.goal_description,
         specific_task: goal.specific_task,
         agreed_target: goal.agreed_target,
