@@ -21,7 +21,7 @@ $(document).ready(function() {
 
     const offices = [
         {'name': 'Maitama', 'region': 'FCT Central'},
-        {'name': 'Apo', 'region': 'North'},
+        {'name': 'Apo', 'region': 'East'},
         {'name': 'Abe', 'region': 'North'},
         {'name': 'cat', 'region': 'North'},
         {'name': 'dof', 'region': 'North'},
@@ -46,16 +46,15 @@ $(document).ready(function() {
 
     regionSelect.change(function() {
         const selectedRegion = regionSelect.val();
-        // Clear previous area offices
         areaOfficeSelect.html('<option class="default" value="">--Select Area Office--</option>');
 
         if (selectedRegion) {
             // Filter the office list for elements whose region matches the selected region
-            const filteredOffices = offices.filter(office => office.region);
-            //.toLowerCase() === selectedRegion
+            const filteredOffices = offices.filter(office => office.region.toLowerCase() === selectedRegion);
+
             // Append filtered offices to the areaOfficeSelect dropdown
             filteredOffices.forEach(office => {
-                areaOfficeSelect.append(`<option value="${office.region}">${office.region}</option>`);
+                areaOfficeSelect.append(`<option value="${office.name}">${office.name}</option>`);
             });
         }
     });
@@ -65,7 +64,24 @@ $(document).ready(function() {
         type: "GET",
         dataType: "json",
         success: function(result) {
+          
             console.log(result);
+            if (result.hasOwnProperty('climate')) {
+                const existingClimateData = result.climate;
+          
+                // Define the data you want to append
+                const additionalClimateData = {
+                    offices: offices
+                };
+                const combinedClimateData = Object.assign({}, existingClimateData, additionalClimateData);
+
+                // Update the "climate" key in the data object
+                result.climate = combinedClimateData;
+          
+                // Now you can use the combined climate data
+                console.log(result.climate); // Shows both existing and appended data
+                // ... (process or display the combined climate data)
+            }            
             $.each(result.films, function(key, value) {
                 $("#unit").append("<option>" + value + "</option>");
             });
@@ -80,6 +96,9 @@ $(document).ready(function() {
             });
             $.each(result.residents, function(key, value) {
                 $("#reviewer").append("<option>" + value + "</option>");
+            });
+            $.each(result.climate, function(key, value) {
+                $("#area-office").append("<option>" + value.office.name + "</option>");
             });
         },
         error: function() {

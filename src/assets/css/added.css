@@ -290,3 +290,29 @@
 .search-dropdown > li:hover {
     background-color: #c3e6cb;
 }
+#goalModal .modal-content {
+    border-top-left-radius: 0.5rem; 
+    border-top-right-radius: 0.5rem; 
+    border-bottom-left-radius: 0.5rem; 
+    border-bottom-right-radius: 0.5rem; 
+  }
+  
+  #goalModal .modal-header {
+    border-top-left-radius: 0.5rem; 
+    border-top-right-radius: 0.5rem; 
+  }
+  #sessionModal .modal-content {
+    border-top-left-radius: 0.5rem; 
+    border-top-right-radius: 0.5rem; 
+    border-bottom-left-radius: 0.5rem; 
+    border-bottom-right-radius: 0.5rem; 
+  }
+  
+  #sessionModal .modal-header {
+    border-top-left-radius: 0.5rem; 
+    border-top-right-radius: 0.5rem; 
+  }
+  #sessionModal .modal-dialog {
+    max-width: 800px; /* Adjust width */
+    height: auto; /* Adjust height if necessary */
+  }

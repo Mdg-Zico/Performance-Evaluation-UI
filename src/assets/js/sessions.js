@@ -4,28 +4,52 @@ $(document).ready(function() {
         event.preventDefault(); // Prevent the default form submission action
         if (!validateSessionFields()) {
             alert('Please fill all required fields correctly.');
+            return; // Exit the function early if validation fails
         }
     
         $('#spinner').show(); // Show spinner
-            // Prepare form data as JSON object
+        
+        // Convert start date and end date to desired format
+        var startDate = formatDate($('#start-date').val());
+        var endDate = formatDate($('#end-date').val());
+
+        // Prepare form data as JSON object
         var formData = {
             session: $('#session').val(),
-            startDate: $('#start-date').val(),
-            endDate: $('#end-date').val()
+            startDate: startDate,
+            endDate: endDate
             // Add more fields as needed
         };
 
         sendSessionData(formData);
-        
-
-       
     });
 });
 
+function formatDate(inputDate) {
+    // Convert the input string to a Date object
+    const date = new Date(inputDate);
+
+    // Array of month names
+    const monthNames = [
+        "January", "February", "March",
+        "April", "May", "June", "July",
+        "August", "September", "October",
+        "November", "December"
+    ];
+
+    // Get the day, month, and year
+    const day = date.getDate();
+    const monthIndex = date.getMonth();
+    const year = date.getFullYear();
+
+    // Add the ordinal suffix to the day
+    const dayWithSuffix = day + (day % 10 === 1 && day !== 11 ? 'st' : (day % 10 === 2 && day !== 12 ? 'nd' : (day % 10 === 3 && day !== 13 ? 'rd' : 'th')));
+
+    // Return the formatted date string
+    return dayWithSuffix + ' ' + monthNames[monthIndex] + ' ' + year;
+}
 
 function sendSessionData(data) {
-    console.log(data)
-    console.log("strngify",JSON.stringify(data))
     // Send an AJAX request with JSON data
     $.ajax({
         type: 'POST',
@@ -42,14 +66,8 @@ function sendSessionData(data) {
         },
         error: function(xhr, status, error) {
             $('#spinner').hide(); // Hide spinner on error
-           // console.error(xhr.responseText); // Log error message
-            // alert the error if any error occured
-          //  console.log("RESPONSE HERE", response)
-           // alert(response["responseJSON"]["statusMsg"]);
-
-           showSessionSubmissionFailureAlert($('.container-fluid'))
+            showSessionSubmissionFailureAlert($('.container-fluid'))
             $('html, body').scrollTop(0); // Scroll to the top of the page
-           
         }
     });
 }
@@ -146,7 +164,7 @@ function appendRowToDataTable(session, startDate, endDate) {
         session,
         startDate,
         endDate,
-        '<button class="btn btn-primary btn-update">Update</button> <button class="btn btn-delete">Delete</button>',
+        '<button class="btn btn-primary btn-update" data-bs-toggle="modal" data-bs-target="#sessionModal">Update</button> <button class="btn btn-delete">Delete</button>',
         ''
     ];
 
