@@ -19,8 +19,8 @@ $(document).ready(
 
   const dummyData = {
     "0":{
-         "goal_description":"hdyygdi",
-         "specific_task":"dreedw",
+         "goal_description":"for goal 1",
+         "specific_task":"task goal 1",
          "agreed_target":"dknednie",
          "kpi":"ejd ececeic",
          "corporate_objective":"Focus point 2",
@@ -29,8 +29,8 @@ $(document).ready(
          "timeline":"2024-06-01T08:32"
         },
     "1":{
-      "goal_description":"hdyygdi",
-      "specific_task":"dreedw",
+      "goal_description":"for goal 2",
+      "specific_task":"task goal 2",
       "agreed_target":"dknednie",
       "kpi":"ejd ececeic",
       "corporate_objective":"Focus point 2",
@@ -55,7 +55,7 @@ $(document).ready(
     "kpi":"ejd ececeic",
     "corporate_objective":"Focus point 4",
     "balanced_scorecard":"Scorecard 4",
-    "weight":"20",
+    "weight":"22",
     "timeline":"2024-06-01T08:32"
     }
   }
@@ -89,13 +89,13 @@ $(document).ready(
 
   // Function to handle creation of extra goals in case they have been saved
   function createGoal (number, goal) {
-    const goalTemplate = `<div data-repeater-item class="mt-5 d-none goal_`+number+`">
+    const goalTemplate = `<div data-repeater-item class="mt-5 d-none goal_${number}">
       <div class="container px-0 mx-0">
         <div class="grid column-gap-3 row px-0 mx-0 w-100">
           <div class="col-sm mb-3 mx-0 px-0 w-100">
             <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
             <select class="form-select" name="corporate_objective" id="focusPoints" required>
-              <option class="default" value="Focus point 1">Focus point 1</option>
+              <option class="default" value="${goal.corporate_objective}">${goal.corporate_objective}</option>
               <option value="Focus point 2">Focus point 2</option>
               <option value="Focus point 3">Focus point 3</option>
               <option value="Focus point 4">Focus point 4</option>
@@ -106,7 +106,7 @@ $(document).ready(
           <div class="col-sm mb-3 mx-0 px-0 w-100">
             <label for="scorecards" class="form-label">Link to balance scorecard</label>
             <select class="form-select" name="balanced_scorecard" id="scorecards" required>
-              <option class="default" value="Scorecard 1">Scorecard 1</option>
+              <option class="default" value=${goal.balanced_scorecard}>${goal.balanced_scorecard}</option>
               <option value="Scorecard 2">Scorecard 2</option>
               <option value="Scorecard 3">Scorecard 3</option>
               <option value="Scorecard 4">Scorecard 4</option>
@@ -119,24 +119,24 @@ $(document).ready(
       <div class="grid column-gap-3 row">
         <div class="col-sm w-100 mb-3">
           <label for="goal" class="form-label">Goal</label>
-          <textarea class="form-control" name="goal_description" value="`+goal.goal_description+`" id="exampleInputGoal" aria-describedby="goalHelp" required></textarea>
+          <textarea class="form-control" name="goal_description" value="${goal.goal_description}" id="exampleInputGoal" aria-describedby="goalHelp" required>${goal.goal_description}</textarea>
           <div id="goalHelp" class="form-text">Short text describing your goal</div>
         </div>
         <div class="col-sm w-100 mb-3">
           <label for="task" class="form-label">Specific tasks to be accomplished</label>
-          <textarea class="form-control" name="specific_task" value="`+goal.specific_task+`" id="task" aria-describedby="goaldescHelp" required></textarea>
+          <textarea class="form-control" name="specific_task" value="${goal.specific_task}" id="task" aria-describedby="goaldescHelp" required>${goal.specific_task}</textarea>
           <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
         </div>
       </div>
       <div class="grid column-gap-3 row">
         <div class="col-sm w-100 mb-3">
           <label for="target" class="form-label">Agreed Target</label>
-          <textarea class="form-control" name="agreed_target" value="`+goal.agreed_target+`" id="target" required></textarea>
+          <textarea class="form-control" name="agreed_target" value="${goal.agreed_target}" id="target" required>${goal.agreed_target}</textarea>
           <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
         </div>
         <div class="col-sm w-100 mb-3">
           <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
-          <textarea class="form-control" name="kpi" value="`+goal.kpi+`" id="kpi" required></textarea>
+          <textarea class="form-control" name="kpi" value="${goal.kpi}" id="kpi" required>${goal.kpi}</textarea>
           <div id="goaldescHelp" class="form-text">Highlight the key performance indices of your goal</div>
         </div>
       </div>
@@ -144,11 +144,11 @@ $(document).ready(
         <div class="grid column-gap-3 row">
           <div class="col-sm mb-3 w-100 px-0 mx-0">
             <label for="weight" class="form-label">Weight</label>
-            <input type="number" name="weight" value="`+goal.weight+`" min="0" max="100" class="form-control" id="weight" required/>
+            <input type="number" name="weight" value="${goal.weight}" min="0" max="100" class="form-control" id="weight" required/>
           </div>
           <div class="col mb-3 w-100 px-0 mx-0">
             <label for="timeline" class="form-label">Timeline</label>
-            <input type="datetime-local" name="timeline" value="`+goal.timeline+`" class="form-control" id="timeline" required/>
+            <input type="datetime-local" name="timeline" value="${goal.timeline}" class="form-control" id="timeline" required/>
           </div>
         </div>
         <div class="d-flex align-items-center justify-content-around">
