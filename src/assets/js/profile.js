@@ -212,37 +212,62 @@ function setupAlertCloseButton($alertDiv) {
 }
 
 // Handle Search Dropdown Functionality
-$('#line-manager').on('input', function () {
-    if (($(this).val()).length >= 3 && ($(this).val()).length <= 5) {
-        getDropDownData();
+// Get all line managers and reviewers
+let reviewersDataObject;
+getReviewersData(function (data) {
+    reviewersDataObject = data;
+    console.log(reviewersDataObject);
+});
+
+function filterReviewersDropdown(searchString, dropdownElement) {
+    if (dropdownElement.children.length > 0) {
+        dropdownElement.empty();
+    } 
+    const reviewersList = reviewersDataObject['name']
+    console.log(reviewersList);
+    const filteredReviewersList = reviewersList.filter(
+        reviewer => reviewer.includes(searchString) || reviewer.toLowerCase().includes(searchString)
+    );
+    for (reviewer of filteredReviewersList) {
+        dropdownElement.append(`<li>${reviewer}</li>`);
     }
+    if (dropdownElement.hasClass('d-none'))
+        dropdownElement.removeClass('d-none');
+}
+
+
+$('.search-dropdown-parent').on('input', 'input', function () {
+    const input = $(this).val();
+    const thisDropDown = $(this).parent().find('.search-dropdown')
+    console.log(thisDropDown)
+    filterReviewersDropdown(input, thisDropDown);
 });
 
 $('.search-dropdown').on('click', 'li', function () {
-    $('#line-manager').val($(this).text());
-    $('.search-dropdown').addClass('d-none');
+    inputField = $(this).parent().parent().find('input');
+    inputField.val($(this).text());
+    $(this).parent().addClass('d-none');
 });
 
-$('#search-dropdown').on('mouseout', 'ul', function () {
-    $('.search-dropdown').addClass('d-none');
-});
 
-$('#search-dropdown').on('mouseenter', 'ul', function () {
-    if (($('#line-manager').val()).length >= 3) {
-        $('.search-dropdown').removeClass('d-none');
-    }
-});
+// $('.search-dropdown-parent').on('mouseleave', function () {
+//     $(this).find('.search-dropdown').addClass('d-none');
+// })
 
-function getDropDownData() {
+// Get line manager and reviewer data
+function getReviewersData(callback) {
     $.ajax({
         type: 'GET',
         url: 'https://swapi.dev/api/people',
         success: function (data) {
-            console.log(data.results);
+            // console.log(data.results);
+            const reviewersData = {'name': [], 'email': []}
             for (character of data.results) {
-                $('.search-dropdown').append('<li>' + character.name + '</li>');
+                reviewersData['name'].push(character.name);
+                reviewersData['email'].push(character.eye_color);
             }
-            $('.search-dropdown').removeClass('d-none');
+            console.log(reviewersData);
+            callback(reviewersData);
         },
         error: function (message) {
             console.log(message);
