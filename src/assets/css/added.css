@@ -279,7 +279,7 @@
 
 /* Style search dropdown */
 .search-dropdown {
-    height: 120px;
+    height: fit-content;
     overflow-y: scroll;
 }
 

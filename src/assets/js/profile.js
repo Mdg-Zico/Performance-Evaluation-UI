@@ -212,18 +212,39 @@ function setupAlertCloseButton($alertDiv) {
 }
 
 // Handle Search Dropdown Functionality
-$('#line-manager').on('input', function () {
-    if (($(this).val()).length >= 3 && ($(this).val()).length <= 5) {
-        getDropDownData();
+// Get all line managers and reviewers
+let reviewersDataObject;
+getReviewersData(function (data) {
+    reviewersDataObject = data;
+    console.log(reviewersDataObject);
+});
+
+function filterReviewersDropdown(searchString) {
+    const dropdownElement = $('.search-dropdown');
+    if (dropdownElement.children.length > 0) {
+        dropdownElement.empty();
+    } 
+    const reviewersList = reviewersDataObject['name']
+    console.log(reviewersList);
+    const filteredReviewersList = reviewersList.filter(
+        reviewer => reviewer.includes(searchString) || reviewer.toLowerCase().includes(searchString)
+    );
+    for (reviewer of filteredReviewersList) {
+        dropdownElement.append(`<li>${reviewer}</li>`);
     }
+    if (dropdownElement.hasClass('d-none'))
+        dropdownElement.removeClass('d-none');
+}
+
+$('#line-manager').on('input', function () {
+    const input = $(this).val();
+    // if (input.length >= 3 && input.length <= 5) {
+    filterReviewersDropdown(input);
+    // }
 });
 
 $('.search-dropdown').on('click', 'li', function () {
     $('#line-manager').val($(this).text());
-    $('.search-dropdown').addClass('d-none');
-});
-
-$('#search-dropdown').on('mouseout', 'ul', function () {
     $('.search-dropdown').addClass('d-none');
 });
 
@@ -233,16 +254,20 @@ $('#search-dropdown').on('mouseenter', 'ul', function () {
     }
 });
 
-function getDropDownData() {
+// Get line manager and reviewer data
+function getReviewersData(callback) {
     $.ajax({
         type: 'GET',
         url: 'https://swapi.dev/api/people',
         success: function (data) {
-            console.log(data.results);
+            // console.log(data.results);
+            const reviewersData = {'name': [], 'email': []}
             for (character of data.results) {
-                $('.search-dropdown').append('<li>' + character.name + '</li>');
+                reviewersData['name'].push(character.name);
+                reviewersData['email'].push(character.eye_color);
             }
-            $('.search-dropdown').removeClass('d-none');
+            console.log(reviewersData);
+            callback(reviewersData);
         },
         error: function (message) {
             console.log(message);
