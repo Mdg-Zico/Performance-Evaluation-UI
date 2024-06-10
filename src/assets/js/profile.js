@@ -211,6 +211,7 @@ function setupAlertCloseButton($alertDiv) {
     });
 }
 
+
 // Handle Search Dropdown Functionality
 // Get all line managers and reviewers
 let reviewersDataObject;
@@ -226,7 +227,7 @@ function filterReviewersDropdown(searchString, dropdownElement) {
     const reviewersList = reviewersDataObject['name']
     console.log(reviewersList);
     const filteredReviewersList = reviewersList.filter(
-        reviewer => reviewer.includes(searchString) || reviewer.toLowerCase().includes(searchString)
+        reviewer => reviewer.toLowerCase().includes(searchString)
     );
     for (reviewer of filteredReviewersList) {
         dropdownElement.append(`<li>${reviewer}</li>`);
@@ -234,7 +235,6 @@ function filterReviewersDropdown(searchString, dropdownElement) {
     if (dropdownElement.hasClass('d-none'))
         dropdownElement.removeClass('d-none');
 }
-
 
 $('.search-dropdown-parent').on('input', 'input', function () {
     const input = $(this).val();
