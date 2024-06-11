@@ -55,3 +55,18 @@
     opacity: 1;
     cursor: pointer;
 }
+
+.form-label-long {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2A3547;
+    text-overflow: ellipsis;
+}
+
+label {
+    width: 270px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
