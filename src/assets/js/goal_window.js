@@ -4,9 +4,9 @@ $(document).ready(function () {
     $("#reason").change(function() {
         
             if ($(this).val() === "Other") {
-                $("#specify-role").show();
+                $("#specify-reason").show();
             } else {
-                $("#specify-role").hide();
+                $("#specify-reason").hide();
             }
       });
     $('#create-goal-form').on('submit', function(event) {
