@@ -2,25 +2,192 @@ $(document).ready(
   function () {
   // Global variable declarations
   let total = 0;
-  let formsList = [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
+  let formsList = [] // [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
   "use strict";
+  // $('div.goal_1').slideUp()
+  // $('div.goal_2').slideUp()
+  // $('div.goal_3').slideUp()
   
   // Logic to handle showing saved goals on form Start
-  // ajax request
+  $.ajax({
+    url: '/get_goals/',
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+      console.log(data);
+      console.log(dummyData)
+      console.log("json", data);
+    
+      populateSavedGoalsOnLoad(data);
+    },
+    error: function (error) {
+      console.log(error);
+    }
+  })
 
+  const dummyData = {
+    "0":{
+         "goal_description":"for goal 1",
+         "specific_task":"task goal 1",
+         "agreed_target":"dknednie",
+         "kpi":"ejd ececeic",
+         "corporate_objective":"Focus point 2",
+         "balanced_scorecard":"Scorecard 4",
+         "weight":"3",
+         "timeline":"2024-06-01T08:32"
+        },
+    "1":{
+      "goal_description":"for goal 2",
+      "specific_task":"task goal 2",
+      "agreed_target":"dknednie",
+      "kpi":"ejd ececeic",
+      "corporate_objective":"Focus point 2",
+      "balanced_scorecard":"Scorecard 4",
+      "weight":"43",
+      "timeline":"2024-06-01T08:32"
+      },
+    "2":{
+    "goal_description":"hdyygdi",
+    "specific_task":"dreedw",
+    "agreed_target":"dknednie",
+    "kpi":"ejd ececeic",
+    "corporate_objective":"Focus point 3",
+    "balanced_scorecard":"Scorecard 4",
+    "weight":"32",
+    "timeline":"2024-06-01T08:32"
+    },
+    "3":{
+    "goal_description":"hdyygdi",
+    "specific_task":"dreedw",
+    "agreed_target":"dknednie",
+    "kpi":"ejd ececeic",
+    "corporate_objective":"Focus point 4",
+    "balanced_scorecard":"Scorecard 4",
+    "weight":"22",
+    "timeline":"2024-06-01T08:32"
+    }
+  }
+
+  //populateSavedGoalsOnLoad(dummyData);
   
-  // Logic to handle showing saved goals on form End
+  function populateSavedGoalsOnLoad (data) {
+    const numberOfSavedGoals = Object.keys(data).length
+    console.log(numberOfSavedGoals);
+    // if (formsList.length < numberOfSavedGoals) {
+    //   for (let number = formsList.length + 1; number <= numberOfSavedGoals; number++) {
+    //     console.log('New goal created');
+    //     createGoal(number);
+    //   }
+    // }
+    for (let counter = 0; counter < numberOfSavedGoals; counter++) {
+      const goalData = data[counter.toString()];
+      console.log('formed goal Data here', goalData)
+      // if (counter < 3) {
+      //   const goalForm = formsList[counter];
+      //   console.log(`goal data ${counter}`, goalData);
+      //   // console.log(typeof(goalData));
+      //   for (let key of Object.keys(goalData)) {
+      //     // console.log(`goal form find ${key}`, goalForm.find(`[name="${key}"]`) )
+      //     goalForm.find('[name="'+key+'"]').val(goalData[key]);
+      //     // goalForm.find(`[name="${key}"]`).val(goalData[key]);
+      //   }
+      // } else {
+        createGoal(counter + 1, goalData);
+      //}
+    }
+    handleTotalWeight();
+  }
+
+  // Function to handle creation of extra goals in case they have been saved
+  function createGoal (number, goal) {
+    const goalTemplate = `<div data-repeater-item class="mt-5 d-none goal_${number}">
+      <div class="container px-0 mx-0">
+        <div class="grid column-gap-3 row px-0 mx-0 w-100">
+          <div class="col-sm mb-3 mx-0 px-0 w-100">
+            <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
+            <select class="form-select" name="corporate_objective" id="focusPoints" required>
+              <option class="default" value=${'' || goal.corporate_objective  }>${ '' || goal.corporate_objective}</option>
+              <option value="Focus point 2">Focus point 2</option>
+              <option value="Focus point 3">Focus point 3</option>
+              <option value="Focus point 4">Focus point 4</option>
+              <option value="Focus point 5">Focus point 5</option>
+              <option value="Focus point 6">Focus point 6</option>
+            </select>
+          </div>
+          <div class="col-sm mb-3 mx-0 px-0 w-100">
+            <label for="scorecards" class="form-label">Link to balance scorecard</label>
+            <select class="form-select" name="balanced_scorecard" id="scorecards" required>
+              <option class="default" value=${'' || goal.balanced_scorecard}>${ '' || goal.balanced_scorecard}</option>
+              <option value="Scorecard 2">Scorecard 2</option>
+              <option value="Scorecard 3">Scorecard 3</option>
+              <option value="Scorecard 4">Scorecard 4</option>
+              <option value="Scorecard 5">Scorecard 5</option>
+              <option value="Scorecard 6">Scorecard 6</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="grid column-gap-3 row">
+        <div class="col-sm w-100 mb-3">
+          <label for="goal" class="form-label">Goal</label>
+          <textarea class="form-control" name="goal_description" value=${ '' || goal.goal_description} id="exampleInputGoal" aria-describedby="goalHelp" required>${ '' || goal.goal_description}</textarea>
+          <div id="goalHelp" class="form-text">Short text describing your goal</div>
+        </div>
+        <div class="col-sm w-100 mb-3">
+          <label for="task" class="form-label">Specific tasks to be accomplished</label>
+          <textarea class="form-control" name="specific_task" value="${ '' || goal.specific_task}" id="task" aria-describedby="goaldescHelp" required>${ '' || goal.specific_task}</textarea>
+          <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
+        </div>
+      </div>
+      <div class="grid column-gap-3 row">
+        <div class="col-sm w-100 mb-3">
+          <label for="target" class="form-label">Agreed Target</label>
+          <textarea class="form-control" name="agreed_target" value="${ '' || goal.agreed_target}" id="target" required>${ '' || goal.agreed_target}</textarea>
+          <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
+        </div>
+        <div class="col-sm w-100 mb-3">
+          <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
+          <textarea class="form-control" name="kpi" value="${ '' || goal.kpi}" id="kpi" required>${ '' || goal.kpi}</textarea>
+          <div id="goaldescHelp" class="form-text">Highlight the key performance indices of your goal</div>
+        </div>
+      </div>
+      <section class="container-fluid">
+        <div class="grid column-gap-3 row">
+          <div class="col-sm mb-3 w-100 px-0 mx-0">
+            <label for="weight" class="form-label">Weight</label>
+            <input type="number" name="weight" value="${ '' || goal.weight}" min="0" max="100" class="form-control" id="weight" required/>
+          </div>
+          <div class="col mb-3 w-100 px-0 mx-0">
+            <label for="timeline" class="form-label">Timeline</label>
+            <input type="datetime-local" name="timeline" value="${ '' || goal.timeline}" class="form-control" id="timeline" required/>
+          </div>
+        </div>
+        <div class="d-flex align-items-center justify-content-around">
+          <button data-repeater-delete class="btn btn-danger rounded-pill hstack gap-6" type="button">
+            <i class="ti ti-trash fs-5"></i>
+            Delete
+          </button>
+        </div>
+      </section>
+    </div>`
+    const goalsList = $('[data-repeater-list="goalsList"]');
+    goalsList.append(goalTemplate);
+    formsList.push($('div.goal_'+number));
+    appendtoNav();
+  } 
+  // End of logic to handle showing saved goals on form 
 
   // Form Repeater Start
   const myRepeater = $('#createGoalForm').repeater({
     initEmpty: false,
     show: function () {
-      $(this).slideDown();
-      formsList.push($(this));
-      $(this).removeClass('goal_1');
-      $(this).addClass('d-none goal_'+formsList.length);
-      $('#submit').addClass('d-none');
-      appendtoNav();
+      // $(this).slideDown();
+      // formsList.push($(this));
+      // $(this).removeClass('goal_1');
+      // $(this).addClass('d-none goal_'+formsList.length);
+      // $('#submit').addClass('invisible');
+      // appendtoNav();
+      createGoal(formsList.length + 1);
     },
     hide: function (deleteElement) {
       // const classList = $(this).attr("class").split(" ");
@@ -35,6 +202,7 @@ $(document).ready(
     isFirstItemUndeletable: true
   })
   // Form Repeater End
+
 
   // Form Navigation Start
   function appendtoNav() {
@@ -64,19 +232,14 @@ $(document).ready(
       })
       $(this).addClass('active_link');
 
-      if (formsList[formsList.length - 1].hasClass(goalNumber)) $('#submit').removeClass('d-none');
+      if (formsList[formsList.length - 1].hasClass(goalNumber)) $('#submit').removeClass('invisible');
+      else $('#submit').addClass('invisible');
     }
   })
   // Form Navigation End
 
   // Code to handle Total Weight Start
-  $('#createGoalForm').on('input', '#weight', function () {
-    total -= total;
-    if ($(this).val() > 100) {
-      $(this).val(0);
-      alert("Maximum Weight cannot exceed 100");
-    };
-
+  function handleTotalWeight () {
     formsList.map(elem => {
       elemWeight = elem.find("#weight");
       newWeight = Number(elemWeight.val());
@@ -89,6 +252,15 @@ $(document).ready(
     });
     const totalWeightElement = $('#totalWeight h5')
     totalWeightElement.text('Total Weight: ' + total + '/100');
+  }
+
+  $('#createGoalForm').on('input', '#weight', function () {
+    total -= total;
+    if ($(this).val() > 100) {
+      $(this).val(0);
+      alert("Maximum Weight cannot exceed 100");
+    };
+    handleTotalWeight();
   });
   // Code to handle Total Weight End
   
@@ -124,7 +296,7 @@ $(document).ready(
         console.log(data);
         $('#goalSubmissionAlert').append(
           `<div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-          Form has been submitted successfully!
+          <b>Goal data saved successfully!</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
@@ -133,7 +305,7 @@ $(document).ready(
       error: function (message) {
         $('#goalSubmissionAlert').append(
           `<div class="alert alert-error alert-dismissible fade show mt-4" role="alert">
-          Form has did not submit successfully!
+          <b>ERROR: Goal data was not submitted. ${error.responseJSON.statusMsg}</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
@@ -147,40 +319,77 @@ $(document).ready(
   $('#save-goal-form').on('click', function () {
     const form = $('#createGoalForm');
     const objectData = form.repeaterVal();
-    console.log(objectData.goalsList);
+    console.log("Object Data", objectData);
+    console.log("obj data goals list", objectData.goalsList);
     const data = objectData.goalsList;
     for (let i = 0; i < data.length; i++) {
       data[i]['balanced_scorecard'] = formsList[i].find('#scorecards').val();
       data[i]['weight'] = formsList[i].find('#weight').val();
       data[i]['timeline'] = formsList[i].find('#timeline').val();
     }
-    console.log(JSON.stringify(objectData));
-    console.log(data);
-    saveGoals(data);
+    const dataToSend = formatJSON(data);
+    saveGoals(dataToSend);
   });
 
+  function formatJSON (dataToTransform) {
+    const defaultJSON = {}
+    let key = 0;
+    for (let goal of dataToTransform) {
+      const goalTemplate = {
+        goal_description: goal.goal_description,
+        specific_task: goal.specific_task,
+        agreed_target: goal.agreed_target,
+        kpi: goal.kpi,
+        corporate_objective: goal.corporate_objective,
+        balanced_scorecard: goal.balanced_scorecard,
+        weight: goal.weight,
+        timeline: goal.timeline
+      }
+      if (checkForEmptyObject(goalTemplate))
+        defaultJSON[key] = goalTemplate;
+      key++;
+    }
+    console.log(defaultJSON);
+    return defaultJSON;
+  }
+
+  function checkForEmptyObject (goalObject) {
+    const objectKeys = Object.keys(goalObject);
+    const exceptions = ["weight", "balanced_scorecard", "corporate_objective"];
+    for (let key of objectKeys) {
+      if (!exceptions.includes(key)) {
+        if (goalObject[key]) return true;
+      }
+    }
+    return false;
+  }
+
   function saveGoals (goals) {
+    var $csrf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
+
     $.ajax({
       type: 'POST',
-      url: 'https://dummy.restapiexample.com/api/v1/create',
-      data: {
-        goals
+      url: '/create_goals/',
+      data: goals,
+      headers: {
+        "X-CSRFTOKEN": $csrf_token,
       },
       success: function (data) {
         console.log(goals);
         console.log(data);
         $('#goalSaveAlert').append(
           `<div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-          Form has been saved successfully!
+          <b>Goal data saved successfully! You are yet to submit your goals.</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
         )
       },
-      error: function (message) {
+      error: function (error) {
+        console.log(error)
         $('#goalSaveAlert').append(
-          `<div class="alert alert-error alert-dismissible fade show mt-4" role="alert">
-          Form has did not save successfully!
+          `<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+          <b>ERROR: Goal data was not saved. ${error.responseJSON.statusMsg}</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
