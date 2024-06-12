@@ -2,28 +2,20 @@ $(document).ready(
   function () {
   // Global variable declarations
   let total = 0;
-  let formsList = [] // [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
+  let formsList = [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
   "use strict";
-  // $('div.goal_1').slideUp()
-  // $('div.goal_2').slideUp()
-  // $('div.goal_3').slideUp()
   
   // Logic to handle showing saved goals on form Start
-  $.ajax({
-    url: '/get_goals/',
-    type: "GET",
-    dataType: "json",
-    success: function (data) {
-      console.log(data);
-      console.log(dummyData)
-      console.log("json", data);
-    
-      populateSavedGoalsOnLoad(data);
-    },
-    error: function (error) {
-      console.log(error);
-    }
-  })
+  // $.ajax({
+  //   url: '#',
+  //   success: function (data) {
+  //     console.log(data);
+  //     populateSavedGoalsOnLoad(JSON.parse(data));
+  //   },
+  //   error: function (error) {
+  //     console.log(error);
+  //   }
+  // })
 
   const dummyData = {
     "0":{
@@ -63,12 +55,12 @@ $(document).ready(
     "kpi":"ejd ececeic",
     "corporate_objective":"Focus point 4",
     "balanced_scorecard":"Scorecard 4",
-    "weight":"22",
+    "weight":"2",
     "timeline":"2024-06-01T08:32"
     }
   }
 
-  //populateSavedGoalsOnLoad(dummyData);
+  populateSavedGoalsOnLoad(dummyData);
   
   function populateSavedGoalsOnLoad (data) {
     const numberOfSavedGoals = Object.keys(data).length
@@ -80,20 +72,19 @@ $(document).ready(
     //   }
     // }
     for (let counter = 0; counter < numberOfSavedGoals; counter++) {
-      const goalData = data[counter.toString()];
-      console.log('formed goal Data here', goalData)
-      // if (counter < 3) {
-      //   const goalForm = formsList[counter];
-      //   console.log(`goal data ${counter}`, goalData);
-      //   // console.log(typeof(goalData));
-      //   for (let key of Object.keys(goalData)) {
-      //     // console.log(`goal form find ${key}`, goalForm.find(`[name="${key}"]`) )
-      //     goalForm.find('[name="'+key+'"]').val(goalData[key]);
-      //     // goalForm.find(`[name="${key}"]`).val(goalData[key]);
-      //   }
-      // } else {
+      const goalData = data[counter];
+      if (counter < 3) {
+        const goalForm = formsList[counter];
+        console.log(goalData);
+        for (let key of Object.keys(goalData)) {
+          const goal = goalForm.find('[name="'+key+'"]')
+          console.log(goal);
+          goal.val(goalData[key]);
+          goal.html(goalData[key]);
+        }
+      } else {
         createGoal(counter + 1, goalData);
-      //}
+      }
     }
     handleTotalWeight();
   }
@@ -106,7 +97,7 @@ $(document).ready(
           <div class="col-sm mb-3 mx-0 px-0 w-100">
             <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
             <select class="form-select" name="corporate_objective" id="focusPoints" required>
-              <option class="default" value=${'' || goal.corporate_objective  }>${ '' || goal.corporate_objective}</option>
+              <option class="default" value="${goal.corporate_objective}">${goal.corporate_objective}</option>
               <option value="Focus point 2">Focus point 2</option>
               <option value="Focus point 3">Focus point 3</option>
               <option value="Focus point 4">Focus point 4</option>
@@ -117,7 +108,7 @@ $(document).ready(
           <div class="col-sm mb-3 mx-0 px-0 w-100">
             <label for="scorecards" class="form-label">Link to balance scorecard</label>
             <select class="form-select" name="balanced_scorecard" id="scorecards" required>
-              <option class="default" value=${'' || goal.balanced_scorecard}>${ '' || goal.balanced_scorecard}</option>
+              <option class="default" value=${goal.balanced_scorecard}>${goal.balanced_scorecard}</option>
               <option value="Scorecard 2">Scorecard 2</option>
               <option value="Scorecard 3">Scorecard 3</option>
               <option value="Scorecard 4">Scorecard 4</option>
@@ -130,24 +121,24 @@ $(document).ready(
       <div class="grid column-gap-3 row">
         <div class="col-sm w-100 mb-3">
           <label for="goal" class="form-label">Goal</label>
-          <textarea class="form-control" name="goal_description" value=${ '' || goal.goal_description} id="exampleInputGoal" aria-describedby="goalHelp" required>${ '' || goal.goal_description}</textarea>
+          <textarea class="form-control" name="goal_description" value="${goal.goal_description}" id="exampleInputGoal" aria-describedby="goalHelp" required>${goal.goal_description}</textarea>
           <div id="goalHelp" class="form-text">Short text describing your goal</div>
         </div>
         <div class="col-sm w-100 mb-3">
           <label for="task" class="form-label">Specific tasks to be accomplished</label>
-          <textarea class="form-control" name="specific_task" value="${ '' || goal.specific_task}" id="task" aria-describedby="goaldescHelp" required>${ '' || goal.specific_task}</textarea>
+          <textarea class="form-control" name="specific_task" value="${goal.specific_task}" id="task" aria-describedby="goaldescHelp" required>${goal.specific_task}</textarea>
           <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
         </div>
       </div>
       <div class="grid column-gap-3 row">
         <div class="col-sm w-100 mb-3">
           <label for="target" class="form-label">Agreed Target</label>
-          <textarea class="form-control" name="agreed_target" value="${ '' || goal.agreed_target}" id="target" required>${ '' || goal.agreed_target}</textarea>
+          <textarea class="form-control" name="agreed_target" value="${goal.agreed_target}" id="target" required>${goal.agreed_target}</textarea>
           <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
         </div>
         <div class="col-sm w-100 mb-3">
           <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
-          <textarea class="form-control" name="kpi" value="${ '' || goal.kpi}" id="kpi" required>${ '' || goal.kpi}</textarea>
+          <textarea class="form-control" name="kpi" value="${goal.kpi}" id="kpi" required>${goal.kpi}</textarea>
           <div id="goaldescHelp" class="form-text">Highlight the key performance indices of your goal</div>
         </div>
       </div>
@@ -155,11 +146,11 @@ $(document).ready(
         <div class="grid column-gap-3 row">
           <div class="col-sm mb-3 w-100 px-0 mx-0">
             <label for="weight" class="form-label">Weight</label>
-            <input type="number" name="weight" value="${ '' || goal.weight}" min="0" max="100" class="form-control" id="weight" required/>
+            <input type="number" name="weight" value="${goal.weight}" min="0" max="100" class="form-control" id="weight" required/>
           </div>
           <div class="col mb-3 w-100 px-0 mx-0">
             <label for="timeline" class="form-label">Timeline</label>
-            <input type="datetime-local" name="timeline" value="${ '' || goal.timeline}" class="form-control" id="timeline" required/>
+            <input type="datetime-local" name="timeline" value="${goal.timeline}" class="form-control" id="timeline" required/>
           </div>
         </div>
         <div class="d-flex align-items-center justify-content-around">
@@ -175,19 +166,18 @@ $(document).ready(
     formsList.push($('div.goal_'+number));
     appendtoNav();
   } 
-  // End of logic to handle showing saved goals on form 
+  // Logic to handle showing saved goals on form End
 
   // Form Repeater Start
   const myRepeater = $('#createGoalForm').repeater({
     initEmpty: false,
     show: function () {
-      // $(this).slideDown();
-      // formsList.push($(this));
-      // $(this).removeClass('goal_1');
-      // $(this).addClass('d-none goal_'+formsList.length);
-      // $('#submit').addClass('invisible');
-      // appendtoNav();
-      createGoal(formsList.length + 1);
+      $(this).slideDown();
+      formsList.push($(this));
+      $(this).removeClass('goal_1');
+      $(this).addClass('d-none goal_'+formsList.length);
+      $('#submit').addClass('invisible');
+      appendtoNav();
     },
     hide: function (deleteElement) {
       // const classList = $(this).attr("class").split(" ");
@@ -240,12 +230,14 @@ $(document).ready(
 
   // Code to handle Total Weight Start
   function handleTotalWeight () {
+    console.log("Total", total);
     formsList.map(elem => {
       elemWeight = elem.find("#weight");
       newWeight = Number(elemWeight.val());
       if ((total + newWeight) <= 100) {
         total += newWeight;
       } else {
+        console.log("Total", total);
         alert("Total weight must not exceed 100");
         elemWeight.val(0);
       }
@@ -319,15 +311,14 @@ $(document).ready(
   $('#save-goal-form').on('click', function () {
     const form = $('#createGoalForm');
     const objectData = form.repeaterVal();
-    console.log("Object Data", objectData);
-    console.log("obj data goals list", objectData.goalsList);
+    console.log(objectData.goalsList);
     const data = objectData.goalsList;
     for (let i = 0; i < data.length; i++) {
       data[i]['balanced_scorecard'] = formsList[i].find('#scorecards').val();
       data[i]['weight'] = formsList[i].find('#weight').val();
       data[i]['timeline'] = formsList[i].find('#timeline').val();
     }
-    const dataToSend = formatJSON(data);
+    const dataToSend = JSON.stringify(formatJSON(data));
     saveGoals(dataToSend);
   });
 
@@ -365,15 +356,11 @@ $(document).ready(
   }
 
   function saveGoals (goals) {
-    var $csrf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
-
     $.ajax({
       type: 'POST',
-      url: '/create_goals/',
+      url: 'https://dummy.restapiexample.com/api/v1/create',
       data: goals,
-      headers: {
-        "X-CSRFTOKEN": $csrf_token,
-      },
+      dataType: "json",
       success: function (data) {
         console.log(goals);
         console.log(data);
