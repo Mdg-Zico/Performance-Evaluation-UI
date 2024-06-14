@@ -2,69 +2,73 @@ $(document).ready(
   function () {
   // Global variable declarations
   let total = 0;
+  let data;
   let formsList = [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
   "use strict";
-  
-  // Logic to handle showing saved goals on form Start
-  // $.ajax({
-  //   url: '#',
-  //   success: function (data) {
-  //     console.log(data);
-  //     populateSavedGoalsOnLoad(JSON.parse(data));
-  //   },
-  //   error: function (error) {
-  //     console.log(error);
-  //   }
-  // })
 
-  const dummyData = {
-    "0":{
-         "goal_description":"for goal 1",
-         "specific_task":"task goal 1",
-         "agreed_target":"dknednie",
-         "kpi":"ejd ececeic",
-         "corporate_objective":"Focus point 2",
-         "balanced_scorecard":"Scorecard 4",
-         "weight":"3",
-         "timeline":"2024-06-01T08:32"
-        },
-    "1":{
-      "goal_description":"for goal 2",
-      "specific_task":"task goal 2",
-      "agreed_target":"dknednie",
-      "kpi":"ejd ececeic",
-      "corporate_objective":"Focus point 2",
-      "balanced_scorecard":"Scorecard 4",
-      "weight":"43",
-      "timeline":"2024-06-01T08:32"
-      },
-    "2":{
-    "goal_description":"hdyygdi",
-    "specific_task":"dreedw",
-    "agreed_target":"dknednie",
-    "kpi":"ejd ececeic",
-    "corporate_objective":"Focus point 3",
-    "balanced_scorecard":"Scorecard 4",
-    "weight":"32",
-    "timeline":"2024-06-01T08:32"
+
+  // Logic to handle showing saved goals on form Start
+  $.ajax({
+    url: '/get_goals/',
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+      console.log(data);
+      // console.log(dummyData)
+      console.log("json", data);
+    
+      populateSavedGoalsOnLoad(data);
     },
-    "3":{
-    "goal_description":"hdyygdi",
-    "specific_task":"dreedw",
-    "agreed_target":"dknednie",
-    "kpi":"ejd ececeic",
-    "corporate_objective":"Focus point 4",
-    "balanced_scorecard":"Scorecard 4",
-    "weight":"2",
-    "timeline":"2024-06-01T08:32"
+    error: function (error) {
+      console.log("ERROR", error);
+    }
+  });
+
+  //  logic to pull corporate objectives
+  $.ajax({
+    url: '/corporate_objectives/',
+    type: "GET",
+    dataType: "json",
+    success: function (res) {
+      const data1 = pairValuesOfObjectivesAndScorecards(JSON.parse(res))
+      data = data1
+      console.log("paired values", data)
+      populateDropDown(data1, formsList);
+    },
+    error: function (error) {
+      console.log(error);
+    }
+  })
+
+  function pairValuesOfObjectivesAndScorecards(json) {
+    let newDropDown = {};
+    for (let item of json) {
+      let objective = item['objective'];
+      newDropDown[objective] = item['link_to_balance_scorecard'];
+    }
+    return newDropDown;
+  }
+
+  function populateDropDown(data, goalsList) {
+    for (let goal of goalsList) {
+      const dropdown = goal.find('#corporate_objective');
+      console.log("dropdown val", dropdown)
+      if (dropdown.children().length == 0) {
+        dropdown.html()
+        $.each(data, function (key, value) {
+          dropdown.append(`<option >` + key + `</option>`);
+        });
+      }
     }
   }
 
-  populateSavedGoalsOnLoad(dummyData);
+  // dropdown.on('change', function() {
+  //   $('#balanced_scorecard').val()
+  // })
   
   function populateSavedGoalsOnLoad (data) {
     const numberOfSavedGoals = Object.keys(data).length
-    console.log(numberOfSavedGoals);
+    console.log("num saved",numberOfSavedGoals);
     // if (formsList.length < numberOfSavedGoals) {
     //   for (let number = formsList.length + 1; number <= numberOfSavedGoals; number++) {
     //     console.log('New goal created');
@@ -77,10 +81,11 @@ $(document).ready(
         const goalForm = formsList[counter];
         console.log(goalData);
         for (let key of Object.keys(goalData)) {
-          const goal = goalForm.find('[name="'+key+'"]')
-          console.log(goal);
-          goal.val(goalData[key]);
-          goal.html(goalData[key]);
+          if (key != 'corporate_objective') {
+            let goal = goalForm.find('[id="'+key+'"]')
+            goal.val(goalData[key]);
+            goal.html(goalData[key]);
+          }
         }
       } else {
         createGoal(counter + 1, goalData);
@@ -98,22 +103,12 @@ $(document).ready(
             <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
             <select class="form-select" name="corporate_objective" id="focusPoints" required>
               <option class="default" value="${goal.corporate_objective}">${goal.corporate_objective}</option>
-              <option value="Focus point 2">Focus point 2</option>
-              <option value="Focus point 3">Focus point 3</option>
-              <option value="Focus point 4">Focus point 4</option>
-              <option value="Focus point 5">Focus point 5</option>
-              <option value="Focus point 6">Focus point 6</option>
             </select>
           </div>
           <div class="col-sm mb-3 mx-0 px-0 w-100">
             <label for="scorecards" class="form-label">Link to balance scorecard</label>
             <select class="form-select" name="balanced_scorecard" id="scorecards" required>
               <option class="default" value=${goal.balanced_scorecard}>${goal.balanced_scorecard}</option>
-              <option value="Scorecard 2">Scorecard 2</option>
-              <option value="Scorecard 3">Scorecard 3</option>
-              <option value="Scorecard 4">Scorecard 4</option>
-              <option value="Scorecard 5">Scorecard 5</option>
-              <option value="Scorecard 6">Scorecard 6</option>
             </select>
           </div>
         </div>
@@ -178,6 +173,7 @@ $(document).ready(
       $(this).addClass('d-none goal_'+formsList.length);
       $('#submit').addClass('invisible');
       appendtoNav();
+      populateDropDown(data, formsList);
     },
     hide: function (deleteElement) {
       // const classList = $(this).attr("class").split(" ");
@@ -198,7 +194,13 @@ $(document).ready(
   function appendtoNav() {
     const navLength = formsList.length;
     const navbar = $('#goalFormNavigation');
-    navbar.append('<li class="nav-item goal_'+navLength+'" style="cursor: pointer;"><span class="nav-link">Goal '+navLength+'</span></li>')
+    navbar.append(
+      '<li class="nav-item goal_'
+      + navLength
+      + '" style="cursor: pointer;"><span class="nav-link">Goal '
+      +navLength
+      +'</span></li>'
+    )
   };
 
   function popFromNav(goal) {
@@ -238,7 +240,7 @@ $(document).ready(
         total += newWeight;
       } else {
         console.log("Total", total);
-        alert("Total weight must not exceed 100");
+        // alert("Total weight must not exceed 100");
         elemWeight.val(0);
       }
     });
@@ -356,11 +358,15 @@ $(document).ready(
   }
 
   function saveGoals (goals) {
+    var $csrf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
+
     $.ajax({
       type: 'POST',
-      url: 'https://dummy.restapiexample.com/api/v1/create',
+      url: '/set_goals/',
       data: goals,
-      dataType: "json",
+      headers: {
+        "X-CSRFTOKEN": $csrf_token,
+      },
       success: function (data) {
         console.log(goals);
         console.log(data);
@@ -400,4 +406,20 @@ $(document).ready(
 
     return ([goalNumber, classList]);
   }
+
+
 });
+
+
+
+
+// [
+//   {"objective": "Reduce ATC&C Loss", "link_to_balance_scorecard": "Financial"}, 
+//   {"objective": "Revenue Growth & Profitability", "link_to_balance_scorecard": "Financial"}, 
+//   {"objective": "Achieve Financial Viability", "link_to_balance_scorecard": "Financial"}, 
+//   {"objective": "Re-design Customer Experience", "link_to_balance_scorecard": "Customer"}, 
+//   {"objective": "Stakeholder Engagement", "link_to_balance_scorecard": "Process"}, 
+//   {"objective": "Compliance with Re-engineered Business Processes", "link_to_balance_scorecard": "Process"}, 
+//   {"objective": "Regulatory Compliance", "link_to_balance_scorecard": "Process"}, 
+//   {"objective": "Increase Technology Adoption", "link_to_balance_scorecard": "Innovation, Growth & Learning"},
+// ]
