@@ -373,30 +373,17 @@
                     </button>
                   </div>
                 </div>
-                <div data-repeater-item class="mt-5 goal_1">
+                <div data-repeater-item class="mt-5 goal goal_1">
                   <div class="container px-0 mx-0">
-                    <div class="grid column-gap-3 row px-0 mx-0 w-100">
-                      <div class="col-sm mb-3 mx-0 px-0 w-100">
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
                         <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-                        <select class="form-select" name="corporate_objective" id="focusPoints" required>
-                          <option class="default" value="Focus point 1">Focus point 1</option>
-                          <option value="Focus point 2">Focus point 2</option>
-                          <option value="Focus point 3">Focus point 3</option>
-                          <option value="Focus point 4">Focus point 4</option>
-                          <option value="Focus point 5">Focus point 5</option>
-                          <option value="Focus point 6">Focus point 6</option>
+                        <select class="form-select" name="corporate_objective" id="corporate_objective" required>
                         </select>
                       </div>
-                      <div class="col-sm mb-3 mx-0 px-0 w-100">
+                      <div class="col-sm mb-3 mx-0">
                         <label for="scorecards" class="form-label">Link to balance scorecard</label>
-                        <select class="form-select" name="balanced_scorecard" id="scorecards" required>
-                          <option class="default" value="Scorecard 1">Scorecard 1</option>
-                          <option value="Scorecard 2">Scorecard 2</option>
-                          <option value="Scorecard 3">Scorecard 3</option>
-                          <option value="Scorecard 4">Scorecard 4</option>
-                          <option value="Scorecard 5">Scorecard 5</option>
-                          <option value="Scorecard 6">Scorecard 6</option>
-                        </select>
+                        <input class="form-control" value="" name="balanced_scorecard" id="balanced_scorecard" readonly/>
                       </div>
                     </div>
                   </div>
@@ -424,13 +411,13 @@
                       <div id="goaldescHelp" class="form-text">Highlight the key performance indices of your goal</div>
                     </div>
                   </div>
-                  <section class="container-fluid">
+                  <section class="container-fluid px-0">
                     <div class="grid column-gap-3 row">
-                      <div class="col-sm mb-3 w-100 px-0 mx-0">
+                      <div class="col-sm mb-3 mx-0">
                         <label for="weight" class="form-label">Weight</label>
                         <input type="number" name="weight" placeholder="0" value="" min="0" max="100" class="form-control" id="weight" required/>
                       </div>
-                      <div class="col mb-3 w-100 px-0 mx-0">
+                      <div class="col mb-3 mx-0">
                         <label for="timeline" class="form-label">Timeline</label>
                         <input type="datetime-local" name="timeline" value="" class="form-control" id="timeline" required/>
                       </div>
@@ -443,30 +430,17 @@
                     </div>
                   </section>
                 </div>
-                <div data-repeater-item class="mt-5 d-none goal_2">
+                <div data-repeater-item class="mt-5 d-none goal goal_2">
                   <div class="container px-0 mx-0">
-                    <div class="grid column-gap-3 row px-0 mx-0 w-100">
-                      <div class="col-sm mb-3 mx-0 px-0 w-100">
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
                         <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-                        <select class="form-select" name="corporate_objective" id="focusPoints" required>
-                          <option class="default" value="Focus point 1">Focus point 1</option>
-                          <option value="Focus point 2">Focus point 2</option>
-                          <option value="Focus point 3">Focus point 3</option>
-                          <option value="Focus point 4">Focus point 4</option>
-                          <option value="Focus point 5">Focus point 5</option>
-                          <option value="Focus point 6">Focus point 6</option>
+                        <select class="form-select" name="corporate_objective" id="corporate_objective" required>
                         </select>
                       </div>
-                      <div class="col-sm mb-3 mx-0 px-0 w-100">
+                      <div class="col-sm mb-3 mx-0">
                         <label for="scorecards" class="form-label">Link to balance scorecard</label>
-                        <select class="form-select" name="balanced_scorecard" id="scorecards" required>
-                          <option class="default" value="Scorecard 1">Scorecard 1</option>
-                          <option value="Scorecard 2">Scorecard 2</option>
-                          <option value="Scorecard 3">Scorecard 3</option>
-                          <option value="Scorecard 4">Scorecard 4</option>
-                          <option value="Scorecard 5">Scorecard 5</option>
-                          <option value="Scorecard 6">Scorecard 6</option>
-                        </select>
+                        <input class="form-control" value="" name="balanced_scorecard" id="balanced_scorecard" readonly/>
                       </div>
                     </div>
                   </div>
@@ -496,11 +470,11 @@
                   </div>
                   <section class="container-fluid">
                     <div class="grid column-gap-3 row">
-                      <div class="col-sm mb-3 w-100 px-0 mx-0">
+                      <div class="col-sm mb-3 mx-0">
                         <label for="weight" class="form-label">Weight</label>
                         <input type="number" name="weight" placeholder="0" value="" min="0" max="100" class="form-control" id="weight" required/>
                       </div>
-                      <div class="col-sm mb-3 w-100 px-0 mx-0">
+                      <div class="col-sm m-0 mx-0">
                         <label for="timeline" class="form-label">Timeline</label>
                         <input type="datetime-local" value="" name="timeline" class="form-control" id="timeline" required/>
                       </div>
@@ -513,30 +487,17 @@
                     </div>
                   </section>
                 </div>  
-                <div data-repeater-item class="mt-5 d-none goal_3">
+                <div data-repeater-item class="mt-5 d-none goal goal_3">
                   <div class="container px-0 mx-0">
-                    <div class="grid column-gap-3 row px-0 mx-0 w-100">
-                      <div class="col mb-3 mx-0 px-0 w-100">
+                    <div class="grid column-gap-3 row">
+                      <div class="col mb-3 mx-0">
                         <label for="objective" class="form-label form-label-long">Corporate Objectives (Strategic focus)</label>
-                        <select class="form-select" name="corporate_objective" id="focusPoints" required>
-                          <option class="default" value="Focus point 1">Focus point 1</option>
-                          <option value="Focus point 2">Focus point 2</option>
-                          <option value="Focus point 3">Focus point 3</option>
-                          <option value="Focus point 4">Focus point 4</option>
-                          <option value="Focus point 5">Focus point 5</option>
-                          <option value="Focus point 6">Focus point 6</option>
+                        <select class="form-select" name="corporate_objective" id="corporate_objective" required>
                         </select>
                       </div>
-                      <div class="col-sm mb-3 mx-0 px-0 w-100">
+                      <div class="col-sm mb-3 mx-0">
                         <label for="scorecards" class="form-label">Link to balance scorecard</label>
-                        <select class="form-select" name="balanced_scorecard" id="scorecards" required>
-                          <option class="default" value="Scorecard 1">Scorecard 1</option>
-                          <option value="Scorecard 2">Scorecard 2</option>
-                          <option value="Scorecard 3">Scorecard 3</option>
-                          <option value="Scorecard 4">Scorecard 4</option>
-                          <option value="Scorecard 5">Scorecard 5</option>
-                          <option value="Scorecard 6">Scorecard 6</option>
-                        </select>
+                        <input class="form-control" value="" name="balanced_scorecard" id="balanced_scorecard" readonly/>
                       </div>
                     </div>
                   </div>
@@ -566,11 +527,11 @@
                   </div>
                   <div class="container-fluid">
                     <div class="grid column-gap-3 row">
-                      <div class="col-sm mb-3 w-25 px-0 mx-0">
+                      <div class="col-sm mb-3 mx-0">
                         <label for="weight" class="form-label">Weight</label>
                         <input type="number" name="weight" placeholder="0" value="" min="0" max="100" class="form-control" id="weight" required/>
                       </div>
-                      <div class="col-sm mb-3 w-25 px-0 mx-0">
+                      <div class="col-sm m-0 mx-0">
                         <label for="timeline" class="form-label">Timeline</label>
                         <input type="datetime-local" value="" name="timeline" class="form-control" id="timeline" required/>
                       </div>
@@ -612,7 +573,6 @@
   <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
   <script src="../assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
   <script src="../assets/js/dashboard.js"></script>
-  <script src="../assets/js/form_repeater.js"></script>
+  <script src="../assets/js/form_repeater2.js"></script>
 </body>
-
 </html>
