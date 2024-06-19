@@ -211,11 +211,11 @@ $(document).ready(
             // console.log(goal);
             goal.val(goalData[key]);
           }
-          // else if (key == 'corporate_objective') {
-          //   let goal = goalForm.find(`[id = "${key}"]`)
-          //   console.log(goal);
-          //   goal.append(`<option value="${goalData[key]}" class="dependent-dropdown" selected>${goalData[key]}</option>`);
-          // }
+          else if (key == 'corporate_objective') {
+            let goal = goalForm.find(`[id = "${key}"]`)
+            console.log(goal);
+            goal.append(`<option value="${goalData[key]}" class="dependent-dropdown" selected>${goalData[key]}</option>`);
+          }
           else {
             let goal = goalForm.find('[id="'+key+'"]');
             // console.log(goal);
