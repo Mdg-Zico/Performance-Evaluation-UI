@@ -2,73 +2,118 @@ $(document).ready(
   function () {
   // Global variable declarations
   let total = 0;
-  let data;
+  let dependentDropdownData;
   let formsList = [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
   "use strict";
 
 
   // Logic to handle showing saved goals on form Start
-  $.ajax({
-    url: '/get_goals/',
-    type: "GET",
-    dataType: "json",
-    success: function (data) {
-      console.log(data);
-      // console.log(dummyData)
-      console.log("json", data);
+  // $.ajax({
+  //   url: '/get_goals/',
+  //   type: "GET",
+  //   dataType: "json",
+  //   success: function (data) {
+  //     console.log(data);
+  //     // console.log(dummyData)
+  //     console.log("json", data);
     
-      populateSavedGoalsOnLoad(data);
-    },
-    error: function (error) {
-      console.log("ERROR", error);
-    }
-  });
+  //     populateSavedGoalsOnLoad(data);
+  //   },
+  //   error: function (error) {
+  //     console.log("ERROR", error);
+  //   }
+  // });
 
   // Logic to pull corporate objectives
-  $.ajax({
-    url: '/corporate_objectives/',
-    type: "GET",
-    dataType: "json",
-    success: function (res) {
-      const data1 = pairValuesOfObjectivesAndScorecards(JSON.parse(res))
-      data = data1
-      console.log("paired values", data)
-      populateDropDown(data1, formsList);
-    },
-    error: function (error) {
-      console.log(error);
-    }
-  })
-
-  // // Dummy logic to test dependent dropdown REMOVE THIS
-  // function getCorporateObjectives(callback) {
-  //   $.ajax({
-  //       type: 'GET',
-  //       url: 'https://swapi.dev/api/people',
-  //       success: function (data) {
-  //           // console.log(data.results);
-  //           const corporate_objectives = {}
-  //           for (character of data.results) {
-  //               corporate_objectives[character.name] = character.eye_color;
-  //           }
-  //           // console.log(corporate_objectives);
-  //           callback(corporate_objectives);
-  //       },
-  //       error: function (message) {
-  //           console.log(message);
-  //       }
-  //   });
-  // }
-
-  // // REMOVE THIS
-  // let corporate_objectives;
-  // getCorporateObjectives(
-  //   function (data) {
-  //     corporate_objectives = data;
-  //     // console.log(corporate_objectives)
-  //     populateDropDown(corporate_objectives, formsList);
+  // $.ajax({
+  //   url: '/corporate_objectives/',
+  //   type: "GET",
+  //   dataType: "json",
+  //   success: function (res) {
+  //     const data1 = pairValuesOfObjectivesAndScorecards(JSON.parse(res))
+  //     data = data1
+  //     console.log("paired values", data)
+  //     populateDropDown(data1, formsList);
+  //   },
+  //   error: function (error) {
+  //     console.log(error);
   //   }
-  // )
+  // })
+
+  // Dummy Data
+  const dummyData = {
+    "0":{
+         "goal_description":"for goal 1",
+         "specific_task":"task goal 1",
+         "agreed_target":"dknednie",
+         "kpi":"ejd ececeic",
+         "corporate_objective":"Luke Skywalker",
+         "balanced_scorecard":"blue",
+         "weight":"3",
+         "timeline":"2024-06-01T08:32"
+        },
+    "1":{
+      "goal_description":"for goal 2",
+      "specific_task":"task goal 2",
+      "agreed_target":"dknednie",
+      "kpi":"ejd ececeic",
+      "corporate_objective":"C-3PO",
+      "balanced_scorecard":"yellow",
+      "weight":"43",
+      "timeline":"2024-06-01T08:32"
+      },
+    "2":{
+    "goal_description":"hdyygdi",
+    "specific_task":"dreedw",
+    "agreed_target":"dknednie",
+    "kpi":"ejd ececeic",
+    "corporate_objective":"yellow",
+    "balanced_scorecard":"Scorecard 4",
+    "weight":"32",
+    "timeline":"2024-06-01T08:32"
+    },
+    "3":{
+    "goal_description":"hdyygdi",
+    "specific_task":"dreedw",
+    "agreed_target":"dknednie",
+    "kpi":"ejd ececeic",
+    "corporate_objective":"Owen Lars",
+    "balanced_scorecard":"blue",
+    "weight":"22",
+    "timeline":"2024-06-01T08:32"
+    }
+  }
+  populateSavedGoalsOnLoad(dummyData);
+  // Dummy logic to test dependent dropdown REMOVE THIS
+  function getCorporateObjectives(callback) {
+    $.ajax({
+        type: 'GET',
+        url: 'https://swapi.dev/api/people',
+        success: function (data) {
+            // console.log(data.results);
+            const corporate_objectives = {}
+            for (character of data.results) {
+                corporate_objectives[character.name] = character.eye_color;
+            }
+            // console.log(corporate_objectives);
+            callback(corporate_objectives);
+        },
+        error: function (message) {
+            console.log(message);
+        }
+    });
+  }
+
+  // REMOVE THIS
+  let corporate_objectives;
+  getCorporateObjectives(
+    function (data) {
+      corporate_objectives = data;
+      dependentDropdownData = corporate_objectives;
+      // console.log(corporate_objectives)
+      populateDropDown(corporate_objectives, formsList);
+    }
+  )
 
   // Logic to handle dependent dropdowns
   function handleDependentDropdown (goal_element) {
@@ -77,8 +122,8 @@ $(document).ready(
       const key = $(this).val();
       console.log("BALANCED SCORECARD ELEMENT", balanced_scorecard);
       console.log("KEY", key);
-      console.log("VALUE", data[key]);
-      balanced_scorecard.val(data[key]);
+      console.log("VALUE", dependentDropdownData[key]);
+      balanced_scorecard.val(dependentDropdownData[key]);
     });
   }
 
@@ -97,10 +142,13 @@ $(document).ready(
   function populateDropDown(data, goalsList) {
     for (let goal of goalsList) {
       const dropdown = goal.find('#corporate_objective');
-      console.log("dropdown val", dropdown)
-      if (dropdown.children().length == 0) {
+      console.log("dropdown val", dropdown.val())
+      const dropdownChildrenLength = dropdown.children().length;
+
+      if (dropdownChildrenLength.length <= 1) {
         dropdown.html()
-        dropdown.append(`<option>Select corporate objective</option>`)
+        if (dropdownChildrenLength == 0)
+          dropdown.append(`<option value="" disabled selected>-- Select corporate objective --</option>`);
         $.each(data, function (key, value) {
           dropdown.append(`<option value="${key}" class="dependent-dropdown">` + key + `</option>`);
         });
@@ -156,16 +204,22 @@ $(document).ready(
       const goalData = data[counter];
       if (counter < 3) {
         const goalForm = formsList[counter];
-        console.log(goalData);
+        // console.log(goalForm);
         for (let key of Object.keys(goalData)) {
           if (key == 'timeline') {
             let goal = goalForm.find(`[id=${key}]`);
-            goal.val(formatDatetime(goalData[key]));
-          }
-          else if (key != 'corporate_objective') {
-            let goal = goalForm.find('[id="'+key+'"]');
+            // console.log(goal);
             goal.val(goalData[key]);
-            goal.html(goalData[key]);
+          }
+          // else if (key == 'corporate_objective') {
+          //   let goal = goalForm.find(`[id = "${key}"]`)
+          //   console.log(goal);
+          //   goal.append(`<option value="${goalData[key]}" class="dependent-dropdown" selected>${goalData[key]}</option>`);
+          // }
+          else {
+            let goal = goalForm.find('[id="'+key+'"]');
+            // console.log(goal);
+            goal.val(goalData[key]);
           }
         }
       } else {
@@ -183,7 +237,7 @@ $(document).ready(
           <div class="col-sm mb-3 mx-0">
             <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
             <select class="form-select" name="corporate_objective" id="focusPoints" required>
-              <option class="default" value="${goal.corporate_objective}">${goal.corporate_objective}</option>
+              <option value="${goal.corporate_objective}" class="dependent-dropdown" selected>${goal.corporate_objective}</option>
             </select>
           </div>
           <div class="col-sm mb-3 mx-0">
