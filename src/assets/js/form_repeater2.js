@@ -110,7 +110,7 @@ $(document).ready(
       corporate_objectives = data;
       dependentDropdownData = corporate_objectives;
       // console.log(Object.keys(dependentDropdownData));
-      // populateSavedGoalsOnLoad(dummyData);
+      populateSavedGoalsOnLoad(dummyData);
       populateDropDown(corporate_objectives, formsList);
     }
   )
