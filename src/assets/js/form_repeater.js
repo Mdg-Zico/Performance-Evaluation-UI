@@ -2,69 +2,150 @@ $(document).ready(
   function () {
   // Global variable declarations
   let total = 0;
+  let data;
   let formsList = [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
   "use strict";
-  
-  // Logic to handle showing saved goals on form Start
-  // $.ajax({
-  //   url: '#',
-  //   success: function (data) {
-  //     console.log(data);
-  //     populateSavedGoalsOnLoad(JSON.parse(data));
-  //   },
-  //   error: function (error) {
-  //     console.log(error);
-  //   }
-  // })
 
-  const dummyData = {
-    "0":{
-         "goal_description":"for goal 1",
-         "specific_task":"task goal 1",
-         "agreed_target":"dknednie",
-         "kpi":"ejd ececeic",
-         "corporate_objective":"Focus point 2",
-         "balanced_scorecard":"Scorecard 4",
-         "weight":"3",
-         "timeline":"2024-06-01T08:32"
-        },
-    "1":{
-      "goal_description":"for goal 2",
-      "specific_task":"task goal 2",
-      "agreed_target":"dknednie",
-      "kpi":"ejd ececeic",
-      "corporate_objective":"Focus point 2",
-      "balanced_scorecard":"Scorecard 4",
-      "weight":"43",
-      "timeline":"2024-06-01T08:32"
-      },
-    "2":{
-    "goal_description":"hdyygdi",
-    "specific_task":"dreedw",
-    "agreed_target":"dknednie",
-    "kpi":"ejd ececeic",
-    "corporate_objective":"Focus point 3",
-    "balanced_scorecard":"Scorecard 4",
-    "weight":"32",
-    "timeline":"2024-06-01T08:32"
+
+  // Logic to handle showing saved goals on form Start
+  $.ajax({
+    url: '/get_goals/',
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+      console.log(data);
+      // console.log(dummyData)
+      console.log("json", data);
+    
+      populateSavedGoalsOnLoad(data);
     },
-    "3":{
-    "goal_description":"hdyygdi",
-    "specific_task":"dreedw",
-    "agreed_target":"dknednie",
-    "kpi":"ejd ececeic",
-    "corporate_objective":"Focus point 4",
-    "balanced_scorecard":"Scorecard 4",
-    "weight":"22",
-    "timeline":"2024-06-01T08:32"
+    error: function (error) {
+      console.log("ERROR", error);
+    }
+  });
+
+  // Logic to pull corporate objectives
+  $.ajax({
+    url: '/corporate_objectives/',
+    type: "GET",
+    dataType: "json",
+    success: function (res) {
+      const data1 = pairValuesOfObjectivesAndScorecards(JSON.parse(res))
+      data = data1
+      console.log("paired values", data)
+      populateDropDown(data1, formsList);
+    },
+    error: function (error) {
+      console.log(error);
+    }
+  })
+
+  // // Dummy logic to test dependent dropdown REMOVE THIS
+  // function getCorporateObjectives(callback) {
+  //   $.ajax({
+  //       type: 'GET',
+  //       url: 'https://swapi.dev/api/people',
+  //       success: function (data) {
+  //           // console.log(data.results);
+  //           const corporate_objectives = {}
+  //           for (character of data.results) {
+  //               corporate_objectives[character.name] = character.eye_color;
+  //           }
+  //           // console.log(corporate_objectives);
+  //           callback(corporate_objectives);
+  //       },
+  //       error: function (message) {
+  //           console.log(message);
+  //       }
+  //   });
+  // }
+
+  // // REMOVE THIS
+  // let corporate_objectives;
+  // getCorporateObjectives(
+  //   function (data) {
+  //     corporate_objectives = data;
+  //     // console.log(corporate_objectives)
+  //     populateDropDown(corporate_objectives, formsList);
+  //   }
+  // )
+
+  // Logic to handle dependent dropdowns
+  function handleDependentDropdown (goal_element) {
+    goal_element.on('change', '.form-select', function () {
+      const balanced_scorecard = ($(this).parent()).parent().find('#balanced_scorecard');
+      const key = $(this).val();
+      console.log("BALANCED SCORECARD ELEMENT", balanced_scorecard);
+      console.log("KEY", key);
+      console.log("VALUE", data[key]);
+      balanced_scorecard.val(data[key]);
+    });
+  }
+
+  handleDependentDropdown($('.goal'));
+      
+  
+  function pairValuesOfObjectivesAndScorecards(json) {
+    let newDropDown = {};
+    for (let item of json) {
+      let objective = item['objective'];
+      newDropDown[objective] = item['link_to_balance_scorecard'];
+    }
+    return newDropDown;
+  }
+
+  function populateDropDown(data, goalsList) {
+    for (let goal of goalsList) {
+      const dropdown = goal.find('#corporate_objective');
+      console.log("dropdown val", dropdown)
+      if (dropdown.children().length == 0) {
+        dropdown.html()
+        dropdown.append(`<option>Select corporate objective</option>`)
+        $.each(data, function (key, value) {
+          dropdown.append(`<option value="${key}" class="dependent-dropdown">` + key + `</option>`);
+        });
+      }
     }
   }
 
-  populateSavedGoalsOnLoad(dummyData);
   
+  // dropdown.on('change', function() {
+  //   $('#balanced_scorecard').val()
+  // })
+  
+  // Function to make timeline input more readable
+  function formatDatetime(dtStr) {
+    // Parse the datetime string
+    var dt = new Date(dtStr);
+
+    // Define month names
+    var monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    // Format the date components
+    var month = monthNames[dt.getMonth()];
+    var day = dt.getDate();
+    var year = dt.getFullYear();
+    var hours = dt.getHours();
+    var minutes = dt.getMinutes();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+
+    // Combine the formatted components into the final string
+    // var formattedDate = month + " " + day + " " + year + " " + hours + ":" + minutes + " " + ampm;
+    var formattedDate = `${month} ${day}, ${year}. ${hours}:${minutes} ${ampm}`;
+
+    return formattedDate;
+  }
+  // Function end
+
   function populateSavedGoalsOnLoad (data) {
     const numberOfSavedGoals = Object.keys(data).length
-    console.log(numberOfSavedGoals);
+    console.log("num saved",numberOfSavedGoals);
     // if (formsList.length < numberOfSavedGoals) {
     //   for (let number = formsList.length + 1; number <= numberOfSavedGoals; number++) {
     //     console.log('New goal created');
@@ -76,9 +157,16 @@ $(document).ready(
       if (counter < 3) {
         const goalForm = formsList[counter];
         console.log(goalData);
-        console.log(typeof(goalData));
         for (let key of Object.keys(goalData)) {
-          goalForm.find('[name="'+key+'"]').val(goalData[key]);
+          if (key == 'timeline') {
+            let goal = goalForm.find(`[id=${key}]`);
+            goal.val(formatDatetime(goalData[key]));
+          }
+          else if (key != 'corporate_objective') {
+            let goal = goalForm.find('[id="'+key+'"]');
+            goal.val(goalData[key]);
+            goal.html(goalData[key]);
+          }
         }
       } else {
         createGoal(counter + 1, goalData);
@@ -89,29 +177,19 @@ $(document).ready(
 
   // Function to handle creation of extra goals in case they have been saved
   function createGoal (number, goal) {
-    const goalTemplate = `<div data-repeater-item class="mt-5 d-none goal_${number}">
+    const goalTemplate = `<div data-repeater-item class="mt-5 d-none goal goal_${number}">
       <div class="container px-0 mx-0">
-        <div class="grid column-gap-3 row px-0 mx-0 w-100">
-          <div class="col-sm mb-3 mx-0 px-0 w-100">
+        <div class="grid column-gap-3 row">
+          <div class="col-sm mb-3 mx-0">
             <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
             <select class="form-select" name="corporate_objective" id="focusPoints" required>
               <option class="default" value="${goal.corporate_objective}">${goal.corporate_objective}</option>
-              <option value="Focus point 2">Focus point 2</option>
-              <option value="Focus point 3">Focus point 3</option>
-              <option value="Focus point 4">Focus point 4</option>
-              <option value="Focus point 5">Focus point 5</option>
-              <option value="Focus point 6">Focus point 6</option>
             </select>
           </div>
-          <div class="col-sm mb-3 mx-0 px-0 w-100">
+          <div class="col-sm mb-3 mx-0">
             <label for="scorecards" class="form-label">Link to balance scorecard</label>
             <select class="form-select" name="balanced_scorecard" id="scorecards" required>
               <option class="default" value=${goal.balanced_scorecard}>${goal.balanced_scorecard}</option>
-              <option value="Scorecard 2">Scorecard 2</option>
-              <option value="Scorecard 3">Scorecard 3</option>
-              <option value="Scorecard 4">Scorecard 4</option>
-              <option value="Scorecard 5">Scorecard 5</option>
-              <option value="Scorecard 6">Scorecard 6</option>
             </select>
           </div>
         </div>
@@ -176,6 +254,8 @@ $(document).ready(
       $(this).addClass('d-none goal_'+formsList.length);
       $('#submit').addClass('invisible');
       appendtoNav();
+      populateDropDown(data, formsList);
+      handleDependentDropdown($(this));
     },
     hide: function (deleteElement) {
       // const classList = $(this).attr("class").split(" ");
@@ -184,8 +264,10 @@ $(document).ready(
       const formIndex = getGoalNumber($(this)) - 1;
       $('li.goal_'+formIndex).addClass('active_link');
       formsList[formIndex - 1].removeClass('d-none');
+      formsList.splice(formIndex, 1);
       popFromNav($(this));
       $(this).fadeOut(deleteElement);
+      recalibrateCount($(this));
     },
     isFirstItemUndeletable: true
   })
@@ -196,13 +278,38 @@ $(document).ready(
   function appendtoNav() {
     const navLength = formsList.length;
     const navbar = $('#goalFormNavigation');
-    navbar.append('<li class="nav-item goal_'+navLength+'" style="cursor: pointer;"><span class="nav-link">Goal '+navLength+'</span></li>')
+    navbar.append(
+      '<li class="nav-item goal_'
+      + navLength
+      + '" style="cursor: pointer;"><span class="nav-link">Goal '
+      +navLength
+      +'</span></li>'
+    )
   };
 
   function popFromNav(goal) {
     const goalNumber = getGoalNumberInClass(goal);
     $('li.'+goalNumber).remove();
   };
+
+  // Recalibrate count of nav and goals
+  function recalibrateCount(goal) {
+    const goalNumber = getGoalNumber(goal);
+    console.log(goalNumber);
+    let count = goalNumber - 1;
+    do {
+      const goalToUpdate = formsList[count];
+      const navItemToUpdate = $(`.nav-item.goal_${count + 2}`);
+      goalToUpdate.removeClass(`goal_${count + 2}`);
+      goalToUpdate.addClass(`goal_${count + 1}`);
+      navItemToUpdate.removeClass(`goal_${count + 2}`);
+      navItemToUpdate.addClass(`goal_${count + 1}`);
+      navItemToUpdate.find('span').text(`Goal ${count + 1}`);
+      count++;
+    } while (count < formsList.length)
+    console.log($('#goalFormNavigation').children());
+    // console.log(formsList);
+  }
 
   $('#goalFormNavigation').on('click', '.nav-item', function () {
     const [goalNumber, classList] = getGoalNumberInClass($(this));
@@ -228,13 +335,15 @@ $(document).ready(
 
   // Code to handle Total Weight Start
   function handleTotalWeight () {
+    console.log("Total", total);
     formsList.map(elem => {
       elemWeight = elem.find("#weight");
       newWeight = Number(elemWeight.val());
       if ((total + newWeight) <= 100) {
         total += newWeight;
       } else {
-        alert("Total weight must not exceed 100");
+        console.log("Total", total);
+        // alert("Total weight must not exceed 100");
         elemWeight.val(0);
       }
     });
@@ -352,11 +461,15 @@ $(document).ready(
   }
 
   function saveGoals (goals) {
+    var $csrf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
+
     $.ajax({
       type: 'POST',
-      url: 'https://dummy.restapiexample.com/api/v1/create',
+      url: '/set_goals/',
       data: goals,
-      dataType: "json",
+      headers: {
+        "X-CSRFTOKEN": $csrf_token,
+      },
       success: function (data) {
         console.log(goals);
         console.log(data);
@@ -396,4 +509,20 @@ $(document).ready(
 
     return ([goalNumber, classList]);
   }
+
+
 });
+
+
+
+
+// [
+//   {"objective": "Reduce ATC&C Loss", "link_to_balance_scorecard": "Financial"}, 
+//   {"objective": "Revenue Growth & Profitability", "link_to_balance_scorecard": "Financial"}, 
+//   {"objective": "Achieve Financial Viability", "link_to_balance_scorecard": "Financial"}, 
+//   {"objective": "Re-design Customer Experience", "link_to_balance_scorecard": "Customer"}, 
+//   {"objective": "Stakeholder Engagement", "link_to_balance_scorecard": "Process"}, 
+//   {"objective": "Compliance with Re-engineered Business Processes", "link_to_balance_scorecard": "Process"}, 
+//   {"objective": "Regulatory Compliance", "link_to_balance_scorecard": "Process"}, 
+//   {"objective": "Increase Technology Adoption", "link_to_balance_scorecard": "Innovation, Growth & Learning"},
+// ]
