@@ -61,12 +61,11 @@ function sendSessionData(data) {
             showSessionSubmissionAlert($('.container-fluid')); // Show success message
             $('html, body').scrollTop(0); // Scroll to the top of the page
             appendRowToDataTable(data.session, data.startDate, data.endDate);
-            console.log(response)
-            
+            console.log(response);
         },
         error: function(xhr, status, error) {
             $('#spinner').hide(); // Hide spinner on error
-            showSessionSubmissionFailureAlert($('.container-fluid'))
+            showSessionSubmissionFailureAlert($('.container-fluid'));
             $('html, body').scrollTop(0); // Scroll to the top of the page
         }
     });
@@ -100,6 +99,12 @@ function validateSessionFields() {
             endDateInput.css('borderColor', 'red');
             alert('End Date cannot be earlier than Start Date.');
             isValid = false;
+
+            // Clear the date inputs and reset border colors
+            startDateInput.val('');
+            endDateInput.val('');
+            startDateInput.css('borderColor', '');
+            endDateInput.css('borderColor', '');
         } else {
             startDateInput.css('borderColor', ''); // Reset border color
             endDateInput.css('borderColor', ''); // Reset border color
@@ -157,7 +162,6 @@ function setupAlertCloseButton($alertDiv) {
 
 function appendRowToDataTable(session, startDate, endDate) {
     const table = $('#zero_config').DataTable(); // Assuming DataTable is initialized with ID 'zero_config'
-   
 
     // Create a new table row as an array of column data
     const newRow = [
