@@ -1,3 +1,5 @@
+
+
 $(document).ready(
   function () {
   // Global variable declarations
@@ -7,68 +9,38 @@ $(document).ready(
   "use strict";
 
 
-  // Logic to handle showing saved goals on form Start
+  //  Logic to handle showing saved goals on form Start
   $.ajax({
     url: '/get_goals/',
     type: "GET",
     dataType: "json",
-    success: function (data) {
-      console.log(data);
-      // console.log(dummyData)
-      console.log("json", data);
-    
-      populateSavedGoalsOnLoad(data);
+    success: function (res) {
+      console.log("json", res);
+      getCorporateObjectives(res);
     },
     error: function (error) {
       console.log("ERROR", error);
     }
   });
 
-  // Logic to pull corporate objectives
-  $.ajax({
-    url: '/corporate_objectives/',
-    type: "GET",
-    dataType: "json",
-    success: function (res) {
-      const data1 = pairValuesOfObjectivesAndScorecards(JSON.parse(res))
-      data = data1
-      console.log("paired values", data)
-      populateDropDown(data1, formsList);
-    },
-    error: function (error) {
-      console.log(error);
-    }
-  })
-
-  // // Dummy logic to test dependent dropdown REMOVE THIS
-  // function getCorporateObjectives(callback) {
-  //   $.ajax({
-  //       type: 'GET',
-  //       url: 'https://swapi.dev/api/people',
-  //       success: function (data) {
-  //           // console.log(data.results);
-  //           const corporate_objectives = {}
-  //           for (character of data.results) {
-  //               corporate_objectives[character.name] = character.eye_color;
-  //           }
-  //           // console.log(corporate_objectives);
-  //           callback(corporate_objectives);
-  //       },
-  //       error: function (message) {
-  //           console.log(message);
-  //       }
-  //   });
-  // }
-
-  // // REMOVE THIS
-  // let corporate_objectives;
-  // getCorporateObjectives(
-  //   function (data) {
-  //     corporate_objectives = data;
-  //     // console.log(corporate_objectives)
-  //     populateDropDown(corporate_objectives, formsList);
-  //   }
-  // )
+  //  Logic to pull corporate objectives
+  function getCorporateObjectives(savedGoals) {
+    $.ajax({
+      url: '/corporate_objectives/',
+      type: "GET",
+      dataType: "json",
+      success: function (res) {
+        const data1 = pairValuesOfObjectivesAndScorecards(JSON.parse(res));
+        data = data1;
+        console.log("data f;dljvn", data);
+        populateSavedGoalsOnLoad(savedGoals);
+        handleDependentDropdown($('.goal'));
+      },
+      error: function (error) {
+        console.log(error);
+      }
+    });
+  }
 
   // Logic to handle dependent dropdowns
   function handleDependentDropdown (goal_element) {
@@ -82,7 +54,7 @@ $(document).ready(
     });
   }
 
-  handleDependentDropdown($('.goal'));
+  
       
   
   function pairValuesOfObjectivesAndScorecards(json) {
@@ -97,21 +69,19 @@ $(document).ready(
   function populateDropDown(data, goalsList) {
     for (let goal of goalsList) {
       const dropdown = goal.find('#corporate_objective');
-      console.log("dropdown val", dropdown)
-      if (dropdown.children().length == 0) {
+      const dropdownChildrenLength = dropdown.children().length;
+      if (dropdownChildrenLength < 2) {
         dropdown.html()
-        dropdown.append(`<option>Select corporate objective</option>`)
+        if (dropdownChildrenLength == 0) {
+          dropdown.append(`<option value="" disabled selected>-- Select corporate objective --</option>`);
+        }
         $.each(data, function (key, value) {
-          dropdown.append(`<option value="${key}" class="dependent-dropdown">` + key + `</option>`);
+          if (key != dropdown.val())
+            dropdown.append(`<option value="${key}" class="dependent-dropdown">${key}</option>`);
         });
       }
     }
   }
-
-  
-  // dropdown.on('change', function() {
-  //   $('#balanced_scorecard').val()
-  // })
   
   // Function to make timeline input more readable
   function formatDatetime(dtStr) {
@@ -136,42 +106,42 @@ $(document).ready(
     minutes = minutes < 10 ? '0' + minutes : minutes;
 
     // Combine the formatted components into the final string
-    // var formattedDate = month + " " + day + " " + year + " " + hours + ":" + minutes + " " + ampm;
     var formattedDate = `${month} ${day}, ${year}. ${hours}:${minutes} ${ampm}`;
-
     return formattedDate;
   }
   // Function end
 
-  function populateSavedGoalsOnLoad (data) {
-    const numberOfSavedGoals = Object.keys(data).length
+  function populateSavedGoalsOnLoad (goals) {
+    const numberOfSavedGoals = Object.keys(goals).length
     console.log("num saved",numberOfSavedGoals);
-    // if (formsList.length < numberOfSavedGoals) {
-    //   for (let number = formsList.length + 1; number <= numberOfSavedGoals; number++) {
-    //     console.log('New goal created');
-    //     createGoal(number);
-    //   }
-    // }
     for (let counter = 0; counter < numberOfSavedGoals; counter++) {
-      const goalData = data[counter];
+      const goalData = goals[counter];
       if (counter < 3) {
         const goalForm = formsList[counter];
-        console.log(goalData);
+        // console.log(goalForm);
         for (let key of Object.keys(goalData)) {
           if (key == 'timeline') {
             let goal = goalForm.find(`[id=${key}]`);
-            goal.val(formatDatetime(goalData[key]));
-          }
-          else if (key != 'corporate_objective') {
-            let goal = goalForm.find('[id="'+key+'"]');
+            // console.log(goal);
             goal.val(goalData[key]);
-            goal.html(goalData[key]);
+          }
+          else if (key == 'corporate_objective') {
+            let goal = goalForm.find(`[id = "${key}"]`)
+            console.log("Corp goal", goal);
+            goal.append(`<option value="${goalData[key]}" class="dependent-dropdown" selected>${goalData[key]}</option>`);
+          }
+          else {
+            let goal = goalForm.find('[id="'+key+'"]');
+            // console.log(goal);
+            goal.val(goalData[key]);
           }
         }
       } else {
         createGoal(counter + 1, goalData);
       }
     }
+    console.log("Dependent dropdown data", data);
+    populateDropDown(data, formsList);
     handleTotalWeight();
   }
 
@@ -182,35 +152,33 @@ $(document).ready(
         <div class="grid column-gap-3 row">
           <div class="col-sm mb-3 mx-0">
             <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-            <select class="form-select" name="corporate_objective" id="focusPoints" required>
-              <option class="default" value="${goal.corporate_objective}">${goal.corporate_objective}</option>
+            <select class="form-select" name="corporate_objective" id="corporate_objective" required>
+              <option value="${goal.corporate_objective}" class="dependent-dropdown" selected>${goal.corporate_objective}</option>
             </select>
           </div>
           <div class="col-sm mb-3 mx-0">
             <label for="scorecards" class="form-label">Link to balance scorecard</label>
-            <select class="form-select" name="balanced_scorecard" id="scorecards" required>
-              <option class="default" value=${goal.balanced_scorecard}>${goal.balanced_scorecard}</option>
-            </select>
+            <input class="form-control" value="${goal.balanced_scorecard}" name="balanced_scorecard" id="balanced_scorecard" readonly/>
           </div>
         </div>
       </div>
       <div class="grid column-gap-3 row">
         <div class="col-sm w-100 mb-3">
           <label for="goal" class="form-label">Goal</label>
-          <textarea class="form-control" name="goal_description" value="${goal.goal_description}" id="exampleInputGoal" aria-describedby="goalHelp" required>${goal.goal_description}</textarea>
+          <textarea class="form-control" name="goal_description" value="${goal.goal_description}" id="goal_description" aria-describedby="goalHelp" required>${goal.goal_description}</textarea>
           <div id="goalHelp" class="form-text">Short text describing your goal</div>
         </div>
         <div class="col-sm w-100 mb-3">
           <label for="task" class="form-label">Specific tasks to be accomplished</label>
-          <textarea class="form-control" name="specific_task" value="${goal.specific_task}" id="task" aria-describedby="goaldescHelp" required>${goal.specific_task}</textarea>
+          <textarea class="form-control" name="specific_task" value="${goal.specific_task}" id="specific_task" aria-describedby="goaldescHelp" required>${goal.specific_task}</textarea>
           <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
         </div>
       </div>
       <div class="grid column-gap-3 row">
         <div class="col-sm w-100 mb-3">
           <label for="target" class="form-label">Agreed Target</label>
-          <textarea class="form-control" name="agreed_target" value="${goal.agreed_target}" id="target" required>${goal.agreed_target}</textarea>
-          <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
+          <textarea class="form-control" name="agreed_target" value="${goal.agreed_target}" id="agreed_target" required>${goal.agreed_target}</textarea>
+          <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
         </div>
         <div class="col-sm w-100 mb-3">
           <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
@@ -238,8 +206,10 @@ $(document).ready(
       </section>
     </div>`
     const goalsList = $('[data-repeater-list="goalsList"]');
+    // const thisGoal = $('div.goal_'+number);
     goalsList.append(goalTemplate);
     formsList.push($('div.goal_'+number));
+    // handleDependentDropdown(`$(div.goal_${number})`);
     appendtoNav();
   } 
   // Logic to handle showing saved goals on form End
@@ -258,9 +228,6 @@ $(document).ready(
       handleDependentDropdown($(this));
     },
     hide: function (deleteElement) {
-      // const classList = $(this).attr("class").split(" ");
-      // const goalNumber = classList[classList.length - 1];
-      // const formIndex = goalNumber.split("_")[1] - 1;
       const formIndex = getGoalNumber($(this)) - 1;
       $('li.goal_'+formIndex).addClass('active_link');
       formsList[formIndex - 1].removeClass('d-none');
@@ -331,10 +298,9 @@ $(document).ready(
       else $('#submit').addClass('invisible');
     }
   })
-  // Form Navigation End
 
-  // Code to handle Total Weight Start
-  function handleTotalWeight () {
+  // handle Total Weight 
+  function handleTotalWeight (element) {
     console.log("Total", total);
     formsList.map(elem => {
       elemWeight = elem.find("#weight");
@@ -343,8 +309,8 @@ $(document).ready(
         total += newWeight;
       } else {
         console.log("Total", total);
-        // alert("Total weight must not exceed 100");
-        elemWeight.val(0);
+        alert("Total weight must not exceed 100");
+        element.val(0);
       }
     });
     const totalWeightElement = $('#totalWeight h5')
@@ -357,73 +323,90 @@ $(document).ready(
       $(this).val(0);
       alert("Maximum Weight cannot exceed 100");
     };
-    handleTotalWeight();
+    handleTotalWeight($(this));
   });
-  // Code to handle Total Weight End
   
-  // Code to handle submission logic Start
+  // handle submission logic Start
   $('#createGoalForm').on('submit', function () {
     event.preventDefault();
     if (total != 100) {
-      alert("Total Weight MUST be equal to 100");
+      $('.alert').remove();
+      $('.form-parent').prepend(
+        `<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+        <b>ERROR: Goal data was not submitted. Total weight must be 100</b>
+        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
+        </button></div>`
+      )
+      $('html, body').scrollTop(0);
       return;
     }
     const objectData = $(this).repeaterVal();
-    console.log(objectData.goalsList);
+    console.log("this", $(this))
+    console.log("create submit obj dat", objectData);
     const data = objectData.goalsList;
     for (let i = 0; i < data.length; i++) {
-      data[i]['balanced_scorecard'] = formsList[i].find('#scorecards').val();
+      data[i]['balanced_scorecard'] = formsList[i].find('#balanced_scorecard').val();
       data[i]['weight'] = formsList[i].find('#weight').val();
       data[i]['timeline'] = formsList[i].find('#timeline').val();
+      data[i]['goal_form_id'] = i + 1;
     }
-    const dataToSend = JSON.stringify(objectData);
-    console.log(dataToSend);
+    console.log("json stringified object data", JSON.stringify(data));
+    const dataToSend = formatJSON(data);
+    console.log("submitted data", dataToSend)
     submitGoals(dataToSend)
   });
 
   function submitGoals(goals) {
+    var $csrf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
     $.ajax({
       type: 'POST',
-      url: 'https://dummy.restapiexample.com/api/v1/create',
-      data: {
-        goals
+      url: '/submit_goals/',
+      data: goals,
+      headers: {
+        "X-CSRFTOKEN": $csrf_token,
       },
       success: function (data) {
         console.log(goals);
         console.log(data);
-        $('#goalSubmissionAlert').append(
+        $('.alert').remove();
+        $('.form-parent').prepend(
           `<div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-          <b>Goal data saved successfully!</b>
+          <b>Goal data submitted successfully!</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
         )
+        $('html, body').scrollTop(0);
       },
       error: function (message) {
-        $('#goalSubmissionAlert').append(
-          `<div class="alert alert-error alert-dismissible fade show mt-4" role="alert">
+        $('.alert').remove();
+        $('.form-parent').prepend(
+          `<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
           <b>ERROR: Goal data was not submitted. ${error.responseJSON.statusMsg}</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
         )
+        $('html, body').scrollTop(0);
       }
     });
   }
-  // Code to handle submission logic End
 
   // Code to handle save logic Start
-  $('#save-goal-form').on('click', function () {
+  $('#save-goal-button').on('click', function () {
     const form = $('#createGoalForm');
     const objectData = form.repeaterVal();
     console.log(objectData.goalsList);
     const data = objectData.goalsList;
     for (let i = 0; i < data.length; i++) {
-      data[i]['balanced_scorecard'] = formsList[i].find('#scorecards').val();
+      data[i]['balanced_scorecard'] = formsList[i].find('#balanced_scorecard').val();
       data[i]['weight'] = formsList[i].find('#weight').val();
       data[i]['timeline'] = formsList[i].find('#timeline').val();
+      data[i]['goal_form_id'] = i + 1;
     }
-    const dataToSend = JSON.stringify(formatJSON(data));
+    const dataToSend = formatJSON(data);
+    console.log("saved data", dataToSend)
     saveGoals(dataToSend);
   });
 
@@ -431,7 +414,9 @@ $(document).ready(
     const defaultJSON = {}
     let key = 0;
     for (let goal of dataToTransform) {
+      // console.log("Goal template", goal);
       const goalTemplate = {
+        goal_form_id: goal.goal_form_id,
         goal_description: goal.goal_description,
         specific_task: goal.specific_task,
         agreed_target: goal.agreed_target,
@@ -441,8 +426,11 @@ $(document).ready(
         weight: goal.weight,
         timeline: goal.timeline
       }
-      if (checkForEmptyObject(goalTemplate))
+      // console.log("Goal template", goalTemplate)
+      if (checkForEmptyObject(goalTemplate)) {
+        console.log(checkForEmptyObject(goalTemplate));
         defaultJSON[key] = goalTemplate;
+      }
       key++;
     }
     console.log(defaultJSON);
@@ -451,9 +439,11 @@ $(document).ready(
 
   function checkForEmptyObject (goalObject) {
     const objectKeys = Object.keys(goalObject);
-    const exceptions = ["weight", "balanced_scorecard", "corporate_objective"];
+    console.log("obje keys", objectKeys)
+    const exceptions = ["goal_form_id", "weight", "balanced_scorecard", "corporate_objective"];
     for (let key of objectKeys) {
       if (!exceptions.includes(key)) {
+        console.log("Goal object value", goalObject[key]);
         if (goalObject[key]) return true;
       }
     }
@@ -473,23 +463,25 @@ $(document).ready(
       success: function (data) {
         console.log(goals);
         console.log(data);
-        $('#goalSaveAlert').append(
+        $('#createGoalForm').prepend(
           `<div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
           <b>Goal data saved successfully! You are yet to submit your goals.</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
         )
+        $('html', 'body').scrollTop(0);
       },
       error: function (error) {
         console.log(error)
-        $('#goalSaveAlert').append(
+        $('#createGoalForm').prepend(
           `<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
           <b>ERROR: Goal data was not saved. ${error.responseJSON.statusMsg}</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
         )
+        $('html', 'body').scrollTop(0);
       }
     });
   }
@@ -509,20 +501,4 @@ $(document).ready(
 
     return ([goalNumber, classList]);
   }
-
-
 });
-
-
-
-
-// [
-//   {"objective": "Reduce ATC&C Loss", "link_to_balance_scorecard": "Financial"}, 
-//   {"objective": "Revenue Growth & Profitability", "link_to_balance_scorecard": "Financial"}, 
-//   {"objective": "Achieve Financial Viability", "link_to_balance_scorecard": "Financial"}, 
-//   {"objective": "Re-design Customer Experience", "link_to_balance_scorecard": "Customer"}, 
-//   {"objective": "Stakeholder Engagement", "link_to_balance_scorecard": "Process"}, 
-//   {"objective": "Compliance with Re-engineered Business Processes", "link_to_balance_scorecard": "Process"}, 
-//   {"objective": "Regulatory Compliance", "link_to_balance_scorecard": "Process"}, 
-//   {"objective": "Increase Technology Adoption", "link_to_balance_scorecard": "Innovation, Growth & Learning"},
-// ]
