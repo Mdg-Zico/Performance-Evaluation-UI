@@ -19,14 +19,20 @@
   .navbar-brand {
     margin-left: 5%;
   }
+
 }
 
 @media only screen and (min-width: 500px) {
   .navbar-brand b {
     margin-left: 40%;
   }
+  
 }
-
+@media only screen and (max-width: 600px){
+  .profile-user, .create-apraisal-btn{
+    display: none;
+  }
+}
 /* Adjust margin for medium screens */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .navbar-brand b {
@@ -319,7 +325,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+                <img src="../assets/images/profile/user-1.jpg" class="profile-user" alt="" width="35" height="35" class="rounded-circle">
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                 <div class="message-body">
@@ -347,7 +353,7 @@
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
               
-              <li class="nav-item">
+              <li class="nav-item create-apraisal-btn">
                 <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary btn-sm">Create Appraisal</a>
               </li>              
               <li class="nav-item">
@@ -429,7 +435,7 @@
 
         <!--  Row 1 -->
         <div class="row">
-          <div class="col-lg-8 d-flex align-items-strech">
+          <div class="col-lg-8 d-flex align-items-strech below-dashboard">
             <div class="card w-100">
               <div class="card-body">
                 <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
