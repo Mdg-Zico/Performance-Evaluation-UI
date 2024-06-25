@@ -109,12 +109,11 @@ $(document).ready(
     function (data) {
       corporate_objectives = data;
       dependentDropdownData = corporate_objectives;
+      populateDropDown(data, formsList);
       // console.log(Object.keys(dependentDropdownData));
-      populateSavedGoalsOnLoad(dummyData);
-      populateDropDown(corporate_objectives, formsList);
+      // populateSavedGoalsOnLoad(dummyData);
     }
   )
-
   // Logic to handle dependent dropdowns
   function handleDependentDropdown (goal_element) {
     goal_element.on('change', '.form-select', function () {
@@ -140,6 +139,7 @@ $(document).ready(
   }
 
   function populateDropDown(data, goalsList) {
+    console.log("Goals list", goalsList);
     for (let goal of goalsList) {
       // console.log(goal);
       const dropdown = goal.find('#corporate_objective');
@@ -229,6 +229,8 @@ $(document).ready(
         createGoal(counter + 1, goalData);
       }
     }
+    // console.log(formsList);
+    populateDropDown(dependentDropdownData, formsList);
     handleTotalWeight();
     // console.log("Dependent dropdown data", dependentDropdownData);
   }
@@ -240,12 +242,8 @@ $(document).ready(
         <div class="grid column-gap-3 row">
           <div class="col-sm mb-3 mx-0">
             <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-            <select class="form-select" name="corporate_objective" id="focusPoints" required>
+            <select class="form-select" name="corporate_objective" id="corporate_objective" required>
               <option value="${goal.corporate_objective}" class="dependent-dropdown" selected>${goal.corporate_objective}</option>
-              ${Object.keys(dependentDropdownData).map(item => {
-                if (goal.corporate_objective != item)
-                  return `<option value="${item}" class="dependent-dropdown">${item}</option>`
-              })}
             </select>
           </div>
           <div class="col-sm mb-3 mx-0">
@@ -257,19 +255,19 @@ $(document).ready(
       <div class="grid column-gap-3 row">
         <div class="col-sm w-100 mb-3">
           <label for="goal" class="form-label">Goal</label>
-          <textarea class="form-control" name="goal_description" value="${goal.goal_description}" id="exampleInputGoal" aria-describedby="goalHelp" required>${goal.goal_description}</textarea>
+          <textarea class="form-control" name="goal_description" value="${goal.goal_description}" id="goal_description" aria-describedby="goalHelp" required>${goal.goal_description}</textarea>
           <div id="goalHelp" class="form-text">Short text describing your goal</div>
         </div>
         <div class="col-sm w-100 mb-3">
           <label for="task" class="form-label">Specific tasks to be accomplished</label>
-          <textarea class="form-control" name="specific_task" value="${goal.specific_task}" id="task" aria-describedby="goaldescHelp" required>${goal.specific_task}</textarea>
+          <textarea class="form-control" name="specific_task" value="${goal.specific_task}" id="specific_task" aria-describedby="goaldescHelp" required>${goal.specific_task}</textarea>
           <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
         </div>
       </div>
       <div class="grid column-gap-3 row">
         <div class="col-sm w-100 mb-3">
           <label for="target" class="form-label">Agreed Target</label>
-          <textarea class="form-control" name="agreed_target" value="${goal.agreed_target}" id="target" required>${goal.agreed_target}</textarea>
+          <textarea class="form-control" name="agreed_target" value="${goal.agreed_target}" id="agreed_target" required>${goal.agreed_target}</textarea>
           <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
         </div>
         <div class="col-sm w-100 mb-3">
@@ -438,18 +436,24 @@ $(document).ready(
       $('html, body').scrollTop(0);
       return;
     }
-    const objectData = $(this).repeaterVal();
-    console.log(objectData.goalsList);
-    const data = objectData.goalsList;
-    for (let i = 0; i < data.length; i++) {
-      data[i]['balanced_scorecard'] = formsList[i].find('#scorecards').val();
-      data[i]['weight'] = formsList[i].find('#weight').val();
-      data[i]['timeline'] = formsList[i].find('#timeline').val();
-    }
-    const dataToSend = JSON.stringify(objectData);
-    console.log(dataToSend);
-    submitGoals(dataToSend)
+    const data = {};
+    for (let i = 0; i < formsList.length; i++) {
+      data[i] = {
+        'goal_form_id': i + 1, // j not i
+        'balanced_scorecard': formsList[i].find('#balanced_scorecard').val(),
+        'corporate_objective': formsList[i].find('#corporate_objective').val(),
+        'weight': formsList[i].find('#weight').val(),
+        'timeline': formsList[i].find('#timeline').val(),
+        'agreed_target': formsList[i].find('#agreed_target').val(),
+        'goal_description': formsList[i].find('#goal_description').val(),
+        'kpi': formsList[i].find('#kpi').val(),
+        'specific_task': formsList[i].find('#specific_task').val()
+      }
+    }    
+    console.log(data);
+    submitGoals(data);
   });
+
 
   function submitGoals(goals) {
     $.ajax({
@@ -464,7 +468,7 @@ $(document).ready(
         $('.alert').remove();
         $('.form-parent').prepend(
           `<div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-          <b>Goal data saved successfully!</b>
+          <b>Goal data submit successfully!</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
@@ -475,7 +479,7 @@ $(document).ready(
         $('.alert').remove();
         $('.form-parent').prepend(
           `<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-          <b>ERROR: Goal data was not submitted. ${error.responseJSON.statusMsg}</b>
+          <b>ERROR: Goal data was not submitted. ${message.responseJSON.statusMsg}</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
@@ -488,23 +492,46 @@ $(document).ready(
 
   // Code to handle save logic Start
   $('#save-goal-form').on('click', function () {
-    const form = $('#createGoalForm');
-    const objectData = form.repeaterVal();
-    console.log(objectData.goalsList);
-    const data = objectData.goalsList;
-    for (let i = 0; i < data.length; i++) {
-      data[i]['balanced_scorecard'] = formsList[i].find('#scorecards').val();
-      data[i]['weight'] = formsList[i].find('#weight').val();
-      data[i]['timeline'] = formsList[i].find('#timeline').val();
+    const data = {};
+    for (let i = 0; i < formsList.length; i++) {
+      data[i] = {
+        'goal_form_id': i + 1, // j not i
+        'balanced_scorecard': formsList[i].find('#balanced_scorecard').val(),
+        'corporate_objective': formsList[i].find('#corporate_objective').val(),
+        'weight': formsList[i].find('#weight').val(),
+        'timeline': formsList[i].find('#timeline').val(),
+        'agreed_target': formsList[i].find('#agreed_target').val(),
+        'goal_description': formsList[i].find('#goal_description').val(),
+        'kpi': formsList[i].find('#kpi').val(),
+        'specific_task': formsList[i].find('#specific_task').val()
+      }
+      console.log(checkForEmptyObject(data[i]));
+      if (!checkForEmptyObject(data[i])) {
+        delete data[i];
+      }
+    }    
+    console.log("Data to save", data);
+    if (Object.keys(data).length == 0) {
+      $('.alert').remove();
+      $('.form-parent').prepend(
+        `<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+        <b>You cannot save empty goals.</b>
+        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
+        </button></div>`
+      )
+      $('html, body').scrollTop(0);
+    } else {
+      console.log("SAVING DATA")
+      saveGoals(data);
     }
-    const dataToSend = JSON.stringify(formatJSON(data));
-    saveGoals(dataToSend);
   });
 
   function formatJSON (dataToTransform) {
     const defaultJSON = {}
     let key = 0;
     for (let goal of dataToTransform) {
+      console.log(goal);
       const goalTemplate = {
         goal_description: goal.goal_description,
         specific_task: goal.specific_task,
@@ -515,6 +542,7 @@ $(document).ready(
         weight: goal.weight,
         timeline: goal.timeline
       }
+      console.log(goalTemplate);
       if (checkForEmptyObject(goalTemplate))
         defaultJSON[key] = goalTemplate;
       key++;
@@ -525,7 +553,7 @@ $(document).ready(
 
   function checkForEmptyObject (goalObject) {
     const objectKeys = Object.keys(goalObject);
-    const exceptions = ["weight", "balanced_scorecard", "corporate_objective"];
+    const exceptions = ["goal_form_id", "weight", "balanced_scorecard", "corporate_objective"];
     for (let key of objectKeys) {
       if (!exceptions.includes(key)) {
         if (goalObject[key]) return true;
@@ -545,25 +573,26 @@ $(document).ready(
         "X-CSRFTOKEN": $csrf_token,
       },
       success: function (data) {
-        console.log(goals);
-        console.log(data);
-        $('#goalSaveAlert').append(
+        $('.alert').remove();
+        $('.form-parent').prepend(
           `<div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
           <b>Goal data saved successfully! You are yet to submit your goals.</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
         )
+        $('html, body').scrollTop(0);
       },
       error: function (error) {
-        console.log(error)
-        $('#goalSaveAlert').append(
+        $('.alert').remove();
+        $('.form-parent').prepend(
           `<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-          <b>ERROR: Goal data was not saved. ${error.responseJSON.statusMsg}</b>
+          <b>ERROR: Goal data was not saved. ${error.responseJSON.statusMsg || "Error goals not saved"}</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
         )
+        $('html, body').scrollTop(0);
       }
     });
   }
