@@ -1,47 +1,119 @@
-
-
 $(document).ready(
   function () {
   // Global variable declarations
   let total = 0;
-  let data;
+  let dependentDropdownData;
   let formsList = [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
   "use strict";
 
 
-  //  Logic to handle showing saved goals on form Start
-  $.ajax({
-    url: '/get_goals/',
-    type: "GET",
-    dataType: "json",
-    success: function (res) {
-      console.log("json", res);
-      getCorporateObjectives(res);
-    },
-    error: function (error) {
-      console.log("ERROR", error);
-    }
-  });
+  // Logic to handle showing saved goals on form Start
+  // $.ajax({
+  //   url: '/get_goals/',
+  //   type: "GET",
+  //   dataType: "json",
+  //   success: function (data) {
+  //     console.log(data);
+  //     // console.log(dummyData)
+  //     console.log("json", data);
+    
+  //     populateSavedGoalsOnLoad(data);
+  //   },
+  //   error: function (error) {
+  //     console.log("ERROR", error);
+  //   }
+  // });
 
-  //  Logic to pull corporate objectives
-  function getCorporateObjectives(savedGoals) {
-    $.ajax({
-      url: '/corporate_objectives/',
-      type: "GET",
-      dataType: "json",
-      success: function (res) {
-        const data1 = pairValuesOfObjectivesAndScorecards(JSON.parse(res));
-        data = data1;
-        console.log("data f;dljvn", data);
-        populateSavedGoalsOnLoad(savedGoals);
-        handleDependentDropdown($('.goal'));
+  // Logic to pull corporate objectives
+  // $.ajax({
+  //   url: '/corporate_objectives/',
+  //   type: "GET",
+  //   dataType: "json",
+  //   success: function (res) {
+  //     const data1 = pairValuesOfObjectivesAndScorecards(JSON.parse(res))
+  //     data = data1
+  //     console.log("paired values", data)
+  //     populateDropDown(data1, formsList);
+  //   },
+  //   error: function (error) {
+  //     console.log(error);
+  //   }
+  // })
+
+  // Dummy Data
+  const dummyData = {
+    "0":{
+         "goal_description":"for goal 1",
+         "specific_task":"task goal 1",
+         "agreed_target":"dknednie",
+         "kpi":"ejd ececeic",
+         "corporate_objective":"Luke Skywalker",
+         "balanced_scorecard":"blue",
+         "weight":"3",
+         "timeline":"2024-06-01T08:32"
+        },
+    "1":{
+      "goal_description":"for goal 2",
+      "specific_task":"task goal 2",
+      "agreed_target":"dknednie",
+      "kpi":"ejd ececeic",
+      "corporate_objective":"C-3PO",
+      "balanced_scorecard":"yellow",
+      "weight":"43",
+      "timeline":"2024-06-01T08:32"
       },
-      error: function (error) {
-        console.log(error);
-      }
+    "2":{
+    "goal_description":"hdyygdi",
+    "specific_task":"dreedw",
+    "agreed_target":"dknednie",
+    "kpi":"ejd ececeic",
+    "corporate_objective":"Darth Vader",
+    "balanced_scorecard":"yellow",
+    "weight":"32",
+    "timeline":"2024-06-01T08:32"
+    },
+    "3":{
+    "goal_description":"hdyygdi",
+    "specific_task":"dreedw",
+    "agreed_target":"dknednie",
+    "kpi":"ejd ececeic",
+    "corporate_objective":"Owen Lars",
+    "balanced_scorecard":"blue",
+    "weight":"22",
+    "timeline":"2024-06-01T08:32"
+    }
+  }
+  // Dummy logic to test dependent dropdown REMOVE THIS
+  function getCorporateObjectives(callback) {
+    $.ajax({
+        type: 'GET',
+        url: 'https://swapi.dev/api/people',
+        success: function (data) {
+            // console.log(data.results);
+            const corporate_objectives = {}
+            for (character of data.results) {
+                corporate_objectives[character.name] = character.eye_color;
+            }
+            // console.log(corporate_objectives);
+            callback(corporate_objectives);
+        },
+        error: function (message) {
+            console.log(message);
+        }
     });
   }
 
+  // REMOVE THIS
+  let corporate_objectives;
+  getCorporateObjectives(
+    function (data) {
+      corporate_objectives = data;
+      dependentDropdownData = corporate_objectives;
+      populateDropDown(data, formsList);
+      // console.log(Object.keys(dependentDropdownData));
+      // populateSavedGoalsOnLoad(dummyData);
+    }
+  )
   // Logic to handle dependent dropdowns
   function handleDependentDropdown (goal_element) {
     goal_element.on('change', '.form-select', function () {
@@ -49,12 +121,12 @@ $(document).ready(
       const key = $(this).val();
       console.log("BALANCED SCORECARD ELEMENT", balanced_scorecard);
       console.log("KEY", key);
-      console.log("VALUE", data[key]);
-      balanced_scorecard.val(data[key]);
+      console.log("VALUE", dependentDropdownData[key]);
+      balanced_scorecard.val(dependentDropdownData[key]);
     });
   }
 
-  
+  handleDependentDropdown($('.goal'));
       
   
   function pairValuesOfObjectivesAndScorecards(json) {
@@ -67,9 +139,13 @@ $(document).ready(
   }
 
   function populateDropDown(data, goalsList) {
+    console.log("Goals list", goalsList);
     for (let goal of goalsList) {
+      // console.log(goal);
       const dropdown = goal.find('#corporate_objective');
+      // console.log("dropdown val", dropdown)
       const dropdownChildrenLength = dropdown.children().length;
+      // console.log(dropdownChildrenLength);
       if (dropdownChildrenLength < 2) {
         dropdown.html()
         if (dropdownChildrenLength == 0) {
@@ -77,11 +153,16 @@ $(document).ready(
         }
         $.each(data, function (key, value) {
           if (key != dropdown.val())
-            dropdown.append(`<option value="${key}" class="dependent-dropdown">${key}</option>`);
+            dropdown.append(`<option value="${key}" class="dependent-dropdown">` + key + `</option>`);
         });
       }
     }
   }
+
+  
+  // dropdown.on('change', function() {
+  //   $('#balanced_scorecard').val()
+  // })
   
   // Function to make timeline input more readable
   function formatDatetime(dtStr) {
@@ -106,16 +187,24 @@ $(document).ready(
     minutes = minutes < 10 ? '0' + minutes : minutes;
 
     // Combine the formatted components into the final string
+    // var formattedDate = month + " " + day + " " + year + " " + hours + ":" + minutes + " " + ampm;
     var formattedDate = `${month} ${day}, ${year}. ${hours}:${minutes} ${ampm}`;
+
     return formattedDate;
   }
   // Function end
 
-  function populateSavedGoalsOnLoad (goals) {
-    const numberOfSavedGoals = Object.keys(goals).length
+  function populateSavedGoalsOnLoad (data) {
+    const numberOfSavedGoals = Object.keys(data).length
     console.log("num saved",numberOfSavedGoals);
+    // if (formsList.length < numberOfSavedGoals) {
+    //   for (let number = formsList.length + 1; number <= numberOfSavedGoals; number++) {
+    //     console.log('New goal created');
+    //     createGoal(number);
+    //   }
+    // }
     for (let counter = 0; counter < numberOfSavedGoals; counter++) {
-      const goalData = goals[counter];
+      const goalData = data[counter];
       if (counter < 3) {
         const goalForm = formsList[counter];
         // console.log(goalForm);
@@ -127,7 +216,7 @@ $(document).ready(
           }
           else if (key == 'corporate_objective') {
             let goal = goalForm.find(`[id = "${key}"]`)
-            console.log("Corp goal", goal);
+            console.log(goal);
             goal.append(`<option value="${goalData[key]}" class="dependent-dropdown" selected>${goalData[key]}</option>`);
           }
           else {
@@ -140,9 +229,10 @@ $(document).ready(
         createGoal(counter + 1, goalData);
       }
     }
-    console.log("Dependent dropdown data", data);
-    populateDropDown(data, formsList);
+    // console.log(formsList);
+    populateDropDown(dependentDropdownData, formsList);
     handleTotalWeight();
+    // console.log("Dependent dropdown data", dependentDropdownData);
   }
 
   // Function to handle creation of extra goals in case they have been saved
@@ -178,7 +268,7 @@ $(document).ready(
         <div class="col-sm w-100 mb-3">
           <label for="target" class="form-label">Agreed Target</label>
           <textarea class="form-control" name="agreed_target" value="${goal.agreed_target}" id="agreed_target" required>${goal.agreed_target}</textarea>
-          <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
+          <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
         </div>
         <div class="col-sm w-100 mb-3">
           <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
@@ -209,7 +299,7 @@ $(document).ready(
     // const thisGoal = $('div.goal_'+number);
     goalsList.append(goalTemplate);
     formsList.push($('div.goal_'+number));
-    // handleDependentDropdown(`$(div.goal_${number})`);
+    handleDependentDropdown($(`div.goal_${number}`));
     appendtoNav();
   } 
   // Logic to handle showing saved goals on form End
@@ -224,10 +314,13 @@ $(document).ready(
       $(this).addClass('d-none goal_'+formsList.length);
       $('#submit').addClass('invisible');
       appendtoNav();
-      populateDropDown(data, formsList);
+      populateDropDown(dependentDropdownData, formsList);
       handleDependentDropdown($(this));
     },
     hide: function (deleteElement) {
+      // const classList = $(this).attr("class").split(" ");
+      // const goalNumber = classList[classList.length - 1];
+      // const formIndex = goalNumber.split("_")[1] - 1;
       const formIndex = getGoalNumber($(this)) - 1;
       $('li.goal_'+formIndex).addClass('active_link');
       formsList[formIndex - 1].removeClass('d-none');
@@ -298,8 +391,9 @@ $(document).ready(
       else $('#submit').addClass('invisible');
     }
   })
+  // Form Navigation End
 
-  // handle Total Weight 
+  // Code to handle Total Weight Start
   function handleTotalWeight (element) {
     console.log("Total", total);
     formsList.map(elem => {
@@ -325,8 +419,9 @@ $(document).ready(
     };
     handleTotalWeight($(this));
   });
+  // Code to handle Total Weight End
   
-  // handle submission logic Start
+  // Code to handle submission logic Start
   $('#createGoalForm').on('submit', function () {
     event.preventDefault();
     if (total != 100) {
@@ -341,30 +436,31 @@ $(document).ready(
       $('html, body').scrollTop(0);
       return;
     }
-    const objectData = $(this).repeaterVal();
-    console.log("this", $(this))
-    console.log("create submit obj dat", objectData);
-    const data = objectData.goalsList;
-    for (let i = 0; i < data.length; i++) {
-      data[i]['balanced_scorecard'] = formsList[i].find('#balanced_scorecard').val();
-      data[i]['weight'] = formsList[i].find('#weight').val();
-      data[i]['timeline'] = formsList[i].find('#timeline').val();
-      data[i]['goal_form_id'] = i + 1;
-    }
-    console.log("json stringified object data", JSON.stringify(data));
-    const dataToSend = formatJSON(data);
-    console.log("submitted data", dataToSend)
-    submitGoals(dataToSend)
+    const data = {};
+    for (let i = 0; i < formsList.length; i++) {
+      data[i] = {
+        'goal_form_id': i + 1, // j not i
+        'balanced_scorecard': formsList[i].find('#balanced_scorecard').val(),
+        'corporate_objective': formsList[i].find('#corporate_objective').val(),
+        'weight': formsList[i].find('#weight').val(),
+        'timeline': formsList[i].find('#timeline').val(),
+        'agreed_target': formsList[i].find('#agreed_target').val(),
+        'goal_description': formsList[i].find('#goal_description').val(),
+        'kpi': formsList[i].find('#kpi').val(),
+        'specific_task': formsList[i].find('#specific_task').val()
+      }
+    }    
+    console.log(data);
+    submitGoals(data);
   });
 
+
   function submitGoals(goals) {
-    var $csrf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
     $.ajax({
       type: 'POST',
-      url: '/submit_goals/',
-      data: goals,
-      headers: {
-        "X-CSRFTOKEN": $csrf_token,
+      url: 'https://dummy.restapiexample.com/api/v1/create',
+      data: {
+        goals
       },
       success: function (data) {
         console.log(goals);
@@ -372,7 +468,7 @@ $(document).ready(
         $('.alert').remove();
         $('.form-parent').prepend(
           `<div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-          <b>Goal data submitted successfully!</b>
+          <b>Goal data submit successfully!</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
@@ -383,7 +479,7 @@ $(document).ready(
         $('.alert').remove();
         $('.form-parent').prepend(
           `<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-          <b>ERROR: Goal data was not submitted. ${error.responseJSON.statusMsg}</b>
+          <b>ERROR: Goal data was not submitted. ${message.responseJSON.statusMsg}</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
@@ -392,58 +488,74 @@ $(document).ready(
       }
     });
   }
+  // Code to handle submission logic End
 
   // Code to handle save logic Start
-  $('#save-goal-button').on('click', function () {
-    const form = $('#createGoalForm');
-    const objectData = form.repeaterVal();
-    console.log(objectData.goalsList);
-    const data = objectData.goalsList;
-    for (let i = 0; i < data.length; i++) {
-      data[i]['balanced_scorecard'] = formsList[i].find('#balanced_scorecard').val();
-      data[i]['weight'] = formsList[i].find('#weight').val();
-      data[i]['timeline'] = formsList[i].find('#timeline').val();
-      data[i]['goal_form_id'] = i + 1;
+  $('#save-goal-form').on('click', function () {
+    const data = {};
+    for (let i = 0; i < formsList.length; i++) {
+      data[i] = {
+        'goal_form_id': i + 1, // j not i
+        'balanced_scorecard': formsList[i].find('#balanced_scorecard').val(),
+        'corporate_objective': formsList[i].find('#corporate_objective').val(),
+        'weight': formsList[i].find('#weight').val(),
+        'timeline': formsList[i].find('#timeline').val(),
+        'agreed_target': formsList[i].find('#agreed_target').val(),
+        'goal_description': formsList[i].find('#goal_description').val(),
+        'kpi': formsList[i].find('#kpi').val(),
+        'specific_task': formsList[i].find('#specific_task').val()
+      }
+      console.log(checkForEmptyObject(data[i]));
+      if (!checkForEmptyObject(data[i])) {
+        delete data[i];
+      }
+    }    
+    console.log("Data to save", data);
+    if (Object.keys(data).length == 0) {
+      $('.alert').remove();
+      $('.form-parent').prepend(
+        `<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+        <b>You cannot save empty goals.</b>
+        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
+        </button></div>`
+      )
+      $('html, body').scrollTop(0);
+    } else {
+      console.log("SAVING DATA")
+      saveGoals(data);
     }
-    const dataToSend = formatJSON(data);
-    console.log("saved data", dataToSend)
-    saveGoals(dataToSend);
   });
 
-  function formatJSON (dataToTransform) {
-    const defaultJSON = {}
-    let key = 0;
-    for (let goal of dataToTransform) {
-      // console.log("Goal template", goal);
-      const goalTemplate = {
-        goal_form_id: goal.goal_form_id,
-        goal_description: goal.goal_description,
-        specific_task: goal.specific_task,
-        agreed_target: goal.agreed_target,
-        kpi: goal.kpi,
-        corporate_objective: goal.corporate_objective,
-        balanced_scorecard: goal.balanced_scorecard,
-        weight: goal.weight,
-        timeline: goal.timeline
-      }
-      // console.log("Goal template", goalTemplate)
-      if (checkForEmptyObject(goalTemplate)) {
-        console.log(checkForEmptyObject(goalTemplate));
-        defaultJSON[key] = goalTemplate;
-      }
-      key++;
-    }
-    console.log(defaultJSON);
-    return defaultJSON;
-  }
+  // function formatJSON (dataToTransform) {
+  //   const defaultJSON = {}
+  //   let key = 0;
+  //   for (let goal of dataToTransform) {
+  //     console.log(goal);
+  //     const goalTemplate = {
+  //       goal_description: goal.goal_description,
+  //       specific_task: goal.specific_task,
+  //       agreed_target: goal.agreed_target,
+  //       kpi: goal.kpi,
+  //       corporate_objective: goal.corporate_objective,
+  //       balanced_scorecard: goal.balanced_scorecard,
+  //       weight: goal.weight,
+  //       timeline: goal.timeline
+  //     }
+  //     console.log(goalTemplate);
+  //     if (checkForEmptyObject(goalTemplate))
+  //       defaultJSON[key] = goalTemplate;
+  //     key++;
+  //   }
+  //   console.log(defaultJSON);
+  //   return defaultJSON;
+  // }
 
   function checkForEmptyObject (goalObject) {
     const objectKeys = Object.keys(goalObject);
-    console.log("obje keys", objectKeys)
     const exceptions = ["goal_form_id", "weight", "balanced_scorecard", "corporate_objective"];
     for (let key of objectKeys) {
       if (!exceptions.includes(key)) {
-        console.log("Goal object value", goalObject[key]);
         if (goalObject[key]) return true;
       }
     }
@@ -461,27 +573,26 @@ $(document).ready(
         "X-CSRFTOKEN": $csrf_token,
       },
       success: function (data) {
-        console.log(goals);
-        console.log(data);
-        $('#createGoalForm').prepend(
+        $('.alert').remove();
+        $('.form-parent').prepend(
           `<div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
           <b>Goal data saved successfully! You are yet to submit your goals.</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
         )
-        $('html', 'body').scrollTop(0);
+        $('html, body').scrollTop(0);
       },
       error: function (error) {
-        console.log(error)
-        $('#createGoalForm').prepend(
+        $('.alert').remove();
+        $('.form-parent').prepend(
           `<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-          <b>ERROR: Goal data was not saved. ${error.responseJSON.statusMsg}</b>
+          <b>ERROR: Goal data was not saved. ${error.responseJSON.statusMsg || "Error goals not saved"}</b>
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
           </button></div>`
         )
-        $('html', 'body').scrollTop(0);
+        $('html, body').scrollTop(0);
       }
     });
   }
@@ -501,4 +612,20 @@ $(document).ready(
 
     return ([goalNumber, classList]);
   }
+
+
 });
+
+
+
+
+// [
+//   {"objective": "Reduce ATC&C Loss", "link_to_balance_scorecard": "Financial"}, 
+//   {"objective": "Revenue Growth & Profitability", "link_to_balance_scorecard": "Financial"}, 
+//   {"objective": "Achieve Financial Viability", "link_to_balance_scorecard": "Financial"}, 
+//   {"objective": "Re-design Customer Experience", "link_to_balance_scorecard": "Customer"}, 
+//   {"objective": "Stakeholder Engagement", "link_to_balance_scorecard": "Process"}, 
+//   {"objective": "Compliance with Re-engineered Business Processes", "link_to_balance_scorecard": "Process"}, 
+//   {"objective": "Regulatory Compliance", "link_to_balance_scorecard": "Process"}, 
+//   {"objective": "Increase Technology Adoption", "link_to_balance_scorecard": "Innovation, Growth & Learning"},
+// ]

@@ -527,29 +527,29 @@ $(document).ready(
     }
   });
 
-  function formatJSON (dataToTransform) {
-    const defaultJSON = {}
-    let key = 0;
-    for (let goal of dataToTransform) {
-      console.log(goal);
-      const goalTemplate = {
-        goal_description: goal.goal_description,
-        specific_task: goal.specific_task,
-        agreed_target: goal.agreed_target,
-        kpi: goal.kpi,
-        corporate_objective: goal.corporate_objective,
-        balanced_scorecard: goal.balanced_scorecard,
-        weight: goal.weight,
-        timeline: goal.timeline
-      }
-      console.log(goalTemplate);
-      if (checkForEmptyObject(goalTemplate))
-        defaultJSON[key] = goalTemplate;
-      key++;
-    }
-    console.log(defaultJSON);
-    return defaultJSON;
-  }
+  // function formatJSON (dataToTransform) {
+  //   const defaultJSON = {}
+  //   let key = 0;
+  //   for (let goal of dataToTransform) {
+  //     console.log(goal);
+  //     const goalTemplate = {
+  //       goal_description: goal.goal_description,
+  //       specific_task: goal.specific_task,
+  //       agreed_target: goal.agreed_target,
+  //       kpi: goal.kpi,
+  //       corporate_objective: goal.corporate_objective,
+  //       balanced_scorecard: goal.balanced_scorecard,
+  //       weight: goal.weight,
+  //       timeline: goal.timeline
+  //     }
+  //     console.log(goalTemplate);
+  //     if (checkForEmptyObject(goalTemplate))
+  //       defaultJSON[key] = goalTemplate;
+  //     key++;
+  //   }
+  //   console.log(defaultJSON);
+  //   return defaultJSON;
+  // }
 
   function checkForEmptyObject (goalObject) {
     const objectKeys = Object.keys(goalObject);
