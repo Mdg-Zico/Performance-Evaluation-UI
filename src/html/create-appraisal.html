@@ -357,35 +357,39 @@
   <div class="row">
     <div class="col-12">
       <div class="multi-step-appraisal-form-nav">
-        <ul class="nav nav-pills p-3 mb-3 rounded align-items-center card flex-row">
+        <ul class="nav nav-pills p-3 mb-3 rounded align-items-center card flex-row" id="appraisal-form-nav">
           <li class="nav-item">
-            <span class="multi-step-appraisal-form-nav-link nav-link gap-6 note-link d-flex align-items-center justify-content-center active px-3 px-md-3" id="all-category">
+            <span class="multi-step-appraisal-form-nav-link nav-link gap-6 note-link d-flex align-items-center justify-content-center active px-3 px-md-3" id="goal-evaluation">
               <i class="ti ti-list fill-white"></i>
-              <span class="d-none d-md-block fw-medium">All Notes</span>
+              <span class="d-none d-md-block fw-medium">Goal Evaluation</span>
             </span>
           </li>
           <li class="nav-item">
-            <span class="multi-step-appraisal-form-nav-link nav-link gap-6 note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="note-business">
+            <span class="multi-step-appraisal-form-nav-link nav-link gap-6 
+            note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="behaviour-assessment">
               <i class="ti ti-briefcase fill-white"></i>
-              <span class="d-none d-md-block fw-medium">Business</span>
+              <span class="d-none d-md-block fw-medium">Behaviour Assessment</span>
             </span>
           </li>
           <li class="nav-item">
-            <span  class="multi-step-appraisal-form-nav-link nav-link gap-6 note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="note-social">
+            <span  class="multi-step-appraisal-form-nav-link nav-link gap-6 
+            note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="key-accomplishment">
               <i class="ti ti-share fill-white"></i>
-              <span class="d-none d-md-block fw-medium">Social</span>
+              <span class="d-none d-md-block fw-medium">Key Accomplishment</span>
             </span>
           </li>
           <li class="nav-item">
-            <span class="multi-step-appraisal-form-nav-link nav-link gap-6 note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="note-important">
+            <span class="multi-step-appraisal-form-nav-link nav-link gap-6 
+            note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="performance-improvement">
               <i class="ti ti-star fill-white"></i>
-              <span class="d-none d-md-block fw-medium">Important</span>
+              <span class="d-none d-md-block fw-medium">Performance Improvement</span>
             </span>
           </li>
-          <li class="nav-item ms-auto">
-            <span class="btn btn-primary d-flex align-items-center px-3 gap-6" id="add-notes">
-              <i class="ti ti-file fs-4"></i>
-              <span class="d-none d-md-block fw-medium fs-3">Add Notes</span>
+          <li class="nav-item">
+            <span class="multi-step-appraisal-form-nav-link nav-link gap-6 
+            note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="overall-rating">
+              <i class="ti ti-file fill-white"></i>
+              <span class="d-none d-md-block fw-medium fs-3">Overall rating</span>
             </span>
           </li>
         </ul>
@@ -393,8 +397,8 @@
       <div class="card">
         <div class="card-body">
           <div class="repeater-default">
-            <form class="repeater" id="createGoalForm">
-              <div>
+            <form class="repeater">
+              <div id="goal-evaluation">
                 <div class="d-flex justify-content-between">
                   <ul class="nav nav-tabs w-75" id="goalFormNavigation">
                     <li class="nav-item goal_1 active_link" style="cursor: pointer;">
@@ -580,6 +584,18 @@
                   </section> -->
                 </div>
               </div>
+              <div class="d-none" id="behaviour-assessment">
+                <h1>BEHAVIOUR ASSESSMENT</h1>
+              </div>
+              <div class="d-none" id="key-accomplishment">
+                <h1>KEY ACCOMPLISHMENT</h1>
+              </div>
+              <div class="d-none" id="performance-improvement">
+                <h1>PERFORMANCE IMPROVEMENT</h1>
+              </div>
+              <div class="d-none" id="overall-rating">
+                <h1>OVERALL RATING</h1>
+              </div>
               <div class="d-flex justify-content-between">
                 <button class="btn btn-primary rounded-pill invisible" id="submit" type="submit" style="height: 40px">
                   <div class="d-flex align-items-center justify-content-center">
@@ -589,15 +605,6 @@
                 </button>
               </div>
             </form>
-            <div class="d-none" id="business_section">
-              <h1>BUSINESS SECTION</h1>
-            </div>
-            <div class="d-none" id="social_section">
-              <h1>SOCIAL SECTION</h1>
-            </div>
-            <div class="d-none" id="important_section">
-              <h1>IMPORTANT STUFF</h1>
-            </div>
           </div>
         </div>
       </div>
