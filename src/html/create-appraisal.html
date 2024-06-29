@@ -413,179 +413,246 @@
                   </ul>
                 </div>
                 <div data-repeater-item class="mt-5 goal goal_1">
-                  <!-- <div class="container px-0 mx-0">
-                    <div class="grid column-gap-3 row">
-                      <div class="col-sm mb-3 mx-0">
-                        <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-                        <select class="form-select" name="corporate_objective" id="corporate_objective" required>
-                        </select>
-                      </div>
-                      <div class="col-sm mb-3 mx-0">
-                        <label for="scorecards" class="form-label">Link to balance scorecard</label>
-                        <input class="form-control" value="" name="balanced_scorecard" id="balanced_scorecard" readonly/>
-                      </div>
-                    </div>
-                  </div> -->
                   <div class="grid column-gap-3 row">
                     <div class="col-sm w-100 mb-3">
                       <label for="goal" class="form-label">Goal</label>
-                      <textarea class="form-control" name="goal_description" value="Goal 1" id="goal_description" aria-describedby="goalHelp" required readonly>Goal 1</textarea>
-                      <div id="goalHelp" class="form-text">Short text describing your goal</div>
+                      <textarea class="form-control" name="goal_description" value="Goal 1" id="goal_description" aria-describedby="goalHelp" required disabled>Goal 1</textarea>
+                      <!-- <div id="goalHelp" class="form-text">Short text describing your goal</div> -->
                     </div>
                     <div class="col-sm w-100 mb-3">
-                      <label for="task" class="form-label">Specific tasks to be accomplished</label>
-                      <textarea class="form-control" name="specific_task" value="Task 1" id="specific_task" aria-describedby="goaldescHelp" required readonly>Task 1</textarea>
-                      <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
+                      <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
+                      <textarea class="form-control" name="kpi" value="KPI 1" id="kpi" required disabled>KPI 1</textarea>
+                      <div id="goaldescHelp" class="form-text">Key performance indices of your goal</div>
                     </div>
                   </div>
                   <div class="grid column-gap-3 row">
-                    <!-- <div class="col-sm w-100 mb-3">
-                      <label for="target" class="form-label">Agreed Target</label>
-                      <textarea class="form-control" name="agreed_target" value="" id="agreed_target" required></textarea>
-                       <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
-                    </div> -->
                     <div class="col-sm w-100 mb-3">
-                      <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
-                      <textarea class="form-control" name="kpi" value="KPI 1" id="kpi" required readonly>KPI 1</textarea>
-                      <div id="goaldescHelp" class="form-text">Highlight the key performance indices of your goal</div>
-                    </div>
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="weight" class="form-label">Weight</label>
-                      <input type="number" name="weight" placeholder="0" value="50" min="0" max="100" class="form-control" id="weight" required readonly/>
+                      <label for="result-achieved" class="form-label">Actual Result Achieved</label>
+                      <textarea class="form-control" name="result-achieved" value="" id="result-achieved" aria-describedby="goaldescHelp" required></textarea>
+                      <div id="goaldescHelp" class="form-text">What have you achieved so far?</div>
                     </div>
                   </div>
-                  <!-- <section class="container-fluid px-0">
-                    <div class="grid column-gap-3 row">
-                      <div class="col mb-3 mx-0">
-                        <label for="timeline" class="form-label">Timeline</label>
-                        <input type="datetime-local" name="timeline" value="" class="form-control" id="timeline" required/>
-                      </div>
+                  <div class="grid column-gap-3 row">
+                    <div class="col-sm mb-3 mx-0">
+                      <label for="weight" class="form-label">Weight</label>
+                      <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required disabled/>
                     </div>
-                    <div class="d-flex align-items-center justify-content-around">
-                      <button data-repeater-delete class="btn btn-danger rounded-pill hstack gap-6" type="button">
-                        <i class="ti ti-trash fs-5"></i>
-                        Delete
-                      </button>
+                    <div class="col-sm mb-3 mx-0">
+                      <label for="appraisee-rating" class="form-label">Appraisee Rating</label>
+                      <select class="form-select" name="appraisee-rating" id="appraisee-rating" required>
+                      </select>
+                    </div>    
+                    <div class="col-sm mb-3 mx-0">
+                      <label for="score" class="form-label">Score</label>
+                      <input type="number" name="score" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                    </div>     
+                  </div>           
+                  <div class="grid column-gap-3 row">
+                    <div class="col-sm mb-3 mx-0">
+                      <label for="agreed-rating" class="form-label">Agreed Rating</label>
+                      <input type="number" name="agreed-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
                     </div>
-                  </section> -->
+                    <div class="col-sm mb-3 mx-0">
+                      <label for="appraiser-rating" class="form-label">Appraiser Rating</label>
+                      <input type="number" name="appraiser-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                    </div>
+                  </div>
                 </div>
                 <div data-repeater-item class="mt-5 d-none goal goal_2">
-                  <!-- <div class="container px-0 mx-0">
-                    <div class="grid column-gap-3 row">
-                      <div class="col-sm mb-3 mx-0">
-                        <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-                        <select class="form-select" name="corporate_objective" id="corporate_objective" required>
-                        </select>
-                      </div>
-                      <div class="col-sm mb-3 mx-0">
-                        <label for="scorecards" class="form-label">Link to balance scorecard</label>
-                        <input class="form-control" value="" name="balanced_scorecard" id="balanced_scorecard" readonly/>
-                      </div>
-                    </div>
-                  </div> -->
                   <div class="grid column-gap-3 row">
                     <div class="col-sm w-100 mb-3">
                       <label for="goal" class="form-label">Goal</label>
-                      <textarea class="form-control" name="goal_description" value="Goal 2" id="goal_description" aria-describedby="goalHelp" required readonly>Goal 2</textarea>
-                      <div id="goalHelp" class="form-text">Short text describing your goal</div>
+                      <textarea class="form-control" name="goal_description" value="Goal 2" id="goal_description" aria-describedby="goalHelp" required disabled>Goal 2</textarea>
+                      <!-- <div id="goalHelp" class="form-text">Short text describing your goal</div> -->
                     </div>
                     <div class="col-sm w-100 mb-3">
-                      <label for="task" class="form-label">Specific tasks to be accomplished</label>
-                      <textarea class="form-control" name="specific_task" value="Task 2" id="specific_task" aria-describedby="goaldescHelp" required readonly>Task 2</textarea>
-                      <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
+                      <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
+                      <textarea class="form-control" name="kpi" value="KPI 2" id="kpi" required disabled>KPI 2</textarea>
+                      <div id="goaldescHelp" class="form-text">Key performance indices of your goal</div>
                     </div>
                   </div>
                   <div class="grid column-gap-3 row">
-                    <!-- <div class="col-sm w-100 mb-3">
-                      <label for="target" class="form-label">Agreed Target</label>
-                      <textarea class="form-control" name="agreed_target" value="" id="agreed_target" required></textarea>
-                       <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
-                    </div> -->
                     <div class="col-sm w-100 mb-3">
-                      <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
-                      <textarea class="form-control" name="kpi" value="KPI 2" id="kpi" required readonly>KPI 2</textarea>
-                      <div id="goaldescHelp" class="form-text">Highlight the key performance indices of your goal</div>
-                    </div>
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="weight" class="form-label">Weight</label>
-                      <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required readonly/>
+                      <label for="result-achieved" class="form-label">Actual Result Achieved</label>
+                      <textarea class="form-control" name="result-achieved" value="Task 3" id="result-achieved" aria-describedby="goaldescHelp" required></textarea>
+                      <div id="goaldescHelp" class="form-text">What have you achieved so far?</div>
                     </div>
                   </div>
-                  <!-- <section class="container-fluid px-0">
-                    <div class="grid column-gap-3 row">
-                      <div class="col mb-3 mx-0">
-                        <label for="timeline" class="form-label">Timeline</label>
-                        <input type="datetime-local" name="timeline" value="" class="form-control" id="timeline" required/>
-                      </div>
+                  <div class="grid column-gap-3 row">
+                    <div class="col-sm mb-3 mx-0">
+                      <label for="weight" class="form-label">Weight</label>
+                      <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required disabled/>
                     </div>
-                    <div class="d-flex align-items-center justify-content-around">
-                      <button data-repeater-delete class="btn btn-danger rounded-pill hstack gap-6" type="button">
-                        <i class="ti ti-trash fs-5"></i>
-                        Delete
-                      </button>
+                    <div class="col-sm mb-3 mx-0">
+                      <label for="appraisee-rating" class="form-label">Appraisee Rating</label>
+                      <select class="form-select" name="appraisee-rating" id="appraisee-rating" required>
+                      </select>
                     </div>
-                  </section> -->
+                    <div class="col-sm mb-3 mx-0">
+                      <label for="score" class="form-label">Score</label>
+                      <input type="number" name="score" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                    </div>   
+                  </div>                 
+                  <div class="grid column-gap-3 row">
+                    <div class="col-sm mb-3 mx-0">
+                      <label for="agreed-rating" class="form-label">Agreed Rating</label>
+                      <input type="number" name="agreed-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                    </div>
+                    <div class="col-sm mb-3 mx-0">
+                      <label for="appraiser-rating" class="form-label">Appraiser Rating</label>
+                      <input type="number" name="appraiser-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                    </div>
+                  </div>
                 </div>  
                 <div data-repeater-item class="mt-5 d-none goal goal_3">
-                  <!-- <div class="container px-0 mx-0">
-                    <div class="grid column-gap-3 row">
-                      <div class="col-sm mb-3 mx-0">
-                        <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-                        <select class="form-select" name="corporate_objective" id="corporate_objective" required>
-                        </select>
-                      </div>
-                      <div class="col-sm mb-3 mx-0">
-                        <label for="scorecards" class="form-label">Link to balance scorecard</label>
-                        <input class="form-control" value="" name="balanced_scorecard" id="balanced_scorecard" readonly/>
-                      </div>
-                    </div>
-                  </div> -->
                   <div class="grid column-gap-3 row">
                     <div class="col-sm w-100 mb-3">
                       <label for="goal" class="form-label">Goal</label>
-                      <textarea class="form-control" name="goal_description" value="Goal 3" id="goal_description" aria-describedby="goalHelp" required readonly>Goal 3</textarea>
-                      <div id="goalHelp" class="form-text">Short text describing your goal</div>
+                      <textarea class="form-control" name="goal_description" value="Goal 3" id="goal_description" aria-describedby="goalHelp" required disabled>Goal 3</textarea>
+                      <!-- <div id="goalHelp" class="form-text">Short text describing your goal</div> -->
                     </div>
                     <div class="col-sm w-100 mb-3">
-                      <label for="task" class="form-label">Specific tasks to be accomplished</label>
-                      <textarea class="form-control" name="specific_task" value="Task 3" id="specific_task" aria-describedby="goaldescHelp" required readonly>Task 3</textarea>
-                      <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
+                      <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
+                      <textarea class="form-control" name="kpi" value="KPI 3" id="kpi" required disabled>KPI 3</textarea>
+                      <div id="goaldescHelp" class="form-text">Key performance indices of your goal</div>
                     </div>
                   </div>
                   <div class="grid column-gap-3 row">
-                    <!-- <div class="col-sm w-100 mb-3">
-                      <label for="target" class="form-label">Agreed Target</label>
-                      <textarea class="form-control" name="agreed_target" value="" id="agreed_target" required></textarea>
-                       <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
-                    </div> -->
                     <div class="col-sm w-100 mb-3">
-                      <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
-                      <textarea class="form-control" name="kpi" value="KPI 3" id="kpi" required readonly>KPI 3</textarea>
-                      <div id="goaldescHelp" class="form-text">Highlight the key performance indices of your goal</div>
-                    </div>
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="weight" class="form-label">Weight</label>
-                      <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required readonly/>
+                      <label for="result-achieved" class="form-label">Actual Result Achieved</label>
+                      <textarea class="form-control" name="result-achieved" value="Task 3" id="result-achieved" aria-describedby="goaldescHelp" required></textarea>
+                      <div id="goaldescHelp" class="form-text">What have you achieved so far?</div>
                     </div>
                   </div>
-                  <!-- <section class="container-fluid px-0">
-                    <div class="grid column-gap-3 row">
-                      <div class="col mb-3 mx-0">
-                        <label for="timeline" class="form-label">Timeline</label>
-                        <input type="datetime-local" name="timeline" value="" class="form-control" id="timeline" required/>
-                      </div>
+                  <div class="grid column-gap-3 row">
+                    <div class="col-sm mb-3 mx-0">
+                      <label for="weight" class="form-label">Weight</label>
+                      <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required disabled/>
                     </div>
-                    <div class="d-flex align-items-center justify-content-around">
-                      <button data-repeater-delete class="btn btn-danger rounded-pill hstack gap-6" type="button">
-                        <i class="ti ti-trash fs-5"></i>
-                        Delete
-                      </button>
+                    <div class="col-sm mb-3 mx-0">
+                      <label for="appraisee-rating" class="form-label">Appraisee Rating</label>
+                      <select class="form-select" name="appraisee-rating" id="appraisee-rating" required>
+                      </select>
                     </div>
-                  </section> -->
+                    <div class="col-sm mb-3 mx-0">
+                      <label for="score" class="form-label">Score</label>
+                      <input type="number" name="score" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                    </div>
+                  </div>                    
+                  <div class="grid column-gap-3 row">
+                    <div class="col-sm mb-3 mx-0">
+                      <label for="agreed-rating" class="form-label">Agreed Rating</label>
+                      <input type="number" name="agreed-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                    </div>
+                    <div class="col-sm mb-3 mx-0">
+                      <label for="appraiser-rating" class="form-label">Appraiser Rating</label>
+                      <input type="number" name="appraiser-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="d-none" id="behaviour-assessment">
-                <h1>BEHAVIOUR ASSESSMENT</h1>
+                <div class="grid column-gap-3 row">
+                  <div class="card p-4 col-sm w-100 mb-3 behaviour-assessment-card">
+                    <label for="job-effectiveness">
+                      <p class="fw-bolder">Job Effectiveness</p>
+                    </label>
+                    <div>
+                      <p class="text-wrap">
+                        Able to multi task, possesses knowledge and skills necessary to perform job.
+                        Delivers information effectively in a variety of formats to different stakeholders.
+                      </p>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="job-effectiveness" type="radio" value="4" id="exceeded">
+                      <label class="form-check-label" for="exceeded">
+                        Exceeded(E-4)
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="job-effectiveness" type="radio" value="3" id="met">
+                      <label class="form-check-label" for="met">
+                        Met(M-3)
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="job-effectiveness" type="radio" value="2" id="partially-met">
+                      <label class="form-check-label" for="partially-met">
+                        Partially Met(PM-2)
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="job-effectiveness" type="radio" value="1" id="did-not-meet">
+                      <label class="form-check-label" for="did-not-meet">
+                        Did not meet(DM-1)
+                      </label>
+                    </div>
+                  </div>
+                  <div class="card p-4 col-sm w-100 mb-3 behaviour-assessment-card">
+                    <label for="trust-integrity">
+                      <p class="fw-bolder">Trust and Integrity</p>
+                    </label>
+                    <div>
+                      <p class="text-wrap bolder">
+                        Maintains and exmeplifies a reputation for honesty, candour, confidentiality and fairness
+                      </p>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="trust-integrity" type="radio" value="3" id="met">
+                      <label class="form-check-label" for="met">
+                        Met(M-3)
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="trust-integrity" type="radio" value="1" id="did-not-meet">
+                      <label class="form-check-label" for="did-not-meet">
+                        Did not meet(DM-1)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="grid column-gap-3 row">
+                  <div class="card p-4 col-sm w-100 mb-3 behaviour-assessment-card">
+                    <label for="job-effectiveness">
+                      <p class="fw-bolder">Supervision and Management</p>
+                    </label>
+                    <div>
+                      <p class="text-wrap bolder">
+                        Gives clear directions and communicates performance expectations. Coached,
+                        counsels and evaluates employees; Identifies areas for and supports employee development
+                        opportunities
+                      </p>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="job-effectiveness" type="radio" value="4" id="exceeded">
+                      <label class="form-check-label" for="exceeded">
+                        Exceeded(E-4)
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="job-effectiveness" type="radio" value="3" id="met">
+                      <label class="form-check-label" for="met">
+                        Met(M-3)
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="job-effectiveness" type="radio" value="2" id="partially-met">
+                      <label class="form-check-label" for="partially-met">
+                        Partially Met(PM-2)
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="job-effectiveness" type="radio" value="1" id="did-not-meet">
+                      <label class="form-check-label" for="did-not-meet">
+                        Did not meet(DM-1)
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-sm w-100 mb-3"></div>
+                </div>
+                <div class="grid column-gap-3 row">
+                  <div class="col-sm w-100 mb-3"></div>
+                </div>
               </div>
               <div class="d-none" id="key-accomplishment">
                 <h1>KEY ACCOMPLISHMENT</h1>
@@ -595,25 +662,22 @@
               </div>
               <div class="d-none" id="overall-rating">
                 <h1>OVERALL RATING</h1>
-              </div>
-              <div class="d-flex justify-content-between">
-                <button class="btn btn-primary rounded-pill invisible" id="submit" type="submit" style="height: 40px">
-                  <div class="d-flex align-items-center justify-content-center">
-                    Submit
-                    <i class="ti ti-send ms-1 fs-5"></i>
-                  </div>
-                </button>
+                <div class="d-flex justify-content-between">
+                  <button class="btn btn-primary rounded-pill" id="submit" type="submit" style="height: 40px">
+                    <div class="d-flex align-items-center justify-content-center">
+                      Submit
+                      <i class="ti ti-send ms-1 fs-5"></i>
+                    </div>
+                  </button>
+                </div>
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-  </div>
-        
 
-
-  <script src="../assets/libs/jquery/dist/jquery.js"></script>
+ <script src="../assets/libs/jquery/dist/jquery.js"></script>
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../assets/libs/jquery.repeater.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

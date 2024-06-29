@@ -142,7 +142,7 @@ $(document).ready(
     console.log("Goals list", goalsList);
     for (let goal of goalsList) {
       // console.log(goal);
-      const dropdown = goal.find('#corporate_objective');
+      const dropdown = goal.find('#appraisee-rating');
       // console.log("dropdown val", dropdown)
       const dropdownChildrenLength = dropdown.children().length;
       // console.log(dropdownChildrenLength);
