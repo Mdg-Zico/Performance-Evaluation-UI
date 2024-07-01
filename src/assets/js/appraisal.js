@@ -142,7 +142,7 @@ $(document).ready(
     console.log("Goals list", goalsList);
     for (let goal of goalsList) {
       // console.log(goal);
-      const dropdown = goal.find('#corporate_objective');
+      const dropdown = goal.find('#appraisee-rating');
       // console.log("dropdown val", dropdown)
       const dropdownChildrenLength = dropdown.children().length;
       // console.log(dropdownChildrenLength);
@@ -305,7 +305,7 @@ $(document).ready(
   // Logic to handle showing saved goals on form End
 
   // Form Repeater Start
-  const myRepeater = $('#createGoalForm').repeater({
+  const myRepeater = $('#goal-evaluation').repeater({
     initEmpty: false,
     show: function () {
       $(this).slideDown();
@@ -411,7 +411,7 @@ $(document).ready(
     totalWeightElement.text('Total Weight: ' + total + '/100');
   }
 
-  $('#createGoalForm').on('input', '#weight', function () {
+  $('#goal-evaluation').on('input', '#weight', function () {
     total -= total;
     if ($(this).val() > 100) {
       $(this).val(0);
@@ -422,7 +422,7 @@ $(document).ready(
   // Code to handle Total Weight End
   
   // Code to handle submission logic Start
-  $('#createGoalForm').on('submit', function () {
+  $('#goal-evaluation').on('submit', function () {
     event.preventDefault();
     if (total != 100) {
       $('.alert').remove();
@@ -613,6 +613,17 @@ $(document).ready(
     return ([goalNumber, classList]);
   }
 
+// ALL ABOVE CODE WILL BE REFACTORED TO FIT APPRAISAL
+
+  $('.multi-step-appraisal-form-nav-link').on("click", function () {
+    const active_link = $('.multi-step-appraisal-form-nav-link.active').removeClass('active');
+    const new_active_link = $(this);
+    new_active_link.addClass('active');
+    current_active_link_id = active_link.attr('id');
+    new_active_link_id = new_active_link.attr('id');
+    $(`div#${current_active_link_id}`).addClass('d-none');
+    $(`div#${new_active_link_id}`).removeClass('d-none');
+  })
 
 });
 
@@ -628,4 +639,4 @@ $(document).ready(
 //   {"objective": "Compliance with Re-engineered Business Processes", "link_to_balance_scorecard": "Process"}, 
 //   {"objective": "Regulatory Compliance", "link_to_balance_scorecard": "Process"}, 
 //   {"objective": "Increase Technology Adoption", "link_to_balance_scorecard": "Innovation, Growth & Learning"},
-// ]
+//

@@ -1,0 +1,82 @@
+.active_link {
+  border-bottom: 5px solid #7283DB;
+  border-end-end-radius: 10%;
+  border-end-start-radius: 10%;
+  font-weight: 700;
+}
+
+.red_text {
+  color: red;
+}
+
+.bg-primary2 {
+  background-color:   red;
+}
+
+/* Alert close button styling */
+.alert {
+  position: relative; /* Ensure we can position the close button absolutely within */
+  padding-right: 50px; /* Provide enough padding to not overlap text with the close button */
+}
+
+.alert .close {
+  position: absolute; /* Position absolutely within the alert */
+  right: 0; /* At the extreme right */
+  top: 0; /* Align to the top */
+  padding: 0.75rem 1.25rem; /* Same as alert padding for vertical alignment */
+  color: inherit; /* Inherits the alert's text color */
+  text-shadow: none; /* Remove any text shadow */
+  opacity: 1; /* Make sure it's fully visible */
+  line-height: 1.5; /* Adjust to match the alert's line height */
+}
+
+.alert .close span {
+  font-size: 1.5rem; /* Adjust the size as needed */
+  line-height: 1; /* Ensure the icon is vertically centered */
+}
+
+.alert-success {
+  color: #155724; /* Bootstrap success color, change as per your theme */
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+.alert-error{
+  color: #573515; /* Bootstrap success color, change as per your theme */
+  background-color: #d4edda;
+  border-color: #c3e6cb;  
+}
+.alert-dismissible .close {
+  outline: none;
+  border: none;
+  background: none; /* Remove default background */
+}
+
+.alert .close:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.form-label-long {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #2A3547;
+  text-overflow: ellipsis;
+}
+
+label {
+  width: 270px;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.multi-step-appraisal-form-nav-link {
+  cursor: pointer;
+}
+
+.behaviour-assessment-card:hover {
+  transform: scale(1.01);
+  transition: transform 0.3s ease;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
