@@ -10,7 +10,12 @@
   <link rel="stylesheet" href="../assets/css/view-styles.css" />
 </head>
 <style>
-    
+  .nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  right: 0;
+  left: auto;
+  transform: translateX(300px); /* Adjust this value as needed */
+}  
 </style>
 <body>
   <!--  Body Wrapper -->
@@ -303,7 +308,7 @@
                           <i class="ti ti-bell-ringing"></i>
                           <div class="notification bg-primary rounded-circle"></div>
                         </a>
-                        <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+                        <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2" >
                           <div class="d-flex align-items-center justify-content-between py-3 px-7">
                             <h5 class="mb-0 fs-5 fw-semibold">Notifications</h5>
                             <span class="badge text-bg-primary rounded-4 px-3 py-1 lh-sm">5 new</span>
