@@ -273,9 +273,13 @@
   font-weight: 700;
   align-items: center;
   display: inline-flex;
+  color: #2a3547;
+  border-color: #2a3547;
+
 }
 .small-button:hover{
-  background-color:#5D87FF;
+  background-color:#2a3547;
+  color: white;
 }
 .btn-outline-info{
   margin-left: 30px;
