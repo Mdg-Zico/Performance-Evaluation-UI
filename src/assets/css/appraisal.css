@@ -80,3 +80,11 @@ label {
   transition: transform 0.3s ease;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
+
+.side-stick {
+  position: absolute;
+  width: 3px;
+  height: 35px;
+  left: 0;
+  background-color: #7283DB;
+}
