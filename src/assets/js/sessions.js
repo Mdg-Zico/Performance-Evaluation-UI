@@ -42,12 +42,26 @@ function formatDate(inputDate) {
     const monthIndex = date.getMonth();
     const year = date.getFullYear();
 
-    // Add the ordinal suffix to the day
+    // Get hours and minutes
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+
+   
+    const ampm = hours >= 12 ? 'p.m.' : 'a.m.';
+    hours = hours % 12;
+    hours = hours ? hours : 12; 
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+
+
+    const timeString = hours + ':' + minutes + ' ' + ampm;
+
+    
     const dayWithSuffix = day + (day % 10 === 1 && day !== 11 ? 'st' : (day % 10 === 2 && day !== 12 ? 'nd' : (day % 10 === 3 && day !== 13 ? 'rd' : 'th')));
 
-    // Return the formatted date string
-    return dayWithSuffix + ' ' + monthNames[monthIndex] + ' ' + year;
+   
+    return monthNames[monthIndex] + ' ' + dayWithSuffix + ', ' + year + ', ' + timeString;
 }
+
 
 function sendSessionData(data) {
     // Send an AJAX request with JSON data
