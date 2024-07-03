@@ -7,7 +7,7 @@ $(document).ready(
   "use strict";
   $('#behaviour-assessment').on('click', function(event) {
     event.preventDefault(); // Prevent the default link behavior
-    $(".card, .card-body").css('--bs-card-box-shadow', 'none');
+    $(".card").css('--bs-card-box-shadow', 'none');
 });
 
 $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rating').on('click', function(event) {
