@@ -5,7 +5,15 @@ $(document).ready(
   let dependentDropdownData;
   let formsList = [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
   "use strict";
+  $('#behaviour-assessment').on('click', function(event) {
+    event.preventDefault(); // Prevent the default link behavior
+    $(".card, .card-body").css('--bs-card-box-shadow', 'none');
+});
 
+$('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rating').on('click', function(event) {
+    event.preventDefault(); // Prevent the default link behavior
+    $(".card").css('--bs-card-box-shadow', 'rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px');
+});
 
   // Logic to handle showing saved goals on form Start
   // $.ajax({
