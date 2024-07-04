@@ -34,7 +34,6 @@
   box-shadow: var(--bs-card-box-shadow);
 } */
 
-
 </style>
 <body>
   <!--  Body Wrapper -->
@@ -583,8 +582,14 @@
                       <input type="number" name="appraiser-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
                     </div>
                   </div>
+                  
                 </div>
+                <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" style="height: 40px; align-content: right;">                    
+                  Save
+                  <i class="ti ti-download fs-5"></i>
+                </button>
               </div>
+
               <div class="d-none" id="behaviour-assessment">
                 <div class="row row-cols-1 row-cols-md-3 g-3 " style="margin-left: -38px; margin-right: -38px; margin-top: -45px; border-radius: 30px;">
                   <div class="col ">
@@ -600,32 +605,40 @@
                           </p>
                         </div>
                         <div class="d-flex radio-buttons">
-                          <div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="job-effectiveness" type="radio" value="4" id="exceeded">
-                              <label class="form-check-label d-inline" for="exceeded">
-                                Exceeded(4)
-                              </label>
-                            </div>
+                         
+                              <div>
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="job-effectiveness" type="radio" value="4" id="exceeded">
+                                  <label class="form-check-label d-inline" for="exceeded">
+                                    Exceeded(4)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="job-effectiveness" type="radio" value="2" id="partially-met">
+                                  <label class="form-check-label d-inline" for="partially-met">
+                                    Partially Met(2)
+                                  </label>
+                                </div>
+                               
+                          </div>
+                          <div class="radio-left" style="display: flex; flex-direction:column;">
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="job-effectiveness" type="radio" value="3" id="met">
                               <label class="form-check-label d-inline" for="met">
                                 Met(3)
                               </label>
                             </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="job-effectiveness" type="radio" value="2" id="partially-met">
-                              <label class="form-check-label d-inline" for="partially-met">
-                                Partially Met(2)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="job-effectiveness" type="radio" value="1" id="did-not-meet">
-                              <label class="form-check-label d-inline" for="did-not-meet">
-                                Did not meet(1)
-                              </label>
-                            </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="job-effectiveness" type="radio" value="1" id="did-not-meet">
+                                  <label class="form-check-label d-inline" for="did-not-meet">
+                                    Did not meet(1)
+                                  </label>
+                                </div>
                           </div>
+                        </div>
+                              </div>
                         </div>
                       </div>
                     </div>
@@ -643,21 +656,9 @@
                         <div class="d-flex radio-buttons">
                           <div>
                             <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="trust-integrity" type="radio" value="4" id="exceeded">
-                              <label class="form-check-label d-inline" for="exceeded">
-                                Exceeded(4)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
                               <input class="form-check-input" name="trust-integrity" type="radio" value="3" id="met">
                               <label class="form-check-label d-inline" for="met">
                                 Met(3)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="trust-integrity" type="radio" value="2" id="partially-met">
-                              <label class="form-check-label d-inline" for="partially-met">
-                                Partially Met(2)
                               </label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -685,16 +686,12 @@
                         </div>
                         <div class="d-flex radio-buttons">
                           <div>
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="supervision-mngt" type="radio" value="4" id="exceeded">
                               <label class="form-check-label d-inline" for="exceeded">
                                 Exceeded(4)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="supervision-mngt" type="radio" value="3" id="met">
-                              <label class="form-check-label d-inline" for="met">
-                                Met(3)
                               </label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -703,12 +700,26 @@
                                 Partially Met(2)
                               </label>
                             </div>
+                            
+                          </div>
+
+                         
+                          <div class="radio-left" style="display: flex; flex-direction:column;" >
+                           
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="supervision-mngt" type="radio" value="3" id="met">
+                              <label class="form-check-label d-inline" for="met">
+                                Met(3)
+                              </label>
+                            </div>
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="supervision-mngt" type="radio" value="1" id="did-not-meet">
                               <label class="form-check-label d-inline" for="did-not-meet">
                                 Did not meet(1)
                               </label>
                             </div>
+                          </div>
+                        </div>
                           </div>
                         </div>
                       </div>
@@ -727,16 +738,12 @@
                         </div>
                         <div class="d-flex radio-buttons">
                           <div>
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="dependability" type="radio" value="4" id="exceeded">
                               <label class="form-check-label d-inline" for="exceeded">
                                 Exceeded(4)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="dependability" type="radio" value="3" id="met">
-                              <label class="form-check-label d-inline" for="met">
-                                Met(3)
                               </label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -745,12 +752,26 @@
                                 Partially Met(2)
                               </label>
                             </div>
+                            
+                          </div>
+
+
+                          
+                            <div class="radio-left" style="display: flex; flex-direction:column;" >
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="dependability" type="radio" value="3" id="met">
+                                <label class="form-check-label d-inline" for="met">
+                                  Met(3)
+                                </label>
+                              </div>
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="dependability" type="radio" value="1" id="did-not-meet">
                               <label class="form-check-label d-inline" for="did-not-meet">
                                 Did not meet(1)
                               </label>
                             </div>
+                          </div>
+                          </div>
                           </div>
                         </div>
                       </div>
@@ -769,30 +790,40 @@
                         </div>
                         <div class="d-flex radio-buttons">
                           <div>
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="team-work" type="radio" value="4" id="exceeded">
                               <label class="form-check-label d-inline" for="exceeded">
                                 Exceeded(4)
                               </label>
                             </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="team-work" type="radio" value="3" id="met">
-                              <label class="form-check-label d-inline" for="met">
-                                Met(3)
-                              </label>
-                            </div>
+
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="team-work" type="radio" value="2" id="partially-met">
                               <label class="form-check-label d-inline" for="partially-met">
                                 Partially Met(2)
                               </label>
                             </div>
+                            
+                          </div>
+
+                          
+                            <div class="radio-left" style="display: flex; flex-direction:column;" >
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="team-work" type="radio" value="3" id="met">
+                                <label class="form-check-label d-inline" for="met">
+                                  Met(3)
+                                </label>
+                              </div>
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="team-work" type="radio" value="1" id="did-not-meet">
                               <label class="form-check-label d-inline" for="did-not-meet">
                                 Did not meet(1)
                               </label>
                             </div>
+                          </div>
+                          </div>
                           </div>
                         </div>
                       </div>
@@ -811,16 +842,12 @@
                         </div>
                         <div class="d-flex radio-buttons">
                           <div>
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="organisation-success" type="radio" value="4" id="exceeded">
                               <label class="form-check-label d-inline" for="exceeded">
                                 Exceeded(4)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="organisation-success" type="radio" value="3" id="met">
-                              <label class="form-check-label d-inline" for="met">
-                                Met(3)
                               </label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -829,11 +856,24 @@
                                 Partially Met(2)
                               </label>
                             </div>
+                          </div>
+
+                          
+                            <div class="radio-left" style="display: flex; flex-direction:column;" >
+                            
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="organisation-success" type="radio" value="3" id="met">
+                              <label class="form-check-label d-inline" for="met">
+                                Met(3)
+                              </label>
+                            </div>
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="organisation-success" type="radio" value="1" id="did-not-meet">
                               <label class="form-check-label d-inline" for="did-not-meet">
                                 Did not meet(1)
                               </label>
+                            </div>
+                            </div>
                             </div>
                           </div>
                         </div>
@@ -855,16 +895,12 @@
                         </div>
                         <div class="d-flex radio-buttons">
                           <div>
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="customer-orientation" type="radio" value="4" id="exceeded">
                               <label class="form-check-label d-inline" for="exceeded">
                                 Exceeded(4)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="customer-orientation" type="radio" value="3" id="met">
-                              <label class="form-check-label d-inline" for="met">
-                                Met(3)
                               </label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -873,12 +909,24 @@
                                 Partially Met(2)
                               </label>
                             </div>
+                          </div>
+
+                          <div class="radio-left" style="display: flex; flex-direction:column;" >
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="customer-orientation" type="radio" value="3" id="met">
+                              <label class="form-check-label d-inline" for="met">
+                                Met(3)
+                              </label>
+                            </div>
+                           
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="customer-orientation" type="radio" value="1" id="did-not-meet">
                               <label class="form-check-label d-inline" for="did-not-meet">
                                 Did not meet(1)
                               </label>
                             </div>
+                          </div>
+                          </div>
                           </div>
                         </div>
                       </div>
@@ -898,16 +946,12 @@
                         </div>
                         <div class="d-flex radio-buttons">
                           <div>
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="leadership-drive" type="radio" value="4" id="exceeded">
                               <label class="form-check-label d-inline" for="exceeded">
                                 Exceeded(4)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="leadership-drive" type="radio" value="3" id="met">
-                              <label class="form-check-label d-inline" for="met">
-                                Met(3)
                               </label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -916,12 +960,25 @@
                                 Partially Met(2)
                               </label>
                             </div>
+                           
+                          </div>
+
+                          
+                            <div class="radio-left" style="display: flex; flex-direction:column;" >
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="leadership-drive" type="radio" value="3" id="met">
+                                <label class="form-check-label d-inline" for="met">
+                                  Met(3)
+                                </label>
+                              </div>
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="leadership-drive" type="radio" value="1" id="did-not-meet">
                               <label class="form-check-label d-inline" for="did-not-meet">
                                 Did not meet(1)
                               </label>
                             </div>
+                          </div>
+                          </div>
                           </div>
                         </div>
                       </div>
@@ -941,16 +998,12 @@
                         </div>
                         <div class="d-flex radio-buttons">
                           <div>
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="safety" type="radio" value="4" id="exceeded">
                               <label class="form-check-label d-inline" for="exceeded">
                                 Exceeded(4)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="safety" type="radio" value="3" id="met">
-                              <label class="form-check-label d-inline" for="met">
-                                Met(3)
                               </label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -959,11 +1012,24 @@
                                 Partially Met(2)
                               </label>
                             </div>
+                            
+                          </div>
+
+                          
+                            <div class="radio-left" style="display: flex; flex-direction:column;" >
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="safety" type="radio" value="3" id="met">
+                                <label class="form-check-label d-inline" for="met">
+                                  Met(3)
+                                </label>
+                              </div>
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="safety" type="radio" value="1" id="did-not-meet">
                               <label class="form-check-label d-inline" for="did-not-meet">
                                 Did not meet(1)
                               </label>
+                            </div>
+                            </div>
                             </div>
                           </div>
                         </div>
@@ -985,16 +1051,12 @@
                         </div>
                         <div class="d-flex radio-buttons">
                           <div>
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="diversity-respect" type="radio" value="4" id="exceeded">
                               <label class="form-check-label d-inline" for="exceeded">
                                 Exceeded(4)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="diversity-respect" type="radio" value="3" id="met">
-                              <label class="form-check-label d-inline" for="met">
-                                Met(3)
                               </label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -1003,11 +1065,24 @@
                                 Partially Met(2)
                               </label>
                             </div>
+                            
+                          </div>
+
+                          
+                            <div class="radio-left" style="display: flex; flex-direction:column;" >
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="diversity-respect" type="radio" value="3" id="met">
+                                <label class="form-check-label d-inline" for="met">
+                                  Met(3)
+                                </label>
+                              </div>
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="diversity-respect" type="radio" value="1" id="did-not-meet">
                               <label class="form-check-label d-inline" for="did-not-meet">
                                 Did not meet(1)
                               </label>
+                            </div>
+                            </div>
                             </div>
                           </div>
                         </div>
@@ -1027,16 +1102,12 @@
                         </div>
                         <div class="d-flex radio-buttons">
                           <div>
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="attendance" type="radio" value="4" id="exceeded">
                               <label class="form-check-label d-inline" for="exceeded">
                                 Exceeded(4)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="attendance" type="radio" value="3" id="met">
-                              <label class="form-check-label d-inline" for="met">
-                                Met(3)
                               </label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -1045,12 +1116,26 @@
                                 Partially Met(2)
                               </label>
                             </div>
+                            
+                          </div>
+
+
+                          
+                            <div class="radio-left" style="display: flex; flex-direction:column;" >
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="attendance" type="radio" value="3" id="met">
+                                <label class="form-check-label d-inline" for="met">
+                                  Met(3)
+                                </label>
+                              </div>
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="attendance" type="radio" value="1" id="did-not-meet">
                               <label class="form-check-label d-inline" for="did-not-meet">
                                 Did not meet(1)
                               </label>
                             </div>
+                          </div>
+                          </div>
                           </div>
                         </div>
                       </div>
