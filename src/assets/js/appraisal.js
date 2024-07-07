@@ -1,11 +1,10 @@
 $(document).ready(
   function () {
   // Global variable declarations
+  "use strict";
   let total = 0;
   let dependentDropdownData;
   let formsList = [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
-  "use strict";
-
 
   // Logic to handle showing saved goals on form Start
   // $.ajax({
@@ -305,14 +304,13 @@ $(document).ready(
   // Logic to handle showing saved goals on form End
 
   // Form Repeater Start
-  const myRepeater = $('#goal-evaluation').repeater({
+  const myRepeater = $('#key-accomplishment').repeater({
     initEmpty: false,
     show: function () {
       $(this).slideDown();
       formsList.push($(this));
-      $(this).removeClass('goal_1');
-      $(this).addClass('d-none goal_'+formsList.length);
-      $('#submit').addClass('invisible');
+      $(this).removeClass('accomplishment_1');
+      $(this).addClass('d-none accomplishment_'+formsList.length);
       appendtoNav();
       populateDropDown(dependentDropdownData, formsList);
       handleDependentDropdown($(this));

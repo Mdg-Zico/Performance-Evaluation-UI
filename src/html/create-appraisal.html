@@ -745,7 +745,49 @@
                 </div>
               </div>
               <div class="d-none" id="key-accomplishment">
-                <h1>KEY ACCOMPLISHMENT</h1>
+                <div data-repeater-list="accomplishment-list">
+                  <div class="d-flex justify-content-between">
+                    <ul class="nav nav-tabs w-75" id="accomplishment-form-nav">
+                      <li class="nav-item goal_1 active_link" style="cursor: pointer;">
+                        <span class="nav-link">Accomplishment 1</span>
+                      </li>
+                    </ul>
+                    <div class="d-flex justify-content-around flex-wrap" style="width: 210px">
+                      <button data-repeater-create class="btn btn-success rounded-pill" type="button" style="height: 40px">
+                        <div class="d-flex align-items-center justify-content-center">
+                          Add
+                          <i class="ti ti-circle-plus ms-1 fs-5"></i>
+                        </div>
+                      </button>
+                      <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" style="height: 40px">                    
+                        Save
+                        <i class="ti ti-download fs-5"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div data-repeater-item class="mt-5 accomplishment">
+                    <div class="container px-0 mx-0">
+                      <div class="grid column-gap-3 row">
+                        <div class="col mb-3 mx-0">
+                          <label for="objective" class="form-label form-label-long">Corporate Objectives (Strategic focus)</label>
+                          <select class="form-select" name="corporate_objective" id="corporate_objective" required>
+                          </select>
+                        </div>
+                        <div class="col-sm mb-3 mx-0">
+                          <label for="scorecards" class="form-label">Link to balance scorecard</label>
+                          <input class="form-control" value="" name="balanced_scorecard" id="balanced_scorecard" readonly/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 py-0 mx-0">
+                        <label for="goal" class="form-label">Accomplishment</label>
+                        <textarea class="form-control" name="goal_description" value="" id="goal_description" aria-describedby="goalHelp" required></textarea>
+                        <div id="goalHelp" class="form-text">Short text describing employee's accomplishment</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="d-none" id="performance-improvement">
                 <h1>PERFORMANCE IMPROVEMENT</h1>
