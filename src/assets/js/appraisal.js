@@ -100,7 +100,7 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
         success: function (data) {
             // console.log(data.results);
             const corporate_objectives = {}
-            for (character of data.results) {
+            for (let character of data.results) {
                 corporate_objectives[character.name] = character.eye_color;
             }
             // console.log(corporate_objectives);
@@ -119,7 +119,7 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
       corporate_objectives = data;
       dependentDropdownData = corporate_objectives;
       populateDropDown(data, formsList);
-      // console.log(Object.keys(dependentDropdownData));
+      // console.log("DEPENDENT DROPDOWN DATA", Object.values(dependentDropdownData));
       // populateSavedGoalsOnLoad(dummyData);
     }
   )
@@ -379,7 +379,7 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
     // console.log(formsList);
   }
 
-  $('#goalFormNavigation').on('click', '.nav-item', function () {
+  $('.repeater').on('click', '.nav-item', function () {
     const [goalNumber, classList] = getGoalNumberInClass($(this));
     console.log(classList);
 

@@ -441,6 +441,8 @@
         <div class="card-body ">
           <div class="repeater-default">
             <form class="repeater">
+
+              <!-- GOAL EVALUATION START -->
               <div id="goal-evaluation">
                 <div class="d-flex justify-content-between">
                   <ul class="nav nav-tabs w-75" id="goalFormNavigation">
@@ -455,7 +457,7 @@
                     </li>
                   </ul>
                 </div>
-                <div data-repeater-item class="mt-5 goal goal_1">
+                <div class="mt-5 goal goal_1">
                   <div class="grid column-gap-3 row">
                     <div class="col-sm w-100 mb-3">
                       <label for="goal" class="form-label">Goal</label>
@@ -603,7 +605,10 @@
               </div>
 
               </div>
+              <!-- GOAL EVALUATION END -->
 
+
+              <!-- BEHAVIOUR ASSESSMENT START -->
               <div class="d-none" id="behaviour-assessment">
                 <div class="row row-cols-1 row-cols-md-3 g-3 " style="margin-left: -38px; margin-right: -38px; margin-top: -45px; border-radius: 30px;">
                   <div class="col ">
@@ -1164,106 +1169,111 @@
                   </button>
                 </div>
               </div>
-              
+              <!-- BEHAVIOUR ASSESSMENT END -->
              
               
-                <div class="grid column-gap-3 row">
+                <!-- <div class="grid column-gap-3 row">
                   <div class="col-sm w-100 mb-3"></div>
                 </div>
-              </div>
-              <div class="d-none" id="key-accomplishment" style="margin-top: -70px;">
-                <h1>KEY ACCOMPLISHMENT</h1>
-                
-                          <form class="repeater" id="createGoalForm">
-                            <div id="goalSaveAlert"></div>
-                            <div data-repeater-list="goalsList">
-                              <div class="d-flex justify-content-between">
-                                <ul class="nav nav-tabs w-75" id="goalFormNavigation">
-                                  <li class="nav-item goal_1 active_link" style="cursor: pointer;">
-                                    <span class="nav-link">Goal 1</span>
-                                  </li>
-                                  <li class="nav-item goal_2" style="cursor: pointer;">
-                                    <span class="nav-link">Goal 2</span>
-                                  </li>
-                                  <li class="nav-item goal_3" style="cursor: pointer;">
-                                    <span class="nav-link">Goal 3</span>
-                                  </li>
-                                </ul>
-                                <div class="d-flex justify-content-around flex-wrap" style="width: 210px">
-                                  <button data-repeater-create="" class="btn btn-success rounded-pill" type="button" style="height: 40px">
-                                    <div class="d-flex align-items-center justify-content-center">
-                                      Add
-                                      <i class="ti ti-circle-plus ms-1 fs-5"></i>
-                                    </div>
-                                  </button>
-                                 
-                                </div>
-                              </div>
-                              <div data-repeater-item="" class="mt-5 goal goal_1">
-                                <div class="container px-0 mx-0">
-                                  <div class="grid column-gap-3 row">
-                                    <div class="col-sm mb-3 mx-0">
-                                      <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-                                      <select class="form-select" name="goalsList[0][corporate_objective]" id="corporate_objective" required="">
-                                      <option value="" disabled="" selected="">-- Select corporate objective --</option><option value="Luke Skywalker" class="dependent-dropdown">Luke Skywalker</option><option value="C-3PO" class="dependent-dropdown">C-3PO</option><option value="R2-D2" class="dependent-dropdown">R2-D2</option><option value="Darth Vader" class="dependent-dropdown">Darth Vader</option><option value="Leia Organa" class="dependent-dropdown">Leia Organa</option><option value="Owen Lars" class="dependent-dropdown">Owen Lars</option><option value="Beru Whitesun lars" class="dependent-dropdown">Beru Whitesun lars</option><option value="R5-D4" class="dependent-dropdown">R5-D4</option><option value="Biggs Darklighter" class="dependent-dropdown">Biggs Darklighter</option><option value="Obi-Wan Kenobi" class="dependent-dropdown">Obi-Wan Kenobi</option></select>
-                                    </div>
-                                    <div class="col-sm mb-3 mx-0">
-                                      <label for="scorecards" class="form-label">Link to balance scorecard</label>
-                                      <input class="form-control" value="" name="goalsList[0][balanced_scorecard]" id="balanced_scorecard" readonly="">
-                                    </div>
-                                  </div>
-                                </div>
-                                <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" style="height: 40px; margin-left: 90%; margin-top: 30px;">                    
-                                  Save
-                                  <i class="ti ti-download fs-5"></i>
-                                </button>
-                                
-                               
-                              </div>
-                              <div data-repeater-item="" class="mt-5 d-none goal goal_2">
-                                <div class="container px-0 mx-0">
-                                  <div class="grid column-gap-3 row">
-                                    <div class="col-sm mb-3 mx-0">
-                                      <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-                                      <select class="form-select" name="goalsList[1][corporate_objective]" id="corporate_objective" required="">
-                                      <option value="" disabled="" selected="">-- Select corporate objective --</option><option value="Luke Skywalker" class="dependent-dropdown">Luke Skywalker</option><option value="C-3PO" class="dependent-dropdown">C-3PO</option><option value="R2-D2" class="dependent-dropdown">R2-D2</option><option value="Darth Vader" class="dependent-dropdown">Darth Vader</option><option value="Leia Organa" class="dependent-dropdown">Leia Organa</option><option value="Owen Lars" class="dependent-dropdown">Owen Lars</option><option value="Beru Whitesun lars" class="dependent-dropdown">Beru Whitesun lars</option><option value="R5-D4" class="dependent-dropdown">R5-D4</option><option value="Biggs Darklighter" class="dependent-dropdown">Biggs Darklighter</option><option value="Obi-Wan Kenobi" class="dependent-dropdown">Obi-Wan Kenobi</option></select>
-                                    </div>
-                                    <div class="col-sm mb-3 mx-0">
-                                      <label for="scorecards" class="form-label">Link to balance scorecard</label>
-                                      <input class="form-control" value="" name="goalsList[1][balanced_scorecard]" id="balanced_scorecard" readonly="">
-                                    </div>
-                                  </div>
-                                </div>
-                                
-                                
-                                
-                              </div>  
-                              <div data-repeater-item="" class="mt-5 d-none goal goal_3">
-                                <div class="container px-0 mx-0">
-                                  <div class="grid column-gap-3 row">
-                                    <div class="col mb-3 mx-0">
-                                      <label for="objective" class="form-label form-label-long">Corporate Objectives (Strategic focus)</label>
-                                      <select class="form-select" name="goalsList[2][corporate_objective]" id="corporate_objective" required="">
-                                      <option value="" disabled="" selected="">-- Select corporate objective --</option><option value="Luke Skywalker" class="dependent-dropdown">Luke Skywalker</option><option value="C-3PO" class="dependent-dropdown">C-3PO</option><option value="R2-D2" class="dependent-dropdown">R2-D2</option><option value="Darth Vader" class="dependent-dropdown">Darth Vader</option><option value="Leia Organa" class="dependent-dropdown">Leia Organa</option><option value="Owen Lars" class="dependent-dropdown">Owen Lars</option><option value="Beru Whitesun lars" class="dependent-dropdown">Beru Whitesun lars</option><option value="R5-D4" class="dependent-dropdown">R5-D4</option><option value="Biggs Darklighter" class="dependent-dropdown">Biggs Darklighter</option><option value="Obi-Wan Kenobi" class="dependent-dropdown">Obi-Wan Kenobi</option></select>
-                                    </div>
-                                    <div class="col-sm mb-3 mx-0">
-                                      <label for="scorecards" class="form-label">Link to balance scorecard</label>
-                                      <input class="form-control" value="" name="goalsList[2][balanced_scorecard]" id="balanced_scorecard" readonly="">
-                                    </div>
-                                  </div>
-                                </div>
-                               
-                                
-                              </div>
-                            </div>
-                            
-                              
-                          </form>
-                       
-               
+              </div> -->
 
 
+              <!-- KEY ACCOMPLISHMENT START -->
+              <div class="d-none" id="key-accomplishment">
+                <div class="d-flex justify-content-between">
+                  <ul class="nav nav-tabs w-75" id="goalFormNavigation">
+                    <li class="nav-item goal_1 active_link" style="cursor: pointer;">
+                      <span class="nav-link">Goal 1</span>
+                    </li>
+                    <li class="nav-item goal_2" style="cursor: pointer;">
+                      <span class="nav-link">Goal 2</span>
+                    </li>
+                    <li class="nav-item goal_3" style="cursor: pointer;">
+                      <span class="nav-link">Goal 3</span>
+                    </li>
+                  </ul>
+                </div>
+                <div data-repeater-item="" class="mt-5 goal goal_1">
+                  <div class="container px-0 mx-0">
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="accomplishment" class="form-label">Accomplishment</label>
+                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
+                        <div id="goaldescHelp" class="form-text">Actual feats accomplished</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container px-0 mx-0">
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
+                        <select class="form-select" name="goalsList[0][corporate_objective]" id="corporate_objective" required="">
+                        <option value="" disabled="" selected="">-- Select corporate objective --</option><option value="Luke Skywalker" class="dependent-dropdown">Luke Skywalker</option><option value="C-3PO" class="dependent-dropdown">C-3PO</option><option value="R2-D2" class="dependent-dropdown">R2-D2</option><option value="Darth Vader" class="dependent-dropdown">Darth Vader</option><option value="Leia Organa" class="dependent-dropdown">Leia Organa</option><option value="Owen Lars" class="dependent-dropdown">Owen Lars</option><option value="Beru Whitesun lars" class="dependent-dropdown">Beru Whitesun lars</option><option value="R5-D4" class="dependent-dropdown">R5-D4</option><option value="Biggs Darklighter" class="dependent-dropdown">Biggs Darklighter</option><option value="Obi-Wan Kenobi" class="dependent-dropdown">Obi-Wan Kenobi</option></select>
+                      </div>
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="scorecards" class="form-label">Link to balance scorecard</label>
+                        <input class="form-control" value="" name="goalsList[0][balanced_scorecard]" id="balanced_scorecard" readonly="">
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" style="height: 40px; margin-left: 90%; margin-top: 30px;">                    
+                    Save
+                    <i class="ti ti-download fs-5"></i>
+                  </button>
+                </div>
+                <div data-repeater-item="" class="mt-5 d-none goal goal_2">
+                  <div class="container px-0 mx-0">
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="accomplishment" class="form-label">Accomplishment</label>
+                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
+                        <div id="goaldescHelp" class="form-text">Actual feats accomplished</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container px-0 mx-0">
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
+                        <select class="form-select" name="goalsList[1][corporate_objective]" id="corporate_objective" required="">
+                        <option value="" disabled="" selected="">-- Select corporate objective --</option><option value="Luke Skywalker" class="dependent-dropdown">Luke Skywalker</option><option value="C-3PO" class="dependent-dropdown">C-3PO</option><option value="R2-D2" class="dependent-dropdown">R2-D2</option><option value="Darth Vader" class="dependent-dropdown">Darth Vader</option><option value="Leia Organa" class="dependent-dropdown">Leia Organa</option><option value="Owen Lars" class="dependent-dropdown">Owen Lars</option><option value="Beru Whitesun lars" class="dependent-dropdown">Beru Whitesun lars</option><option value="R5-D4" class="dependent-dropdown">R5-D4</option><option value="Biggs Darklighter" class="dependent-dropdown">Biggs Darklighter</option><option value="Obi-Wan Kenobi" class="dependent-dropdown">Obi-Wan Kenobi</option></select>
+                      </div>
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="scorecards" class="form-label">Link to balance scorecard</label>
+                        <input class="form-control" value="" name="goalsList[1][balanced_scorecard]" id="balanced_scorecard" readonly="">
+                      </div>
+                    </div>
+                  </div>      
+                </div>  
+                <div data-repeater-item="" class="mt-5 d-none goal goal_3">
+                  <div class="container px-0 mx-0">
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="accomplishment" class="form-label">Accomplishment</label>
+                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
+                        <div id="goaldescHelp" class="form-text">Actual feats accomplished</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container px-0 mx-0">
+                    <div class="grid column-gap-3 row">
+                      <div class="col mb-3 mx-0">
+                        <label for="objective" class="form-label form-label-long">Corporate Objectives (Strategic focus)</label>
+                        <select class="form-select" name="goalsList[2][corporate_objective]" id="corporate_objective" required="">
+                        <option value="" disabled="" selected="">-- Select corporate objective --</option><option value="Luke Skywalker" class="dependent-dropdown">Luke Skywalker</option><option value="C-3PO" class="dependent-dropdown">C-3PO</option><option value="R2-D2" class="dependent-dropdown">R2-D2</option><option value="Darth Vader" class="dependent-dropdown">Darth Vader</option><option value="Leia Organa" class="dependent-dropdown">Leia Organa</option><option value="Owen Lars" class="dependent-dropdown">Owen Lars</option><option value="Beru Whitesun lars" class="dependent-dropdown">Beru Whitesun lars</option><option value="R5-D4" class="dependent-dropdown">R5-D4</option><option value="Biggs Darklighter" class="dependent-dropdown">Biggs Darklighter</option><option value="Obi-Wan Kenobi" class="dependent-dropdown">Obi-Wan Kenobi</option></select>
+                      </div>
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="scorecards" class="form-label">Link to balance scorecard</label>
+                        <input class="form-control" value="" name="goalsList[2][balanced_scorecard]" id="balanced_scorecard" readonly="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
+              <!-- KEY ACCOMPLISHMENT END -->
+
+
+              <!-- PERFORMANCE IMPROVEMENT START -->
               <div class="d-none" id="performance-improvement">
                 <h1>PERFORMANCE IMPROVEMENT</h1>
                 <div style="margin-left: 90%; margin-top: 30px;">
@@ -1273,6 +1283,10 @@
                   </button>
                 </div>
               </div>
+              <!-- PERFORMANCE IMPROVEMENT END -->
+
+
+              <!-- OVERALL RATING START -->
               <div class="d-none" id="overall-rating">
                 <h1>OVERALL RATING</h1>
                 <div class="d-flex justify-content-between">
@@ -1284,6 +1298,7 @@
                   </button>
                 </div>
               </div>
+              <!-- OVERALL RATING END -->
             </form>
           </div>
         </div>
