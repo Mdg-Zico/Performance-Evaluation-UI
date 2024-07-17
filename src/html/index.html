@@ -19,8 +19,14 @@
     margin: 0px;
     width: 100%;
 }
-  </style>
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
   
+  left: 0;
+  transform: translateX(50px); /* Adjust this value as needed */
+}  
+  </style>
+
   <!-- Owl Carousel  -->
   <link
     rel="stylesheet"
@@ -214,6 +220,14 @@
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">UI COMPONENTS</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./error.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Error</span>
+              </a>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="./custom-cards.html" aria-expanded="false">

@@ -5,6 +5,16 @@ $(document).ready(
   let total = 0;
   let dependentDropdownData;
   let formsList = [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
+  "use strict";
+  $('#behaviour-assessment').on('click', function(event) {
+    event.preventDefault(); // Prevent the default link behavior
+    $(".card").css('--bs-card-box-shadow', 'none');
+});
+
+$('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rating').on('click', function(event) {
+    event.preventDefault(); // Prevent the default link behavior
+    $(".card").css('--bs-card-box-shadow', 'rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px');
+});
 
   // Logic to handle showing saved goals on form Start
   // $.ajax({
@@ -617,8 +627,8 @@ $(document).ready(
     const active_link = $('.multi-step-appraisal-form-nav-link.active').removeClass('active');
     const new_active_link = $(this);
     new_active_link.addClass('active');
-    current_active_link_id = active_link.attr('id');
-    new_active_link_id = new_active_link.attr('id');
+    const current_active_link_id = active_link.attr('id');
+    const new_active_link_id = new_active_link.attr('id');
     $(`div#${current_active_link_id}`).addClass('d-none');
     $(`div#${new_active_link_id}`).removeClass('d-none');
   })

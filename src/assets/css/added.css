@@ -91,7 +91,7 @@
   border-top: 4px solid blue;
   border-radius: 50%;
 
-  animation: spin 1s linear infinite; /* Animation details */
+  animation: spin 5s linear infinite; /* Animation details */
 }
 
 .spinner-text {

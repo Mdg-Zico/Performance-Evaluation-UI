@@ -9,8 +9,42 @@
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
   <link rel="stylesheet" href="../assets/css/employee.css">
   <link rel="stylesheet" href="../assets/css/appraisal.css">
+  <link rel="stylesheet" href="../assets/css/forms.css">
 </head>
+<style>
+  .card {
+    height: 85%;
+  
+    
+  }
+  #exceeded > input[type="radio"] + label,
+#met > input[type="radio"] + label,
+#partially-met > input[type="radio"] + label,
+#did-not-meet > input[type="radio"] + label {
+  font-weight: bold;
+}
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+  }
+  .mt-2>p, .radio-buttons{
+    font-size: 12px;
+   
+  }
+  .radio-font{
+    font-weight: bold;
+  }
+  /* .card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 1rem;
+  box-shadow: var(--bs-card-box-shadow);
+} */
 
+</style>
 <body>
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
@@ -159,6 +193,14 @@
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">UI COMPONENTS</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./error.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Error</span>
+              </a>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="./custom-cards.html" aria-expanded="false">
@@ -357,7 +399,7 @@
   <div class="row">
     <div class="col-12">
       <div class="multi-step-appraisal-form-nav">
-        <ul class="nav nav-pills p-3 mb-3 rounded align-items-center card flex-row" id="appraisal-form-nav">
+        <ul class="nav nav-pills p-3 mb-3 rounded align-items-center card flex-row" id="appraisal-form-nav" style="box-shadow: rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px;">
           <li class="nav-item">
             <span class="multi-step-appraisal-form-nav-link nav-link gap-6 note-link d-flex align-items-center justify-content-center active px-3 px-md-3" id="goal-evaluation">
               <i class="ti ti-list fill-white"></i>
@@ -395,8 +437,8 @@
           </li>
         </ul>
       </div>
-      <div class="card">
-        <div class="card-body">
+      <div class="card ">
+        <div class="card-body ">
           <div class="repeater-default">
             <form class="repeater">
               <div id="goal-evaluation">
@@ -550,247 +592,686 @@
                       <input type="number" name="appraiser-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
                     </div>
                   </div>
+                  
+                </div>
+
+                <div style="margin-left: 90%; margin-top: 30px;">
+                <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" >                    
+                  Save
+                  <i class="ti ti-download fs-5"></i>
+                </button>
+              </div>
+
+              </div>
+
+              <div class="d-none" id="behaviour-assessment">
+                <div class="row row-cols-1 row-cols-md-3 g-3 " style="margin-left: -38px; margin-right: -38px; margin-top: -45px; border-radius: 30px;">
+                  <div class="col ">
+
+                    <div class="card h-100 "  >
+                      <div class="card-body main-cont position-relative behaviour-assessment-card " style="box-shadow: rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px;">
+                        <span class="side-stick"></span>
+                        <h6 class="fw-bolder text-truncate w-75 mb-0 card-heads">Job Effectiveness</h6>
+                        <div class="mt-2">
+                          <p>
+                            Able to multi-task. Possesses knowledge and skills necessary to perform job.
+                            Delivers information effectively in a variety of formats to different stakeholders.
+                          </p>
+                        </div>
+                        <div class="d-flex radio-buttons">
+                         
+                              <div class="radio-font">
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="job-effectiveness" type="radio" value="4" id="exceeded">
+                                  <label class="form-check-label d-inline" for="exceeded">
+                                    Exceeded(4)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="job-effectiveness" type="radio" value="2" id="partially-met">
+                                  <label class="form-check-label d-inline" for="partially-met">
+                                    Partially Met(2)
+                                  </label>
+                                </div>
+                               
+                          </div>
+                          <div class="radio-left" style="display: flex; flex-direction:column;">
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="job-effectiveness" type="radio" value="3" id="met">
+                              <label class="form-check-label d-inline" for="met">
+                                Met(3)
+                              </label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="job-effectiveness" type="radio" value="1" id="did-not-meet">
+                                  <label class="form-check-label d-inline" for="did-not-meet">
+                                    Did not meet(1)
+                                  </label>
+                                </div>
+                          </div>
+                        </div>
+                              </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card h-100" style="box-shadow: rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px; border-radius: 5px;">
+                      <div class="card-body main-cont position-relative behaviour-assessment-card">
+			                <span class="side-stick" style="background-color: red;"></span>
+                        <h6 class="fw-bolder text-truncate w-75 mb-0 card-heads">Trust & Integrity</h6>
+                        <div class="mt-2">
+                          <p>
+                            Maintains and exemplifies a reputation for honesty, candour, confidentiality and fairness.
+                          </p>
+                        </div>
+                        <div class="d-flex radio-buttons">
+                          <div class="radio-font">
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="trust-integrity" type="radio" value="3" id="met">
+                              <label class="form-check-label d-inline" for="met">
+                                Met(3)
+                              </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="trust-integrity" type="radio" value="1" id="did-not-meet">
+                              <label class="form-check-label d-inline" for="did-not-meet">
+                                Did not meet(1)
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card h-100" >
+                      <div class="card-body main-cont position-relative behaviour-assessment-card" style="box-shadow: rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px;">
+                        <span class="side-stick" style="background-color: black;" ></span>
+                        <h6 class="fw-bolder text-truncate w-75 mb-0 card-heads">Supervision & Management</h6>
+                        <div class="mt-2">
+                          <p>
+                            Gives clear directions and communicates performance expectations. Coaches,
+                            counsels and evaluates employees. Identifies and supports employee development
+                            opportunities.
+                          </p>
+                        </div>
+                        <div class="d-flex radio-buttons">
+                          <div class="radio-font">
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="supervision-mngt" type="radio" value="4" id="exceeded">
+                              <label class="form-check-label d-inline" for="exceeded">
+                                Exceeded(4)
+                              </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="supervision-mngt" type="radio" value="2" id="partially-met">
+                              <label class="form-check-label d-inline" for="partially-met">
+                                Partially Met(2)
+                              </label>
+                            </div>
+                            
+                          </div>
+
+                         
+                          <div class="radio-left" style="display: flex; flex-direction:column;" >
+                           
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="supervision-mngt" type="radio" value="3" id="met">
+                              <label class="form-check-label d-inline" for="met">
+                                Met(3)
+                              </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="supervision-mngt" type="radio" value="1" id="did-not-meet">
+                              <label class="form-check-label d-inline" for="did-not-meet">
+                                Did not meet(1)
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card h-100" style="box-shadow: rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px; border-radius: 5px;">
+                      <div class="card-body main-cont position-relative behaviour-assessment-card">
+                        <span class="side-stick" style="background-color: black;"></span>
+                        <h6 class="fw-bolder text-truncate w-75 mb-0 card-heads">Dependability</h6>
+                        <div class="mt-2">
+                          <p>
+                            Is available for work on a consistent and timely basis with infrequent unplanned absences. Completes work in a
+                            timely manner. Meets commitment with minimal oversight.
+                          </p>
+                        </div>
+                        <div class="d-flex radio-buttons">
+                          <div class="radio-font">
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="dependability" type="radio" value="4" id="exceeded">
+                              <label class="form-check-label d-inline" for="exceeded">
+                                Exceeded(4)
+                              </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="dependability" type="radio" value="2" id="partially-met">
+                              <label class="form-check-label d-inline" for="partially-met">
+                                Partially Met(2)
+                              </label>
+                            </div>
+                            
+                          </div>
+
+
+                          
+                            <div class="radio-left" style="display: flex; flex-direction:column;" >
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="dependability" type="radio" value="3" id="met">
+                                <label class="form-check-label d-inline" for="met">
+                                  Met(3)
+                                </label>
+                              </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="dependability" type="radio" value="1" id="did-not-meet">
+                              <label class="form-check-label d-inline" for="did-not-meet">
+                                Did not meet(1)
+                              </label>
+                            </div>
+                          </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card h-100" style="box-shadow: rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px; border-radius: 5px;">
+                      <div class="card-body main-cont position-relative behaviour-assessment-card">
+                        <h6 class="fw-bolder text-truncate w-75 mb-0 card-heads">Collaboration & Team Work</h6>
+                        <span class="side-stick" ></span>
+                        <div class="mt-2">
+                          <p>
+                            Consistently and proactively shares relevant information with others; Promotes team cooperation by valuing opinions
+                            and contributions of others; Manages conflict effectively
+                          </p>
+                        </div>
+                        <div class="d-flex radio-buttons">
+                          <div class="radio-font">
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="team-work" type="radio" value="4" id="exceeded">
+                              <label class="form-check-label d-inline" for="exceeded">
+                                Exceeded(4)
+                              </label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="team-work" type="radio" value="2" id="partially-met">
+                              <label class="form-check-label d-inline" for="partially-met">
+                                Partially Met(2)
+                              </label>
+                            </div>
+                            
+                          </div>
+
+                          
+                            <div class="radio-left" style="display: flex; flex-direction:column;" >
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="team-work" type="radio" value="3" id="met">
+                                <label class="form-check-label d-inline" for="met">
+                                  Met(3)
+                                </label>
+                              </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="team-work" type="radio" value="1" id="did-not-meet">
+                              <label class="form-check-label d-inline" for="did-not-meet">
+                                Did not meet(1)
+                              </label>
+                            </div>
+                          </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card h-100" style="box-shadow: rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px; border-radius: 5px;">
+                      <div class="card-body main-cont position-relative behaviour-assessment-card">
+                        <span class="side-stick" style="background-color: red;"></span>
+                        <h6 class="fw-bolder text-truncate w-75 mb-0 card-heads">Organisational Success</h6>
+                        <div class="mt-2">
+                          <p>
+                            Develops strategic action plans for practical use. Committed to continuous quality/process improvement. Commited to
+                            continous learning. Is creative and innovative.
+                          </p>
+                        </div>
+                        <div class="d-flex radio-buttons">
+                          <div class="radio-font">
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="organisation-success" type="radio" value="4" id="exceeded">
+                              <label class="form-check-label d-inline" for="exceeded">
+                                Exceeded(4)
+                              </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="organisation-success" type="radio" value="2" id="partially-met">
+                              <label class="form-check-label d-inline" for="partially-met">
+                                Partially Met(2)
+                              </label>
+                            </div>
+                          </div>
+
+                          
+                            <div class="radio-left" style="display: flex; flex-direction:column;" >
+                            
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="organisation-success" type="radio" value="3" id="met">
+                              <label class="form-check-label d-inline" for="met">
+                                Met(3)
+                              </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="organisation-success" type="radio" value="1" id="did-not-meet">
+                              <label class="form-check-label d-inline" for="did-not-meet">
+                                Did not meet(1)
+                              </label>
+                            </div>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card h-100" style="box-shadow: rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px; border-radius: 5px;">
+                      <div class="card-body main-cont position-relative behaviour-assessment-card">
+                        <span class="side-stick" style="background-color: red;"></span>
+                        <h6 class="fw-bolder text-truncate w-75 mb-0 card-heads">Customer Orientation</h6>
+                        <div class="mt-2">
+                          <p>
+                            Demonstrated customer focus by seeking out, understanding, and responding to the needs of both internal
+                            (co-workers) and external customers; Always takes ownership for delivering high quality services; effectively
+                            and professionally works with upset customers, solving their problems; Routinely seeks to secure quality, 
+                            long-lasting customer relations.
+                          </p>
+                        </div>
+                        <div class="d-flex radio-buttons">
+                          <div class="radio-font">
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="customer-orientation" type="radio" value="4" id="exceeded">
+                              <label class="form-check-label d-inline" for="exceeded">
+                                Exceeded(4)
+                              </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="customer-orientation" type="radio" value="2" id="partially-met">
+                              <label class="form-check-label d-inline" for="partially-met">
+                                Partially Met(2)
+                              </label>
+                            </div>
+                          </div>
+
+                          <div class="radio-left" style="display: flex; flex-direction:column;" >
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="customer-orientation" type="radio" value="3" id="met">
+                              <label class="form-check-label d-inline" for="met">
+                                Met(3)
+                              </label>
+                            </div>
+                           
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="customer-orientation" type="radio" value="1" id="did-not-meet">
+                              <label class="form-check-label d-inline" for="did-not-meet">
+                                Did not meet(1)
+                              </label>
+                            </div>
+                          </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card h-100" style="box-shadow: rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px; border-radius: 5px;">
+                      <div class="card-body main-cont position-relative behaviour-assessment-card">
+                        <span class="side-stick" style="background-color: black;"></span>
+                        <h6 class="fw-bolder text-truncate w-75 mb-0 card-heads">Leadership Drive</h6>
+                        <div class="mt-2">
+                          <p>
+                            Exhibits resourcefulness, independent action and professional judgement that are position appropriate; 
+                            Develop and acts on appropriate problem solving methods. Develops other employees. Identifies and remedies 
+                            situations that requires improvements at work.
+                          </p>
+                        </div>
+                        <div class="d-flex radio-buttons">
+                          <div class="radio-font">
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="leadership-drive" type="radio" value="4" id="exceeded">
+                              <label class="form-check-label d-inline" for="exceeded">
+                                Exceeded(4)
+                              </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="leadership-drive" type="radio" value="2" id="partially-met">
+                              <label class="form-check-label d-inline" for="partially-met">
+                                Partially Met(2)
+                              </label>
+                            </div>
+                           
+                          </div>
+
+                          
+                            <div class="radio-left" style="display: flex; flex-direction:column;" >
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="leadership-drive" type="radio" value="3" id="met">
+                                <label class="form-check-label d-inline" for="met">
+                                  Met(3)
+                                </label>
+                              </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="leadership-drive" type="radio" value="1" id="did-not-meet">
+                              <label class="form-check-label d-inline" for="did-not-meet">
+                                Did not meet(1)
+                              </label>
+                            </div>
+                          </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card h-100" style="box-shadow: rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px; border-radius: 5px;">
+                      <div class="card-body main-cont position-relative behaviour-assessment-card">
+			                <span class="side-stick"></span>
+                        <h6 class="fw-bolder text-truncate w-60 mb-0 card-heads">Organisational Compliance & Safety</h6>
+                        <div class="mt-2">
+                          <p>
+                            Adheres and leads the team in complying with all AEDC safety standards. Demonstrates appropriate use of and
+                            respect for organisation's property and equipment; Complies with the organisation's policies, regulations, rules, 
+                            and procedures
+                          </p>
+                        </div>
+                        <div class="d-flex radio-buttons">
+                          <div class="radio-font">
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="safety" type="radio" value="4" id="exceeded">
+                              <label class="form-check-label d-inline" for="exceeded">
+                                Exceeded(4)
+                              </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="safety" type="radio" value="2" id="partially-met">
+                              <label class="form-check-label d-inline" for="partially-met">
+                                Partially Met(2)
+                              </label>
+                            </div>
+                            
+                          </div>
+
+                          
+                            <div class="radio-left" style="display: flex; flex-direction:column;" >
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="safety" type="radio" value="3" id="met">
+                                <label class="form-check-label d-inline" for="met">
+                                  Met(3)
+                                </label>
+                              </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="safety" type="radio" value="1" id="did-not-meet">
+                              <label class="form-check-label d-inline" for="did-not-meet">
+                                Did not meet(1)
+                              </label>
+                            </div>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card h-100" style="box-shadow: rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px; border-radius: 5px;">
+                      <div class="card-body main-cont position-relative behaviour-assessment-card">
+			                <span class="side-stick"></span>
+                        <h6 class="fw-bolder text-truncate w-75 mb-0 card-heads">Diversity & Respect</h6>
+                        <div class="mt-2">
+                          <p>
+                            Demonstrates respect for individuals, culture, and ethnic group to increase effectiveness oof every unit 
+                            and function; Influences organisational culture in ways that value and support diversity; Encourages and
+                            contributes to the establishment and execution of diversity management and inclusion programmes
+
+                          </p>
+                        </div>
+                        <div class="d-flex radio-buttons">
+                          <div class="radio-font">
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="diversity-respect" type="radio" value="4" id="exceeded">
+                              <label class="form-check-label d-inline" for="exceeded">
+                                Exceeded(4)
+                              </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="diversity-respect" type="radio" value="2" id="partially-met">
+                              <label class="form-check-label d-inline" for="partially-met">
+                                Partially Met(2)
+                              </label>
+                            </div>
+                            
+                          </div>
+
+                          
+                            <div class="radio-left" style="display: flex; flex-direction:column;" >
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="diversity-respect" type="radio" value="3" id="met">
+                                <label class="form-check-label d-inline" for="met">
+                                  Met(3)
+                                </label>
+                              </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="diversity-respect" type="radio" value="1" id="did-not-meet">
+                              <label class="form-check-label d-inline" for="did-not-meet">
+                                Did not meet(1)
+                              </label>
+                            </div>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card h-100" style="box-shadow: rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px; border-radius: 5px;">
+                      <div class="card-body main-cont position-relative behaviour-assessment-card">
+			                <span class="side-stick" style="background-color: red;"></span>
+                        <h6 class="fw-bolder text-truncate w-75 mb-0 card-heads">Attendance & Punctuality</h6>
+                        <div class="mt-2">
+                          <p>
+                            Being able to complete a required task or fulfil an obligation before or at a previously designated time
+                            and present at work
+                          </p>
+                        </div>
+                        <div class="d-flex radio-buttons">
+                          <div class="radio-font">
+                            <div style="display: flex;">
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="attendance" type="radio" value="4" id="exceeded">
+                              <label class="form-check-label d-inline" for="exceeded">
+                                Exceeded(4)
+                              </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="attendance" type="radio" value="2" id="partially-met">
+                              <label class="form-check-label d-inline" for="partially-met">
+                                Partially Met(2)
+                              </label>
+                            </div>
+                            
+                          </div>
+
+
+                          
+                            <div class="radio-left" style="display: flex; flex-direction:column;" >
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="attendance" type="radio" value="3" id="met">
+                                <label class="form-check-label d-inline" for="met">
+                                  Met(3)
+                                </label>
+                              </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="attendance" type="radio" value="1" id="did-not-meet">
+                              <label class="form-check-label d-inline" for="did-not-meet">
+                                Did not meet(1)
+                              </label>
+                            </div>
+                          </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="margin-left: 90%; margin-top: 30px;">
+                  <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" >                    
+                    Save
+                    <i class="ti ti-download fs-5"></i>
+                  </button>
                 </div>
               </div>
-              <div class="d-none" id="behaviour-assessment">
-                <div class="grid column-gap-3 row">
-                  <div class="col-sm w-100 mb-3">
-                    <div class="card card-body main-cont position-relative behaviour-assessment-card">
-                      <span class="side-stick"></span>
-                      <h6 class="fw-bolder text-truncate w-75 mb-0">Job Effectiveness</h6>
-                      <div class="mt-2">
-                        <p>
-                          Able to multi task, possesses knowledge and skills necessary to perform job.
-                          Delivers information effectively in a variety of formats to different stakeholders.
-                        </p>
-                      </div>
-                      <div class="d-flex">
-                        <div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="job-effectiveness" type="radio" value="4" id="exceeded">
-                            <label class="form-check-label d-inline" for="exceeded">
-                              Exceeded(4)
-                            </label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="job-effectiveness" type="radio" value="3" id="met">
-                            <label class="form-check-label d-inline" for="met">
-                              Met(3)
-                            </label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="job-effectiveness" type="radio" value="2" id="partially-met">
-                            <label class="form-check-label d-inline" for="partially-met">
-                              Partially Met(2)
-                            </label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="job-effectiveness" type="radio" value="1" id="did-not-meet">
-                            <label class="form-check-label d-inline" for="did-not-meet">
-                              Did not meet(1)
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm w-100 mb-3">
-                    <div class="card card-body main-cont position-relative behaviour-assessment-card">
-                      <span class="side-stick"></span>
-                      <h6 class="fw-bolder text-truncate w-75 mb-0">Trust and Integrity</h6>
-                      <div class="mt-2">
-                        <p>
-                          Maintains and exmeplifies a reputation for honesty, candour, confidentiality and fairness
-                        </p>
-                      </div>
-                      <div class="d-flex">
-                        <div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="job-effectiveness" type="radio" value="3" id="met">
-                            <label class="form-check-label d-inline" for="met">
-                              Met(3)
-                            </label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="job-effectiveness" type="radio" value="1" id="did-not-meet">
-                            <label class="form-check-label d-inline" for="did-not-meet">
-                              Did not meet(1)
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm w-100 mb-3">
-                    <div class="card card-body main-cont position-relative behaviour-assessment-card">
-                      <span class="side-stick"></span>
-                      <h6 class="fw-bolder text-truncate w-75 mb-0">Supervision and Management</h6>
-                      <div class="mt-2">
-                        <p>
-                          Gives clear directions and communicates performance expectations. Coached,
-                          counsels and evaluates employees; Identifies areas for and supports employee development
-                          opportunities
-                        </p>
-                      </div>
-                      <div class="d-flex">
-                        <div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="job-effectiveness" type="radio" value="4" id="exceeded">
-                            <label class="form-check-label d-inline" for="exceeded">
-                              Exceeded(4)
-                            </label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="job-effectiveness" type="radio" value="3" id="met">
-                            <label class="form-check-label d-inline" for="met">
-                              Met(3)
-                            </label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="job-effectiveness" type="radio" value="2" id="partially-met">
-                            <label class="form-check-label d-inline" for="partially-met">
-                              Partially Met(2)
-                            </label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="job-effectiveness" type="radio" value="1" id="did-not-meet">
-                            <label class="form-check-label d-inline" for="did-not-meet">
-                              Did not meet(1)
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="grid column-gap-3 row">
-                  <div class="card p-4 col-sm w-100 mb-3 behaviour-assessment-card">
-                    <label for="job-effectiveness">
-                      <p class="fw-bolder">Supervision and Management</p>
-                    </label>
-                    <div>
-                      <p class="text-wrap bolder">
-                        Gives clear directions and communicates performance expectations. Coached,
-                        counsels and evaluates employees; Identifies areas for and supports employee development
-                        opportunities
-                      </p>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" name="job-effectiveness" type="radio" value="4" id="exceeded">
-                      <label class="form-check-label" for="exceeded">
-                        Exceeded(E-4)
-                      </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" name="job-effectiveness" type="radio" value="3" id="met">
-                      <label class="form-check-label" for="met">
-                        Met(M-3)
-                      </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" name="job-effectiveness" type="radio" value="2" id="partially-met">
-                      <label class="form-check-label" for="partially-met">
-                        Partially Met(PM-2)
-                      </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" name="job-effectiveness" type="radio" value="1" id="did-not-meet">
-                      <label class="form-check-label" for="did-not-meet">
-                        Did not meet(DM-1)
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-sm w-100 mb-3">
-                    <div class="card card-body main-cont position-relative behaviour-assessment-card">
-                      <span class="side-stick"></span>
-                      <h6 class="fw-bolder text-truncate w-75 mb-0">Dependability</h6>
-                      <div class="mt-2">
-                        <p>Is available for work on a consistent and timely basis with infrequent unplanned absences. Completes work in a
-                        timely manner. Meets commitment with minimal oversight.
-                        </p>
-                      </div>
-                      <div class="d-flex">
-                        <div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="job-effectiveness" type="radio" value="4" id="exceeded">
-                            <label class="form-check-label d-inline" for="exceeded">
-                              Exceeded(4)
-                            </label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="job-effectiveness" type="radio" value="3" id="met">
-                            <label class="form-check-label d-inline" for="met">
-                              Met(3)
-                            </label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="job-effectiveness" type="radio" value="2" id="partially-met">
-                            <label class="form-check-label d-inline" for="partially-met">
-                              Partially Met(2)
-                            </label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="job-effectiveness" type="radio" value="1" id="did-not-meet">
-                            <label class="form-check-label d-inline" for="did-not-meet">
-                              Did not meet(1)
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              
+             
+              
                 <div class="grid column-gap-3 row">
                   <div class="col-sm w-100 mb-3"></div>
                 </div>
               </div>
-              <div class="d-none" id="key-accomplishment">
-                <div data-repeater-list="accomplishment-list">
-                  <div class="d-flex justify-content-between">
-                    <ul class="nav nav-tabs w-75" id="accomplishment-form-nav">
-                      <li class="nav-item goal_1 active_link" style="cursor: pointer;">
-                        <span class="nav-link">Accomplishment 1</span>
-                      </li>
-                    </ul>
-                    <div class="d-flex justify-content-around flex-wrap" style="width: 210px">
-                      <button data-repeater-create class="btn btn-success rounded-pill" type="button" style="height: 40px">
-                        <div class="d-flex align-items-center justify-content-center">
-                          Add
-                          <i class="ti ti-circle-plus ms-1 fs-5"></i>
-                        </div>
-                      </button>
-                      <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" style="height: 40px">                    
-                        Save
-                        <i class="ti ti-download fs-5"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <div data-repeater-item class="mt-5 accomplishment">
-                    <div class="container px-0 mx-0">
-                      <div class="grid column-gap-3 row">
-                        <div class="col mb-3 mx-0">
-                          <label for="objective" class="form-label form-label-long">Corporate Objectives (Strategic focus)</label>
-                          <select class="form-select" name="corporate_objective" id="corporate_objective" required>
-                          </select>
-                        </div>
-                        <div class="col-sm mb-3 mx-0">
-                          <label for="scorecards" class="form-label">Link to balance scorecard</label>
-                          <input class="form-control" value="" name="balanced_scorecard" id="balanced_scorecard" readonly/>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid column-gap-3 row">
-                      <div class="col-sm mb-3 py-0 mx-0">
-                        <label for="goal" class="form-label">Accomplishment</label>
-                        <textarea class="form-control" name="goal_description" value="" id="goal_description" aria-describedby="goalHelp" required></textarea>
-                        <div id="goalHelp" class="form-text">Short text describing employee's accomplishment</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="d-none" id="key-accomplishment" style="margin-top: -70px;">
+                <h1>KEY ACCOMPLISHMENT</h1>
+                
+                          <form class="repeater" id="createGoalForm">
+                            <div id="goalSaveAlert"></div>
+                            <div data-repeater-list="goalsList">
+                              <div class="d-flex justify-content-between">
+                                <ul class="nav nav-tabs w-75" id="goalFormNavigation">
+                                  <li class="nav-item goal_1 active_link" style="cursor: pointer;">
+                                    <span class="nav-link">Goal 1</span>
+                                  </li>
+                                  <li class="nav-item goal_2" style="cursor: pointer;">
+                                    <span class="nav-link">Goal 2</span>
+                                  </li>
+                                  <li class="nav-item goal_3" style="cursor: pointer;">
+                                    <span class="nav-link">Goal 3</span>
+                                  </li>
+                                </ul>
+                                <div class="d-flex justify-content-around flex-wrap" style="width: 210px">
+                                  <button data-repeater-create="" class="btn btn-success rounded-pill" type="button" style="height: 40px">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                      Add
+                                      <i class="ti ti-circle-plus ms-1 fs-5"></i>
+                                    </div>
+                                  </button>
+                                 
+                                </div>
+                              </div>
+                              <div data-repeater-item="" class="mt-5 goal goal_1">
+                                <div class="container px-0 mx-0">
+                                  <div class="grid column-gap-3 row">
+                                    <div class="col-sm mb-3 mx-0">
+                                      <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
+                                      <select class="form-select" name="goalsList[0][corporate_objective]" id="corporate_objective" required="">
+                                      <option value="" disabled="" selected="">-- Select corporate objective --</option><option value="Luke Skywalker" class="dependent-dropdown">Luke Skywalker</option><option value="C-3PO" class="dependent-dropdown">C-3PO</option><option value="R2-D2" class="dependent-dropdown">R2-D2</option><option value="Darth Vader" class="dependent-dropdown">Darth Vader</option><option value="Leia Organa" class="dependent-dropdown">Leia Organa</option><option value="Owen Lars" class="dependent-dropdown">Owen Lars</option><option value="Beru Whitesun lars" class="dependent-dropdown">Beru Whitesun lars</option><option value="R5-D4" class="dependent-dropdown">R5-D4</option><option value="Biggs Darklighter" class="dependent-dropdown">Biggs Darklighter</option><option value="Obi-Wan Kenobi" class="dependent-dropdown">Obi-Wan Kenobi</option></select>
+                                    </div>
+                                    <div class="col-sm mb-3 mx-0">
+                                      <label for="scorecards" class="form-label">Link to balance scorecard</label>
+                                      <input class="form-control" value="" name="goalsList[0][balanced_scorecard]" id="balanced_scorecard" readonly="">
+                                    </div>
+                                  </div>
+                                </div>
+                                <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" style="height: 40px; margin-left: 90%; margin-top: 30px;">                    
+                                  Save
+                                  <i class="ti ti-download fs-5"></i>
+                                </button>
+                                
+                               
+                              </div>
+                              <div data-repeater-item="" class="mt-5 d-none goal goal_2">
+                                <div class="container px-0 mx-0">
+                                  <div class="grid column-gap-3 row">
+                                    <div class="col-sm mb-3 mx-0">
+                                      <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
+                                      <select class="form-select" name="goalsList[1][corporate_objective]" id="corporate_objective" required="">
+                                      <option value="" disabled="" selected="">-- Select corporate objective --</option><option value="Luke Skywalker" class="dependent-dropdown">Luke Skywalker</option><option value="C-3PO" class="dependent-dropdown">C-3PO</option><option value="R2-D2" class="dependent-dropdown">R2-D2</option><option value="Darth Vader" class="dependent-dropdown">Darth Vader</option><option value="Leia Organa" class="dependent-dropdown">Leia Organa</option><option value="Owen Lars" class="dependent-dropdown">Owen Lars</option><option value="Beru Whitesun lars" class="dependent-dropdown">Beru Whitesun lars</option><option value="R5-D4" class="dependent-dropdown">R5-D4</option><option value="Biggs Darklighter" class="dependent-dropdown">Biggs Darklighter</option><option value="Obi-Wan Kenobi" class="dependent-dropdown">Obi-Wan Kenobi</option></select>
+                                    </div>
+                                    <div class="col-sm mb-3 mx-0">
+                                      <label for="scorecards" class="form-label">Link to balance scorecard</label>
+                                      <input class="form-control" value="" name="goalsList[1][balanced_scorecard]" id="balanced_scorecard" readonly="">
+                                    </div>
+                                  </div>
+                                </div>
+                                
+                                
+                                
+                              </div>  
+                              <div data-repeater-item="" class="mt-5 d-none goal goal_3">
+                                <div class="container px-0 mx-0">
+                                  <div class="grid column-gap-3 row">
+                                    <div class="col mb-3 mx-0">
+                                      <label for="objective" class="form-label form-label-long">Corporate Objectives (Strategic focus)</label>
+                                      <select class="form-select" name="goalsList[2][corporate_objective]" id="corporate_objective" required="">
+                                      <option value="" disabled="" selected="">-- Select corporate objective --</option><option value="Luke Skywalker" class="dependent-dropdown">Luke Skywalker</option><option value="C-3PO" class="dependent-dropdown">C-3PO</option><option value="R2-D2" class="dependent-dropdown">R2-D2</option><option value="Darth Vader" class="dependent-dropdown">Darth Vader</option><option value="Leia Organa" class="dependent-dropdown">Leia Organa</option><option value="Owen Lars" class="dependent-dropdown">Owen Lars</option><option value="Beru Whitesun lars" class="dependent-dropdown">Beru Whitesun lars</option><option value="R5-D4" class="dependent-dropdown">R5-D4</option><option value="Biggs Darklighter" class="dependent-dropdown">Biggs Darklighter</option><option value="Obi-Wan Kenobi" class="dependent-dropdown">Obi-Wan Kenobi</option></select>
+                                    </div>
+                                    <div class="col-sm mb-3 mx-0">
+                                      <label for="scorecards" class="form-label">Link to balance scorecard</label>
+                                      <input class="form-control" value="" name="goalsList[2][balanced_scorecard]" id="balanced_scorecard" readonly="">
+                                    </div>
+                                  </div>
+                                </div>
+                               
+                                
+                              </div>
+                            </div>
+                            
+                              
+                          </form>
+                       
+               
+
+
               </div>
               <div class="d-none" id="performance-improvement">
                 <h1>PERFORMANCE IMPROVEMENT</h1>
+                <div style="margin-left: 90%; margin-top: 30px;">
+                  <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" >                    
+                    Save
+                    <i class="ti ti-download fs-5"></i>
+                  </button>
+                </div>
               </div>
               <div class="d-none" id="overall-rating">
                 <h1>OVERALL RATING</h1>
@@ -820,5 +1301,17 @@
   <script src="../assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
   <script src="../assets/js/dashboard.js"></script>
   <script src="../assets/js/appraisal.js"></script>
+  <script src="../assets/js/form_repeater2.js"></script>
+  <script src="../assets/js/form_repeater.js"></script>
 </body>
 </html>
+
+
+
+
+ 
+
+ 
+
+
+ 
