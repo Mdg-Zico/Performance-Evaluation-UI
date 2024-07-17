@@ -472,7 +472,7 @@
                   </div>
                   <div class="grid column-gap-3 row">
                     <div class="col-sm w-100 mb-3">
-                      <label for="result-achieved" class="form-label">Actual Result Achieved</label>
+                      <label for="result-achieved" class="form-label">Actual Result Achieved <span class="required">*</span></label>
                       <textarea class="form-control" name="result-achieved" value="" id="result-achieved" aria-describedby="goaldescHelp" required></textarea>
                       <div id="goaldescHelp" class="form-text">What have you achieved so far?</div>
                     </div>
@@ -483,7 +483,7 @@
                       <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required disabled/>
                     </div>
                     <div class="col-sm mb-3 mx-0">
-                      <label for="appraisee-rating" class="form-label">Appraisee Rating</label>
+                      <label for="appraisee-rating" class="form-label">Appraisee Rating <span class="required">*</span></label>
                       <select class="form-select" name="appraisee-rating" id="appraisee-rating" required>
                       </select>
                     </div>    
@@ -518,7 +518,7 @@
                   </div>
                   <div class="grid column-gap-3 row">
                     <div class="col-sm w-100 mb-3">
-                      <label for="result-achieved" class="form-label">Actual Result Achieved</label>
+                      <label for="result-achieved" class="form-label">Actual Result Achieved <span class="required">*</span></label>
                       <textarea class="form-control" name="result-achieved" value="Task 3" id="result-achieved" aria-describedby="goaldescHelp" required></textarea>
                       <div id="goaldescHelp" class="form-text">What have you achieved so far?</div>
                     </div>
@@ -529,7 +529,7 @@
                       <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required disabled/>
                     </div>
                     <div class="col-sm mb-3 mx-0">
-                      <label for="appraisee-rating" class="form-label">Appraisee Rating</label>
+                      <label for="appraisee-rating" class="form-label">Appraisee Rating <span class="required">*</span></label>
                       <select class="form-select" name="appraisee-rating" id="appraisee-rating" required>
                       </select>
                     </div>
@@ -564,7 +564,7 @@
                   </div>
                   <div class="grid column-gap-3 row">
                     <div class="col-sm w-100 mb-3">
-                      <label for="result-achieved" class="form-label">Actual Result Achieved</label>
+                      <label for="result-achieved" class="form-label">Actual Result Achieved <span class="required">*</span></label>
                       <textarea class="form-control" maxlength="200" name="result-achieved" value="Task 3" id="result-achieved" aria-describedby="goaldescHelp" required></textarea>
                       <div id="goaldescHelp" class="form-text">What have you achieved so far?</div>
                     </div>
@@ -575,7 +575,7 @@
                       <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required disabled/>
                     </div>
                     <div class="col-sm mb-3 mx-0">
-                      <label for="appraisee-rating" class="form-label">Appraisee Rating</label>
+                      <label for="appraisee-rating" class="form-label">Appraisee Rating <span class="required">*</span></label>
                       <select class="form-select" name="appraisee-rating" id="appraisee-rating" required>
                       </select>
                     </div>
@@ -1180,16 +1180,59 @@
 
               <!-- KEY ACCOMPLISHMENT START -->
               <div class="d-none" id="key-accomplishment">
+                <div class="mt-5 goal goal_1">
+                  <div class="container px-0 mx-0">
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="accomplishment" class="form-label">Accomplishment 1 <span class="required">*</span></label>
+                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
+                        <div id="goaldescHelp" class="form-text">Actual feats accomplished</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-5 goal goal_2">
+                  <div class="container px-0 mx-0">
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="accomplishment" class="form-label">Accomplishment 2</label>
+                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp"></textarea>
+                        <div id="goaldescHelp" class="form-text">Actual feats accomplished</div>
+                      </div>
+                    </div>
+                  </div>     
+                </div>  
+                <div class="mt-5 goal goal_3">
+                  <div class="container px-0 mx-0">
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="accomplishment" class="form-label">Accomplishment 3</label>
+                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp"></textarea>
+                        <div id="goaldescHelp" class="form-text">Actual feats accomplished</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" style="height: 40px; margin-left: 90%; margin-top: 30px;">                    
+                  Save
+                  <i class="ti ti-download fs-5"></i>
+                </button>
+              </div>
+              <!-- KEY ACCOMPLISHMENT END -->
+
+
+              <!-- PERFORMANCE IMPROVEMENT START -->
+              <div class="d-none" id="performance-improvement">
                 <div class="d-flex justify-content-between">
                   <ul class="nav nav-tabs w-75" id="goalFormNavigation">
                     <li class="nav-item goal_1 active_link" style="cursor: pointer;">
-                      <span class="nav-link">Goal 1</span>
+                      <span class="nav-link">Point 1</span>
                     </li>
                     <li class="nav-item goal_2" style="cursor: pointer;">
-                      <span class="nav-link">Goal 2</span>
+                      <span class="nav-link">Point 2</span>
                     </li>
                     <li class="nav-item goal_3" style="cursor: pointer;">
-                      <span class="nav-link">Goal 3</span>
+                      <span class="nav-link">Point 3</span>
                     </li>
                   </ul>
                 </div>
@@ -1197,22 +1240,27 @@
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row">
                       <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Accomplishment</label>
+                        <label for="accomplishment" class="form-label">Key Strengths 1</label>
                         <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
-                        <div id="goaldescHelp" class="form-text">Actual feats accomplished</div>
+                        <!-- <div id="goaldescHelp" class="form-text">Actual feats accomplished</div> -->
                       </div>
                     </div>
                   </div>
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row">
                       <div class="col-sm mb-3 mx-0">
-                        <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-                        <select class="form-select" name="goalsList[0][corporate_objective]" id="corporate_objective" required="">
-                        <option value="" disabled="" selected="">-- Select corporate objective --</option><option value="Luke Skywalker" class="dependent-dropdown">Luke Skywalker</option><option value="C-3PO" class="dependent-dropdown">C-3PO</option><option value="R2-D2" class="dependent-dropdown">R2-D2</option><option value="Darth Vader" class="dependent-dropdown">Darth Vader</option><option value="Leia Organa" class="dependent-dropdown">Leia Organa</option><option value="Owen Lars" class="dependent-dropdown">Owen Lars</option><option value="Beru Whitesun lars" class="dependent-dropdown">Beru Whitesun lars</option><option value="R5-D4" class="dependent-dropdown">R5-D4</option><option value="Biggs Darklighter" class="dependent-dropdown">Biggs Darklighter</option><option value="Obi-Wan Kenobi" class="dependent-dropdown">Obi-Wan Kenobi</option></select>
+                        <label for="accomplishment" class="form-label">Improvement Areas</label>
+                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
+                        <div id="goaldescHelp" class="form-text">E.g; Coaching, Mentoring, On-the-job training and formal trainings.</div>
                       </div>
+                    </div>
+                  </div>
+                  <div class="container px-0 mx-0">
+                    <div class="grid column-gap-3 row">
                       <div class="col-sm mb-3 mx-0">
-                        <label for="scorecards" class="form-label">Link to balance scorecard</label>
-                        <input class="form-control" value="" name="goalsList[0][balanced_scorecard]" id="balanced_scorecard" readonly="">
+                        <label for="accomplishment" class="form-label">Developmental Recommendations</label>
+                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
+                        <div id="goaldescHelp" class="form-text">training/job rotation/job enlargement/Redeployment to another Function/Department/Location etc.</div>
                       </div>
                     </div>
                   </div>
@@ -1225,59 +1273,64 @@
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row">
                       <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Accomplishment</label>
+                        <label for="accomplishment" class="form-label">Key Strengths 2</label>
                         <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
-                        <div id="goaldescHelp" class="form-text">Actual feats accomplished</div>
+                        <!-- <div id="goaldescHelp" class="form-text">Actual feats accomplished</div> -->
                       </div>
                     </div>
                   </div>
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row">
                       <div class="col-sm mb-3 mx-0">
-                        <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-                        <select class="form-select" name="goalsList[1][corporate_objective]" id="corporate_objective" required="">
-                        <option value="" disabled="" selected="">-- Select corporate objective --</option><option value="Luke Skywalker" class="dependent-dropdown">Luke Skywalker</option><option value="C-3PO" class="dependent-dropdown">C-3PO</option><option value="R2-D2" class="dependent-dropdown">R2-D2</option><option value="Darth Vader" class="dependent-dropdown">Darth Vader</option><option value="Leia Organa" class="dependent-dropdown">Leia Organa</option><option value="Owen Lars" class="dependent-dropdown">Owen Lars</option><option value="Beru Whitesun lars" class="dependent-dropdown">Beru Whitesun lars</option><option value="R5-D4" class="dependent-dropdown">R5-D4</option><option value="Biggs Darklighter" class="dependent-dropdown">Biggs Darklighter</option><option value="Obi-Wan Kenobi" class="dependent-dropdown">Obi-Wan Kenobi</option></select>
-                      </div>
-                      <div class="col-sm mb-3 mx-0">
-                        <label for="scorecards" class="form-label">Link to balance scorecard</label>
-                        <input class="form-control" value="" name="goalsList[1][balanced_scorecard]" id="balanced_scorecard" readonly="">
+                        <label for="accomplishment" class="form-label">Improvement Areas</label>
+                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
+                        <div id="goaldescHelp" class="form-text">E.g; Coaching, Mentoring, On-the-job training and formal trainings.</div>
                       </div>
                     </div>
-                  </div>      
+                  </div>
+                  <div class="container px-0 mx-0">
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="accomplishment" class="form-label">Developmental Recommendations</label>
+                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
+                        <div id="goaldescHelp" class="form-text">training/job rotation/job enlargement/Redeployment to another Function/Department/Location etc.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" style="height: 40px; margin-left: 90%; margin-top: 30px;">                    
+                    Save
+                    <i class="ti ti-download fs-5"></i>
+                  </button>  
                 </div>  
                 <div data-repeater-item="" class="mt-5 d-none goal goal_3">
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row">
                       <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Accomplishment</label>
+                        <label for="accomplishment" class="form-label">Key Strengths 3</label>
                         <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
-                        <div id="goaldescHelp" class="form-text">Actual feats accomplished</div>
+                        <!-- <div id="goaldescHelp" class="form-text">Actual feats accomplished</div> -->
                       </div>
                     </div>
                   </div>
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row">
-                      <div class="col mb-3 mx-0">
-                        <label for="objective" class="form-label form-label-long">Corporate Objectives (Strategic focus)</label>
-                        <select class="form-select" name="goalsList[2][corporate_objective]" id="corporate_objective" required="">
-                        <option value="" disabled="" selected="">-- Select corporate objective --</option><option value="Luke Skywalker" class="dependent-dropdown">Luke Skywalker</option><option value="C-3PO" class="dependent-dropdown">C-3PO</option><option value="R2-D2" class="dependent-dropdown">R2-D2</option><option value="Darth Vader" class="dependent-dropdown">Darth Vader</option><option value="Leia Organa" class="dependent-dropdown">Leia Organa</option><option value="Owen Lars" class="dependent-dropdown">Owen Lars</option><option value="Beru Whitesun lars" class="dependent-dropdown">Beru Whitesun lars</option><option value="R5-D4" class="dependent-dropdown">R5-D4</option><option value="Biggs Darklighter" class="dependent-dropdown">Biggs Darklighter</option><option value="Obi-Wan Kenobi" class="dependent-dropdown">Obi-Wan Kenobi</option></select>
-                      </div>
                       <div class="col-sm mb-3 mx-0">
-                        <label for="scorecards" class="form-label">Link to balance scorecard</label>
-                        <input class="form-control" value="" name="goalsList[2][balanced_scorecard]" id="balanced_scorecard" readonly="">
+                        <label for="accomplishment" class="form-label">Improvement Areas</label>
+                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
+                        <div id="goaldescHelp" class="form-text">E.g; Coaching, Mentoring, On-the-job training and formal trainings.</div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <!-- KEY ACCOMPLISHMENT END -->
-
-
-              <!-- PERFORMANCE IMPROVEMENT START -->
-              <div class="d-none" id="performance-improvement">
-                <h1>PERFORMANCE IMPROVEMENT</h1>
-                <div style="margin-left: 90%; margin-top: 30px;">
-                  <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" >                    
+                  <div class="container px-0 mx-0">
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="accomplishment" class="form-label">Developmental Recommendations</label>
+                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
+                        <div id="goaldescHelp" class="form-text">training/job rotation/job enlargement/Redeployment to another Function/Department/Location etc.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" style="height: 40px; margin-left: 90%; margin-top: 30px;">                    
                     Save
                     <i class="ti ti-download fs-5"></i>
                   </button>

@@ -88,3 +88,7 @@ label {
   left: 0;
   background-color: #7283DB;
 }
+
+.required {
+  color: red;
+}
