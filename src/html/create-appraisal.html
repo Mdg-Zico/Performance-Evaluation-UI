@@ -457,153 +457,153 @@
                     </li>
                   </ul>
                 </div>
-                <div class="mt-5 goal goal_1">
-                  <div class="grid column-gap-3 row">
-                    <div class="col-sm w-100 mb-3">
-                      <label for="goal" class="form-label">Goal</label>
-                      <textarea class="form-control" name="goal_description" value="Goal 1" id="goal_description" aria-describedby="goalHelp" required disabled>Goal 1</textarea>
-                      <!-- <div id="goalHelp" class="form-text">Short text describing your goal</div> -->
+                <div class="goals-for-evaluation">
+                  <div class="mt-5 goal goal_1">
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm w-100 mb-3">
+                        <label for="goal" class="form-label">Goal</label>
+                        <textarea class="form-control" name="goal_description" value="Goal 1" id="goal_description" aria-describedby="goalHelp" required disabled>Goal 1</textarea>
+                        <!-- <div id="goalHelp" class="form-text">Short text describing your goal</div> -->
+                      </div>
+                      <div class="col-sm w-100 mb-3">
+                        <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
+                        <textarea class="form-control" name="kpi" value="KPI 1" id="kpi" required disabled>KPI 1</textarea>
+                        <div id="goaldescHelp" class="form-text">Key performance indices of your goal</div>
+                      </div>
                     </div>
-                    <div class="col-sm w-100 mb-3">
-                      <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
-                      <textarea class="form-control" name="kpi" value="KPI 1" id="kpi" required disabled>KPI 1</textarea>
-                      <div id="goaldescHelp" class="form-text">Key performance indices of your goal</div>
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm w-100 mb-3">
+                        <label for="result-achieved" class="form-label">Actual Result Achieved <span class="required">*</span></label>
+                        <textarea class="form-control" name="result-achieved" value="" id="result-achieved" aria-describedby="goaldescHelp" required></textarea>
+                        <div id="goaldescHelp" class="form-text">What have you achieved so far?</div>
+                      </div>
+                    </div>
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="weight" class="form-label">Weight</label>
+                        <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required disabled/>
+                      </div>
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="appraisee-rating" class="form-label">Appraisee Rating <span class="required">*</span></label>
+                        <select class="form-select" name="appraisee-rating" id="appraisee-rating" required>
+                        </select>
+                      </div>    
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="score" class="form-label">Score</label>
+                        <input type="number" name="score" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                      </div>     
+                    </div>           
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="agreed-rating" class="form-label">Agreed Rating</label>
+                        <input type="number" name="agreed-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                      </div>
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="appraiser-rating" class="form-label">Appraiser Rating</label>
+                        <input type="number" name="appraiser-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                      </div>
                     </div>
                   </div>
-                  <div class="grid column-gap-3 row">
-                    <div class="col-sm w-100 mb-3">
-                      <label for="result-achieved" class="form-label">Actual Result Achieved <span class="required">*</span></label>
-                      <textarea class="form-control" name="result-achieved" value="" id="result-achieved" aria-describedby="goaldescHelp" required></textarea>
-                      <div id="goaldescHelp" class="form-text">What have you achieved so far?</div>
+                  <div class="mt-5 d-none goal goal_2">
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm w-100 mb-3">
+                        <label for="goal" class="form-label">Goal</label>
+                        <textarea class="form-control" name="goal_description" value="Goal 2" id="goal_description" aria-describedby="goalHelp" required disabled>Goal 2</textarea>
+                        <!-- <div id="goalHelp" class="form-text">Short text describing your goal</div> -->
+                      </div>
+                      <div class="col-sm w-100 mb-3">
+                        <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
+                        <textarea class="form-control" name="kpi" value="KPI 2" id="kpi" required disabled>KPI 2</textarea>
+                        <div id="goaldescHelp" class="form-text">Key performance indices of your goal</div>
+                      </div>
                     </div>
-                  </div>
-                  <div class="grid column-gap-3 row">
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="weight" class="form-label">Weight</label>
-                      <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required disabled/>
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm w-100 mb-3">
+                        <label for="result-achieved" class="form-label">Actual Result Achieved <span class="required">*</span></label>
+                        <textarea class="form-control" name="result-achieved" value="Task 3" id="result-achieved" aria-describedby="goaldescHelp" required></textarea>
+                        <div id="goaldescHelp" class="form-text">What have you achieved so far?</div>
+                      </div>
                     </div>
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="appraisee-rating" class="form-label">Appraisee Rating <span class="required">*</span></label>
-                      <select class="form-select" name="appraisee-rating" id="appraisee-rating" required>
-                      </select>
-                    </div>    
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="score" class="form-label">Score</label>
-                      <input type="number" name="score" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
-                    </div>     
-                  </div>           
-                  <div class="grid column-gap-3 row">
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="agreed-rating" class="form-label">Agreed Rating</label>
-                      <input type="number" name="agreed-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="weight" class="form-label">Weight</label>
+                        <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required disabled/>
+                      </div>
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="appraisee-rating" class="form-label">Appraisee Rating <span class="required">*</span></label>
+                        <select class="form-select" name="appraisee-rating" id="appraisee-rating" required>
+                        </select>
+                      </div>
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="score" class="form-label">Score</label>
+                        <input type="number" name="score" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                      </div>   
+                    </div>                 
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="agreed-rating" class="form-label">Agreed Rating</label>
+                        <input type="number" name="agreed-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                      </div>
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="appraiser-rating" class="form-label">Appraiser Rating</label>
+                        <input type="number" name="appraiser-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                      </div>
                     </div>
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="appraiser-rating" class="form-label">Appraiser Rating</label>
-                      <input type="number" name="appraiser-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                  </div>  
+                  <div class="mt-5 d-none goal goal_3">
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm w-100 mb-3">
+                        <label for="goal" class="form-label">Goal</label>
+                        <textarea class="form-control" name="goal_description" value="Goal 3" id="goal_description" aria-describedby="goalHelp" required disabled>Goal 3</textarea>
+                        <!-- <div id="goalHelp" class="form-text">Short text describing your goal</div> -->
+                      </div>
+                      <div class="col-sm w-100 mb-3">
+                        <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
+                        <textarea class="form-control" name="kpi" value="KPI 3" id="kpi" required disabled>KPI 3</textarea>
+                        <div id="goaldescHelp" class="form-text">Key performance indices of your goal</div>
+                      </div>
                     </div>
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm w-100 mb-3">
+                        <label for="result-achieved" class="form-label">Actual Result Achieved <span class="required">*</span></label>
+                        <textarea class="form-control" maxlength="200" name="result-achieved" value="Task 3" id="result-achieved" aria-describedby="goaldescHelp" required></textarea>
+                        <div id="goaldescHelp" class="form-text">What have you achieved so far?</div>
+                      </div>
+                    </div>
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="weight" class="form-label">Weight</label>
+                        <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required disabled/>
+                      </div>
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="appraisee-rating" class="form-label">Appraisee Rating <span class="required">*</span></label>
+                        <select class="form-select" name="appraisee-rating" id="appraisee-rating" required>
+                        </select>
+                      </div>
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="score" class="form-label">Score</label>
+                        <input type="number" name="score" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                      </div>
+                    </div>                    
+                    <div class="grid column-gap-3 row">
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="agreed-rating" class="form-label">Agreed Rating</label>
+                        <input type="number" name="agreed-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                      </div>
+                      <div class="col-sm mb-3 mx-0">
+                        <label for="appraiser-rating" class="form-label">Appraiser Rating</label>
+                        <input type="number" name="appraiser-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                      </div>
+                    </div>
+                    
                   </div>
                 </div>
-                <div data-repeater-item class="mt-5 d-none goal goal_2">
-                  <div class="grid column-gap-3 row">
-                    <div class="col-sm w-100 mb-3">
-                      <label for="goal" class="form-label">Goal</label>
-                      <textarea class="form-control" name="goal_description" value="Goal 2" id="goal_description" aria-describedby="goalHelp" required disabled>Goal 2</textarea>
-                      <!-- <div id="goalHelp" class="form-text">Short text describing your goal</div> -->
-                    </div>
-                    <div class="col-sm w-100 mb-3">
-                      <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
-                      <textarea class="form-control" name="kpi" value="KPI 2" id="kpi" required disabled>KPI 2</textarea>
-                      <div id="goaldescHelp" class="form-text">Key performance indices of your goal</div>
-                    </div>
-                  </div>
-                  <div class="grid column-gap-3 row">
-                    <div class="col-sm w-100 mb-3">
-                      <label for="result-achieved" class="form-label">Actual Result Achieved <span class="required">*</span></label>
-                      <textarea class="form-control" name="result-achieved" value="Task 3" id="result-achieved" aria-describedby="goaldescHelp" required></textarea>
-                      <div id="goaldescHelp" class="form-text">What have you achieved so far?</div>
-                    </div>
-                  </div>
-                  <div class="grid column-gap-3 row">
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="weight" class="form-label">Weight</label>
-                      <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required disabled/>
-                    </div>
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="appraisee-rating" class="form-label">Appraisee Rating <span class="required">*</span></label>
-                      <select class="form-select" name="appraisee-rating" id="appraisee-rating" required>
-                      </select>
-                    </div>
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="score" class="form-label">Score</label>
-                      <input type="number" name="score" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
-                    </div>   
-                  </div>                 
-                  <div class="grid column-gap-3 row">
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="agreed-rating" class="form-label">Agreed Rating</label>
-                      <input type="number" name="agreed-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
-                    </div>
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="appraiser-rating" class="form-label">Appraiser Rating</label>
-                      <input type="number" name="appraiser-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
-                    </div>
-                  </div>
-                </div>  
-                <div data-repeater-item class="mt-5 d-none goal goal_3">
-                  <div class="grid column-gap-3 row">
-                    <div class="col-sm w-100 mb-3">
-                      <label for="goal" class="form-label">Goal</label>
-                      <textarea class="form-control" name="goal_description" value="Goal 3" id="goal_description" aria-describedby="goalHelp" required disabled>Goal 3</textarea>
-                      <!-- <div id="goalHelp" class="form-text">Short text describing your goal</div> -->
-                    </div>
-                    <div class="col-sm w-100 mb-3">
-                      <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
-                      <textarea class="form-control" name="kpi" value="KPI 3" id="kpi" required disabled>KPI 3</textarea>
-                      <div id="goaldescHelp" class="form-text">Key performance indices of your goal</div>
-                    </div>
-                  </div>
-                  <div class="grid column-gap-3 row">
-                    <div class="col-sm w-100 mb-3">
-                      <label for="result-achieved" class="form-label">Actual Result Achieved <span class="required">*</span></label>
-                      <textarea class="form-control" maxlength="200" name="result-achieved" value="Task 3" id="result-achieved" aria-describedby="goaldescHelp" required></textarea>
-                      <div id="goaldescHelp" class="form-text">What have you achieved so far?</div>
-                    </div>
-                  </div>
-                  <div class="grid column-gap-3 row">
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="weight" class="form-label">Weight</label>
-                      <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required disabled/>
-                    </div>
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="appraisee-rating" class="form-label">Appraisee Rating <span class="required">*</span></label>
-                      <select class="form-select" name="appraisee-rating" id="appraisee-rating" required>
-                      </select>
-                    </div>
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="score" class="form-label">Score</label>
-                      <input type="number" name="score" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
-                    </div>
-                  </div>                    
-                  <div class="grid column-gap-3 row">
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="agreed-rating" class="form-label">Agreed Rating</label>
-                      <input type="number" name="agreed-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
-                    </div>
-                    <div class="col-sm mb-3 mx-0">
-                      <label for="appraiser-rating" class="form-label">Appraiser Rating</label>
-                      <input type="number" name="appraiser-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
-                    </div>
-                  </div>
-                  
-                </div>
-
                 <div style="margin-left: 90%; margin-top: 30px;">
-                <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" >                    
-                  Save
-                  <i class="ti ti-download fs-5"></i>
-                </button>
-              </div>
-
+                  <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" >                    
+                    Save
+                    <i class="ti ti-download fs-5"></i>
+                  </button>
+                </div>
               </div>
               <!-- GOAL EVALUATION END -->
 
@@ -1180,7 +1180,7 @@
 
               <!-- KEY ACCOMPLISHMENT START -->
               <div class="d-none" id="key-accomplishment">
-                <div class="mt-5 goal goal_1">
+                <div class="mt-5">
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row">
                       <div class="col-sm mb-3 mx-0">
@@ -1191,7 +1191,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="mt-5 goal goal_2">
+                <div class="mt-2">
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row">
                       <div class="col-sm mb-3 mx-0">
@@ -1202,7 +1202,7 @@
                     </div>
                   </div>     
                 </div>  
-                <div class="mt-5 goal goal_3">
+                <div class="mt-2">
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row">
                       <div class="col-sm mb-3 mx-0">
@@ -1240,7 +1240,7 @@
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row">
                       <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Key Strengths 1</label>
+                        <label for="accomplishment" class="form-label">Key Strength 1</label>
                         <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
                         <!-- <div id="goaldescHelp" class="form-text">Actual feats accomplished</div> -->
                       </div>
@@ -1260,7 +1260,7 @@
                       <div class="col-sm mb-3 mx-0">
                         <label for="accomplishment" class="form-label">Developmental Recommendations</label>
                         <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
-                        <div id="goaldescHelp" class="form-text">training/job rotation/job enlargement/Redeployment to another Function/Department/Location etc.</div>
+                        <div id="goaldescHelp" class="form-text">Training, Job rotation, Job enlargement, Redeployment to another Function/Department/Location etc.</div>
                       </div>
                     </div>
                   </div>
@@ -1273,7 +1273,7 @@
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row">
                       <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Key Strengths 2</label>
+                        <label for="accomplishment" class="form-label">Key Strength 2</label>
                         <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
                         <!-- <div id="goaldescHelp" class="form-text">Actual feats accomplished</div> -->
                       </div>
@@ -1293,7 +1293,7 @@
                       <div class="col-sm mb-3 mx-0">
                         <label for="accomplishment" class="form-label">Developmental Recommendations</label>
                         <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
-                        <div id="goaldescHelp" class="form-text">training/job rotation/job enlargement/Redeployment to another Function/Department/Location etc.</div>
+                        <div id="goaldescHelp" class="form-text">Training, Job rotation, Job enlargement, Redeployment to another Function/Department/Location etc.</div>
                       </div>
                     </div>
                   </div>
@@ -1306,7 +1306,7 @@
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row">
                       <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Key Strengths 3</label>
+                        <label for="accomplishment" class="form-label">Key Strength 3</label>
                         <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
                         <!-- <div id="goaldescHelp" class="form-text">Actual feats accomplished</div> -->
                       </div>
@@ -1326,7 +1326,7 @@
                       <div class="col-sm mb-3 mx-0">
                         <label for="accomplishment" class="form-label">Developmental Recommendations</label>
                         <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
-                        <div id="goaldescHelp" class="form-text">training/job rotation/job enlargement/Redeployment to another Function/Department/Location etc.</div>
+                        <div id="goaldescHelp" class="form-text">Training, Job rotation, Job enlargement, Redeployment to another Function/Department/Location etc.</div>
                       </div>
                     </div>
                   </div>
@@ -1369,8 +1369,8 @@
   <script src="../assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
   <script src="../assets/js/dashboard.js"></script>
   <script src="../assets/js/appraisal.js"></script>
-  <script src="../assets/js/form_repeater2.js"></script>
-  <script src="../assets/js/form_repeater.js"></script>
+  <!-- <script src="../assets/js/form_repeater2.js"></script>
+  <script src="../assets/js/form_repeater.js"></script> -->
 </body>
 </html>
 
