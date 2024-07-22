@@ -1,6 +1,7 @@
 $(document).ready(
   function () {
   // Global variable declarations
+  "use strict";
   let total = 0;
   let dependentDropdownData;
   let formsList = [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
@@ -99,7 +100,7 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
         success: function (data) {
             // console.log(data.results);
             const corporate_objectives = {}
-            for (character of data.results) {
+            for (let character of data.results) {
                 corporate_objectives[character.name] = character.eye_color;
             }
             // console.log(corporate_objectives);
@@ -118,7 +119,7 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
       corporate_objectives = data;
       dependentDropdownData = corporate_objectives;
       populateDropDown(data, formsList);
-      // console.log(Object.keys(dependentDropdownData));
+      // console.log("DEPENDENT DROPDOWN DATA", Object.values(dependentDropdownData));
       // populateSavedGoalsOnLoad(dummyData);
     }
   )
@@ -313,14 +314,13 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
   // Logic to handle showing saved goals on form End
 
   // Form Repeater Start
-  const myRepeater = $('#goal-evaluation').repeater({
+  const myRepeater = $('#key-accomplishment').repeater({
     initEmpty: false,
     show: function () {
       $(this).slideDown();
       formsList.push($(this));
-      $(this).removeClass('goal_1');
-      $(this).addClass('d-none goal_'+formsList.length);
-      $('#submit').addClass('invisible');
+      $(this).removeClass('accomplishment_1');
+      $(this).addClass('d-none accomplishment_'+formsList.length);
       appendtoNav();
       populateDropDown(dependentDropdownData, formsList);
       handleDependentDropdown($(this));
@@ -379,7 +379,7 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
     // console.log(formsList);
   }
 
-  $('#goalFormNavigation').on('click', '.nav-item', function () {
+  $('.repeater').on('click', '.nav-item', function () {
     const [goalNumber, classList] = getGoalNumberInClass($(this));
     console.log(classList);
 
@@ -627,8 +627,8 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
     const active_link = $('.multi-step-appraisal-form-nav-link.active').removeClass('active');
     const new_active_link = $(this);
     new_active_link.addClass('active');
-    current_active_link_id = active_link.attr('id');
-    new_active_link_id = new_active_link.attr('id');
+    const current_active_link_id = active_link.attr('id');
+    const new_active_link_id = new_active_link.attr('id');
     $(`div#${current_active_link_id}`).addClass('d-none');
     $(`div#${new_active_link_id}`).removeClass('d-none');
   })
