@@ -53,10 +53,11 @@ h1 {
 
 .rating-table {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    gap: 5px;
     margin-bottom: 50px;
-    margin-top: -50px;
-    flex-wrap: wrap;
+    margin-top: 10px;
+    /* flex-wrap: wrap; */
 }
 
 .section, .total {
@@ -1446,8 +1447,58 @@ h1 {
                 <!-- <h1>OVERALL RATING</h1> -->
                 
                  
-                  <div class="rating-table">
-                      <div class="section">
+                  <div class="rating-table" >
+                    <div class="col-lg-4 col-md-6">
+                      <div class="card border-bottom border-info">
+                        <div class="card-body">
+                          <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                              <h6 class="fw-medium text-info mb-0">Section A</h6>
+                              <h4 class="fs-7">120</h4>
+                              
+                            </div>
+                            <span class="text-info display-6">
+                              <i class="ti ti-file-text"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                      <div class="card border-bottom border-primary">
+                        <div class="card-body">
+                          <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                              <h6 class="fw-medium text-primary mb-0">Section B</h6>
+                              <h4 class="fs-7">150</h4>
+                              
+                            </div>
+                            <span class="text-primary display-6">
+                              <i class="ti ti-clipboard"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                      <div class="card border-bottom border-success">
+                        <div class="card-body">
+                          <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                              <h6 class="fw-medium text-success mb-0">Total</h6>
+                              <h4 class="fs-7">450</h4>
+                              
+                            </div>
+                            <div class="ms-auto">
+                              <span class="text-success display-6">
+                                <i class="ti ti-credit-card"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                      <!-- <div class="section">
                           <label for="sectionA" class="section-title">Section A</label>
                           <input type="number" id="sectionA" class="section-score" value="17.5" readonly>
                       </div>
@@ -1461,12 +1512,84 @@ h1 {
                         <label for="total" class="section-title">TOTAL</label>
                           <input type="number" id="total" class="total-score"  value="19.59" readonly>
 
-                      </div>
+                      </div> -->
                     </div>
                   <div class="rating-description">
                     <h2>Rating Description</h2>
-                   
-                      <div class="rating">
+                    <div class="col-xxl-3 col-md-12">
+                      <div class="card border-end border-dark">
+                        <div class="card-body">
+                          <div class="d-flex align-items-center justify-content-between">
+                            <span >
+                              <!-- <i class="ti ti-cast"></i> -->
+                              <h4 class="card-title fs-7">Below Average (50%)</h4>
+                              <p>Does not meet the required performance standards in key aspects of the job. <strong>Unacceptable Performance</strong></p>
+                            </span>
+                            <div>
+                              <!-- <p class="card-subtitle text-dark">Below Average</p> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xxl-3 col-md-12">
+                      <div class="card border-end border-info">
+                        <div class="card-body">
+                          <div class="d-flex align-items-center justify-content-between">
+                            <span >
+                              <!-- class="text-info display-6" -->
+                              <h4 class="card-title fs-7">Average (50-59%)</h4>
+                              <!-- <i class="ti ti-currency-dollar"></i> -->
+                              <p>Level of productivity and general effectiveness meets the standards for this position. Quality and quantity of output are average. <strong>Improvement Needed</strong></p>
+                            </span>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xxl-3 col-md-12">
+                      <div class="card border-end border-primary">
+                        <div class="card-body">
+                          <div class="d-flex align-items-center justify-content-between">
+                            <span >
+                              <!-- <i class="ti ti-clock-hour-4"></i> -->
+                              <h4 class="card-title fs-7">Good (60-69%)</h4>
+                              <p>Meets the required performance standards in all aspects of the job and sometimes exceeds the standards. <strong>Sustain Performance</strong></p>
+                            </span>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xxl-3 col-md-12">
+                      <div class="card border-end border-success">
+                        <div class="card-body">
+                          <div class="d-flex align-items-center justify-content-between">
+                            <span>
+                              <!-- <i class="ti ti-box-multiple"></i> -->
+                              <h4 class="card-title fs-7">Very Good (70-89%)</h4>
+                              <p>Meets all required performance standards and often exceeds the standards. <strong>Certainly ready for higher responsibility</strong></p>
+                            </span>
+                           
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-xxl-3 col-md-12">
+                        <div class="card border-end border-success">
+                          <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <span>
+                                <!-- <i class="ti ti-box-multiple"></i> -->
+                                <h4 class="card-title fs-7">Exceptional (90-100%)</h4>
+                                <p>Consistently and significantly exceeds all performance standards and job requirements. Delivers exceptional performance. <strong>Ready and should be given higher responsibility</strong></p>
+                              </span>
+                             
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                      <!-- <div class="rating">
                           <div class="rating-range">Below Average (Below 50%)</div>
                           <div class="rating-text">Does not meet the required performance standards in key aspects of the job. <strong>Unacceptable Performance</strong></div>
                       </div>
@@ -1492,8 +1615,9 @@ h1 {
                           <div class="rating-text">Consistently and significantly exceeds all performance standards and job requirements. Delivers exceptional performance. <strong>Ready and should be given higher responsibility</strong></div>
                       </div>
                   </div>
-              
+               -->
 
+               
                 <div class="d-flex justify-content-between">
                   <button class="btn btn-primary rounded-pill" id="submit" type="submit" style="height: 40px">
                     <div class="d-flex align-items-center justify-content-center">
