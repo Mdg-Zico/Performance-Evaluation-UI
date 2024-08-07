@@ -504,14 +504,14 @@ h1 {
       <div class="multi-step-appraisal-form-nav">
         <ul class="nav nav-pills p-3 mb-3 rounded align-items-center card flex-row" id="appraisal-form-nav" style="box-shadow: rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px;">
           <li class="nav-item">
-            <span class="multi-step-appraisal-form-nav-link nav-link gap-6 note-link d-flex align-items-center justify-content-center active px-3 px-md-3" id="goal-evaluation">
+            <span class="multi-step-appraisal-form-nav-link nav-link gap-6 note-link d-flex align-items-center justify-content-center active px-3 px-md-3" id="goal_evaluation">
               <i class="ti ti-list fill-white"></i>
               <span class="d-none d-md-block fw-medium">Goal Evaluation</span>
             </span>
           </li>
           <li class="nav-item">
             <span class="multi-step-appraisal-form-nav-link nav-link gap-6 
-            note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="behaviour-assessment">
+            note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="behavioural_assessment">
               <!-- <i class="ti ti-briefcase fill-white"></i> -->
               <i class="ti ti-share fill-white"></i>
               <span class="d-none d-md-block fw-medium">Behaviour Assessment</span>
@@ -519,21 +519,21 @@ h1 {
           </li>
           <li class="nav-item">
             <span  class="multi-step-appraisal-form-nav-link nav-link gap-6 
-            note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="key-accomplishment">
+            note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="key_accomplishment">
               <i class="ti ti-star fill-white"></i>
               <span class="d-none d-md-block fw-medium">Key Accomplishment</span>
             </span>
           </li>
           <li class="nav-item">
             <span class="multi-step-appraisal-form-nav-link nav-link gap-6 
-            note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="performance-improvement">
+            note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="performance_improvement">
               <i class="ti ti-trending-up fill-white"></i>
               <span class="d-none d-md-block fw-medium">Performance Improvement</span>
             </span>
           </li>
           <li class="nav-item">
             <span class="multi-step-appraisal-form-nav-link nav-link gap-6 
-            note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="overall-rating">
+            note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="overall_rating">
               <i class="ti ti-file fill-white"></i>
               <span class="d-none d-md-block fw-medium fs-3">Overall rating</span>
             </span>
@@ -546,7 +546,7 @@ h1 {
             <form class="repeater">
 
               <!-- GOAL EVALUATION START -->
-              <div id="goal-evaluation">
+              <div class="goal_evaluation_form" id="goal_evaluation">
                 <div class="d-flex justify-content-between">
                   <ul class="nav nav-tabs w-75" id="goalFormNavigation">
                     <li class="nav-item goal_1 active_link" style="cursor: pointer;">
@@ -565,19 +565,18 @@ h1 {
                     <div class="grid column-gap-3 row">
                       <div class="col-sm w-100 mb-3">
                         <label for="goal" class="form-label">Goal</label>
-                        <textarea class="form-control" name="goal_description" value="Goal 1" id="goal_description" aria-describedby="goalHelp" required disabled>Goal 1</textarea>
-                        <!-- <div id="goalHelp" class="form-text">Short text describing your goal</div> -->
+                        <textarea rows="1" class="form-control" name="goal_description" value="Goal 1" id="goal_description" aria-describedby="goalHelp" required disabled>Goal 1</textarea>
                       </div>
                       <div class="col-sm w-100 mb-3">
                         <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
-                        <textarea class="form-control" name="kpi" value="KPI 1" id="kpi" required disabled>KPI 1</textarea>
+                        <textarea rows="1" class="form-control" name="kpi" value="KPI 1" id="kpi" required disabled>KPI 1</textarea>
                         <div id="goaldescHelp" class="form-text">Key performance indices of your goal</div>
                       </div>
                     </div>
                     <div class="grid column-gap-3 row">
                       <div class="col-sm w-100 mb-3">
-                        <label for="result-achieved" class="form-label">Actual Result Achieved <span class="required">*</span></label>
-                        <textarea class="form-control" name="result-achieved" value="" id="result-achieved" aria-describedby="goaldescHelp" required></textarea>
+                        <label for="actual_result" class="form-label">Actual Result Achieved <span class="required">*</span></label>
+                        <textarea rows="1" class="form-control" name="actual_result" value="" id="actual_result" aria-describedby="goaldescHelp" required></textarea>
                         <div id="goaldescHelp" class="form-text">What have you achieved so far?</div>
                       </div>
                     </div>
@@ -587,8 +586,8 @@ h1 {
                         <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required disabled/>
                       </div>
                       <div class="col-sm mb-3 mx-0">
-                        <label for="appraisee-rating" class="form-label">Appraisee Rating <span class="required">*</span></label>
-                        <select class="form-select" name="appraisee-rating" id="appraisee-rating" required>
+                        <label for="appraisee_rating" class="form-label">Appraisee Rating <span class="required">*</span></label>
+                        <select class="form-select" name="appraisee_rating" id="appraisee_rating" required>
                         </select>
                       </div>    
                       <div class="col-sm mb-3 mx-0">
@@ -602,8 +601,8 @@ h1 {
                         <input type="number" name="agreed-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
                       </div>
                       <div class="col-sm mb-3 mx-0">
-                        <label for="appraiser-rating" class="form-label">Appraiser Rating</label>
-                        <input type="number" name="appraiser-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                        <label for="appraiser_rating" class="form-label">Appraiser Rating</label>
+                        <input type="number" name="appraiser_rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="appraiser_rating" required disabled/>
                       </div>
                     </div>
                   </div>
@@ -611,19 +610,18 @@ h1 {
                     <div class="grid column-gap-3 row">
                       <div class="col-sm w-100 mb-3">
                         <label for="goal" class="form-label">Goal</label>
-                        <textarea class="form-control" name="goal_description" value="Goal 2" id="goal_description" aria-describedby="goalHelp" required disabled>Goal 2</textarea>
-                        <!-- <div id="goalHelp" class="form-text">Short text describing your goal</div> -->
+                        <textarea rows="1" class="form-control" name="goal_description" value="Goal 2" id="goal_description" aria-describedby="goalHelp" required disabled>Goal 2</textarea>                        
                       </div>
                       <div class="col-sm w-100 mb-3">
                         <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
-                        <textarea class="form-control" name="kpi" value="KPI 2" id="kpi" required disabled>KPI 2</textarea>
+                        <textarea rows="1" class="form-control" name="kpi" value="KPI 2" id="kpi" required disabled>KPI 2</textarea>
                         <div id="goaldescHelp" class="form-text">Key performance indices of your goal</div>
                       </div>
                     </div>
                     <div class="grid column-gap-3 row">
                       <div class="col-sm w-100 mb-3">
-                        <label for="result-achieved" class="form-label">Actual Result Achieved <span class="required">*</span></label>
-                        <textarea class="form-control" name="result-achieved" value="Task 3" id="result-achieved" aria-describedby="goaldescHelp" required></textarea>
+                        <label for="actual_result" class="form-label">Actual Result Achieved <span class="required">*</span></label>
+                        <textarea rows="1" class="form-control" name="actual_result" value="Task 3" id="actual_result" aria-describedby="goaldescHelp" required></textarea>
                         <div id="goaldescHelp" class="form-text">What have you achieved so far?</div>
                       </div>
                     </div>
@@ -633,8 +631,8 @@ h1 {
                         <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required disabled/>
                       </div>
                       <div class="col-sm mb-3 mx-0">
-                        <label for="appraisee-rating" class="form-label">Appraisee Rating <span class="required">*</span></label>
-                        <select class="form-select" name="appraisee-rating" id="appraisee-rating" required>
+                        <label for="appraisee_rating" class="form-label">Appraisee Rating <span class="required">*</span></label>
+                        <select class="form-select" name="appraisee_rating" id="appraisee_rating" required>
                         </select>
                       </div>
                       <div class="col-sm mb-3 mx-0">
@@ -648,8 +646,8 @@ h1 {
                         <input type="number" name="agreed-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
                       </div>
                       <div class="col-sm mb-3 mx-0">
-                        <label for="appraiser-rating" class="form-label">Appraiser Rating</label>
-                        <input type="number" name="appraiser-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                        <label for="appraiser_rating" class="form-label">Appraiser Rating</label>
+                        <input type="number" name="appraiser_rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="appraiser_rating" required disabled/>
                       </div>
                     </div>
                   </div>  
@@ -657,19 +655,18 @@ h1 {
                     <div class="grid column-gap-3 row">
                       <div class="col-sm w-100 mb-3">
                         <label for="goal" class="form-label">Goal</label>
-                        <textarea class="form-control" name="goal_description" value="Goal 3" id="goal_description" aria-describedby="goalHelp" required disabled>Goal 3</textarea>
-                        <!-- <div id="goalHelp" class="form-text">Short text describing your goal</div> -->
+                        <textarea rows="1" class="form-control" name="goal_description" value="Goal 3" id="goal_description" aria-describedby="goalHelp" required disabled>Goal 3</textarea>                        
                       </div>
                       <div class="col-sm w-100 mb-3">
                         <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
-                        <textarea class="form-control" name="kpi" value="KPI 3" id="kpi" required disabled>KPI 3</textarea>
+                        <textarea rows="1" class="form-control" name="kpi" value="KPI 3" id="kpi" required disabled>KPI 3</textarea>
                         <div id="goaldescHelp" class="form-text">Key performance indices of your goal</div>
                       </div>
                     </div>
                     <div class="grid column-gap-3 row">
                       <div class="col-sm w-100 mb-3">
-                        <label for="result-achieved" class="form-label">Actual Result Achieved <span class="required">*</span></label>
-                        <textarea class="form-control" maxlength="200" name="result-achieved" value="Task 3" id="result-achieved" aria-describedby="goaldescHelp" required></textarea>
+                        <label for="actual_result" class="form-label">Actual Result Achieved <span class="required">*</span></label>
+                        <textarea rows="1" class="form-control" maxlength="200" name="actual_result" value="Task 3" id="actual_result" aria-describedby="goaldescHelp" required></textarea>
                         <div id="goaldescHelp" class="form-text">What have you achieved so far?</div>
                       </div>
                     </div>
@@ -679,8 +676,8 @@ h1 {
                         <input type="number" name="weight" placeholder="0" value="25" min="0" max="100" class="form-control" id="weight" required disabled/>
                       </div>
                       <div class="col-sm mb-3 mx-0">
-                        <label for="appraisee-rating" class="form-label">Appraisee Rating <span class="required">*</span></label>
-                        <select class="form-select" name="appraisee-rating" id="appraisee-rating" required>
+                        <label for="appraisee_rating" class="form-label">Appraisee Rating <span class="required">*</span></label>
+                        <select class="form-select" name="appraisee_rating" id="appraisee_rating" required>
                         </select>
                       </div>
                       <div class="col-sm mb-3 mx-0">
@@ -694,15 +691,15 @@ h1 {
                         <input type="number" name="agreed-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
                       </div>
                       <div class="col-sm mb-3 mx-0">
-                        <label for="appraiser-rating" class="form-label">Appraiser Rating</label>
-                        <input type="number" name="appraiser-rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="weight" required disabled/>
+                        <label for="appraiser_rating" class="form-label">Appraiser Rating</label>
+                        <input type="number" name="appraiser_rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="appraiser_rating" required disabled/>
                       </div>
                     </div>
-                    
+
                   </div>
                 </div>
                 <div style="margin-left: 90%; margin-top: 30px;">
-                  <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" >                    
+                  <button class="btn rounded-pill btn-primary" onclick="updateAppraisal('goal_evaluation')" id="save-goal-form" type="button" >                    
                     Save
                     <i class="ti ti-download fs-5"></i>
                   </button>
@@ -712,11 +709,10 @@ h1 {
 
 
               <!-- BEHAVIOUR ASSESSMENT START -->
-              <div class="d-none" id="behaviour-assessment">
-                <div class="row row-cols-1 row-cols-md-3 g-3 " style="margin-left: -38px; margin-right: -38px; margin-top: -45px; border-radius: 30px;">
-                  <div class="col ">
-
-                    <div class="card h-100 "  >
+              <div class="d-none behavioural_assessment_form" id="behavioural_assessment">
+                <div class="row row-cols-1 row-cols-md-3 g-3 border-0 shadow-none" style="margin-left: -38px; margin-right: -38px; margin-top: -45px;">
+                  <div class="col">
+                    <div class="card h-100">
                       <div class="card-body main-cont position-relative behaviour-assessment-card " style="box-shadow: rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px;">
                         <span class="side-stick"></span>
                         <h6 class="fw-bolder text-truncate w-75 mb-0 card-heads">Job Effectiveness</h6>
@@ -727,40 +723,38 @@ h1 {
                           </p>
                         </div>
                         <div class="d-flex radio-buttons">
-                         
-                              <div class="radio-font">
-                            <div style="display: flex;">
+                          <div class="radio-font">
+                            <div class="d-flex flex-wrap">
                               <div class="radio-left" style="display: flex; flex-direction:column;" >
                                 <div class="form-check form-check-inline">
-                                  <input class="form-check-input" name="job-effectiveness" type="radio" value="4" id="exceeded">
+                                  <input class="form-check-input" name="job_effectiveness" type="radio" value="4" id="exceeded">
                                   <label class="form-check-label d-inline" for="exceeded">
                                     Exceeded(4)
                                   </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                  <input class="form-check-input" name="job-effectiveness" type="radio" value="2" id="partially-met">
+                                  <input class="form-check-input" name="job_effectiveness" type="radio" value="2" id="partially-met">
                                   <label class="form-check-label d-inline" for="partially-met">
                                     Partially Met(2)
                                   </label>
-                                </div>
-                               
-                          </div>
-                          <div class="radio-left" style="display: flex; flex-direction:column;">
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="job-effectiveness" type="radio" value="3" id="met">
-                              <label class="form-check-label d-inline" for="met">
-                                Met(3)
-                              </label>
-                            </div>
+                                </div>     
+                              </div>
+                              <div class="radio-left" style="display: flex; flex-direction:column;">
                                 <div class="form-check form-check-inline">
-                                  <input class="form-check-input" name="job-effectiveness" type="radio" value="1" id="did-not-meet">
+                                  <input class="form-check-input" name="job_effectiveness" type="radio" value="3" id="met">
+                                  <label class="form-check-label d-inline" for="met">
+                                    Met(3)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="job_effectiveness" type="radio" value="1" id="did-not-meet">
                                   <label class="form-check-label d-inline" for="did-not-meet">
                                     Did not meet(1)
                                   </label>
                                 </div>
-                          </div>
-                        </div>
                               </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -778,13 +772,13 @@ h1 {
                         <div class="d-flex radio-buttons">
                           <div class="radio-font">
                             <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="trust-integrity" type="radio" value="3" id="met">
+                              <input class="form-check-input" name="trust_and_integrity" type="radio" value="3" id="met">
                               <label class="form-check-label d-inline" for="met">
                                 Met(3)
                               </label>
                             </div>
                             <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="trust-integrity" type="radio" value="1" id="did-not-meet">
+                              <input class="form-check-input" name="trust_and_integrity" type="radio" value="1" id="did-not-meet">
                               <label class="form-check-label d-inline" for="did-not-meet">
                                 Did not meet(1)
                               </label>
@@ -808,40 +802,36 @@ h1 {
                         </div>
                         <div class="d-flex radio-buttons">
                           <div class="radio-font">
-                            <div style="display: flex;">
+                            <div class="d-flex flex-wrap">
                               <div class="radio-left" style="display: flex; flex-direction:column;" >
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="supervision-mngt" type="radio" value="4" id="exceeded">
-                              <label class="form-check-label d-inline" for="exceeded">
-                                Exceeded(4)
-                              </label>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="supervision" type="radio" value="4" id="exceeded">
+                                  <label class="form-check-label d-inline" for="exceeded">
+                                    Exceeded(4)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="supervision" type="radio" value="2" id="partially-met">
+                                  <label class="form-check-label d-inline" for="partially-met">
+                                    Partially Met(2)
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="supervision" type="radio" value="3" id="met">
+                                  <label class="form-check-label d-inline" for="met">
+                                    Met(3)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="supervision" type="radio" value="1" id="did-not-meet">
+                                  <label class="form-check-label d-inline" for="did-not-meet">
+                                    Did not meet(1)
+                                  </label>
+                                </div>
+                              </div>
                             </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="supervision-mngt" type="radio" value="2" id="partially-met">
-                              <label class="form-check-label d-inline" for="partially-met">
-                                Partially Met(2)
-                              </label>
-                            </div>
-                            
-                          </div>
-
-                         
-                          <div class="radio-left" style="display: flex; flex-direction:column;" >
-                           
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="supervision-mngt" type="radio" value="3" id="met">
-                              <label class="form-check-label d-inline" for="met">
-                                Met(3)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="supervision-mngt" type="radio" value="1" id="did-not-meet">
-                              <label class="form-check-label d-inline" for="did-not-meet">
-                                Did not meet(1)
-                              </label>
-                            </div>
-                          </div>
-                        </div>
                           </div>
                         </div>
                       </div>
@@ -860,40 +850,36 @@ h1 {
                         </div>
                         <div class="d-flex radio-buttons">
                           <div class="radio-font">
-                            <div style="display: flex;">
+                            <div class="d-flex flex-wrap">
                               <div class="radio-left" style="display: flex; flex-direction:column;" >
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="dependability" type="radio" value="4" id="exceeded">
-                              <label class="form-check-label d-inline" for="exceeded">
-                                Exceeded(4)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="dependability" type="radio" value="2" id="partially-met">
-                              <label class="form-check-label d-inline" for="partially-met">
-                                Partially Met(2)
-                              </label>
-                            </div>
-                            
-                          </div>
-
-
-                          
-                            <div class="radio-left" style="display: flex; flex-direction:column;" >
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="dependability" type="radio" value="3" id="met">
-                                <label class="form-check-label d-inline" for="met">
-                                  Met(3)
-                                </label>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="dependability" type="radio" value="4" id="exceeded">
+                                  <label class="form-check-label d-inline" for="exceeded">
+                                    Exceeded(4)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="dependability" type="radio" value="2" id="partially-met">
+                                  <label class="form-check-label d-inline" for="partially-met">
+                                    Partially Met(2)
+                                  </label>
+                                </div> 
                               </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="dependability" type="radio" value="1" id="did-not-meet">
-                              <label class="form-check-label d-inline" for="did-not-meet">
-                                Did not meet(1)
-                              </label>
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="dependability" type="radio" value="3" id="met">
+                                  <label class="form-check-label d-inline" for="met">
+                                    Met(3)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="dependability" type="radio" value="1" id="did-not-meet">
+                                  <label class="form-check-label d-inline" for="did-not-meet">
+                                    Did not meet(1)
+                                  </label>
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                          </div>
                           </div>
                         </div>
                       </div>
@@ -912,40 +898,36 @@ h1 {
                         </div>
                         <div class="d-flex radio-buttons">
                           <div class="radio-font">
-                            <div style="display: flex;">
+                            <div class="d-flex flex-wrap">
                               <div class="radio-left" style="display: flex; flex-direction:column;" >
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="team-work" type="radio" value="4" id="exceeded">
-                              <label class="form-check-label d-inline" for="exceeded">
-                                Exceeded(4)
-                              </label>
-                            </div>
-
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="team-work" type="radio" value="2" id="partially-met">
-                              <label class="form-check-label d-inline" for="partially-met">
-                                Partially Met(2)
-                              </label>
-                            </div>
-                            
-                          </div>
-
-                          
-                            <div class="radio-left" style="display: flex; flex-direction:column;" >
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="team-work" type="radio" value="3" id="met">
-                                <label class="form-check-label d-inline" for="met">
-                                  Met(3)
-                                </label>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="collaboration" type="radio" value="4" id="exceeded">
+                                  <label class="form-check-label d-inline" for="exceeded">
+                                    Exceeded(4)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="collaboration" type="radio" value="2" id="partially-met">
+                                  <label class="form-check-label d-inline" for="partially-met">
+                                    Partially Met(2)
+                                  </label>
+                                </div>
                               </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="team-work" type="radio" value="1" id="did-not-meet">
-                              <label class="form-check-label d-inline" for="did-not-meet">
-                                Did not meet(1)
-                              </label>
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="collaboration" type="radio" value="3" id="met">
+                                  <label class="form-check-label d-inline" for="met">
+                                    Met(3)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="collaboration" type="radio" value="1" id="did-not-meet">
+                                  <label class="form-check-label d-inline" for="did-not-meet">
+                                    Did not meet(1)
+                                  </label>
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                          </div>
                           </div>
                         </div>
                       </div>
@@ -964,38 +946,35 @@ h1 {
                         </div>
                         <div class="d-flex radio-buttons">
                           <div class="radio-font">
-                            <div style="display: flex;">
+                            <div class="d-flex flex-wrap">
                               <div class="radio-left" style="display: flex; flex-direction:column;" >
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="organisation-success" type="radio" value="4" id="exceeded">
-                              <label class="form-check-label d-inline" for="exceeded">
-                                Exceeded(4)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="organisation-success" type="radio" value="2" id="partially-met">
-                              <label class="form-check-label d-inline" for="partially-met">
-                                Partially Met(2)
-                              </label>
-                            </div>
-                          </div>
-
-                          
-                            <div class="radio-left" style="display: flex; flex-direction:column;" >
-                            
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="organisation-success" type="radio" value="3" id="met">
-                              <label class="form-check-label d-inline" for="met">
-                                Met(3)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="organisation-success" type="radio" value="1" id="did-not-meet">
-                              <label class="form-check-label d-inline" for="did-not-meet">
-                                Did not meet(1)
-                              </label>
-                            </div>
-                            </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="organizational_success" type="radio" value="4" id="exceeded">
+                                  <label class="form-check-label d-inline" for="exceeded">
+                                    Exceeded(4)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="organizational_success" type="radio" value="2" id="partially-met">
+                                  <label class="form-check-label d-inline" for="partially-met">
+                                    Partially Met(2)
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="organizational_success" type="radio" value="3" id="met">
+                                  <label class="form-check-label d-inline" for="met">
+                                    Met(3)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="organizational_success" type="radio" value="1" id="did-not-meet">
+                                  <label class="form-check-label d-inline" for="did-not-meet">
+                                    Did not meet(1)
+                                  </label>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -1017,38 +996,36 @@ h1 {
                         </div>
                         <div class="d-flex radio-buttons">
                           <div class="radio-font">
-                            <div style="display: flex;">
+                            <div class="d-flex flex-wrap">
                               <div class="radio-left" style="display: flex; flex-direction:column;" >
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="customer-orientation" type="radio" value="4" id="exceeded">
-                              <label class="form-check-label d-inline" for="exceeded">
-                                Exceeded(4)
-                              </label>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="customer_orientation" type="radio" value="4" id="exceeded">
+                                  <label class="form-check-label d-inline" for="exceeded">
+                                    Exceeded(4)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="customer_orientation" type="radio" value="2" id="partially-met">
+                                  <label class="form-check-label d-inline" for="partially-met">
+                                    Partially Met(2)
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="customer_orientation" type="radio" value="3" id="met">
+                                  <label class="form-check-label d-inline" for="met">
+                                    Met(3)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="customer_orientation" type="radio" value="1" id="did-not-meet">
+                                  <label class="form-check-label d-inline" for="did-not-meet">
+                                    Did not meet(1)
+                                  </label>
+                                </div>
+                              </div>
                             </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="customer-orientation" type="radio" value="2" id="partially-met">
-                              <label class="form-check-label d-inline" for="partially-met">
-                                Partially Met(2)
-                              </label>
-                            </div>
-                          </div>
-
-                          <div class="radio-left" style="display: flex; flex-direction:column;" >
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="customer-orientation" type="radio" value="3" id="met">
-                              <label class="form-check-label d-inline" for="met">
-                                Met(3)
-                              </label>
-                            </div>
-                           
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="customer-orientation" type="radio" value="1" id="did-not-meet">
-                              <label class="form-check-label d-inline" for="did-not-meet">
-                                Did not meet(1)
-                              </label>
-                            </div>
-                          </div>
-                          </div>
                           </div>
                         </div>
                       </div>
@@ -1068,39 +1045,36 @@ h1 {
                         </div>
                         <div class="d-flex radio-buttons">
                           <div class="radio-font">
-                            <div style="display: flex;">
+                            <div class="d-flex flex-wrap">
                               <div class="radio-left" style="display: flex; flex-direction:column;" >
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="leadership-drive" type="radio" value="4" id="exceeded">
-                              <label class="form-check-label d-inline" for="exceeded">
-                                Exceeded(4)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="leadership-drive" type="radio" value="2" id="partially-met">
-                              <label class="form-check-label d-inline" for="partially-met">
-                                Partially Met(2)
-                              </label>
-                            </div>
-                           
-                          </div>
-
-                          
-                            <div class="radio-left" style="display: flex; flex-direction:column;" >
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="leadership-drive" type="radio" value="3" id="met">
-                                <label class="form-check-label d-inline" for="met">
-                                  Met(3)
-                                </label>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="leadership_drive" type="radio" value="4" id="exceeded">
+                                  <label class="form-check-label d-inline" for="exceeded">
+                                    Exceeded(4)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="leadership_drive" type="radio" value="2" id="partially-met">
+                                  <label class="form-check-label d-inline" for="partially-met">
+                                    Partially Met(2)
+                                  </label>
+                                </div>  
                               </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="leadership-drive" type="radio" value="1" id="did-not-meet">
-                              <label class="form-check-label d-inline" for="did-not-meet">
-                                Did not meet(1)
-                              </label>
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="leadership_drive" type="radio" value="3" id="met">
+                                  <label class="form-check-label d-inline" for="met">
+                                    Met(3)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="leadership_drive" type="radio" value="1" id="did-not-meet">
+                                  <label class="form-check-label d-inline" for="did-not-meet">
+                                    Did not meet(1)
+                                  </label>
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                          </div>
                           </div>
                         </div>
                       </div>
@@ -1120,38 +1094,35 @@ h1 {
                         </div>
                         <div class="d-flex radio-buttons">
                           <div class="radio-font">
-                            <div style="display: flex;">
+                            <div class="d-flex flex-wrap">
                               <div class="radio-left" style="display: flex; flex-direction:column;" >
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="safety" type="radio" value="4" id="exceeded">
-                              <label class="form-check-label d-inline" for="exceeded">
-                                Exceeded(4)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="safety" type="radio" value="2" id="partially-met">
-                              <label class="form-check-label d-inline" for="partially-met">
-                                Partially Met(2)
-                              </label>
-                            </div>
-                            
-                          </div>
-
-                          
-                            <div class="radio-left" style="display: flex; flex-direction:column;" >
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="safety" type="radio" value="3" id="met">
-                                <label class="form-check-label d-inline" for="met">
-                                  Met(3)
-                                </label>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="compliance_and_safety" type="radio" value="4" id="exceeded">
+                                  <label class="form-check-label d-inline" for="exceeded">
+                                    Exceeded(4)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="compliance_and_safety" type="radio" value="2" id="partially-met">
+                                  <label class="form-check-label d-inline" for="partially-met">
+                                    Partially Met(2)
+                                  </label>
+                                </div>
                               </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="safety" type="radio" value="1" id="did-not-meet">
-                              <label class="form-check-label d-inline" for="did-not-meet">
-                                Did not meet(1)
-                              </label>
-                            </div>
-                            </div>
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="compliance_and_safety" type="radio" value="3" id="met">
+                                  <label class="form-check-label d-inline" for="met">
+                                    Met(3)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="compliance_and_safety" type="radio" value="1" id="did-not-meet">
+                                  <label class="form-check-label d-inline" for="did-not-meet">
+                                    Did not meet(1)
+                                  </label>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -1168,43 +1139,39 @@ h1 {
                             Demonstrates respect for individuals, culture, and ethnic group to increase effectiveness oof every unit 
                             and function; Influences organisational culture in ways that value and support diversity; Encourages and
                             contributes to the establishment and execution of diversity management and inclusion programmes
-
                           </p>
                         </div>
                         <div class="d-flex radio-buttons">
                           <div class="radio-font">
-                            <div style="display: flex;">
+                            <div class="d-flex flex-wrap">
                               <div class="radio-left" style="display: flex; flex-direction:column;" >
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="diversity-respect" type="radio" value="4" id="exceeded">
-                              <label class="form-check-label d-inline" for="exceeded">
-                                Exceeded(4)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="diversity-respect" type="radio" value="2" id="partially-met">
-                              <label class="form-check-label d-inline" for="partially-met">
-                                Partially Met(2)
-                              </label>
-                            </div>
-                            
-                          </div>
-
-                          
-                            <div class="radio-left" style="display: flex; flex-direction:column;" >
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="diversity-respect" type="radio" value="3" id="met">
-                                <label class="form-check-label d-inline" for="met">
-                                  Met(3)
-                                </label>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="diversity_and_respect" type="radio" value="4" id="exceeded">
+                                  <label class="form-check-label d-inline" for="exceeded">
+                                    Exceeded(4)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="diversity_and_respect" type="radio" value="2" id="partially-met">
+                                  <label class="form-check-label d-inline" for="partially-met">
+                                    Partially Met(2)
+                                  </label>
+                                </div>
                               </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="diversity-respect" type="radio" value="1" id="did-not-meet">
-                              <label class="form-check-label d-inline" for="did-not-meet">
-                                Did not meet(1)
-                              </label>
-                            </div>
-                            </div>
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="diversity_and_respect" type="radio" value="3" id="met">
+                                  <label class="form-check-label d-inline" for="met">
+                                    Met(3)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="diversity_and_respect" type="radio" value="1" id="did-not-meet">
+                                  <label class="form-check-label d-inline" for="did-not-meet">
+                                    Did not meet(1)
+                                  </label>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -1224,40 +1191,36 @@ h1 {
                         </div>
                         <div class="d-flex radio-buttons">
                           <div class="radio-font">
-                            <div style="display: flex;">
+                            <div class="d-flex flex-wrap">
                               <div class="radio-left" style="display: flex; flex-direction:column;" >
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="attendance" type="radio" value="4" id="exceeded">
-                              <label class="form-check-label d-inline" for="exceeded">
-                                Exceeded(4)
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="attendance" type="radio" value="2" id="partially-met">
-                              <label class="form-check-label d-inline" for="partially-met">
-                                Partially Met(2)
-                              </label>
-                            </div>
-                            
-                          </div>
-
-
-                          
-                            <div class="radio-left" style="display: flex; flex-direction:column;" >
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="attendance" type="radio" value="3" id="met">
-                                <label class="form-check-label d-inline" for="met">
-                                  Met(3)
-                                </label>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="attendance" type="radio" value="4" id="exceeded">
+                                  <label class="form-check-label d-inline" for="exceeded">
+                                    Exceeded(4)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="attendance" type="radio" value="2" id="partially-met">
+                                  <label class="form-check-label d-inline" for="partially-met">
+                                    Partially Met(2)
+                                  </label>
+                                </div>
                               </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="attendance" type="radio" value="1" id="did-not-meet">
-                              <label class="form-check-label d-inline" for="did-not-meet">
-                                Did not meet(1)
-                              </label>
+                              <div class="radio-left" style="display: flex; flex-direction:column;" >
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="attendance" type="radio" value="3" id="met">
+                                  <label class="form-check-label d-inline" for="met">
+                                    Met(3)
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" name="attendance" type="radio" value="1" id="did-not-meet">
+                                  <label class="form-check-label d-inline" for="did-not-meet">
+                                    Did not meet(1)
+                                  </label>
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                          </div>
                           </div>
                         </div>
                       </div>
@@ -1266,7 +1229,7 @@ h1 {
                 </div>
 
                 <div style="margin-left: 90%; margin-top: 30px;">
-                  <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" >                    
+                  <button class="btn rounded-pill btn-primary" onclick="updateAppraisal('behavioural_assessment')" id="save-goal-form" type="button" >                    
                     Save
                     <i class="ti ti-download fs-5"></i>
                   </button>
@@ -1274,21 +1237,16 @@ h1 {
               </div>
               <!-- BEHAVIOUR ASSESSMENT END -->
              
-              
-                <!-- <div class="grid column-gap-3 row">
-                  <div class="col-sm w-100 mb-3"></div>
-                </div>
-              </div> -->
 
 
               <!-- KEY ACCOMPLISHMENT START -->
-              <div class="d-none" id="key-accomplishment">
-                <div class="mt-5">
+              <div class="d-none key_accomplishment_form" id="key_accomplishment">
+                <div class="mt-2">
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row">
                       <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Accomplishment 1 <span class="required">*</span></label>
-                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
+                        <label for="accomplishment_1" class="form-label">Accomplishment 1 <span class="required">*</span></label>
+                        <textarea rows="1" class="form-control" name="accomplishment_1" id="accomplishment" value="" rows="1" aria-describedby="goaldescHelp" required></textarea>
                         <div id="goaldescHelp" class="form-text">Actual feats accomplished</div>
                       </div>
                     </div>
@@ -1298,8 +1256,8 @@ h1 {
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row">
                       <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Accomplishment 2</label>
-                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp"></textarea>
+                        <label for="accomplishment_2" class="form-label">Accomplishment 2</label>
+                        <textarea rows="1" class="form-control" name="accomplishment_2" id="accomplishment" value="" aria-describedby="goaldescHelp"></textarea>
                         <div id="goaldescHelp" class="form-text">Actual feats accomplished</div>
                       </div>
                     </div>
@@ -1309,14 +1267,14 @@ h1 {
                   <div class="container px-0 mx-0">
                     <div class="grid column-gap-3 row">
                       <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Accomplishment 3</label>
-                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp"></textarea>
+                        <label for="accomplishment_3" class="form-label">Accomplishment 3</label>
+                        <textarea rows="1" class="form-control" name="accomplishment_3" id="accomplishment" value="" aria-describedby="goaldescHelp"></textarea>
                         <div id="goaldescHelp" class="form-text">Actual feats accomplished</div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" style="height: 40px; margin-left: 90%; margin-top: 30px;">                    
+                <button class="btn rounded-pill btn-primary" id="save-goal-form" onclick="updateAppraisal('key_accomplishment')" type="button" style="height: 40px; margin-left: 90%; margin-top: 30px;">                    
                   Save
                   <i class="ti ti-download fs-5"></i>
                 </button>
@@ -1325,7 +1283,7 @@ h1 {
 
 
               <!-- PERFORMANCE IMPROVEMENT START -->
-              <div class="d-none" id="performance-improvement">
+              <div class="d-none performance_improvement_form" id="performance_improvement">
                 <div class="d-flex justify-content-between">
                   <ul class="nav nav-tabs w-75" id="goalFormNavigation">
                     <li class="nav-item goal_1 active_link" style="cursor: pointer;">
@@ -1339,103 +1297,106 @@ h1 {
                     </li>
                   </ul>
                 </div>
-                <div data-repeater-item="" class="mt-5 goal goal_1">
-                  <div class="container px-0 mx-0">
-                    <div class="grid column-gap-3 row">
-                      <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Key Strength 1</label>
-                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
-                        <!-- <div id="goaldescHelp" class="form-text">Actual feats accomplished</div> -->
+                <div class="performance_improvement_points">
+                  <div data-repeater-item="" class="mt-5 goal goal_1">
+                    <div class="container px-0 mx-0">
+                      <div class="grid column-gap-3 row">
+                        <div class="col-sm mb-3 mx-0">
+                          <label for="key_strength" class="form-label">Key Strength 1</label>
+                          <textarea rows="1" class="form-control" name="key_strength" id="key_strength" value="" aria-describedby="goaldescHelp" required></textarea>
+                          <!-- <div id="goaldescHelp" class="form-text">Actual feats accomplished</div> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="container px-0 mx-0">
+                      <div class="grid column-gap-3 row">
+                        <div class="col-sm mb-3 mx-0">
+                          <label for="improvement_area" class="form-label">Improvement Areas</label>
+                          <textarea rows="1" class="form-control" name="improvement_area" id="improvement_area" value="" aria-describedby="goaldescHelp" required></textarea>
+                          <div id="goaldescHelp" class="form-text">E.g; Coaching, Mentoring, On-the-job training and formal trainings.</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="container px-0 mx-0">
+                      <div class="grid column-gap-3 row">
+                        <div class="col-sm mb-3 mx-0">
+                          <label for="developmental_recommendation" class="form-label">Developmental Recommendations</label>
+                          <textarea rows="1" class="form-control" name="developmental_recommendation" id="developmental_recommendation" value="" aria-describedby="goaldescHelp" required></textarea>
+                          <div id="goaldescHelp" class="form-text">Training, Job rotation, Job enlargement, Redeployment to another Function/Department/Location etc.</div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" style="height: 40px; margin-left: 90%; margin-top: 30px;">                    
+                      Save
+                      <i class="ti ti-download fs-5"></i>
+                    </button> -->
+                  </div>
+                  <div data-repeater-item="" class="mt-5 d-none goal goal_2">
+                    <div class="container px-0 mx-0">
+                      <div class="grid column-gap-3 row">
+                        <div class="col-sm mb-3 mx-0">
+                          <label for="key_strength" class="form-label">Key Strength 2</label>
+                          <textarea rows="1" class="form-control" name="key_strength" id="key_strength" value="" aria-describedby="goaldescHelp" required></textarea>
+                          <!-- <div id="goaldescHelp" class="form-text">Actual feats accomplished</div> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="container px-0 mx-0">
+                      <div class="grid column-gap-3 row">
+                        <div class="col-sm mb-3 mx-0">
+                          <label for="improvement_area" class="form-label">Improvement Areas</label>
+                          <textarea rows="1" class="form-control" name="improvement_area" id="improvement_area" value="" aria-describedby="goaldescHelp" required></textarea>
+                          <div id="goaldescHelp" class="form-text">E.g; Coaching, Mentoring, On-the-job training and formal trainings.</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="container px-0 mx-0">
+                      <div class="grid column-gap-3 row">
+                        <div class="col-sm mb-3 mx-0">
+                          <label for="developmental_recommendation" class="form-label">Developmental Recommendations</label>
+                          <textarea rows="1" class="form-control" name="developmental_recommendation" id="developmental_recommendation" value="" aria-describedby="goaldescHelp" required></textarea>
+                          <div id="goaldescHelp" class="form-text">Training, Job rotation, Job enlargement, Redeployment to another Function/Department/Location etc.</div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" style="height: 40px; margin-left: 90%; margin-top: 30px;">                    
+                      Save
+                      <i class="ti ti-download fs-5"></i>
+                    </button>   -->
+                  </div>  
+                  <div data-repeater-item="" class="mt-5 d-none goal goal_3">
+                    <div class="container px-0 mx-0">
+                      <div class="grid column-gap-3 row">
+                        <div class="col-sm mb-3 mx-0">
+                          <label for="key_strength" class="form-label">Key Strength 3</label>
+                          <textarea rows="1" class="form-control" name="key_strength" id="key_strength" value="" aria-describedby="goaldescHelp" required></textarea>
+                          <!-- <div id="goaldescHelp" class="form-text">Actual feats accomplished</div> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="container px-0 mx-0">
+                      <div class="grid column-gap-3 row">
+                        <div class="col-sm mb-3 mx-0">
+                          <label for="improvement_area" class="form-label">Improvement Areas</label>
+                          <textarea rows="1" class="form-control" name="improvement_area" id="improvement_area" value="" aria-describedby="goaldescHelp" required></textarea>
+                          <div id="goaldescHelp" class="form-text">E.g; Coaching, Mentoring, On-the-job training and formal trainings.</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="container px-0 mx-0">
+                      <div class="grid column-gap-3 row">
+                        <div class="col-sm mb-3 mx-0">
+                          <label for="developmental_recommendation" class="form-label">Developmental Recommendations</label>
+                          <textarea rows="1" class="form-control" name="developmental_recommendation" id="developmental_recommendation" value="" aria-describedby="goaldescHelp" required></textarea>
+                          <div id="goaldescHelp" class="form-text">Training, Job rotation, Job enlargement, Redeployment to another Function/Department/Location etc.</div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div class="container px-0 mx-0">
-                    <div class="grid column-gap-3 row">
-                      <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Improvement Areas</label>
-                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
-                        <div id="goaldescHelp" class="form-text">E.g; Coaching, Mentoring, On-the-job training and formal trainings.</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="container px-0 mx-0">
-                    <div class="grid column-gap-3 row">
-                      <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Developmental Recommendations</label>
-                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
-                        <div id="goaldescHelp" class="form-text">Training, Job rotation, Job enlargement, Redeployment to another Function/Department/Location etc.</div>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" style="height: 40px; margin-left: 90%; margin-top: 30px;">                    
-                    Save
-                    <i class="ti ti-download fs-5"></i>
-                  </button>
                 </div>
-                <div data-repeater-item="" class="mt-5 d-none goal goal_2">
-                  <div class="container px-0 mx-0">
-                    <div class="grid column-gap-3 row">
-                      <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Key Strength 2</label>
-                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
-                        <!-- <div id="goaldescHelp" class="form-text">Actual feats accomplished</div> -->
-                      </div>
-                    </div>
-                  </div>
-                  <div class="container px-0 mx-0">
-                    <div class="grid column-gap-3 row">
-                      <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Improvement Areas</label>
-                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
-                        <div id="goaldescHelp" class="form-text">E.g; Coaching, Mentoring, On-the-job training and formal trainings.</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="container px-0 mx-0">
-                    <div class="grid column-gap-3 row">
-                      <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Developmental Recommendations</label>
-                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
-                        <div id="goaldescHelp" class="form-text">Training, Job rotation, Job enlargement, Redeployment to another Function/Department/Location etc.</div>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" style="height: 40px; margin-left: 90%; margin-top: 30px;">                    
-                    Save
-                    <i class="ti ti-download fs-5"></i>
-                  </button>  
-                </div>  
-                <div data-repeater-item="" class="mt-5 d-none goal goal_3">
-                  <div class="container px-0 mx-0">
-                    <div class="grid column-gap-3 row">
-                      <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Key Strength 3</label>
-                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
-                        <!-- <div id="goaldescHelp" class="form-text">Actual feats accomplished</div> -->
-                      </div>
-                    </div>
-                  </div>
-                  <div class="container px-0 mx-0">
-                    <div class="grid column-gap-3 row">
-                      <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Improvement Areas</label>
-                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
-                        <div id="goaldescHelp" class="form-text">E.g; Coaching, Mentoring, On-the-job training and formal trainings.</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="container px-0 mx-0">
-                    <div class="grid column-gap-3 row">
-                      <div class="col-sm mb-3 mx-0">
-                        <label for="accomplishment" class="form-label">Developmental Recommendations</label>
-                        <textarea class="form-control" name="accomplishment" id="accomplishment" value="" aria-describedby="goaldescHelp" required></textarea>
-                        <div id="goaldescHelp" class="form-text">Training, Job rotation, Job enlargement, Redeployment to another Function/Department/Location etc.</div>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="btn rounded-pill btn-primary" id="save-goal-form" type="button" style="height: 40px; margin-left: 90%; margin-top: 30px;">                    
-                    Save
-                    <i class="ti ti-download fs-5"></i>
+                <div class="m-4">
+                  <button class="btn rounded-pill btn-primary" onclick="updateAppraisal('performance_improvement')" id="save-goal-form" type="button" style="height: 40px; margin-left: 90%; margin-top: 30px;">                    
+                    Save <i class="ti ti-download fs-5"></i>
                   </button>
                 </div>
               </div>
@@ -1443,125 +1404,125 @@ h1 {
 
 
               <!-- OVERALL RATING START -->
-              <div class="d-none" id="overall-rating">
+              <div class="d-none overall_rating_form" id="overall_rating">
                 <!-- <h1>OVERALL RATING</h1> -->
                 
                  
-                  <div class="rating-table" >
-                    <div class="col-lg-4 col-md-6">
-                      <div class="card border-bottom border-info">
-                        <div class="card-body">
-                          <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                              <h6 class="fw-medium text-info mb-0">Section A</h6>
-                              <h4 class="fs-7">120</h4>
-                              
-                            </div>
-                            <span class="text-info display-6">
-                              <i class="ti ti-file-text"></i>
+                <div class="rating-table" >
+                  <div class="col-lg-4 col-md-6">
+                    <div class="card border-bottom border-info">
+                      <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <div>
+                            <h6 class="fw-medium text-info mb-0">Section A</h6>
+                            <h4 class="fs-7">120</h4>
+                            
+                          </div>
+                          <span class="text-info display-6">
+                            <i class="ti ti-file-text"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6">
+                    <div class="card border-bottom border-primary">
+                      <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <div>
+                            <h6 class="fw-medium text-primary mb-0">Section B</h6>
+                            <h4 class="fs-7 sectionB_score">150</h4>
+                            
+                          </div>
+                          <span class="text-primary display-6">
+                            <i class="ti ti-clipboard"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6">
+                    <div class="card border-bottom border-success">
+                      <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <div>
+                            <h6 class="fw-medium text-success mb-0">Total</h6>
+                            <h4 class="fs-7">450</h4>
+                            
+                          </div>
+                          <div class="ms-auto">
+                            <span class="text-success display-6">
+                              <i class="ti ti-credit-card"></i>
                             </span>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                      <div class="card border-bottom border-primary">
-                        <div class="card-body">
-                          <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                              <h6 class="fw-medium text-primary mb-0">Section B</h6>
-                              <h4 class="fs-7">150</h4>
-                              
-                            </div>
-                            <span class="text-primary display-6">
-                              <i class="ti ti-clipboard"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
+                  </div>
+                    <!-- <div class="section">
+                        <label for="sectionA" class="section-title">Section A</label>
+                        <input type="number" id="sectionA" class="section-score" value="17.5" readonly>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                      <div class="card border-bottom border-success">
-                        <div class="card-body">
-                          <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                              <h6 class="fw-medium text-success mb-0">Total</h6>
-                              <h4 class="fs-7">450</h4>
-                              
-                            </div>
-                            <div class="ms-auto">
-                              <span class="text-success display-6">
-                                <i class="ti ti-credit-card"></i>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                
+                    <div class="section">
+                        <label for="sectionB" class="section-title">Section B</label>
+                        <input type="number" id="sectionB" class="section-score" value="2.09" readonly>
                     </div>
-                      <!-- <div class="section">
-                          <label for="sectionA" class="section-title">Section A</label>
-                          <input type="number" id="sectionA" class="section-score" value="17.5" readonly>
-                      </div>
-                  
-                      <div class="section">
-                          <label for="sectionB" class="section-title">Section B</label>
-                          <input type="number" id="sectionB" class="section-score" value="2.09" readonly>
-                      </div>
-                  
-                      <div class="section">
-                        <label for="total" class="section-title">TOTAL</label>
-                          <input type="number" id="total" class="total-score"  value="19.59" readonly>
+                
+                    <div class="section">
+                      <label for="total" class="section-title">TOTAL</label>
+                        <input type="number" id="total" class="total-score"  value="19.59" readonly>
 
-                      </div> -->
-                    </div>
-                  <div class="rating-description">
-                    <h2>Rating Description</h2>
-                    <div class="col-xxl-3 col-md-12">
-                      <div class="card border-end border-dark">
-                        <div class="card-body">
-                          <div class="d-flex align-items-center justify-content-between">
-                            <span >
-                              <!-- <i class="ti ti-cast"></i> -->
-                              <h4 class="card-title fs-7">Below Average (50%)</h4>
-                              <p>Does not meet the required performance standards in key aspects of the job. <strong>Unacceptable Performance</strong></p>
-                            </span>
-                            <div>
-                              <!-- <p class="card-subtitle text-dark">Below Average</p> -->
-                            </div>
+                    </div> -->
+                  </div>
+                <div class="rating-description">
+                  <h2>Rating Description</h2>
+                  <div class="col-xxl-3 col-md-12">
+                    <div class="card border-end border-dark">
+                      <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <span >
+                            <!-- <i class="ti ti-cast"></i> -->
+                            <h4 class="card-title fs-7">Below Average (50%)</h4>
+                            <p>Does not meet the required performance standards in key aspects of the job. <strong>Unacceptable Performance</strong></p>
+                          </span>
+                          <div>
+                            <!-- <p class="card-subtitle text-dark">Below Average</p> -->
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-xxl-3 col-md-12">
-                      <div class="card border-end border-info">
-                        <div class="card-body">
-                          <div class="d-flex align-items-center justify-content-between">
-                            <span >
-                              <!-- class="text-info display-6" -->
-                              <h4 class="card-title fs-7">Average (50-59%)</h4>
-                              <!-- <i class="ti ti-currency-dollar"></i> -->
-                              <p>Level of productivity and general effectiveness meets the standards for this position. Quality and quantity of output are average. <strong>Improvement Needed</strong></p>
-                            </span>
-                            
-                          </div>
+                  </div>
+                  <div class="col-xxl-3 col-md-12">
+                    <div class="card border-end border-info">
+                      <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <span >
+                            <!-- class="text-info display-6" -->
+                            <h4 class="card-title fs-7">Average (50-59%)</h4>
+                            <!-- <i class="ti ti-currency-dollar"></i> -->
+                            <p>Level of productivity and general effectiveness meets the standards for this position. Quality and quantity of output are average. <strong>Improvement Needed</strong></p>
+                          </span>
+                          
                         </div>
                       </div>
                     </div>
-                    <div class="col-xxl-3 col-md-12">
-                      <div class="card border-end border-primary">
-                        <div class="card-body">
-                          <div class="d-flex align-items-center justify-content-between">
-                            <span >
-                              <!-- <i class="ti ti-clock-hour-4"></i> -->
-                              <h4 class="card-title fs-7">Good (60-69%)</h4>
-                              <p>Meets the required performance standards in all aspects of the job and sometimes exceeds the standards. <strong>Sustain Performance</strong></p>
-                            </span>
-                            
-                          </div>
+                  </div>
+                  <div class="col-xxl-3 col-md-12">
+                    <div class="card border-end border-primary">
+                      <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <span >
+                            <!-- <i class="ti ti-clock-hour-4"></i> -->
+                            <h4 class="card-title fs-7">Good (60-69%)</h4>
+                            <p>Meets the required performance standards in all aspects of the job and sometimes exceeds the standards. <strong>Sustain Performance</strong></p>
+                          </span>
+                          
                         </div>
                       </div>
                     </div>
-                    <div class="col-xxl-3 col-md-12">
+                  </div>
+                  <div class="col-xxl-3 col-md-12">
                       <div class="card border-end border-success">
                         <div class="card-body">
                           <div class="d-flex align-items-center justify-content-between">
@@ -1618,13 +1579,15 @@ h1 {
                -->
 
                
-                <div class="d-flex justify-content-between">
-                  <button class="btn btn-primary rounded-pill" id="submit" type="submit" style="height: 40px">
-                    <div class="d-flex align-items-center justify-content-center">
-                      Submit
-                      <i class="ti ti-send ms-1 fs-5"></i>
-                    </div>
-                  </button>
+                  <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary rounded-pill" id="submit" type="submit" style="height: 40px">
+                      <div class="d-flex align-items-center justify-content-center">
+                        Submit
+                        <i class="ti ti-send ms-1 fs-5"></i>
+                      </div>
+                    </button>
+                  </div>
+                  </div>
                 </div>
               </div>
               <!-- OVERALL RATING END -->

@@ -6,12 +6,12 @@ $(document).ready(
   let dependentDropdownData;
   let formsList = [$('div.goal_1'), $('div.goal_2'), $('div.goal_3')];
   "use strict";
-  $('#behaviour-assessment').on('click', function(event) {
+  $('#behaviour_assessment').on('click', function(event) {
     event.preventDefault(); // Prevent the default link behavior
     $(".card").css('--bs-card-box-shadow', 'none');
 });
 
-$('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rating').on('click', function(event) {
+$('#goal_evaluation, #key_accomplishment, #performance_improvement, #overall_rating').on('click', function(event) {
     event.preventDefault(); // Prevent the default link behavior
     $(".card").css('--bs-card-box-shadow', 'rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px');
 });
@@ -90,6 +90,16 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
     "balanced_scorecard":"blue",
     "weight":"22",
     "timeline":"2024-06-01T08:32"
+    },
+    "4":{
+    "goal_description":"I speak Spirit",
+    "specific_task":"I speak life eternal",
+    "agreed_target":"Death is nothing",
+    "kpi":"ejd ececeic",
+    "corporate_objective":"Owen Lars",
+    "balanced_scorecard":"blue",
+    "weight":"24",
+    "timeline":"2024-06-01T08:32"
     }
   }
   // Dummy logic to test dependent dropdown REMOVE THIS
@@ -120,7 +130,7 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
       dependentDropdownData = corporate_objectives;
       populateDropDown(data, formsList);
       // console.log("DEPENDENT DROPDOWN DATA", Object.values(dependentDropdownData));
-      // populateSavedGoalsOnLoad(dummyData);
+      populateSavedGoalsOnLoad(dummyData);
     }
   )
   // Logic to handle dependent dropdowns
@@ -148,10 +158,9 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
   }
 
   function populateDropDown(data, goalsList) {
-    console.log("Goals list", goalsList);
     for (let goal of goalsList) {
       // console.log(goal);
-      const dropdown = goal.find('#appraisee-rating');
+      const dropdown = goal.find('#appraisee_rating');
       // console.log("dropdown val", dropdown)
       const dropdownChildrenLength = dropdown.children().length;
       // console.log(dropdownChildrenLength);
@@ -204,8 +213,7 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
   // Function end
 
   function populateSavedGoalsOnLoad (data) {
-    const numberOfSavedGoals = Object.keys(data).length
-    console.log("num saved",numberOfSavedGoals);
+    const numberOfSavedGoals = Object.keys(data).length;
     // if (formsList.length < numberOfSavedGoals) {
     //   for (let number = formsList.length + 1; number <= numberOfSavedGoals; number++) {
     //     console.log('New goal created');
@@ -224,8 +232,7 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
             goal.val(goalData[key]);
           }
           else if (key == 'corporate_objective') {
-            let goal = goalForm.find(`[id = "${key}"]`)
-            console.log(goal);
+            let goal = goalForm.find(`[id = "${key}"]`);
             goal.append(`<option value="${goalData[key]}" class="dependent-dropdown" selected>${goalData[key]}</option>`);
           }
           else {
@@ -246,67 +253,54 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
 
   // Function to handle creation of extra goals in case they have been saved
   function createGoal (number, goal) {
-    const goalTemplate = `<div data-repeater-item class="mt-5 d-none goal goal_${number}">
-      <div class="container px-0 mx-0">
+    const goalTemplate = `<div class="mt-5 d-none goal goal_${number}">
+        <div class="grid column-gap-3 row">
+          <div class="col-sm w-100 mb-3">
+            <label for="goal" class="form-label">Goal</label>
+            <textarea rows="1" class="form-control" name="goal_description" value="${goal.goal_description}" id="goal_description" aria-describedby="goalHelp" required disabled>${goal.goal_description}</textarea>
+            <!-- <div id="goalHelp" class="form-text">Short text describing your goal</div> -->
+          </div>
+          <div class="col-sm w-100 mb-3">
+            <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
+            <textarea rows="1" class="form-control" name="kpi" value="${goal.kpi}" id="kpi" required disabled>${goal.kpi}</textarea>
+            <div id="goaldescHelp" class="form-text">Key performance indices of your goal</div>
+          </div>
+        </div>
+        <div class="grid column-gap-3 row">
+          <div class="col-sm w-100 mb-3">
+            <label for="actual_result" class="form-label">Actual Result Achieved <span class="required">*</span></label>
+            <textarea rows="1" class="form-control" name="actual_result" value="" id="actual_result" aria-describedby="goaldescHelp" required></textarea>
+            <div id="goaldescHelp" class="form-text">What have you achieved so far?</div>
+          </div>
+        </div>
         <div class="grid column-gap-3 row">
           <div class="col-sm mb-3 mx-0">
-            <label for="objective" class="form-label">Corporate Objectives (Strategic focus)</label>
-            <select class="form-select" name="corporate_objective" id="corporate_objective" required>
-              <option value="${goal.corporate_objective}" class="dependent-dropdown" selected>${goal.corporate_objective}</option>
-            </select>
-          </div>
-          <div class="col-sm mb-3 mx-0">
-            <label for="scorecards" class="form-label">Link to balance scorecard</label>
-            <input class="form-control" value="${goal.balanced_scorecard}" name="balanced_scorecard" id="balanced_scorecard" readonly/>
-          </div>
-        </div>
-      </div>
-      <div class="grid column-gap-3 row">
-        <div class="col-sm w-100 mb-3">
-          <label for="goal" class="form-label">Goal</label>
-          <textarea class="form-control" name="goal_description" value="${goal.goal_description}" id="goal_description" aria-describedby="goalHelp" required>${goal.goal_description}</textarea>
-          <div id="goalHelp" class="form-text">Short text describing your goal</div>
-        </div>
-        <div class="col-sm w-100 mb-3">
-          <label for="task" class="form-label">Specific tasks to be accomplished</label>
-          <textarea class="form-control" name="specific_task" value="${goal.specific_task}" id="specific_task" aria-describedby="goaldescHelp" required>${goal.specific_task}</textarea>
-          <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div>
-        </div>
-      </div>
-      <div class="grid column-gap-3 row">
-        <div class="col-sm w-100 mb-3">
-          <label for="target" class="form-label">Agreed Target</label>
-          <textarea class="form-control" name="agreed_target" value="${goal.agreed_target}" id="agreed_target" required>${goal.agreed_target}</textarea>
-          <!-- <div id="goaldescHelp" class="form-text">Highlight the tasks to be accomplished with respect to your goal</div> -->
-        </div>
-        <div class="col-sm w-100 mb-3">
-          <label for="kpi" class="form-label">Achievement Criteria (KPI)</label>
-          <textarea class="form-control" name="kpi" value="${goal.kpi}" id="kpi" required>${goal.kpi}</textarea>
-          <div id="goaldescHelp" class="form-text">Highlight the key performance indices of your goal</div>
-        </div>
-      </div>
-      <section class="container-fluid">
-        <div class="grid column-gap-3 row">
-          <div class="col-sm mb-3 w-100 px-0 mx-0">
             <label for="weight" class="form-label">Weight</label>
-            <input type="number" name="weight" value="${goal.weight}" min="0" max="100" class="form-control" id="weight" required/>
+            <input type="number" name="weight" placeholder="0" value="${goal.weight}" min="0" max="100" class="form-control" id="weight" required disabled/>
           </div>
-          <div class="col mb-3 w-100 px-0 mx-0">
-            <label for="timeline" class="form-label">Timeline</label>
-            <input type="datetime-local" name="timeline" value="${goal.timeline}" class="form-control" id="timeline" required/>
+          <div class="col-sm mb-3 mx-0">
+            <label for="appraisee_rating" class="form-label">Appraisee Rating <span class="required">*</span></label>
+            <select class="form-select" name="appraisee_rating" id="appraisee_rating" required>
+            </select>
+          </div>    
+          <div class="col-sm mb-3 mx-0">
+            <label for="score" class="form-label">Score</label>
+            <input type="number" name="score" placeholder="0" value="5" min="0" max="100" class="form-control" id="weight" required disabled/>
+          </div>     
+        </div>           
+        <div class="grid column-gap-3 row">
+          <div class="col-sm mb-3 mx-0">
+            <label for="agreed-rating" class="form-label">Agreed Rating</label>
+            <input type="number" name="agreed-rating" placeholder="0" value="5" min="0" max="100" class="form-control" id="weight" required disabled/>
+          </div>
+          <div class="col-sm mb-3 mx-0">
+            <label for="appraiser_rating" class="form-label">Appraiser Rating</label>
+            <input type="number" name="appraiser_rating" placeholder="0" value="0" min="0" max="100" class="form-control" id="appraiser_rating" required disabled/>
           </div>
         </div>
-        <div class="d-flex align-items-center justify-content-around">
-          <button data-repeater-delete class="btn btn-danger rounded-pill hstack gap-6" type="button">
-            <i class="ti ti-trash fs-5"></i>
-            Delete
-          </button>
-        </div>
-      </section>
-    </div>`
-    const goalsList = $('[data-repeater-list="goalsList"]');
-    // const thisGoal = $('div.goal_'+number);
-    goalsList.append(goalTemplate);
+      </div>`
+    const goalsList = $('.goals-for-evaluation');
+    goalsList.append([goalTemplate]);
     formsList.push($('div.goal_'+number));
     handleDependentDropdown($(`div.goal_${number}`));
     appendtoNav();
@@ -314,7 +308,7 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
   // Logic to handle showing saved goals on form End
 
   // Form Repeater Start
-  const myRepeater = $('#key-accomplishment').repeater({
+  const myRepeater = $('#key_accomplishment').repeater({
     initEmpty: false,
     show: function () {
       $(this).slideDown();
@@ -402,35 +396,33 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
   // Form Navigation End
 
   // Code to handle Total Weight Start
-  function handleTotalWeight (element) {
-    console.log("Total", total);
-    formsList.map(elem => {
-      elemWeight = elem.find("#weight");
-      newWeight = Number(elemWeight.val());
-      if ((total + newWeight) <= 100) {
-        total += newWeight;
-      } else {
-        console.log("Total", total);
-        alert("Total weight must not exceed 100");
-        element.val(0);
-      }
-    });
-    const totalWeightElement = $('#totalWeight h5')
-    totalWeightElement.text('Total Weight: ' + total + '/100');
-  }
+  // function handleTotalWeight (element) {
+  //   formsList.map(elem => {
+  //     newWeight = Number(elemWeight.val());
+  //     if ((total + newWeight) <= 100) {
+  //       total += newWeight;
+  //     } else {
+  //       console.log("Total", total);
+  //       alert("Total weight must not exceed 100");
+  //       element.val(0);
+  //     }
+  //   });
+  //   const totalWeightElement = $('#totalWeight h5')
+  //   totalWeightElement.text('Total Weight: ' + total + '/100');
+  // }
 
-  $('#goal-evaluation').on('input', '#weight', function () {
-    total -= total;
-    if ($(this).val() > 100) {
-      $(this).val(0);
-      alert("Maximum Weight cannot exceed 100");
-    };
-    handleTotalWeight($(this));
-  });
+  // $('#goal_evaluation').on('input', '#weight', function () {
+  //   total -= total;
+  //   if ($(this).val() > 100) {
+  //     $(this).val(0);
+  //     alert("Maximum Weight cannot exceed 100");
+  //   };
+  //   handleTotalWeight($(this));
+  // });
   // Code to handle Total Weight End
   
   // Code to handle submission logic Start
-  $('#goal-evaluation').on('submit', function () {
+  $('#goal_evaluation').on('submit', function () {
     event.preventDefault();
     if (total != 100) {
       $('.alert').remove();
@@ -499,41 +491,41 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
   // Code to handle submission logic End
 
   // Code to handle save logic Start
-  $('#save-goal-form').on('click', function () {
-    const data = {};
-    for (let i = 0; i < formsList.length; i++) {
-      data[i] = {
-        'goal_form_id': i + 1, // j not i
-        'balanced_scorecard': formsList[i].find('#balanced_scorecard').val(),
-        'corporate_objective': formsList[i].find('#corporate_objective').val(),
-        'weight': formsList[i].find('#weight').val(),
-        'timeline': formsList[i].find('#timeline').val(),
-        'agreed_target': formsList[i].find('#agreed_target').val(),
-        'goal_description': formsList[i].find('#goal_description').val(),
-        'kpi': formsList[i].find('#kpi').val(),
-        'specific_task': formsList[i].find('#specific_task').val()
-      }
-      console.log(checkForEmptyObject(data[i]));
-      if (!checkForEmptyObject(data[i])) {
-        delete data[i];
-      }
-    }    
-    console.log("Data to save", data);
-    if (Object.keys(data).length == 0) {
-      $('.alert').remove();
-      $('.form-parent').prepend(
-        `<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-        <b>You cannot save empty goals.</b>
-        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
-        </button></div>`
-      )
-      $('html, body').scrollTop(0);
-    } else {
-      console.log("SAVING DATA")
-      saveGoals(data);
-    }
-  });
+  // $('#save-goal-form').on('click', function () {
+  //   const data = {};
+  //   for (let i = 0; i < formsList.length; i++) {
+  //     data[i] = {
+  //       'goal_form_id': i + 1, // j not i
+  //       'balanced_scorecard': formsList[i].find('#balanced_scorecard').val(),
+  //       'corporate_objective': formsList[i].find('#corporate_objective').val(),
+  //       'weight': formsList[i].find('#weight').val(),
+  //       'timeline': formsList[i].find('#timeline').val(),
+  //       'agreed_target': formsList[i].find('#agreed_target').val(),
+  //       'goal_description': formsList[i].find('#goal_description').val(),
+  //       'kpi': formsList[i].find('#kpi').val(),
+  //       'specific_task': formsList[i].find('#specific_task').val()
+  //     }
+  //     console.log(checkForEmptyObject(data[i]));
+  //     if (!checkForEmptyObject(data[i])) {
+  //       delete data[i];
+  //     }
+  //   }    
+  //   console.log("Data to save", data);
+  //   if (Object.keys(data).length == 0) {
+  //     $('.alert').remove();
+  //     $('.form-parent').prepend(
+  //       `<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+  //       <b>You cannot save empty goals.</b>
+  //       <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+  //       <span aria-hidden="true" style="font-size: 1.5rem;">&times;</span>
+  //       </button></div>`
+  //     )
+  //     $('html, body').scrollTop(0);
+  //   } else {
+  //     console.log("SAVING DATA")
+  //     saveGoals(data);
+  //   }
+  // });
 
   // function formatJSON (dataToTransform) {
   //   const defaultJSON = {}
@@ -628,7 +620,10 @@ $('#goal-evaluation, #key-accomplishment, #performance-improvement, #overall-rat
     const new_active_link = $(this);
     new_active_link.addClass('active');
     const current_active_link_id = active_link.attr('id');
+    const activeForm = $(`.${current_active_link_id}_form`);
     const new_active_link_id = new_active_link.attr('id');
+    // console.log('Current active link id', $(`${current_active_link_id}`));
+    // console.log('New link element', $(`${new_active_link_id}`));
     $(`div#${current_active_link_id}`).addClass('d-none');
     $(`div#${new_active_link_id}`).removeClass('d-none');
   })
