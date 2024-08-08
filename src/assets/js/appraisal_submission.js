@@ -63,27 +63,27 @@ const appraisal_data = {
 // const section_B = 0;
 
 let goal_evaluation = {
-    'form': 'goal_evaluation',
+    'key': 'goal_evaluation',
     ...appraisal_data['goal_evaluation'],
 };
 
 let behavioural_assessment = {
-    'form': 'behavioural_assessment',
+    'key': 'behavioural_assessment',
     ...appraisal_data['behavioural_assessment'],
 };
 
 let key_accomplishment = {
-    'form': 'key_accomplishment',
+    'key': 'key_accomplishment',
     ...appraisal_data['key_accomplishment']
 };
 
 let performance_improvement = {
-    'form': 'performance_improvement',
+    'key': 'performance_improvement',
     ...appraisal_data['performance_improvement']
 };
 
 let overall_score_section_B = {
-    'form': 'overall_score_section_B',
+    'key': 'overall_score_section_B',
     ...appraisal_data['overall_score_section_B']
 };
 
@@ -125,13 +125,15 @@ function saveAppraisal(data) {
     // Key specifies which form is being saved
     // URL changes based on form being saved e.g; appraisals/save/?form=goal-evaluation
     $.ajax({
-        url: '#',
+        url: 'https://jsonplaceholder.typicode.com/posts',
         dataType: 'json',
         data: data,
         type: 'POST',
 
-        success: function (data) {
+        success: function (response) {
             // Alert that saving is successful
+            console.log("Data sent to backend", data);
+            console.log("Response from backend", response);
         },
         error: function (error) {
             // ALERT THE USER OF THE ERROR
@@ -145,8 +147,12 @@ function updateAppraisal(key) {
     let object = appraisal_data[key];
     const resultObject = updateFunctions[key](object);
     object = resultObject;
-    reassignFormData();
-    console.log("Overall result object", appraisal_data);
+    reassignFormData(objectsToSave, key);
+    saveAppraisal(objectsToSave[key]);
+    if (key === 'goal_evaluation' || key === 'behavioural_assessment') {
+        reassignFormData(objectsToSave, 'overall_score_section_B');
+        saveAppraisal(objectsToSave['overall_score_section_B']);
+    }
 }
 
 const updateFunctions = {
@@ -156,33 +162,21 @@ const updateFunctions = {
     'performance_improvement': updatePerformanceImprovement,
 }
 
+const objectsToSave = {
+    'goal_evaluation': goal_evaluation,
+    'behavioural_assessment': behavioural_assessment,
+    'key_accomplishment': key_accomplishment,
+    'performance_improvement': performance_improvement,
+    'overall_score_section_B': overall_score_section_B,
+}
+
 // REASSIGN APPRAISAL FORMS DATA ON UPDATE
-function reassignFormData() {
-    goal_evaluation = {
-        'key': 'goal_evaluation',
-        ...appraisal_data['goal_evaluation'],
+function reassignFormData(objectsToReassign, key) {
+    objectsToReassign[key] = {
+        'key': key,
+        ...appraisal_data[key],
     };
-    behavioural_assessment = {
-        'key': 'behavioural_assessment',
-        ...appraisal_data['behavioural_assessment'],
-    };
-    key_accomplishment = {
-        'key': 'key_accomplishment',
-        ...appraisal_data['key_accomplishment']
-    };
-    performance_improvement = {
-        'key': 'performance_improvement',
-        ...appraisal_data['performance_improvement']
-    };
-    overall_score_section_B = {
-        'key': 'overall_score_section_B',
-        ...appraisal_data['overall_score_section_B']
-    };
-    console.log("Goal evaluation: ", goal_evaluation);
-    console.log("Behavioural assessment: ", behavioural_assessment);
-    console.log("Key accomplishment: ", key_accomplishment);
-    console.log("Performance improvement: ", performance_improvement);
-    console.log("Overall score: ", overall_score_section_B);
+   console.log("Reassigned object: ", objectsToReassign[key]);
 }
 
 
@@ -200,6 +194,7 @@ function updateGoalEvaluation(appraisalObject) {
             appraisalObject[i][key] = $(`.goal_${i} [name="${key}"]`).val();
         }
     }
+    updateOverallScoreB();
     return appraisalObject;
 }
 
@@ -212,6 +207,7 @@ function updateBehaviouralAssessment(appraisalObject) {
         }
     }
     console.log('New appraisal object', appraisalObject);
+    updateOverallScoreB();
     return appraisalObject;
 }
 
@@ -236,21 +232,52 @@ function updatePerformanceImprovement(appraisalObject) {
 }
 
 function updateOverallScoreB() {
-    referenceObject = appraisal_data['behavioural_assessment'];
-    values = Object.values(referenceObject);
-    totalScore = values.reduce((total, num) => {
-        total += num;
-    }, 0);
-    return totalScore;
+    const scoreA = Number($('.sectionA_score').text());
+    const scoreB = Number($('.sectionB_score').text());
+    const totalScore = Number($('.total_score').text());
+    const objectToUpdate = appraisal_data['overall_score_section_B'];
+    objectToUpdate['section_A'] = scoreA;
+    objectToUpdate['section_B'] = scoreB;
 }
 
 // UTILITY FUNCTIONS
-// function monitorSectionBScore() {
-//     const behavioural_assessment_elements = $('.behavioural_assessment_form').find('input');
-//     for (const elem of behavioural_assessment_elements) {
-//         elem.on('change', function () {console.log('I SEE WHAT YOU DOING')});
-//     }    
-// }
-// monitorSectionBScore();
-// updateBehaviouralAssessment(appraisal_data['behavioural_assessment'])
-// 1) There's a possibility for radical change in the app
+$('.form-check-input').on('click', function () {
+    const element = $(this);
+    monitorBehaviouralAssessmentScores(element, appraisal_data['behavioural_assessment']);
+});
+
+function monitorBehaviouralAssessmentScores(formInput, object) {
+    const elemGroup = formInput.attr('name');
+    const elemValue = Number(formInput.val());
+    object[elemGroup] = elemValue;
+    const scoreList = Object.values(object);
+    const totalScore = computeTotalScore(scoreList);
+    displaySectionBScore(totalScore);
+}
+
+function computeTotalScore(scoreList) {
+    result = scoreList.reduce(sum = (accumulator, item) => {
+        return accumulator + item;
+    }, 0);
+    const percentageResult = ~~((result / 43) * 100);
+    return percentageResult;
+}
+
+function displaySectionBScore(sectionBScore) {
+    const element = $('.sectionB_score');
+    element.text(sectionBScore);
+    displayTotalScore();
+}
+
+function displaySectionAScore(sectionAScore) {
+    const element = $('.sectionA_score');
+    element.text(sectionAScore);
+    displayTotalScore();
+}
+
+function displayTotalScore() {
+    const element = $('.total_score');
+    const sectionA = Number($('.sectionA_score').text());
+    const sectionB = Number($('.sectionB_score').text());
+    element.text((sectionA + sectionB) / 2);
+}
